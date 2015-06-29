@@ -50,7 +50,13 @@
                 </Button.Background>
             </Button>
         </Grid>
-        <DataGrid x:Name="dg" Width="960" VerticalAlignment="Top" HorizontalAlignment="Center" Grid.ColumnSpan="7" Grid.Column="1" Grid.Row="4"/>
+        <DataGrid x:Name="dg" Width="960" VerticalAlignment="Top" HorizontalAlignment="Center" Grid.ColumnSpan="7" Grid.Column="1" Grid.Row="4" AutoGenerateColumns="False" FontFamily="Arial" IsReadOnly="True" Loaded="dg_Loaded">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Color" Binding="{Binding Nombre}" MinWidth="200" />
+                <DataGridTextColumn MinWidth="200" />
+                <DataGridTextColumn MinWidth="200" />
+            </DataGrid.Columns>            
+        </DataGrid>
     </Grid>
 </Page>
 

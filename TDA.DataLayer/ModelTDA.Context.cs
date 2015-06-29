@@ -13,10 +13,10 @@ namespace TDA.DataLayer
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class TDAEntities1 : DbContext
+    public partial class TDAEntities : DbContext
     {
-        public TDAEntities1()
-            : base("name=TDAEntities1")
+        public TDAEntities()
+            : base("name=TDAEntities")
         {
         }
     

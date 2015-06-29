@@ -3300,7 +3300,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="TDAEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="TDAEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="BaseSalario" EntityType="Self.BaseSalario" />
           <EntitySet Name="Cliente" EntityType="Self.Cliente" />
           <EntitySet Name="Color" EntityType="Self.Color" />
@@ -3659,7 +3659,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="TDAModelStoreContainer" CdmEntityContainer="TDAEntities1">
+        <EntityContainerMapping StorageEntityContainer="TDAModelStoreContainer" CdmEntityContainer="TDAEntities">
           <EntitySetMapping Name="BaseSalario">
             <EntityTypeMapping TypeName="TDAModel.BaseSalario">
               <MappingFragment StoreEntitySet="BaseSalario">

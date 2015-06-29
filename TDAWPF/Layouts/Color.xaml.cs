@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TDA.Entities;
 
 namespace TDAWPF.Layouts
 {
@@ -20,15 +21,41 @@ namespace TDAWPF.Layouts
     /// </summary>
     public partial class Color : Page
     {
+        List<Colores> lstColor = new List<Colores>();
+
         public Color()
         {
             InitializeComponent();
         }
 
+        private void cargarGrid()
+        {
+            TDAService.TDAServiceClient color = new TDAService.TDAServiceClient();
+            var resultado = color.SelectColor();
+            color.Close();
+            lstColor.Clear();
+
+            foreach (var r in resultado)
+            {
+                lstColor.Add(new Colores()
+                {
+                    Nombre = r.Nombre
+                });
+            }
+
+            dg.ItemsSource = null;
+            dg.ItemsSource = lstColor;   
+        }
+
+        private void dg_Loaded(object sender, RoutedEventArgs e)
+        {
+            cargarGrid();
+        }
+        
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
             Popups.Color w = new Popups.Color();
             w.ShowDialog();
-        }
+        }        
     }
 }

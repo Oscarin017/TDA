@@ -9,7 +9,7 @@ namespace TDA.DataLayer
 {
     public class DataAccess
     {
-        TDAEntities1 _context = new TDAEntities1();
+        TDAEntities _context = new TDAEntities();
 
         #region Tabla Configuracion
         public List<Configuraciones> SelectConfiguracion()

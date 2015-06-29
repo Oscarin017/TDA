@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D132C78F-0488-4EDD-AE82-42461F63B75F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TDA.Entities</RootNamespace>
+    <AssemblyName>TDA.Entities</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BaseSalarios.cs" />
+    <Compile Include="Clientes.cs" />
+    <Compile Include="Colores.cs" />
+    <Compile Include="Configuraciones.cs" />
+    <Compile Include="Dias.cs" />
+    <Compile Include="Empleados.cs" />
+    <Compile Include="Estados.cs" />
+    <Compile Include="GrupoClientes.cs" />
+    <Compile Include="Log.cs" />
+    <Compile Include="Marcas.cs" />
+    <Compile Include="Modelos.cs" />
+    <Compile Include="Movimientos.cs" />
+    <Compile Include="Paginas.cs" />
+    <Compile Include="Paises.cs" />
+    <Compile Include="PaqueteDias.cs" />
+    <Compile Include="PaqueteGrupoClientes.cs" />
+    <Compile Include="PaqueteProductos.cs" />
+    <Compile Include="Paquetes.cs" />
+    <Compile Include="Productos.cs" />
+    <Compile Include="PromocionGrupoClientes.cs" />
+    <Compile Include="PromocionDias.cs" />
+    <Compile Include="Promociones.cs" />
+    <Compile Include="PromocionPaquetes.cs" />
+    <Compile Include="PromocionProductos.cs" />
+    <Compile Include="PromocionTipoProductos.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Proveedores.cs" />
+    <Compile Include="Resultado.cs" />
+    <Compile Include="Roles.cs" />
+    <Compile Include="RolPaginas.cs" />
+    <Compile Include="TipoIdentificaciones.cs" />
+    <Compile Include="TipoMovimientos.cs" />
+    <Compile Include="TipoProductos.cs" />
+    <Compile Include="Usuarios.cs" />
+    <Compile Include="Vehiculos.cs" />
+    <Compile Include="VentaDetalles.cs" />
+    <Compile Include="VentaDias.cs" />
+    <Compile Include="Ventas.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

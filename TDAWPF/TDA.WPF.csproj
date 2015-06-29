@@ -1,0 +1,488 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{AFCE0519-7131-43FB-80EB-836953188ED3}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TDAWPF</RootNamespace>
+    <AssemblyName>TDAWPF</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="TDA.Entities">
+      <HintPath>..\TDA.Entities\bin\Debug\TDA.Entities.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Popups\Promocion.xaml.cs">
+      <DependentUpon>Promocion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\TDAService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Page Include="Controles\ComboBoxI.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controles\ComboBoxS.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controles\ComboBoxSC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controles\TextBoxD.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controles\TextBoxI.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controles\TextBoxO.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controles\TextBoxS.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controles\TextBoxSC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Layouts\Cliente.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Layouts\Color.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Layouts\Empleado.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Layouts\Estado.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Layouts\GrupoCliente.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Layouts\Main.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Layouts\Marca.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Layouts\Modelo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Layouts\OVentas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Layouts\Pais.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Layouts\Paquete.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Layouts\Producto.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Layouts\Promocion.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Layouts\Proveedor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Layouts\Usuario.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Layouts\Vehiculo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Layouts\Venta.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controles\ComboBoxI.xaml.cs">
+      <DependentUpon>ComboBoxI.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\ComboBoxS.xaml.cs">
+      <DependentUpon>ComboBoxS.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\ComboBoxSC.xaml.cs">
+      <DependentUpon>ComboBoxSC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\TextBoxD.xaml.cs">
+      <DependentUpon>TextBoxD.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\TextBoxI.xaml.cs">
+      <DependentUpon>TextBoxI.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\TextBoxO.xaml.cs">
+      <DependentUpon>TextBoxO.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\TextBoxS.xaml.cs">
+      <DependentUpon>TextBoxS.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\TextBoxSC.xaml.cs">
+      <DependentUpon>TextBoxSC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Layouts\Cliente.xaml.cs">
+      <DependentUpon>Cliente.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Layouts\Color.xaml.cs">
+      <DependentUpon>Color.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Layouts\Empleado.xaml.cs">
+      <DependentUpon>Empleado.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Layouts\Estado.xaml.cs">
+      <DependentUpon>Estado.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Layouts\GrupoCliente.xaml.cs">
+      <DependentUpon>GrupoCliente.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Layouts\Main.xaml.cs">
+      <DependentUpon>Main.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Layouts\Marca.xaml.cs">
+      <DependentUpon>Marca.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Layouts\Modelo.xaml.cs">
+      <DependentUpon>Modelo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Layouts\OVentas.xaml.cs">
+      <DependentUpon>OVentas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Layouts\Pais.xaml.cs">
+      <DependentUpon>Pais.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Layouts\Paquete.xaml.cs">
+      <DependentUpon>Paquete.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Layouts\Producto.xaml.cs">
+      <DependentUpon>Producto.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Layouts\Promocion.xaml.cs">
+      <DependentUpon>Promocion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Layouts\Proveedor.xaml.cs">
+      <DependentUpon>Proveedor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Layouts\Usuario.xaml.cs">
+      <DependentUpon>Usuario.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Layouts\Vehiculo.xaml.cs">
+      <DependentUpon>Vehiculo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Layouts\Venta.xaml.cs">
+      <DependentUpon>Venta.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Popups\Cliente.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Popups\Cobro.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Popups\Color.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Popups\Empleado.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Popups\Estado.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Popups\GrupoCliente.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Popups\Marca.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Popups\Modelo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Popups\Pais.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Popups\Paquete.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Popups\Producto.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Popups\Promocion.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Popups\Proveedor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Popups\Usuario.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Popups\Vehiculo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Popups\VentaDetalle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Popups\Cliente.xaml.cs">
+      <DependentUpon>Cliente.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Popups\Cobro.xaml.cs">
+      <DependentUpon>Cobro.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Popups\Color.xaml.cs">
+      <DependentUpon>Color.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Popups\Empleado.xaml.cs">
+      <DependentUpon>Empleado.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Popups\Estado.xaml.cs">
+      <DependentUpon>Estado.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Popups\GrupoCliente.xaml.cs">
+      <DependentUpon>GrupoCliente.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Popups\Marca.xaml.cs">
+      <DependentUpon>Marca.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Popups\Modelo.xaml.cs">
+      <DependentUpon>Modelo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Popups\Pais.xaml.cs">
+      <DependentUpon>Pais.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Popups\Paquete.xaml.cs">
+      <DependentUpon>Paquete.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Popups\Producto.xaml.cs">
+      <DependentUpon>Producto.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Popups\Proveedor.xaml.cs">
+      <DependentUpon>Proveedor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Popups\Usuario.xaml.cs">
+      <DependentUpon>Usuario.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Popups\Vehiculo.xaml.cs">
+      <DependentUpon>Vehiculo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Popups\VentaDetalle.xaml.cs">
+      <DependentUpon>VentaDetalle.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\DataSources\TDA.Entities.BaseSalarios.datasource" />
+    <None Include="Properties\DataSources\TDA.Entities.Clientes.datasource" />
+    <None Include="Properties\DataSources\TDA.Entities.Colores.datasource" />
+    <None Include="Properties\DataSources\TDA.Entities.Configuraciones.datasource" />
+    <None Include="Properties\DataSources\TDA.Entities.Dias.datasource" />
+    <None Include="Properties\DataSources\TDA.Entities.Empleados.datasource" />
+    <None Include="Properties\DataSources\TDA.Entities.Estados.datasource" />
+    <None Include="Properties\DataSources\TDA.Entities.GrupoClientes.datasource" />
+    <None Include="Properties\DataSources\TDA.Entities.Marcas.datasource" />
+    <None Include="Properties\DataSources\TDA.Entities.Modelos.datasource" />
+    <None Include="Properties\DataSources\TDA.Entities.Movimientos.datasource" />
+    <None Include="Properties\DataSources\TDA.Entities.Paginas.datasource" />
+    <None Include="Properties\DataSources\TDA.Entities.Paises.datasource" />
+    <None Include="Properties\DataSources\TDA.Entities.PaqueteDias.datasource" />
+    <None Include="Properties\DataSources\TDA.Entities.PaqueteGrupoClientes.datasource" />
+    <None Include="Properties\DataSources\TDA.Entities.PaqueteProductos.datasource" />
+    <None Include="Properties\DataSources\TDA.Entities.Paquetes.datasource" />
+    <None Include="Properties\DataSources\TDA.Entities.Productos.datasource" />
+    <None Include="Properties\DataSources\TDA.Entities.PromocionDias.datasource" />
+    <None Include="Properties\DataSources\TDA.Entities.Promociones.datasource" />
+    <None Include="Properties\DataSources\TDA.Entities.PromocionGrupoClientes.datasource" />
+    <None Include="Properties\DataSources\TDA.Entities.PromocionPaquetes.datasource" />
+    <None Include="Properties\DataSources\TDA.Entities.PromocionProductos.datasource" />
+    <None Include="Properties\DataSources\TDA.Entities.PromocionTipoProductos.datasource" />
+    <None Include="Properties\DataSources\TDA.Entities.Proveedores.datasource" />
+    <None Include="Properties\DataSources\TDA.Entities.Resultado.datasource" />
+    <None Include="Properties\DataSources\TDA.Entities.Roles.datasource" />
+    <None Include="Properties\DataSources\TDA.Entities.RolPaginas.datasource" />
+    <None Include="Properties\DataSources\TDA.Entities.TipoIdentificaciones.datasource" />
+    <None Include="Properties\DataSources\TDA.Entities.TipoMovimientos.datasource" />
+    <None Include="Properties\DataSources\TDA.Entities.TipoProductos.datasource" />
+    <None Include="Properties\DataSources\TDA.Entities.Usuarios.datasource" />
+    <None Include="Properties\DataSources\TDA.Entities.Vehiculos.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+    <None Include="Service References\TDAService\service.wsdl" />
+    <None Include="Service References\TDAService\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\TDAService\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\TDAService\TDA.Entities.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\0135-search.png" />
+    <Resource Include="Imagenes\0173-bin.png" />
+    <Resource Include="Imagenes\0267-plus.png" />
+    <Resource Include="Imagenes\0272-cross.png" />
+    <Resource Include="Imagenes\0273-checkmark.png" />
+    <Resource Include="Imagenes\0288-backward2.png" />
+    <Resource Include="Imagenes\0313-arrow-left.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Search-mini.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Pencil-mini.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Billete100.jpg" />
+    <Resource Include="Imagenes\Billete1000.jpg" />
+    <Resource Include="Imagenes\Billete20.jpg" />
+    <Resource Include="Imagenes\Billete200.jpg" />
+    <Resource Include="Imagenes\Billete50.png" />
+    <Resource Include="Imagenes\Billete500.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\0289-forward3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\TDAService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\TDAService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\TDAService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\TDAService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

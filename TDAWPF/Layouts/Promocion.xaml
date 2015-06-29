@@ -1,0 +1,78 @@
+﻿<Page x:Class="TDAWPF.Layouts.Promocion"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:Controles="clr-namespace:TDAWPF.Controles"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="650" d:DesignWidth="1000"
+	Title="Promocion">
+
+    <Grid x:Name="gPrincipal" Background="White" AllowDrop="True" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="270" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="270" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="270" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="140" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="15" />
+            <RowDefinition Height="500" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Controles:ComboBoxS x:Name="cbTipo" Grid.Column="1" Grid.Row="1">
+            <Controles:ComboBoxS.Items>
+                <ComboBoxItem IsSelected="True" Content="Selecciona Tipo"/>
+            </Controles:ComboBoxS.Items>
+        </Controles:ComboBoxS>
+        <Controles:TextBoxS x:Name="txtNombre" Text="Escribe Promocion" Grid.Column="3" Grid.Row="1"/>
+        <CheckBox x:Name="cbActivo" Content="Activa" FontFamily="Arial" FontSize="20" FontWeight="ExtraBlack" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="5" Grid.Row="1"/>
+        <Grid Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <CheckBox x:Name="cbGrupoCliente" Content="Grupo Cliente" FontFamily="Arial" FontSize="20" FontWeight="ExtraBlack" VerticalAlignment="Center" Grid.Column="1" />
+            <CheckBox x:Name="cbTipoProducto" Content="Tipo Producto" FontFamily="Arial" FontSize="20" FontWeight="ExtraBlack" VerticalAlignment="Center" Grid.Column="3" />
+            <CheckBox x:Name="cbProducto" Content="Producto" FontFamily="Arial" FontSize="20" FontWeight="ExtraBlack" VerticalAlignment="Center" Grid.Column="5" />
+            <CheckBox x:Name="cbPaquete" Content="Paquete" FontFamily="Arial" FontSize="20" FontWeight="ExtraBlack" VerticalAlignment="Center" Grid.Column="7" />
+        </Grid>
+        <Grid Grid.Column="7" Grid.Row="1" Grid.RowSpan="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="65" />
+                <ColumnDefinition Width="10" />
+                <ColumnDefinition Width="65" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="65"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Button x:Name="btnSearch" Grid.Column="0" Grid.Row="0">
+                <Button.Background>
+                    <ImageBrush ImageSource="../Imagenes/0135-search.png"/>
+                </Button.Background>
+            </Button>
+            <Button x:Name="btnAdd" Grid.Column="3" Grid.Row="0" Click="btnAdd_Click">
+                <Button.Background>
+                    <ImageBrush ImageSource="../Imagenes/0267-plus.png"/>
+                </Button.Background>
+            </Button>
+        </Grid>
+        <DataGrid x:Name="dg" Width="960" VerticalAlignment="Top" HorizontalAlignment="Center" Grid.ColumnSpan="7" Grid.Column="1" Grid.Row="5"/>
+    </Grid>
+</Page>

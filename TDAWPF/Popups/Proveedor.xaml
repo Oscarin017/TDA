@@ -1,0 +1,84 @@
+﻿<Window x:Class="TDAWPF.Popups.Proveedor"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Proveedor"  Height="550" Width="800"
+        xmlns:Controles="clr-namespace:TDAWPF.Controles" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize"
+        >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="75" />
+            <ColumnDefinition Width="300" />
+            <ColumnDefinition Width="50" />
+            <ColumnDefinition Width="300" />
+            <ColumnDefinition Width="75" />
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="40" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <RadioButton x:Name="rbFisica" Content="Fisica" GroupName="Tipo" FontFamily="Arial" FontSize="20" FontWeight="ExtraBold" Grid.Column="0" IsChecked="True" Checked="rTipo_Checked"/>
+            <RadioButton x:Name="rbMoral" Content="Moral" GroupName="Tipo" FontFamily="Arial" FontSize="20" FontWeight="ExtraBold" Grid.Column="2" Checked="rTipo_Checked"/>
+        </Grid>
+        <Controles:TextBoxI x:Name="txtApellidoPaterno" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Escribe Apellido Paterno" Grid.Column="1" Grid.Row="3" />
+        <Controles:TextBoxI x:Name="txtApellidoMaterno" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Escribe Apellido Materno" Grid.Column="3" Grid.Row="3" />
+        <Controles:TextBoxI x:Name="txtNombre" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Escribe Nombre" Grid.Column="1" Grid.Row="5"/>
+        <Controles:TextBoxI x:Name="txtRFC" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Escribe RFC" Grid.Column="3" Grid.Row="5"/>
+        <Controles:ComboBoxI x:Name="cbPais" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1" Grid.Row="7">
+            <Controles:ComboBoxI.Items>
+                <ComboBoxItem IsSelected="True" Content="Selecciona Pais"/>
+            </Controles:ComboBoxI.Items>
+        </Controles:ComboBoxI>
+        <Controles:ComboBoxI x:Name="cbEstado" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="3" Grid.Row="7">
+            <Controles:ComboBoxI.Items>
+                <ComboBoxItem IsSelected="True" Content="Selecciona Estado"/>
+            </Controles:ComboBoxI.Items>
+        </Controles:ComboBoxI>
+        <Controles:TextBoxI x:Name="txtCiudad" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Escribe Ciudad" Grid.Column="1" Grid.Row="9"/>
+        <Controles:TextBoxI x:Name="txtLocalidad" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Escribe Localidad" Grid.Column="3" Grid.Row="9"/>
+        <Controles:TextBoxI x:Name="txtCalle" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Escribe Calle" Grid.Column="1" Grid.Row="11"/>
+        <Controles:TextBoxI x:Name="txtNumeroExterior" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Escribe Numero Exterior" Grid.Column="3" Grid.Row="11"/>
+        <Controles:TextBoxI x:Name="txtNumeroInterior" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Escribe Numero Interior" Grid.Column="1" Grid.Row="13"/>
+        <Controles:TextBoxI x:Name="txtColonia" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Escribe Colonia" Grid.Column="3" Grid.Row="13"/>
+        <Controles:TextBoxI x:Name="txtCP" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Escribe C.P." Grid.Column="1" Grid.Row="15"/>
+        <Controles:TextBoxI x:Name="txtTelefono" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Escribe Telefono" Grid.Column="3" Grid.Row="15"/>
+        <Controles:TextBoxI x:Name="txtEmail" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Escribe Email" Grid.Column="1" Grid.Row="17"/>
+        <Grid Grid.Row="19" Grid.Column="2" Grid.ColumnSpan="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Button x:Name="btnModificar" BorderThickness="3" BorderBrush="DarkBlue" Background="Blue" Height="50" Width="150" Foreground="White" FontFamily="Arial" FontWeight="ExtraBlack" FontSize="20" Content="Modificar" Grid.Column="1" Visibility="Hidden" />
+            <Button x:Name="btnRegistrar" BorderThickness="3" BorderBrush="DarkGreen" Background="Green" Height="50" Width="150" Foreground="White" FontFamily="Arial" FontWeight="ExtraBlack" FontSize="20" Content="Registrar" Grid.Column="1" Visibility="Hidden" />
+            <Button x:Name="btnCancelar" BorderThickness="3" BorderBrush="DarkRed" Background="Red" Height="50" Width="150" Foreground="White" FontFamily="Arial" FontWeight="ExtraBlack" FontSize="20" Content="Cancelar" Grid.Column="3" Click="btnCancelar_Click" />
+        </Grid>
+    </Grid>
+</Window>

@@ -1,0 +1,1795 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="TDAService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="BasicHttpBinding_ITDAService_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <wsoma:OptimizedMimeSerialization xmlns:wsoma="http://schemas.xmlsoap.org/ws/2004/09/policy/optimizedmimeserialization" />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import namespace="http://tempuri.org/" />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/TDA.Entities" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ITDAService_SelectConfiguracion_InputMessage">
+    <wsdl:part name="parameters" element="tns:SelectConfiguracion" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_SelectConfiguracion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SelectConfiguracionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_SelectRol_InputMessage">
+    <wsdl:part name="parameters" element="tns:SelectRol" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_SelectRol_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SelectRolResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_SelectPagina_InputMessage">
+    <wsdl:part name="parameters" element="tns:SelectPagina" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_SelectPagina_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SelectPaginaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_SelectRolPagina_InputMessage">
+    <wsdl:part name="parameters" element="tns:SelectRolPagina" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_SelectRolPagina_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SelectRolPaginaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_SelectBaseSalario_InputMessage">
+    <wsdl:part name="parameters" element="tns:SelectBaseSalario" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_SelectBaseSalario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SelectBaseSalarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_SelectTipoIdentificacion_InputMessage">
+    <wsdl:part name="parameters" element="tns:SelectTipoIdentificacion" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_SelectTipoIdentificacion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SelectTipoIdentificacionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_InsertUsuario_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertUsuario" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_InsertUsuario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_UpdateUsuario_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateUsuario" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_UpdateUsuario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_SelectUsuario_InputMessage">
+    <wsdl:part name="parameters" element="tns:SelectUsuario" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_SelectUsuario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SelectUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_InsertPais_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertPais" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_InsertPais_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertPaisResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_UpdatePais_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatePais" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_UpdatePais_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatePaisResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_DeletePais_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeletePais" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_DeletePais_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeletePaisResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_SelectPais_InputMessage">
+    <wsdl:part name="parameters" element="tns:SelectPais" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_SelectPais_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SelectPaisResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_InsertEstado_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertEstado" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_InsertEstado_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertEstadoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_UpdateEstado_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateEstado" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_UpdateEstado_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateEstadoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_SelectEstado_InputMessage">
+    <wsdl:part name="parameters" element="tns:SelectEstado" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_SelectEstado_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SelectEstadoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_InsertMarca_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertMarca" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_InsertMarca_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertMarcaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_UpdateMarca_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateMarca" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_UpdateMarca_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateMarcaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_DeleteMarca_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteMarca" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_DeleteMarca_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteMarcaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_SelectMarca_InputMessage">
+    <wsdl:part name="parameters" element="tns:SelectMarca" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_SelectMarca_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SelectMarcaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_InsertModelo_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertModelo" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_InsertModelo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertModeloResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_UpdateModelo_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateModelo" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_UpdateModelo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateModeloResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_DeleteModelo_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteModelo" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_DeleteModelo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteModeloResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_SelectModelo_InputMessage">
+    <wsdl:part name="parameters" element="tns:SelectModelo" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_SelectModelo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SelectModeloResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_InsertColor_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertColor" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_InsertColor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertColorResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_UpdateColor_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateColor" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_UpdateColor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateColorResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_DeleteColor_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteColor" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_DeleteColor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteColorResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_SelectColor_InputMessage">
+    <wsdl:part name="parameters" element="tns:SelectColor" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_SelectColor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SelectColorResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_InsertTipoProducto_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertTipoProducto" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_InsertTipoProducto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertTipoProductoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_UpdateTipoProducto_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateTipoProducto" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_UpdateTipoProducto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateTipoProductoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_DeleteTipoProducto_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteTipoProducto" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_DeleteTipoProducto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteTipoProductoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_SelectTipoProducto_InputMessage">
+    <wsdl:part name="parameters" element="tns:SelectTipoProducto" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_SelectTipoProducto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SelectTipoProductoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_InsertEmpleado_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertEmpleado" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_InsertEmpleado_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertEmpleadoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_UpdateEmpleado_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateEmpleado" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_UpdateEmpleado_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateEmpleadoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_DeleteEmpleado_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteEmpleado" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_DeleteEmpleado_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteEmpleadoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_SelectEmpleado_InputMessage">
+    <wsdl:part name="parameters" element="tns:SelectEmpleado" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_SelectEmpleado_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SelectEmpleadoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_InsertVehiculo_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertVehiculo" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_InsertVehiculo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertVehiculoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_UpdateVehiculo_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateVehiculo" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_UpdateVehiculo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateVehiculoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_SelectVehiculo_InputMessage">
+    <wsdl:part name="parameters" element="tns:SelectVehiculo" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_SelectVehiculo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SelectVehiculoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_InsertProveedor_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertProveedor" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_InsertProveedor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertProveedorResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_UpdateProveedor_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateProveedor" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_UpdateProveedor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateProveedorResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_DeleteProveedor_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteProveedor" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_DeleteProveedor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteProveedorResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_SelectProveedor_InputMessage">
+    <wsdl:part name="parameters" element="tns:SelectProveedor" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_SelectProveedor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SelectProveedorResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_SelectDia_InputMessage">
+    <wsdl:part name="parameters" element="tns:SelectDia" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_SelectDia_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SelectDiaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_InsertProducto_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertProducto" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_InsertProducto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertProductoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_UpdateProducto_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateProducto" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_UpdateProducto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateProductoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_DeleteProducto_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteProducto" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_DeleteProducto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteProductoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_SelectProducto_InputMessage">
+    <wsdl:part name="parameters" element="tns:SelectProducto" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_SelectProducto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SelectProductoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_InsertTipoMovimiento_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertTipoMovimiento" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_InsertTipoMovimiento_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertTipoMovimientoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_UpdateTipoMovimiento_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateTipoMovimiento" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_UpdateTipoMovimiento_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateTipoMovimientoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_DeleteTipoMovimiento_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteTipoMovimiento" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_DeleteTipoMovimiento_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteTipoMovimientoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_SelectTipoMovimiento_InputMessage">
+    <wsdl:part name="parameters" element="tns:SelectTipoMovimiento" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_SelectTipoMovimiento_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SelectTipoMovimientoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_InsertMovimiento_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertMovimiento" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_InsertMovimiento_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertMovimientoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_DeleteMovimiento_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteMovimiento" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_DeleteMovimiento_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteMovimientoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_SelectMovimiento_InputMessage">
+    <wsdl:part name="parameters" element="tns:SelectMovimiento" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_SelectMovimiento_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SelectMovimientoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_InsertGrupoCliente_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertGrupoCliente" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_InsertGrupoCliente_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertGrupoClienteResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_UpdateGrupoCliente_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateGrupoCliente" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_UpdateGrupoCliente_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateGrupoClienteResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_DeleteGrupoCliente_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteGrupoCliente" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_DeleteGrupoCliente_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteGrupoClienteResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_SelectGrupoCliente_InputMessage">
+    <wsdl:part name="parameters" element="tns:SelectGrupoCliente" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_SelectGrupoCliente_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SelectGrupoClienteResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_InsertCliente_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertCliente" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_InsertCliente_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertClienteResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_UpdateCliente_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateCliente" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_UpdateCliente_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateClienteResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_DeleteCliente_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteCliente" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_DeleteCliente_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteClienteResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_SelectCliente_InputMessage">
+    <wsdl:part name="parameters" element="tns:SelectCliente" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_SelectCliente_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SelectClienteResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_InsertPaquete_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertPaquete" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_InsertPaquete_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertPaqueteResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_UpdatePaquete_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatePaquete" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_UpdatePaquete_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatePaqueteResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_SelectPaquete_InputMessage">
+    <wsdl:part name="parameters" element="tns:SelectPaquete" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_SelectPaquete_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SelectPaqueteResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_InsertPaqueteDia_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertPaqueteDia" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_InsertPaqueteDia_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertPaqueteDiaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_DeletePaqueteDia_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeletePaqueteDia" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_DeletePaqueteDia_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeletePaqueteDiaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_SelectPaqueteDia_InputMessage">
+    <wsdl:part name="parameters" element="tns:SelectPaqueteDia" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_SelectPaqueteDia_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SelectPaqueteDiaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_InsertPaqueteGrupoCliente_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertPaqueteGrupoCliente" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_InsertPaqueteGrupoCliente_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertPaqueteGrupoClienteResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_DeletePaqueteGrupoCliente_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeletePaqueteGrupoCliente" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_DeletePaqueteGrupoCliente_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeletePaqueteGrupoClienteResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_SelectPaqueteGrupoCliente_InputMessage">
+    <wsdl:part name="parameters" element="tns:SelectPaqueteGrupoCliente" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_SelectPaqueteGrupoCliente_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SelectPaqueteGrupoClienteResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_InsertPaqueteProducto_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertPaqueteProducto" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_InsertPaqueteProducto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertPaqueteProductoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_DeletePaqueteProducto_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeletePaqueteProducto" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_DeletePaqueteProducto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeletePaqueteProductoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_SelectPaqueteProducto_InputMessage">
+    <wsdl:part name="parameters" element="tns:SelectPaqueteProducto" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_SelectPaqueteProducto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SelectPaqueteProductoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_InsertPromocion_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertPromocion" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_InsertPromocion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertPromocionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_UpdatePromocion_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatePromocion" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_UpdatePromocion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatePromocionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_SelectPromocion_InputMessage">
+    <wsdl:part name="parameters" element="tns:SelectPromocion" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_SelectPromocion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SelectPromocionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_InsertPromocionDia_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertPromocionDia" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_InsertPromocionDia_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertPromocionDiaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_DeletePromocionDia_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeletePromocionDia" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_DeletePromocionDia_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeletePromocionDiaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_SelectPromocionDia_InputMessage">
+    <wsdl:part name="parameters" element="tns:SelectPromocionDia" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_SelectPromocionDia_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SelectPromocionDiaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_InsertPromocionPaquete_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertPromocionPaquete" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_InsertPromocionPaquete_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertPromocionPaqueteResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_DeletePromocionPaquete_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeletePromocionPaquete" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_DeletePromocionPaquete_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeletePromocionPaqueteResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_SelectPromocionPaquete_InputMessage">
+    <wsdl:part name="parameters" element="tns:SelectPromocionPaquete" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_SelectPromocionPaquete_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SelectPromocionPaqueteResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_InsertPromocionTipoProducto_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertPromocionTipoProducto" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_InsertPromocionTipoProducto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertPromocionTipoProductoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_DeletePromocionTipoProducto_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeletePromocionTipoProducto" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_DeletePromocionTipoProducto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeletePromocionTipoProductoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_SelectPromocionTipoProducto_InputMessage">
+    <wsdl:part name="parameters" element="tns:SelectPromocionTipoProducto" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_SelectPromocionTipoProducto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SelectPromocionTipoProductoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_InsertPromocionProducto_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertPromocionProducto" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_InsertPromocionProducto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertPromocionProductoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_DeletePromocionProducto_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeletePromocionProducto" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_DeletePromocionProducto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeletePromocionProductoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_SelectPromocionProducto_InputMessage">
+    <wsdl:part name="parameters" element="tns:SelectPromocionProducto" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_SelectPromocionProducto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SelectPromocionProductoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_InsertPromocionGrupoCliente_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertPromocionGrupoCliente" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_InsertPromocionGrupoCliente_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertPromocionGrupoClienteResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_DeletePromocionGrupoCliente_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeletePromocionGrupoCliente" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_DeletePromocionGrupoCliente_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeletePromocionGrupoClienteResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_SelectPromocionGrupoCliente_InputMessage">
+    <wsdl:part name="parameters" element="tns:SelectPromocionGrupoCliente" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_SelectPromocionGrupoCliente_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SelectPromocionGrupoClienteResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ITDAService">
+    <wsdl:operation name="SelectConfiguracion">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/SelectConfiguracion" message="tns:ITDAService_SelectConfiguracion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/SelectConfiguracionResponse" message="tns:ITDAService_SelectConfiguracion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectRol">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/SelectRol" message="tns:ITDAService_SelectRol_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/SelectRolResponse" message="tns:ITDAService_SelectRol_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectPagina">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/SelectPagina" message="tns:ITDAService_SelectPagina_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/SelectPaginaResponse" message="tns:ITDAService_SelectPagina_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectRolPagina">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/SelectRolPagina" message="tns:ITDAService_SelectRolPagina_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/SelectRolPaginaResponse" message="tns:ITDAService_SelectRolPagina_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectBaseSalario">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/SelectBaseSalario" message="tns:ITDAService_SelectBaseSalario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/SelectBaseSalarioResponse" message="tns:ITDAService_SelectBaseSalario_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectTipoIdentificacion">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/SelectTipoIdentificacion" message="tns:ITDAService_SelectTipoIdentificacion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/SelectTipoIdentificacionResponse" message="tns:ITDAService_SelectTipoIdentificacion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertUsuario">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/InsertUsuario" message="tns:ITDAService_InsertUsuario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/InsertUsuarioResponse" message="tns:ITDAService_InsertUsuario_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUsuario">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/UpdateUsuario" message="tns:ITDAService_UpdateUsuario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/UpdateUsuarioResponse" message="tns:ITDAService_UpdateUsuario_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectUsuario">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/SelectUsuario" message="tns:ITDAService_SelectUsuario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/SelectUsuarioResponse" message="tns:ITDAService_SelectUsuario_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertPais">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/InsertPais" message="tns:ITDAService_InsertPais_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/InsertPaisResponse" message="tns:ITDAService_InsertPais_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePais">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/UpdatePais" message="tns:ITDAService_UpdatePais_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/UpdatePaisResponse" message="tns:ITDAService_UpdatePais_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeletePais">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/DeletePais" message="tns:ITDAService_DeletePais_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/DeletePaisResponse" message="tns:ITDAService_DeletePais_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectPais">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/SelectPais" message="tns:ITDAService_SelectPais_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/SelectPaisResponse" message="tns:ITDAService_SelectPais_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertEstado">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/InsertEstado" message="tns:ITDAService_InsertEstado_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/InsertEstadoResponse" message="tns:ITDAService_InsertEstado_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateEstado">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/UpdateEstado" message="tns:ITDAService_UpdateEstado_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/UpdateEstadoResponse" message="tns:ITDAService_UpdateEstado_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectEstado">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/SelectEstado" message="tns:ITDAService_SelectEstado_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/SelectEstadoResponse" message="tns:ITDAService_SelectEstado_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertMarca">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/InsertMarca" message="tns:ITDAService_InsertMarca_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/InsertMarcaResponse" message="tns:ITDAService_InsertMarca_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMarca">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/UpdateMarca" message="tns:ITDAService_UpdateMarca_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/UpdateMarcaResponse" message="tns:ITDAService_UpdateMarca_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteMarca">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/DeleteMarca" message="tns:ITDAService_DeleteMarca_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/DeleteMarcaResponse" message="tns:ITDAService_DeleteMarca_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectMarca">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/SelectMarca" message="tns:ITDAService_SelectMarca_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/SelectMarcaResponse" message="tns:ITDAService_SelectMarca_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertModelo">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/InsertModelo" message="tns:ITDAService_InsertModelo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/InsertModeloResponse" message="tns:ITDAService_InsertModelo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateModelo">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/UpdateModelo" message="tns:ITDAService_UpdateModelo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/UpdateModeloResponse" message="tns:ITDAService_UpdateModelo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteModelo">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/DeleteModelo" message="tns:ITDAService_DeleteModelo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/DeleteModeloResponse" message="tns:ITDAService_DeleteModelo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectModelo">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/SelectModelo" message="tns:ITDAService_SelectModelo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/SelectModeloResponse" message="tns:ITDAService_SelectModelo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertColor">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/InsertColor" message="tns:ITDAService_InsertColor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/InsertColorResponse" message="tns:ITDAService_InsertColor_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateColor">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/UpdateColor" message="tns:ITDAService_UpdateColor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/UpdateColorResponse" message="tns:ITDAService_UpdateColor_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteColor">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/DeleteColor" message="tns:ITDAService_DeleteColor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/DeleteColorResponse" message="tns:ITDAService_DeleteColor_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectColor">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/SelectColor" message="tns:ITDAService_SelectColor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/SelectColorResponse" message="tns:ITDAService_SelectColor_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertTipoProducto">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/InsertTipoProducto" message="tns:ITDAService_InsertTipoProducto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/InsertTipoProductoResponse" message="tns:ITDAService_InsertTipoProducto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTipoProducto">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/UpdateTipoProducto" message="tns:ITDAService_UpdateTipoProducto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/UpdateTipoProductoResponse" message="tns:ITDAService_UpdateTipoProducto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteTipoProducto">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/DeleteTipoProducto" message="tns:ITDAService_DeleteTipoProducto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/DeleteTipoProductoResponse" message="tns:ITDAService_DeleteTipoProducto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectTipoProducto">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/SelectTipoProducto" message="tns:ITDAService_SelectTipoProducto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/SelectTipoProductoResponse" message="tns:ITDAService_SelectTipoProducto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertEmpleado">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/InsertEmpleado" message="tns:ITDAService_InsertEmpleado_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/InsertEmpleadoResponse" message="tns:ITDAService_InsertEmpleado_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateEmpleado">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/UpdateEmpleado" message="tns:ITDAService_UpdateEmpleado_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/UpdateEmpleadoResponse" message="tns:ITDAService_UpdateEmpleado_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteEmpleado">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/DeleteEmpleado" message="tns:ITDAService_DeleteEmpleado_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/DeleteEmpleadoResponse" message="tns:ITDAService_DeleteEmpleado_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectEmpleado">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/SelectEmpleado" message="tns:ITDAService_SelectEmpleado_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/SelectEmpleadoResponse" message="tns:ITDAService_SelectEmpleado_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertVehiculo">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/InsertVehiculo" message="tns:ITDAService_InsertVehiculo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/InsertVehiculoResponse" message="tns:ITDAService_InsertVehiculo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateVehiculo">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/UpdateVehiculo" message="tns:ITDAService_UpdateVehiculo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/UpdateVehiculoResponse" message="tns:ITDAService_UpdateVehiculo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectVehiculo">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/SelectVehiculo" message="tns:ITDAService_SelectVehiculo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/SelectVehiculoResponse" message="tns:ITDAService_SelectVehiculo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertProveedor">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/InsertProveedor" message="tns:ITDAService_InsertProveedor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/InsertProveedorResponse" message="tns:ITDAService_InsertProveedor_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateProveedor">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/UpdateProveedor" message="tns:ITDAService_UpdateProveedor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/UpdateProveedorResponse" message="tns:ITDAService_UpdateProveedor_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteProveedor">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/DeleteProveedor" message="tns:ITDAService_DeleteProveedor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/DeleteProveedorResponse" message="tns:ITDAService_DeleteProveedor_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectProveedor">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/SelectProveedor" message="tns:ITDAService_SelectProveedor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/SelectProveedorResponse" message="tns:ITDAService_SelectProveedor_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectDia">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/SelectDia" message="tns:ITDAService_SelectDia_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/SelectDiaResponse" message="tns:ITDAService_SelectDia_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertProducto">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/InsertProducto" message="tns:ITDAService_InsertProducto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/InsertProductoResponse" message="tns:ITDAService_InsertProducto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateProducto">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/UpdateProducto" message="tns:ITDAService_UpdateProducto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/UpdateProductoResponse" message="tns:ITDAService_UpdateProducto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteProducto">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/DeleteProducto" message="tns:ITDAService_DeleteProducto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/DeleteProductoResponse" message="tns:ITDAService_DeleteProducto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectProducto">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/SelectProducto" message="tns:ITDAService_SelectProducto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/SelectProductoResponse" message="tns:ITDAService_SelectProducto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertTipoMovimiento">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/InsertTipoMovimiento" message="tns:ITDAService_InsertTipoMovimiento_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/InsertTipoMovimientoResponse" message="tns:ITDAService_InsertTipoMovimiento_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTipoMovimiento">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/UpdateTipoMovimiento" message="tns:ITDAService_UpdateTipoMovimiento_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/UpdateTipoMovimientoResponse" message="tns:ITDAService_UpdateTipoMovimiento_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteTipoMovimiento">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/DeleteTipoMovimiento" message="tns:ITDAService_DeleteTipoMovimiento_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/DeleteTipoMovimientoResponse" message="tns:ITDAService_DeleteTipoMovimiento_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectTipoMovimiento">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/SelectTipoMovimiento" message="tns:ITDAService_SelectTipoMovimiento_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/SelectTipoMovimientoResponse" message="tns:ITDAService_SelectTipoMovimiento_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertMovimiento">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/InsertMovimiento" message="tns:ITDAService_InsertMovimiento_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/InsertMovimientoResponse" message="tns:ITDAService_InsertMovimiento_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteMovimiento">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/DeleteMovimiento" message="tns:ITDAService_DeleteMovimiento_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/DeleteMovimientoResponse" message="tns:ITDAService_DeleteMovimiento_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectMovimiento">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/SelectMovimiento" message="tns:ITDAService_SelectMovimiento_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/SelectMovimientoResponse" message="tns:ITDAService_SelectMovimiento_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertGrupoCliente">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/InsertGrupoCliente" message="tns:ITDAService_InsertGrupoCliente_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/InsertGrupoClienteResponse" message="tns:ITDAService_InsertGrupoCliente_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateGrupoCliente">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/UpdateGrupoCliente" message="tns:ITDAService_UpdateGrupoCliente_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/UpdateGrupoClienteResponse" message="tns:ITDAService_UpdateGrupoCliente_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteGrupoCliente">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/DeleteGrupoCliente" message="tns:ITDAService_DeleteGrupoCliente_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/DeleteGrupoClienteResponse" message="tns:ITDAService_DeleteGrupoCliente_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectGrupoCliente">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/SelectGrupoCliente" message="tns:ITDAService_SelectGrupoCliente_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/SelectGrupoClienteResponse" message="tns:ITDAService_SelectGrupoCliente_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertCliente">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/InsertCliente" message="tns:ITDAService_InsertCliente_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/InsertClienteResponse" message="tns:ITDAService_InsertCliente_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCliente">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/UpdateCliente" message="tns:ITDAService_UpdateCliente_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/UpdateClienteResponse" message="tns:ITDAService_UpdateCliente_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCliente">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/DeleteCliente" message="tns:ITDAService_DeleteCliente_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/DeleteClienteResponse" message="tns:ITDAService_DeleteCliente_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectCliente">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/SelectCliente" message="tns:ITDAService_SelectCliente_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/SelectClienteResponse" message="tns:ITDAService_SelectCliente_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertPaquete">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/InsertPaquete" message="tns:ITDAService_InsertPaquete_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/InsertPaqueteResponse" message="tns:ITDAService_InsertPaquete_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePaquete">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/UpdatePaquete" message="tns:ITDAService_UpdatePaquete_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/UpdatePaqueteResponse" message="tns:ITDAService_UpdatePaquete_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectPaquete">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/SelectPaquete" message="tns:ITDAService_SelectPaquete_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/SelectPaqueteResponse" message="tns:ITDAService_SelectPaquete_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertPaqueteDia">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/InsertPaqueteDia" message="tns:ITDAService_InsertPaqueteDia_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/InsertPaqueteDiaResponse" message="tns:ITDAService_InsertPaqueteDia_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeletePaqueteDia">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/DeletePaqueteDia" message="tns:ITDAService_DeletePaqueteDia_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/DeletePaqueteDiaResponse" message="tns:ITDAService_DeletePaqueteDia_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectPaqueteDia">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/SelectPaqueteDia" message="tns:ITDAService_SelectPaqueteDia_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/SelectPaqueteDiaResponse" message="tns:ITDAService_SelectPaqueteDia_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertPaqueteGrupoCliente">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/InsertPaqueteGrupoCliente" message="tns:ITDAService_InsertPaqueteGrupoCliente_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/InsertPaqueteGrupoClienteResponse" message="tns:ITDAService_InsertPaqueteGrupoCliente_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeletePaqueteGrupoCliente">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/DeletePaqueteGrupoCliente" message="tns:ITDAService_DeletePaqueteGrupoCliente_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/DeletePaqueteGrupoClienteResponse" message="tns:ITDAService_DeletePaqueteGrupoCliente_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectPaqueteGrupoCliente">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/SelectPaqueteGrupoCliente" message="tns:ITDAService_SelectPaqueteGrupoCliente_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/SelectPaqueteGrupoClienteResponse" message="tns:ITDAService_SelectPaqueteGrupoCliente_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertPaqueteProducto">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/InsertPaqueteProducto" message="tns:ITDAService_InsertPaqueteProducto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/InsertPaqueteProductoResponse" message="tns:ITDAService_InsertPaqueteProducto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeletePaqueteProducto">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/DeletePaqueteProducto" message="tns:ITDAService_DeletePaqueteProducto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/DeletePaqueteProductoResponse" message="tns:ITDAService_DeletePaqueteProducto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectPaqueteProducto">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/SelectPaqueteProducto" message="tns:ITDAService_SelectPaqueteProducto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/SelectPaqueteProductoResponse" message="tns:ITDAService_SelectPaqueteProducto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertPromocion">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/InsertPromocion" message="tns:ITDAService_InsertPromocion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/InsertPromocionResponse" message="tns:ITDAService_InsertPromocion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePromocion">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/UpdatePromocion" message="tns:ITDAService_UpdatePromocion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/UpdatePromocionResponse" message="tns:ITDAService_UpdatePromocion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectPromocion">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/SelectPromocion" message="tns:ITDAService_SelectPromocion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/SelectPromocionResponse" message="tns:ITDAService_SelectPromocion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertPromocionDia">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/InsertPromocionDia" message="tns:ITDAService_InsertPromocionDia_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/InsertPromocionDiaResponse" message="tns:ITDAService_InsertPromocionDia_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeletePromocionDia">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/DeletePromocionDia" message="tns:ITDAService_DeletePromocionDia_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/DeletePromocionDiaResponse" message="tns:ITDAService_DeletePromocionDia_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectPromocionDia">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/SelectPromocionDia" message="tns:ITDAService_SelectPromocionDia_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/SelectPromocionDiaResponse" message="tns:ITDAService_SelectPromocionDia_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertPromocionPaquete">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/InsertPromocionPaquete" message="tns:ITDAService_InsertPromocionPaquete_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/InsertPromocionPaqueteResponse" message="tns:ITDAService_InsertPromocionPaquete_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeletePromocionPaquete">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/DeletePromocionPaquete" message="tns:ITDAService_DeletePromocionPaquete_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/DeletePromocionPaqueteResponse" message="tns:ITDAService_DeletePromocionPaquete_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectPromocionPaquete">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/SelectPromocionPaquete" message="tns:ITDAService_SelectPromocionPaquete_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/SelectPromocionPaqueteResponse" message="tns:ITDAService_SelectPromocionPaquete_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertPromocionTipoProducto">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/InsertPromocionTipoProducto" message="tns:ITDAService_InsertPromocionTipoProducto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/InsertPromocionTipoProductoResponse" message="tns:ITDAService_InsertPromocionTipoProducto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeletePromocionTipoProducto">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/DeletePromocionTipoProducto" message="tns:ITDAService_DeletePromocionTipoProducto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/DeletePromocionTipoProductoResponse" message="tns:ITDAService_DeletePromocionTipoProducto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectPromocionTipoProducto">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/SelectPromocionTipoProducto" message="tns:ITDAService_SelectPromocionTipoProducto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/SelectPromocionTipoProductoResponse" message="tns:ITDAService_SelectPromocionTipoProducto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertPromocionProducto">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/InsertPromocionProducto" message="tns:ITDAService_InsertPromocionProducto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/InsertPromocionProductoResponse" message="tns:ITDAService_InsertPromocionProducto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeletePromocionProducto">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/DeletePromocionProducto" message="tns:ITDAService_DeletePromocionProducto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/DeletePromocionProductoResponse" message="tns:ITDAService_DeletePromocionProducto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectPromocionProducto">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/SelectPromocionProducto" message="tns:ITDAService_SelectPromocionProducto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/SelectPromocionProductoResponse" message="tns:ITDAService_SelectPromocionProducto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertPromocionGrupoCliente">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/InsertPromocionGrupoCliente" message="tns:ITDAService_InsertPromocionGrupoCliente_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/InsertPromocionGrupoClienteResponse" message="tns:ITDAService_InsertPromocionGrupoCliente_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeletePromocionGrupoCliente">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/DeletePromocionGrupoCliente" message="tns:ITDAService_DeletePromocionGrupoCliente_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/DeletePromocionGrupoClienteResponse" message="tns:ITDAService_DeletePromocionGrupoCliente_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectPromocionGrupoCliente">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/SelectPromocionGrupoCliente" message="tns:ITDAService_SelectPromocionGrupoCliente_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/SelectPromocionGrupoClienteResponse" message="tns:ITDAService_SelectPromocionGrupoCliente_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_ITDAService" type="tns:ITDAService">
+    <wsp:PolicyReference URI="#BasicHttpBinding_ITDAService_policy" />
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SelectConfiguracion">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/SelectConfiguracion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectRol">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/SelectRol" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectPagina">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/SelectPagina" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectRolPagina">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/SelectRolPagina" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectBaseSalario">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/SelectBaseSalario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectTipoIdentificacion">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/SelectTipoIdentificacion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertUsuario">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/InsertUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUsuario">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/UpdateUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectUsuario">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/SelectUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertPais">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/InsertPais" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePais">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/UpdatePais" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeletePais">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/DeletePais" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectPais">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/SelectPais" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertEstado">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/InsertEstado" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateEstado">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/UpdateEstado" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectEstado">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/SelectEstado" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertMarca">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/InsertMarca" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMarca">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/UpdateMarca" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteMarca">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/DeleteMarca" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectMarca">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/SelectMarca" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertModelo">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/InsertModelo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateModelo">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/UpdateModelo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteModelo">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/DeleteModelo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectModelo">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/SelectModelo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertColor">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/InsertColor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateColor">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/UpdateColor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteColor">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/DeleteColor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectColor">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/SelectColor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertTipoProducto">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/InsertTipoProducto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTipoProducto">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/UpdateTipoProducto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteTipoProducto">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/DeleteTipoProducto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectTipoProducto">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/SelectTipoProducto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertEmpleado">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/InsertEmpleado" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateEmpleado">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/UpdateEmpleado" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteEmpleado">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/DeleteEmpleado" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectEmpleado">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/SelectEmpleado" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertVehiculo">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/InsertVehiculo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateVehiculo">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/UpdateVehiculo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectVehiculo">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/SelectVehiculo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertProveedor">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/InsertProveedor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateProveedor">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/UpdateProveedor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteProveedor">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/DeleteProveedor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectProveedor">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/SelectProveedor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectDia">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/SelectDia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertProducto">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/InsertProducto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateProducto">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/UpdateProducto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteProducto">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/DeleteProducto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectProducto">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/SelectProducto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertTipoMovimiento">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/InsertTipoMovimiento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTipoMovimiento">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/UpdateTipoMovimiento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteTipoMovimiento">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/DeleteTipoMovimiento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectTipoMovimiento">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/SelectTipoMovimiento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertMovimiento">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/InsertMovimiento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteMovimiento">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/DeleteMovimiento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectMovimiento">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/SelectMovimiento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertGrupoCliente">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/InsertGrupoCliente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateGrupoCliente">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/UpdateGrupoCliente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteGrupoCliente">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/DeleteGrupoCliente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectGrupoCliente">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/SelectGrupoCliente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertCliente">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/InsertCliente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCliente">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/UpdateCliente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCliente">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/DeleteCliente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectCliente">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/SelectCliente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertPaquete">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/InsertPaquete" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePaquete">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/UpdatePaquete" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectPaquete">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/SelectPaquete" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertPaqueteDia">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/InsertPaqueteDia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeletePaqueteDia">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/DeletePaqueteDia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectPaqueteDia">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/SelectPaqueteDia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertPaqueteGrupoCliente">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/InsertPaqueteGrupoCliente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeletePaqueteGrupoCliente">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/DeletePaqueteGrupoCliente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectPaqueteGrupoCliente">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/SelectPaqueteGrupoCliente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertPaqueteProducto">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/InsertPaqueteProducto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeletePaqueteProducto">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/DeletePaqueteProducto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectPaqueteProducto">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/SelectPaqueteProducto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertPromocion">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/InsertPromocion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePromocion">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/UpdatePromocion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectPromocion">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/SelectPromocion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertPromocionDia">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/InsertPromocionDia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeletePromocionDia">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/DeletePromocionDia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectPromocionDia">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/SelectPromocionDia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertPromocionPaquete">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/InsertPromocionPaquete" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeletePromocionPaquete">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/DeletePromocionPaquete" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectPromocionPaquete">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/SelectPromocionPaquete" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertPromocionTipoProducto">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/InsertPromocionTipoProducto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeletePromocionTipoProducto">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/DeletePromocionTipoProducto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectPromocionTipoProducto">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/SelectPromocionTipoProducto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertPromocionProducto">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/InsertPromocionProducto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeletePromocionProducto">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/DeletePromocionProducto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectPromocionProducto">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/SelectPromocionProducto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertPromocionGrupoCliente">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/InsertPromocionGrupoCliente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeletePromocionGrupoCliente">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/DeletePromocionGrupoCliente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectPromocionGrupoCliente">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/SelectPromocionGrupoCliente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="TDAService">
+    <wsdl:port name="BasicHttpBinding_ITDAService" binding="tns:BasicHttpBinding_ITDAService">
+      <soap:address location="http://localhost:9000/TDAServicio" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

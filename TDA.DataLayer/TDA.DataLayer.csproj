@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{CCF6C716-4BAE-4A29-8EE9-C28711ED8588}</ProjectGuid>
+    <ProjectGuid>{F4A663AC-14D3-499D-8CA7-71CB6E0DFAED}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>TDA.DataLayer</RootNamespace>
@@ -47,151 +47,153 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseSalario.cs">
-      <DependentUpon>ModelTDA.tt</DependentUpon>
+      <DependentUpon>TDAModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Cliente.cs">
-      <DependentUpon>ModelTDA.tt</DependentUpon>
+      <DependentUpon>TDAModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Color.cs">
-      <DependentUpon>ModelTDA.tt</DependentUpon>
+      <DependentUpon>TDAModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Configuracion.cs">
-      <DependentUpon>ModelTDA.tt</DependentUpon>
+      <DependentUpon>TDAModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DataAccess.cs" />
     <Compile Include="Dia.cs">
-      <DependentUpon>ModelTDA.tt</DependentUpon>
+      <DependentUpon>TDAModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Empleado.cs">
-      <DependentUpon>ModelTDA.tt</DependentUpon>
+      <DependentUpon>TDAModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Estado.cs">
-      <DependentUpon>ModelTDA.tt</DependentUpon>
+      <DependentUpon>TDAModel.tt</DependentUpon>
     </Compile>
     <Compile Include="GrupoCliente.cs">
-      <DependentUpon>ModelTDA.tt</DependentUpon>
+      <DependentUpon>TDAModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Logs.cs">
-      <DependentUpon>ModelTDA.tt</DependentUpon>
+      <DependentUpon>TDAModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Marca.cs">
-      <DependentUpon>ModelTDA.tt</DependentUpon>
+      <DependentUpon>TDAModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelo.cs">
-      <DependentUpon>ModelTDA.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelTDA.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ModelTDA.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelTDA.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ModelTDA.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelTDA.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ModelTDA.edmx</DependentUpon>
+      <DependentUpon>TDAModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Movimiento.cs">
-      <DependentUpon>ModelTDA.tt</DependentUpon>
+      <DependentUpon>TDAModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Pagina.cs">
-      <DependentUpon>ModelTDA.tt</DependentUpon>
+      <DependentUpon>TDAModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Pais.cs">
-      <DependentUpon>ModelTDA.tt</DependentUpon>
+      <DependentUpon>TDAModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Paquete.cs">
-      <DependentUpon>ModelTDA.tt</DependentUpon>
+      <DependentUpon>TDAModel.tt</DependentUpon>
     </Compile>
     <Compile Include="PaqueteDia.cs">
-      <DependentUpon>ModelTDA.tt</DependentUpon>
+      <DependentUpon>TDAModel.tt</DependentUpon>
     </Compile>
     <Compile Include="PaqueteGrupoCliente.cs">
-      <DependentUpon>ModelTDA.tt</DependentUpon>
+      <DependentUpon>TDAModel.tt</DependentUpon>
     </Compile>
     <Compile Include="PaqueteProducto.cs">
-      <DependentUpon>ModelTDA.tt</DependentUpon>
+      <DependentUpon>TDAModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Producto.cs">
-      <DependentUpon>ModelTDA.tt</DependentUpon>
+      <DependentUpon>TDAModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Promocion.cs">
-      <DependentUpon>ModelTDA.tt</DependentUpon>
+      <DependentUpon>TDAModel.tt</DependentUpon>
     </Compile>
     <Compile Include="PromocionDia.cs">
-      <DependentUpon>ModelTDA.tt</DependentUpon>
+      <DependentUpon>TDAModel.tt</DependentUpon>
     </Compile>
     <Compile Include="PromocionPaquete.cs">
-      <DependentUpon>ModelTDA.tt</DependentUpon>
+      <DependentUpon>TDAModel.tt</DependentUpon>
     </Compile>
     <Compile Include="PromocionProducto.cs">
-      <DependentUpon>ModelTDA.tt</DependentUpon>
+      <DependentUpon>TDAModel.tt</DependentUpon>
     </Compile>
     <Compile Include="PromocionTipoCliente.cs">
-      <DependentUpon>ModelTDA.tt</DependentUpon>
+      <DependentUpon>TDAModel.tt</DependentUpon>
     </Compile>
     <Compile Include="PromocionTipoProducto.cs">
-      <DependentUpon>ModelTDA.tt</DependentUpon>
+      <DependentUpon>TDAModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Proveedor.cs">
-      <DependentUpon>ModelTDA.tt</DependentUpon>
+      <DependentUpon>TDAModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Rol.cs">
-      <DependentUpon>ModelTDA.tt</DependentUpon>
+      <DependentUpon>TDAModel.tt</DependentUpon>
     </Compile>
     <Compile Include="RolPagina.cs">
-      <DependentUpon>ModelTDA.tt</DependentUpon>
+      <DependentUpon>TDAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TDAModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TDAModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TDAModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TDAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TDAModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TDAModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="TipoIdentificacion.cs">
-      <DependentUpon>ModelTDA.tt</DependentUpon>
+      <DependentUpon>TDAModel.tt</DependentUpon>
     </Compile>
     <Compile Include="TipoMovimiento.cs">
-      <DependentUpon>ModelTDA.tt</DependentUpon>
+      <DependentUpon>TDAModel.tt</DependentUpon>
     </Compile>
     <Compile Include="TipoProducto.cs">
-      <DependentUpon>ModelTDA.tt</DependentUpon>
+      <DependentUpon>TDAModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Usuario.cs">
-      <DependentUpon>ModelTDA.tt</DependentUpon>
+      <DependentUpon>TDAModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Vehiculo.cs">
-      <DependentUpon>ModelTDA.tt</DependentUpon>
+      <DependentUpon>TDAModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Venta.cs">
-      <DependentUpon>ModelTDA.tt</DependentUpon>
+      <DependentUpon>TDAModel.tt</DependentUpon>
     </Compile>
     <Compile Include="VentaDetalle.cs">
-      <DependentUpon>ModelTDA.tt</DependentUpon>
+      <DependentUpon>TDAModel.tt</DependentUpon>
     </Compile>
     <Compile Include="VentaDia.cs">
-      <DependentUpon>ModelTDA.tt</DependentUpon>
+      <DependentUpon>TDAModel.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.Config" />
-    <EntityDeploy Include="ModelTDA.edmx">
+    <EntityDeploy Include="TDAModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ModelTDA.Designer.cs</LastGenOutput>
+      <LastGenOutput>TDAModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="ModelTDA.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModelTDA.edmx</DependentUpon>
-      <LastGenOutput>ModelTDA.Context.cs</LastGenOutput>
-    </None>
-    <None Include="ModelTDA.edmx.diagram">
-      <DependentUpon>ModelTDA.edmx</DependentUpon>
-    </None>
-    <None Include="ModelTDA.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModelTDA.edmx</DependentUpon>
-      <LastGenOutput>ModelTDA.cs</LastGenOutput>
-    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
     <None Include="packages.config" />
+    <None Include="TDAModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TDAModel.edmx</DependentUpon>
+      <LastGenOutput>TDAModel.Context.cs</LastGenOutput>
+    </None>
+    <None Include="TDAModel.edmx.diagram">
+      <DependentUpon>TDAModel.edmx</DependentUpon>
+    </None>
+    <None Include="TDAModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TDAModel.edmx</DependentUpon>
+      <LastGenOutput>TDAModel.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

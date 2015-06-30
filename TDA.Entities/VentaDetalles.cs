@@ -13,7 +13,7 @@ namespace TDA.Entities
         [DataMember]
         public long ID { get; set; }
         [DataMember]
-        public decimal Subtotal { get; set; }
+        public decimal? Subtotal { get; set; }
         [DataMember]
         public string Descripcion { get; set; }
         [DataMember]

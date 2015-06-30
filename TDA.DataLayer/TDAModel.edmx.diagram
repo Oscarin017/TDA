@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0b5486461af147a6bd5a8c23bacdf4fd" Name="Diagram1">
+        <EntityTypeShape EntityType="TDAModel.BaseSalario" Width="1.5" PointX="9" PointY="33.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TDAModel.Cliente" Width="1.5" PointX="8.5" PointY="36.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TDAModel.Color" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TDAModel.Configuracion" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TDAModel.Dia" Width="1.5" PointX="8.25" PointY="54.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TDAModel.Empleado" Width="1.5" PointX="11.25" PointY="35.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TDAModel.Estado" Width="1.5" PointX="7.5" PointY="43.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TDAModel.GrupoCliente" Width="1.5" PointX="5.25" PointY="40" IsExpanded="true" />
+        <EntityTypeShape EntityType="TDAModel.Logs" Width="1.5" PointX="5.25" PointY="44" IsExpanded="true" />
+        <EntityTypeShape EntityType="TDAModel.Marca" Width="1.5" PointX="5.25" PointY="46.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TDAModel.Modelo" Width="1.5" PointX="10.5" PointY="43.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TDAModel.Movimiento" Width="1.5" PointX="21.25" PointY="50" IsExpanded="true" />
+        <EntityTypeShape EntityType="TDAModel.Pagina" Width="1.5" PointX="3.75" PointY="29.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TDAModel.Pais" Width="1.5" PointX="5.25" PointY="50.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TDAModel.Paquete" Width="1.5" PointX="5.25" PointY="53.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TDAModel.PaqueteDia" Width="1.5" PointX="10.5" PointY="48.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TDAModel.PaqueteGrupoCliente" Width="1.5" PointX="7.5" PointY="48.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TDAModel.PaqueteProducto" Width="1.5" PointX="18.25" PointY="54.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TDAModel.Producto" Width="1.5" PointX="16" PointY="50.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TDAModel.Promocion" Width="1.5" PointX="5.25" PointY="59.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TDAModel.PromocionDia" Width="1.5" PointX="10.5" PointY="52.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TDAModel.PromocionPaquete" Width="1.5" PointX="7.5" PointY="58.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TDAModel.PromocionProducto" Width="1.5" PointX="18.25" PointY="57.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TDAModel.PromocionTipoCliente" Width="1.5" PointX="7.5" PointY="51.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TDAModel.PromocionTipoProducto" Width="1.5" PointX="7.5" PointY="64.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TDAModel.Proveedor" Width="1.5" PointX="13.75" PointY="41" IsExpanded="true" />
+        <EntityTypeShape EntityType="TDAModel.Rol" Width="1.5" PointX="0.75" PointY="34.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TDAModel.RolPagina" Width="1.5" PointX="6" PointY="34.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TDAModel.TipoIdentificacion" Width="1.5" PointX="14.5" PointY="34" IsExpanded="true" />
+        <EntityTypeShape EntityType="TDAModel.TipoMovimiento" Width="1.5" PointX="5.25" PointY="65.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TDAModel.TipoProducto" Width="1.5" PointX="5.25" PointY="69.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TDAModel.Usuario" Width="1.5" PointX="3" PointY="33" IsExpanded="true" />
+        <EntityTypeShape EntityType="TDAModel.Vehiculo" Width="1.5" PointX="16.75" PointY="38.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TDAModel.Venta" Width="1.5" PointX="13.75" PointY="37" IsExpanded="true" />
+        <EntityTypeShape EntityType="TDAModel.VentaDetalle" Width="1.5" PointX="19" PointY="49.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TDAModel.VentaDia" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <AssociationConnector Association="TDAModel.FK__Empleado__BaseSa__4AB81AF0" ManuallyRouted="false" />
+        <AssociationConnector Association="TDAModel.FK__Cliente__Estado__76969D2E" ManuallyRouted="false" />
+        <AssociationConnector Association="TDAModel.FK__Cliente__GrupoCl__778AC167" ManuallyRouted="false" />
+        <AssociationConnector Association="TDAModel.FK__Cliente__Usuario__787EE5A0" ManuallyRouted="false" />
+        <AssociationConnector Association="TDAModel.FK__Cliente__Usuario__797309D9" ManuallyRouted="false" />
+        <AssociationConnector Association="TDAModel.FK__Venta__Cliente__282DF8C2" ManuallyRouted="false" />
+        <AssociationConnector Association="TDAModel.FK__PaqueteDia__Dia__02084FDA" ManuallyRouted="false" />
+        <AssociationConnector Association="TDAModel.FK__PromocionDi__Dia__14270015" ManuallyRouted="false" />
+        <AssociationConnector Association="TDAModel.FK__Empleado__Estado__49C3F6B7" ManuallyRouted="false" />
+        <AssociationConnector Association="TDAModel.FK__Empleado__Usuari__4BAC3F29" ManuallyRouted="false" />
+        <AssociationConnector Association="TDAModel.FK__Empleado__Usuari__4CA06362" ManuallyRouted="false" />
+        <AssociationConnector Association="TDAModel.FK__Estado__Pais__30F848ED" ManuallyRouted="false" />
+        <AssociationConnector Association="TDAModel.FK__Estado__UsuarioA__31EC6D26" ManuallyRouted="false" />
+        <AssociationConnector Association="TDAModel.FK__Estado__UsuarioM__32E0915F" ManuallyRouted="false" />
+        <AssociationConnector Association="TDAModel.FK__Proveedor__Estad__59063A47" ManuallyRouted="false" />
+        <AssociationConnector Association="TDAModel.FK__GrupoClie__Usuar__6FE99F9F" ManuallyRouted="false" />
+        <AssociationConnector Association="TDAModel.FK__GrupoClie__Usuar__70DDC3D8" ManuallyRouted="false" />
+        <AssociationConnector Association="TDAModel.FK__PaqueteGr__Grupo__07C12930" ManuallyRouted="false" />
+        <AssociationConnector Association="TDAModel.FK__Promocion__Grupo__25518C17" ManuallyRouted="false" />
+        <AssociationConnector Association="TDAModel.FK__Logs__Usuario__3493CFA7" ManuallyRouted="false" />
+        <AssociationConnector Association="TDAModel.FK__Marca__UsuarioAl__36B12243" ManuallyRouted="false" />
+        <AssociationConnector Association="TDAModel.FK__Marca__UsuarioMo__37A5467C" ManuallyRouted="false" />
+        <AssociationConnector Association="TDAModel.FK__Modelo__Marca__3A81B327" ManuallyRouted="false" />
+        <AssociationConnector Association="TDAModel.FK__Modelo__UsuarioA__3B75D760" ManuallyRouted="false" />
+        <AssociationConnector Association="TDAModel.FK__Modelo__UsuarioM__3C69FB99" ManuallyRouted="false" />
+        <AssociationConnector Association="TDAModel.FK__Vehiculo__Modelo__5070F446" ManuallyRouted="false" />
+        <AssociationConnector Association="TDAModel.FK__Movimient__Produ__6A30C649" ManuallyRouted="false" />
+        <AssociationConnector Association="TDAModel.FK__Movimient__TipoM__693CA210" ManuallyRouted="false" />
+        <AssociationConnector Association="TDAModel.FK__Movimient__Usuar__6B24EA82" ManuallyRouted="false" />
+        <AssociationConnector Association="TDAModel.FK__Movimient__Usuar__6C190EBB" ManuallyRouted="false" />
+        <AssociationConnector Association="TDAModel.FK__RolPagina__Pagin__1920BF5C" ManuallyRouted="false" />
+        <AssociationConnector Association="TDAModel.FK__Pais__UsuarioAlt__2C3393D0" ManuallyRouted="false" />
+        <AssociationConnector Association="TDAModel.FK__Pais__UsuarioMod__2D27B809" ManuallyRouted="false" />
+        <AssociationConnector Association="TDAModel.FK__Paquete__Usuario__7D439ABD" ManuallyRouted="false" />
+        <AssociationConnector Association="TDAModel.FK__Paquete__Usuario__7E37BEF6" ManuallyRouted="false" />
+        <AssociationConnector Association="TDAModel.FK__PaqueteDi__Paque__01142BA1" ManuallyRouted="false" />
+        <AssociationConnector Association="TDAModel.FK__PaqueteGr__Paque__06CD04F7" ManuallyRouted="false" />
+        <AssociationConnector Association="TDAModel.FK__PaquetePr__Paque__0A9D95DB" ManuallyRouted="false" />
+        <AssociationConnector Association="TDAModel.FK__Promocion__Paque__19DFD96B" ManuallyRouted="false" />
+        <AssociationConnector Association="TDAModel.FK__VentaDeta__Paque__2EDAF651" ManuallyRouted="false" />
+        <AssociationConnector Association="TDAModel.FK__PaqueteDi__Usuar__02FC7413" ManuallyRouted="false" />
+        <AssociationConnector Association="TDAModel.FK__PaqueteDi__Usuar__03F0984C" ManuallyRouted="false" />
+        <AssociationConnector Association="TDAModel.FK__PaquetePr__Produ__0B91BA14" ManuallyRouted="false" />
+        <AssociationConnector Association="TDAModel.FK__Producto__Provee__5FB337D6" ManuallyRouted="false" />
+        <AssociationConnector Association="TDAModel.FK__Producto__TipoPr__5EBF139D" ManuallyRouted="false" />
+        <AssociationConnector Association="TDAModel.FK__Producto__Usuari__60A75C0F" ManuallyRouted="false" />
+        <AssociationConnector Association="TDAModel.FK__Producto__Usuari__619B8048" ManuallyRouted="false" />
+        <AssociationConnector Association="TDAModel.FK__Promocion__Produ__2180FB33" ManuallyRouted="false" />
+        <AssociationConnector Association="TDAModel.FK__VentaDeta__Produ__2CF2ADDF" ManuallyRouted="false" />
+        <AssociationConnector Association="TDAModel.FK__Promocion__Promo__1332DBDC" ManuallyRouted="false" />
+        <AssociationConnector Association="TDAModel.FK__Promocion__Promo__18EBB532" ManuallyRouted="false" />
+        <AssociationConnector Association="TDAModel.FK__Promocion__Promo__1CBC4616" ManuallyRouted="false" />
+        <AssociationConnector Association="TDAModel.FK__Promocion__Promo__208CD6FA" ManuallyRouted="false" />
+        <AssociationConnector Association="TDAModel.FK__Promocion__Promo__245D67DE" ManuallyRouted="false" />
+        <AssociationConnector Association="TDAModel.FK__Promocion__Usuar__0F624AF8" ManuallyRouted="false" />
+        <AssociationConnector Association="TDAModel.FK__Promocion__Usuar__10566F31" ManuallyRouted="false" />
+        <AssociationConnector Association="TDAModel.FK__VentaDeta__Promo__2FCF1A8A" ManuallyRouted="false" />
+        <AssociationConnector Association="TDAModel.FK__Promocion__Usuar__151B244E" ManuallyRouted="false" />
+        <AssociationConnector Association="TDAModel.FK__Promocion__Usuar__160F4887" ManuallyRouted="false" />
+        <AssociationConnector Association="TDAModel.FK__Promocion__TipoP__1DB06A4F" ManuallyRouted="false" />
+        <AssociationConnector Association="TDAModel.FK__Proveedor__Usuar__59FA5E80" ManuallyRouted="false" />
+        <AssociationConnector Association="TDAModel.FK__Proveedor__Usuar__5AEE82B9" ManuallyRouted="false" />
+        <AssociationConnector Association="TDAModel.FK__RolPagina__Rol__182C9B23" ManuallyRouted="false" />
+        <AssociationConnector Association="TDAModel.FK__Usuario__Rol__267ABA7A" ManuallyRouted="false" />
+        <AssociationConnector Association="TDAModel.FK__Vehiculo__TipoId__5165187F" ManuallyRouted="false" />
+        <AssociationConnector Association="TDAModel.FK__TipoMovim__Usuar__656C112C" ManuallyRouted="false" />
+        <AssociationConnector Association="TDAModel.FK__TipoMovim__Usuar__66603565" ManuallyRouted="false" />
+        <AssociationConnector Association="TDAModel.FK__TipoProdu__Usuar__4316F928" ManuallyRouted="false" />
+        <AssociationConnector Association="TDAModel.FK__TipoProdu__Usuar__440B1D61" ManuallyRouted="false" />
+        <AssociationConnector Association="TDAModel.FK__Usuario__Usuario__276EDEB3" ManuallyRouted="false" />
+        <AssociationConnector Association="TDAModel.FK__Usuario__Usuario__286302EC" ManuallyRouted="false" />
+        <AssociationConnector Association="TDAModel.FK__Vehiculo__Usuari__52593CB8" ManuallyRouted="false" />
+        <AssociationConnector Association="TDAModel.FK__Vehiculo__Usuari__534D60F1" ManuallyRouted="false" />
+        <AssociationConnector Association="TDAModel.FK__Venta__UsuarioVe__29221CFB" ManuallyRouted="false" />
+        <AssociationConnector Association="TDAModel.FK__VentaDeta__Vehic__2DE6D218" ManuallyRouted="false" />
+        <AssociationConnector Association="TDAModel.FK__VentaDeta__Venta__2BFE89A6" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

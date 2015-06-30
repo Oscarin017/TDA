@@ -13,8 +13,8 @@ namespace TDA.Entities
         [DataMember]
         public long ID { get; set; }
         [DataMember]
-        public DateTime Fecha { get; set; }
+        public DateTime? Fecha { get; set; }
         [DataMember]
-        public decimal Total { get; set; }
+        public decimal? Total { get; set; }
     }
 }

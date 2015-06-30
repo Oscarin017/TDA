@@ -14,11 +14,6 @@ namespace TDA.DataLayer
     
     public partial class Empleado
     {
-        public Empleado()
-        {
-            this.Usuario2 = new HashSet<Usuario>();
-        }
-    
         public long ID { get; set; }
         public string RFC { get; set; }
         public string Nombre { get; set; }
@@ -47,6 +42,5 @@ namespace TDA.DataLayer
         public virtual Estado Estado1 { get; set; }
         public virtual Usuario Usuario { get; set; }
         public virtual Usuario Usuario1 { get; set; }
-        public virtual ICollection<Usuario> Usuario2 { get; set; }
     }
 }

@@ -49,7 +49,7 @@ namespace TDA.Service
         [OperationContract]
         Resultado UpdateUsuario(Usuarios usu);
         [OperationContract]
-        List<Usuarios> SelectUsuario();
+        List<Usuarios> SelectUsuario(Usuarios usu);
         #endregion
 
         #region Tabla Pais
@@ -60,7 +60,7 @@ namespace TDA.Service
         [OperationContract]
         Resultado DeletePais(Paises pai);
         [OperationContract]
-        List<Paises> SelectPais();
+        List<Paises> SelectPais(Paises pai);
         #endregion
 
         #region Tabla Estado
@@ -69,7 +69,7 @@ namespace TDA.Service
         [OperationContract]
         Resultado UpdateEstado(Estados est);
         [OperationContract]
-        List<Estados> SelectEstado();
+        List<Estados> SelectEstado(Estados est);
         #endregion
 
         #region Tabla Marca
@@ -80,7 +80,7 @@ namespace TDA.Service
         [OperationContract]
         Resultado DeleteMarca(Marcas mar);
         [OperationContract]
-        List<Marcas> SelectMarca();
+        List<Marcas> SelectMarca(Marcas mar);
         #endregion
 
         #region Tabla Modelo
@@ -91,7 +91,7 @@ namespace TDA.Service
         [OperationContract]
         Resultado DeleteModelo(Modelos mod);
         [OperationContract]
-        List<Modelos> SelectModelo();
+        List<Modelos> SelectModelo(Modelos mod);
         #endregion
 
         #region Tabla Color
@@ -102,7 +102,9 @@ namespace TDA.Service
         [OperationContract]
         Resultado DeleteColor(Colores col);
         [OperationContract]
-        List<Colores> SelectColor();
+        List<Colores> SelectColor(Colores col);
+        [OperationContract]
+        List<Colores> BuscarColorID(long ID);
         #endregion
 
         #region Tabla Tipo producto
@@ -113,7 +115,7 @@ namespace TDA.Service
         [OperationContract]
         Resultado DeleteTipoProducto(TipoProductos tip);
         [OperationContract]
-        List<TipoProductos> SelectTipoProducto();
+        List<TipoProductos> SelectTipoProducto(TipoProductos tip);
         #endregion
 
         #region Tabla Empleado
@@ -124,7 +126,7 @@ namespace TDA.Service
         [OperationContract]
         Resultado DeleteEmpleado(Empleados emp);
         [OperationContract]
-        List<Empleados> SelectEmpleado();
+        List<Empleados> SelectEmpleado(Empleados emp);
         #endregion
 
         #region Tabla Vehiculo
@@ -294,5 +296,40 @@ namespace TDA.Service
         [OperationContract]
         List<PromocionGrupoClientes> SelectPromocionGrupoCliente();
         #endregion
+
+        #region Tabla Venta
+        [OperationContract]
+        Resultado InsertVenta(Ventas ven);
+        [OperationContract]
+        Resultado DeleteVenta(Ventas ven);
+        [OperationContract]
+        List<Ventas> SelectVenta();
+        #endregion
+
+        #region Tabla Venta Detalle
+        [OperationContract]
+        Resultado InsertVentaDetalle(VentaDetalles ved);
+        [OperationContract]
+        Resultado DeleteVentaDetalle(VentaDetalles ved);
+        [OperationContract]
+        List<VentaDetalles> SelectVentaDetalle();
+        #endregion
+
+        #region Tabla Venta Dia
+        [OperationContract]
+        Resultado InsertVentaDia(VentaDias ved);
+        [OperationContract]
+        Resultado DeleteVentaDia(VentaDias ved);
+        [OperationContract]
+        List<VentaDias> SelectVentaDia();
+        #endregion
+
+        #region Tabla Logs
+        [OperationContract]
+        Resultado InsertLog(Log log);
+        [OperationContract]
+        List<Log> SelectLog();
+        #endregion
+
     }
 }

@@ -56,7 +56,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TDA.DataLayer\TDA.DataLayer.csproj">
-      <Project>{ccf6c716-4bae-4a29-8ee9-c28711ed8588}</Project>
+      <Project>{f4a663ac-14d3-499d-8ca7-71cb6e0dfaed}</Project>
       <Name>TDA.DataLayer</Name>
     </ProjectReference>
     <ProjectReference Include="..\TDA.Entities\TDA.Entities.csproj">

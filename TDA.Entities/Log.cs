@@ -8,12 +8,12 @@ using System.Runtime.Serialization;
 namespace TDA.Entities
 {
     [DataContract]
-    class Log
+    public class Log
     {
         [DataMember]
         public long ID { get; set; }
         [DataMember]
-        public DateTime Fecha { get; set; }
+        public DateTime? Fecha { get; set; }
         [DataMember]
         public string Descripcion { get; set; }
         [DataMember]

@@ -13,9 +13,9 @@ namespace TDA.Entities
         [DataMember]
         public long ID { get; set; }
         [DataMember]
-        public Decimal Total { get; set; }
+        public Decimal? Total { get; set; }
         [DataMember]
-        public DateTime Fecha { get; set; }
+        public DateTime? Fecha { get; set; }
         [DataMember]
         public long? Cliente { get; set; }
         [DataMember]

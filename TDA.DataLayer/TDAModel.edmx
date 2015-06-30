@@ -18,7 +18,7 @@
           </Key>
           <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Tipo" Type="bit" />
-          <Property Name="Nombre" Type="varchar" MaxLength="200" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" />
           <Property Name="Apellido" Type="varchar" MaxLength="100" />
           <Property Name="Apellido2" Type="varchar" MaxLength="100" />
           <Property Name="RFC" Type="varchar" MaxLength="13" />
@@ -44,10 +44,6 @@
           </Key>
           <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nombre" Type="varchar" MaxLength="50" />
-          <Property Name="UsuarioAlta" Type="bigint" />
-          <Property Name="FechaAlta" Type="datetime" />
-          <Property Name="UsuarioMod" Type="bigint" />
-          <Property Name="FechaMod" Type="datetime" />
         </EntityType>
         <EntityType Name="Configuracion">
           <Key>
@@ -71,7 +67,7 @@
           </Key>
           <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="RFC" Type="char" MaxLength="13" />
-          <Property Name="Nombre" Type="varchar" MaxLength="100" />
+          <Property Name="Nombre" Type="varchar" MaxLength="200" />
           <Property Name="Apellido" Type="varchar" MaxLength="100" />
           <Property Name="Apellido2" Type="varchar" MaxLength="100" />
           <Property Name="Calle" Type="varchar" MaxLength="100" />
@@ -318,7 +314,7 @@
           </Key>
           <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Tipo" Type="bit" />
-          <Property Name="Nombre" Type="varchar" MaxLength="200" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" />
           <Property Name="Apellido" Type="varchar" MaxLength="100" />
           <Property Name="Apellido2" Type="varchar" MaxLength="100" />
           <Property Name="RFC" Type="varchar" MaxLength="13" />
@@ -395,7 +391,6 @@
           <Property Name="FechaAlta" Type="datetime" />
           <Property Name="UsuarioMod" Type="bigint" />
           <Property Name="FechaMod" Type="datetime" />
-          <Property Name="Empleado" Type="bigint" />
         </EntityType>
         <EntityType Name="Vehiculo">
           <Key>
@@ -446,7 +441,7 @@
           <Property Name="Fecha" Type="datetime" />
           <Property Name="Total" Type="money" />
         </EntityType>
-        <Association Name="FK__Cliente__Estado__778AC167">
+        <Association Name="FK__Cliente__Estado__76969D2E">
           <End Role="Estado" Type="Self.Estado" Multiplicity="0..1" />
           <End Role="Cliente" Type="Self.Cliente" Multiplicity="*" />
           <ReferentialConstraint>
@@ -458,7 +453,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Cliente__GrupoCl__787EE5A0">
+        <Association Name="FK__Cliente__GrupoCl__778AC167">
           <End Role="GrupoCliente" Type="Self.GrupoCliente" Multiplicity="0..1" />
           <End Role="Cliente" Type="Self.Cliente" Multiplicity="*" />
           <ReferentialConstraint>
@@ -470,6 +465,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Cliente__Usuario__787EE5A0">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Cliente">
+              <PropertyRef Name="UsuarioAlta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Cliente__Usuario__797309D9">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
           <End Role="Cliente" Type="Self.Cliente" Multiplicity="*" />
@@ -478,47 +485,11 @@
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="Cliente">
-              <PropertyRef Name="UsuarioAlta" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Cliente__Usuario__7A672E12">
-          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
-          <End Role="Cliente" Type="Self.Cliente" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Usuario">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Cliente">
               <PropertyRef Name="UsuarioMod" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Color__UsuarioAl__403A8C7D">
-          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
-          <End Role="Color" Type="Self.Color" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Usuario">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Color">
-              <PropertyRef Name="UsuarioAlta" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Color__UsuarioMo__412EB0B6">
-          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
-          <End Role="Color" Type="Self.Color" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Usuario">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Color">
-              <PropertyRef Name="UsuarioMod" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Empleado__BaseSa__4CA06362">
+        <Association Name="FK__Empleado__BaseSa__4AB81AF0">
           <End Role="BaseSalario" Type="Self.BaseSalario" Multiplicity="0..1" />
           <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
           <ReferentialConstraint>
@@ -530,7 +501,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Empleado__Estado__4BAC3F29">
+        <Association Name="FK__Empleado__Estado__49C3F6B7">
           <End Role="Estado" Type="Self.Estado" Multiplicity="0..1" />
           <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
           <ReferentialConstraint>
@@ -542,7 +513,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Empleado__Usuari__4D94879B">
+        <Association Name="FK__Empleado__Usuari__4BAC3F29">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
           <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
           <ReferentialConstraint>
@@ -554,7 +525,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Empleado__Usuari__4E88ABD4">
+        <Association Name="FK__Empleado__Usuari__4CA06362">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
           <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
           <ReferentialConstraint>
@@ -602,7 +573,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__GrupoClie__Usuar__71D1E811">
+        <Association Name="FK__GrupoClie__Usuar__6FE99F9F">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
           <End Role="GrupoCliente" Type="Self.GrupoCliente" Multiplicity="*" />
           <ReferentialConstraint>
@@ -614,7 +585,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__GrupoClie__Usuar__72C60C4A">
+        <Association Name="FK__GrupoClie__Usuar__70DDC3D8">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
           <End Role="GrupoCliente" Type="Self.GrupoCliente" Multiplicity="*" />
           <ReferentialConstraint>
@@ -626,7 +597,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Logs__Usuario__3587F3E0">
+        <Association Name="FK__Logs__Usuario__3493CFA7">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
           <End Role="Logs" Type="Self.Logs" Multiplicity="*" />
           <ReferentialConstraint>
@@ -698,7 +669,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Movimient__Produ__6C190EBB">
+        <Association Name="FK__Movimient__Produ__6A30C649">
           <End Role="Producto" Type="Self.Producto" Multiplicity="0..1" />
           <End Role="Movimiento" Type="Self.Movimiento" Multiplicity="*" />
           <ReferentialConstraint>
@@ -710,7 +681,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Movimient__TipoM__6B24EA82">
+        <Association Name="FK__Movimient__TipoM__693CA210">
           <End Role="TipoMovimiento" Type="Self.TipoMovimiento" Multiplicity="0..1" />
           <End Role="Movimiento" Type="Self.Movimiento" Multiplicity="*" />
           <ReferentialConstraint>
@@ -722,7 +693,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Movimient__Usuar__6D0D32F4">
+        <Association Name="FK__Movimient__Usuar__6B24EA82">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
           <End Role="Movimiento" Type="Self.Movimiento" Multiplicity="*" />
           <ReferentialConstraint>
@@ -734,7 +705,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Movimient__Usuar__6E01572D">
+        <Association Name="FK__Movimient__Usuar__6C190EBB">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
           <End Role="Movimiento" Type="Self.Movimiento" Multiplicity="*" />
           <ReferentialConstraint>
@@ -770,7 +741,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Paquete__Usuario__7E37BEF6">
+        <Association Name="FK__Paquete__Usuario__7D439ABD">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
           <End Role="Paquete" Type="Self.Paquete" Multiplicity="*" />
           <ReferentialConstraint>
@@ -782,7 +753,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Paquete__Usuario__7F2BE32F">
+        <Association Name="FK__Paquete__Usuario__7E37BEF6">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
           <End Role="Paquete" Type="Self.Paquete" Multiplicity="*" />
           <ReferentialConstraint>
@@ -794,7 +765,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PaqueteDi__Paque__02084FDA">
+        <Association Name="FK__PaqueteDi__Paque__01142BA1">
           <End Role="Paquete" Type="Self.Paquete" Multiplicity="0..1" />
           <End Role="PaqueteDia" Type="Self.PaqueteDia" Multiplicity="*" />
           <ReferentialConstraint>
@@ -803,6 +774,18 @@
             </Principal>
             <Dependent Role="PaqueteDia">
               <PropertyRef Name="Paquete" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PaqueteDi__Usuar__02FC7413">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="PaqueteDia" Type="Self.PaqueteDia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PaqueteDia">
+              <PropertyRef Name="UsuarioAlta" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -814,23 +797,11 @@
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="PaqueteDia">
-              <PropertyRef Name="UsuarioAlta" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PaqueteDi__Usuar__04E4BC85">
-          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
-          <End Role="PaqueteDia" Type="Self.PaqueteDia" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Usuario">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="PaqueteDia">
               <PropertyRef Name="UsuarioMod" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PaqueteDia__Dia__02FC7413">
+        <Association Name="FK__PaqueteDia__Dia__02084FDA">
           <End Role="Dia" Type="Self.Dia" Multiplicity="0..1" />
           <End Role="PaqueteDia" Type="Self.PaqueteDia" Multiplicity="*" />
           <ReferentialConstraint>
@@ -842,7 +813,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PaqueteGr__Grupo__08B54D69">
+        <Association Name="FK__PaqueteGr__Grupo__07C12930">
           <End Role="GrupoCliente" Type="Self.GrupoCliente" Multiplicity="0..1" />
           <End Role="PaqueteGrupoCliente" Type="Self.PaqueteGrupoCliente" Multiplicity="*" />
           <ReferentialConstraint>
@@ -854,7 +825,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PaqueteGr__Paque__07C12930">
+        <Association Name="FK__PaqueteGr__Paque__06CD04F7">
           <End Role="Paquete" Type="Self.Paquete" Multiplicity="0..1" />
           <End Role="PaqueteGrupoCliente" Type="Self.PaqueteGrupoCliente" Multiplicity="*" />
           <ReferentialConstraint>
@@ -866,7 +837,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PaquetePr__Paque__0B91BA14">
+        <Association Name="FK__PaquetePr__Paque__0A9D95DB">
           <End Role="Paquete" Type="Self.Paquete" Multiplicity="0..1" />
           <End Role="PaqueteProducto" Type="Self.PaqueteProducto" Multiplicity="*" />
           <ReferentialConstraint>
@@ -878,7 +849,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PaquetePr__Produ__0C85DE4D">
+        <Association Name="FK__PaquetePr__Produ__0B91BA14">
           <End Role="Producto" Type="Self.Producto" Multiplicity="0..1" />
           <End Role="PaqueteProducto" Type="Self.PaqueteProducto" Multiplicity="*" />
           <ReferentialConstraint>
@@ -890,7 +861,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Producto__Provee__619B8048">
+        <Association Name="FK__Producto__Provee__5FB337D6">
           <End Role="Proveedor" Type="Self.Proveedor" Multiplicity="0..1" />
           <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
           <ReferentialConstraint>
@@ -902,7 +873,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Producto__TipoPr__60A75C0F">
+        <Association Name="FK__Producto__TipoPr__5EBF139D">
           <End Role="TipoProducto" Type="Self.TipoProducto" Multiplicity="0..1" />
           <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
           <ReferentialConstraint>
@@ -914,7 +885,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Producto__Usuari__628FA481">
+        <Association Name="FK__Producto__Usuari__60A75C0F">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
           <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
           <ReferentialConstraint>
@@ -926,7 +897,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Producto__Usuari__6383C8BA">
+        <Association Name="FK__Producto__Usuari__619B8048">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
           <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
           <ReferentialConstraint>
@@ -938,7 +909,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Promocion__Grupo__2645B050">
+        <Association Name="FK__Promocion__Grupo__25518C17">
           <End Role="GrupoCliente" Type="Self.GrupoCliente" Multiplicity="0..1" />
           <End Role="PromocionTipoCliente" Type="Self.PromocionTipoCliente" Multiplicity="*" />
           <ReferentialConstraint>
@@ -950,7 +921,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Promocion__Paque__1AD3FDA4">
+        <Association Name="FK__Promocion__Paque__19DFD96B">
           <End Role="Paquete" Type="Self.Paquete" Multiplicity="0..1" />
           <End Role="PromocionPaquete" Type="Self.PromocionPaquete" Multiplicity="*" />
           <ReferentialConstraint>
@@ -962,7 +933,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Promocion__Produ__22751F6C">
+        <Association Name="FK__Promocion__Produ__2180FB33">
           <End Role="Producto" Type="Self.Producto" Multiplicity="0..1" />
           <End Role="PromocionProducto" Type="Self.PromocionProducto" Multiplicity="*" />
           <ReferentialConstraint>
@@ -974,7 +945,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Promocion__Promo__14270015">
+        <Association Name="FK__Promocion__Promo__1332DBDC">
           <End Role="Promocion" Type="Self.Promocion" Multiplicity="0..1" />
           <End Role="PromocionDia" Type="Self.PromocionDia" Multiplicity="*" />
           <ReferentialConstraint>
@@ -986,7 +957,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Promocion__Promo__19DFD96B">
+        <Association Name="FK__Promocion__Promo__18EBB532">
           <End Role="Promocion" Type="Self.Promocion" Multiplicity="0..1" />
           <End Role="PromocionPaquete" Type="Self.PromocionPaquete" Multiplicity="*" />
           <ReferentialConstraint>
@@ -998,7 +969,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Promocion__Promo__1DB06A4F">
+        <Association Name="FK__Promocion__Promo__1CBC4616">
           <End Role="Promocion" Type="Self.Promocion" Multiplicity="0..1" />
           <End Role="PromocionTipoProducto" Type="Self.PromocionTipoProducto" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1010,7 +981,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Promocion__Promo__2180FB33">
+        <Association Name="FK__Promocion__Promo__208CD6FA">
           <End Role="Promocion" Type="Self.Promocion" Multiplicity="0..1" />
           <End Role="PromocionProducto" Type="Self.PromocionProducto" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1022,7 +993,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Promocion__Promo__25518C17">
+        <Association Name="FK__Promocion__Promo__245D67DE">
           <End Role="Promocion" Type="Self.Promocion" Multiplicity="0..1" />
           <End Role="PromocionTipoCliente" Type="Self.PromocionTipoCliente" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1034,7 +1005,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Promocion__TipoP__1EA48E88">
+        <Association Name="FK__Promocion__TipoP__1DB06A4F">
           <End Role="TipoProducto" Type="Self.TipoProducto" Multiplicity="0..1" />
           <End Role="PromocionTipoProducto" Type="Self.PromocionTipoProducto" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1046,7 +1017,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Promocion__Usuar__10566F31">
+        <Association Name="FK__Promocion__Usuar__0F624AF8">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
           <End Role="Promocion" Type="Self.Promocion" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1058,7 +1029,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Promocion__Usuar__114A936A">
+        <Association Name="FK__Promocion__Usuar__10566F31">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
           <End Role="Promocion" Type="Self.Promocion" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1067,6 +1038,18 @@
             </Principal>
             <Dependent Role="Promocion">
               <PropertyRef Name="UsuarioMod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Promocion__Usuar__151B244E">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="PromocionDia" Type="Self.PromocionDia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PromocionDia">
+              <PropertyRef Name="UsuarioAlta" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1078,23 +1061,11 @@
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="PromocionDia">
-              <PropertyRef Name="UsuarioAlta" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Promocion__Usuar__17036CC0">
-          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
-          <End Role="PromocionDia" Type="Self.PromocionDia" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Usuario">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="PromocionDia">
               <PropertyRef Name="UsuarioMod" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PromocionDi__Dia__151B244E">
+        <Association Name="FK__PromocionDi__Dia__14270015">
           <End Role="Dia" Type="Self.Dia" Multiplicity="0..1" />
           <End Role="PromocionDia" Type="Self.PromocionDia" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1106,7 +1077,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Proveedor__Estad__5AEE82B9">
+        <Association Name="FK__Proveedor__Estad__59063A47">
           <End Role="Estado" Type="Self.Estado" Multiplicity="0..1" />
           <End Role="Proveedor" Type="Self.Proveedor" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1118,7 +1089,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Proveedor__Usuar__5BE2A6F2">
+        <Association Name="FK__Proveedor__Usuar__59FA5E80">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
           <End Role="Proveedor" Type="Self.Proveedor" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1130,7 +1101,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Proveedor__Usuar__5CD6CB2B">
+        <Association Name="FK__Proveedor__Usuar__5AEE82B9">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
           <End Role="Proveedor" Type="Self.Proveedor" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1166,7 +1137,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__TipoMovim__Usuar__6754599E">
+        <Association Name="FK__TipoMovim__Usuar__656C112C">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
           <End Role="TipoMovimiento" Type="Self.TipoMovimiento" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1178,7 +1149,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__TipoMovim__Usuar__68487DD7">
+        <Association Name="FK__TipoMovim__Usuar__66603565">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
           <End Role="TipoMovimiento" Type="Self.TipoMovimiento" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1190,7 +1161,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__TipoProdu__Usuar__44FF419A">
+        <Association Name="FK__TipoProdu__Usuar__4316F928">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
           <End Role="TipoProducto" Type="Self.TipoProducto" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1202,7 +1173,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__TipoProdu__Usuar__45F365D3">
+        <Association Name="FK__TipoProdu__Usuar__440B1D61">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
           <End Role="TipoProducto" Type="Self.TipoProducto" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1211,18 +1182,6 @@
             </Principal>
             <Dependent Role="TipoProducto">
               <PropertyRef Name="UsuarioMod" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Usuario__Emplead__4F7CD00D">
-          <End Role="Empleado" Type="Self.Empleado" Multiplicity="0..1" />
-          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Empleado">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Usuario">
-              <PropertyRef Name="Empleado" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1262,7 +1221,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Vehiculo__Modelo__534D60F1">
+        <Association Name="FK__Vehiculo__Modelo__5070F446">
           <End Role="Modelo" Type="Self.Modelo" Multiplicity="0..1" />
           <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1274,7 +1233,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Vehiculo__TipoId__5441852A">
+        <Association Name="FK__Vehiculo__TipoId__5165187F">
           <End Role="TipoIdentificacion" Type="Self.TipoIdentificacion" Multiplicity="0..1" />
           <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1286,7 +1245,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Vehiculo__Usuari__5535A963">
+        <Association Name="FK__Vehiculo__Usuari__52593CB8">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
           <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1298,7 +1257,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Vehiculo__Usuari__5629CD9C">
+        <Association Name="FK__Vehiculo__Usuari__534D60F1">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
           <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1310,7 +1269,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Venta__Cliente__29221CFB">
+        <Association Name="FK__Venta__Cliente__282DF8C2">
           <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
           <End Role="Venta" Type="Self.Venta" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1322,7 +1281,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Venta__UsuarioVe__2A164134">
+        <Association Name="FK__Venta__UsuarioVe__29221CFB">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
           <End Role="Venta" Type="Self.Venta" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1334,7 +1293,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__VentaDeta__Paque__2FCF1A8A">
+        <Association Name="FK__VentaDeta__Paque__2EDAF651">
           <End Role="Paquete" Type="Self.Paquete" Multiplicity="0..1" />
           <End Role="VentaDetalle" Type="Self.VentaDetalle" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1346,7 +1305,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__VentaDeta__Produ__2DE6D218">
+        <Association Name="FK__VentaDeta__Produ__2CF2ADDF">
           <End Role="Producto" Type="Self.Producto" Multiplicity="0..1" />
           <End Role="VentaDetalle" Type="Self.VentaDetalle" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1358,7 +1317,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__VentaDeta__Promo__30C33EC3">
+        <Association Name="FK__VentaDeta__Promo__2FCF1A8A">
           <End Role="Promocion" Type="Self.Promocion" Multiplicity="0..1" />
           <End Role="VentaDetalle" Type="Self.VentaDetalle" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1370,7 +1329,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__VentaDeta__Vehic__2EDAF651">
+        <Association Name="FK__VentaDeta__Vehic__2DE6D218">
           <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="0..1" />
           <End Role="VentaDetalle" Type="Self.VentaDetalle" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1382,7 +1341,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__VentaDeta__Venta__2CF2ADDF">
+        <Association Name="FK__VentaDeta__Venta__2BFE89A6">
           <End Role="Venta" Type="Self.Venta" Multiplicity="0..1" />
           <End Role="VentaDetalle" Type="Self.VentaDetalle" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1431,43 +1390,35 @@
           <EntitySet Name="Venta" EntityType="Self.Venta" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VentaDetalle" EntityType="Self.VentaDetalle" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VentaDia" EntityType="Self.VentaDia" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Cliente__Estado__778AC167" Association="Self.FK__Cliente__Estado__778AC167">
+          <AssociationSet Name="FK__Cliente__Estado__76969D2E" Association="Self.FK__Cliente__Estado__76969D2E">
             <End Role="Estado" EntitySet="Estado" />
             <End Role="Cliente" EntitySet="Cliente" />
           </AssociationSet>
-          <AssociationSet Name="FK__Cliente__GrupoCl__787EE5A0" Association="Self.FK__Cliente__GrupoCl__787EE5A0">
+          <AssociationSet Name="FK__Cliente__GrupoCl__778AC167" Association="Self.FK__Cliente__GrupoCl__778AC167">
             <End Role="GrupoCliente" EntitySet="GrupoCliente" />
+            <End Role="Cliente" EntitySet="Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cliente__Usuario__787EE5A0" Association="Self.FK__Cliente__Usuario__787EE5A0">
+            <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Cliente" EntitySet="Cliente" />
           </AssociationSet>
           <AssociationSet Name="FK__Cliente__Usuario__797309D9" Association="Self.FK__Cliente__Usuario__797309D9">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Cliente" EntitySet="Cliente" />
           </AssociationSet>
-          <AssociationSet Name="FK__Cliente__Usuario__7A672E12" Association="Self.FK__Cliente__Usuario__7A672E12">
-            <End Role="Usuario" EntitySet="Usuario" />
-            <End Role="Cliente" EntitySet="Cliente" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Color__UsuarioAl__403A8C7D" Association="Self.FK__Color__UsuarioAl__403A8C7D">
-            <End Role="Usuario" EntitySet="Usuario" />
-            <End Role="Color" EntitySet="Color" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Color__UsuarioMo__412EB0B6" Association="Self.FK__Color__UsuarioMo__412EB0B6">
-            <End Role="Usuario" EntitySet="Usuario" />
-            <End Role="Color" EntitySet="Color" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Empleado__BaseSa__4CA06362" Association="Self.FK__Empleado__BaseSa__4CA06362">
+          <AssociationSet Name="FK__Empleado__BaseSa__4AB81AF0" Association="Self.FK__Empleado__BaseSa__4AB81AF0">
             <End Role="BaseSalario" EntitySet="BaseSalario" />
             <End Role="Empleado" EntitySet="Empleado" />
           </AssociationSet>
-          <AssociationSet Name="FK__Empleado__Estado__4BAC3F29" Association="Self.FK__Empleado__Estado__4BAC3F29">
+          <AssociationSet Name="FK__Empleado__Estado__49C3F6B7" Association="Self.FK__Empleado__Estado__49C3F6B7">
             <End Role="Estado" EntitySet="Estado" />
             <End Role="Empleado" EntitySet="Empleado" />
           </AssociationSet>
-          <AssociationSet Name="FK__Empleado__Usuari__4D94879B" Association="Self.FK__Empleado__Usuari__4D94879B">
+          <AssociationSet Name="FK__Empleado__Usuari__4BAC3F29" Association="Self.FK__Empleado__Usuari__4BAC3F29">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Empleado" EntitySet="Empleado" />
           </AssociationSet>
-          <AssociationSet Name="FK__Empleado__Usuari__4E88ABD4" Association="Self.FK__Empleado__Usuari__4E88ABD4">
+          <AssociationSet Name="FK__Empleado__Usuari__4CA06362" Association="Self.FK__Empleado__Usuari__4CA06362">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Empleado" EntitySet="Empleado" />
           </AssociationSet>
@@ -1483,15 +1434,15 @@
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Estado" EntitySet="Estado" />
           </AssociationSet>
-          <AssociationSet Name="FK__GrupoClie__Usuar__71D1E811" Association="Self.FK__GrupoClie__Usuar__71D1E811">
+          <AssociationSet Name="FK__GrupoClie__Usuar__6FE99F9F" Association="Self.FK__GrupoClie__Usuar__6FE99F9F">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="GrupoCliente" EntitySet="GrupoCliente" />
           </AssociationSet>
-          <AssociationSet Name="FK__GrupoClie__Usuar__72C60C4A" Association="Self.FK__GrupoClie__Usuar__72C60C4A">
+          <AssociationSet Name="FK__GrupoClie__Usuar__70DDC3D8" Association="Self.FK__GrupoClie__Usuar__70DDC3D8">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="GrupoCliente" EntitySet="GrupoCliente" />
           </AssociationSet>
-          <AssociationSet Name="FK__Logs__Usuario__3587F3E0" Association="Self.FK__Logs__Usuario__3587F3E0">
+          <AssociationSet Name="FK__Logs__Usuario__3493CFA7" Association="Self.FK__Logs__Usuario__3493CFA7">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Logs" EntitySet="Logs" />
           </AssociationSet>
@@ -1515,19 +1466,19 @@
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Modelo" EntitySet="Modelo" />
           </AssociationSet>
-          <AssociationSet Name="FK__Movimient__Produ__6C190EBB" Association="Self.FK__Movimient__Produ__6C190EBB">
+          <AssociationSet Name="FK__Movimient__Produ__6A30C649" Association="Self.FK__Movimient__Produ__6A30C649">
             <End Role="Producto" EntitySet="Producto" />
             <End Role="Movimiento" EntitySet="Movimiento" />
           </AssociationSet>
-          <AssociationSet Name="FK__Movimient__TipoM__6B24EA82" Association="Self.FK__Movimient__TipoM__6B24EA82">
+          <AssociationSet Name="FK__Movimient__TipoM__693CA210" Association="Self.FK__Movimient__TipoM__693CA210">
             <End Role="TipoMovimiento" EntitySet="TipoMovimiento" />
             <End Role="Movimiento" EntitySet="Movimiento" />
           </AssociationSet>
-          <AssociationSet Name="FK__Movimient__Usuar__6D0D32F4" Association="Self.FK__Movimient__Usuar__6D0D32F4">
+          <AssociationSet Name="FK__Movimient__Usuar__6B24EA82" Association="Self.FK__Movimient__Usuar__6B24EA82">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Movimiento" EntitySet="Movimiento" />
           </AssociationSet>
-          <AssociationSet Name="FK__Movimient__Usuar__6E01572D" Association="Self.FK__Movimient__Usuar__6E01572D">
+          <AssociationSet Name="FK__Movimient__Usuar__6C190EBB" Association="Self.FK__Movimient__Usuar__6C190EBB">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Movimiento" EntitySet="Movimiento" />
           </AssociationSet>
@@ -1539,127 +1490,127 @@
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Pais" EntitySet="Pais" />
           </AssociationSet>
+          <AssociationSet Name="FK__Paquete__Usuario__7D439ABD" Association="Self.FK__Paquete__Usuario__7D439ABD">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Paquete" EntitySet="Paquete" />
+          </AssociationSet>
           <AssociationSet Name="FK__Paquete__Usuario__7E37BEF6" Association="Self.FK__Paquete__Usuario__7E37BEF6">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Paquete" EntitySet="Paquete" />
           </AssociationSet>
-          <AssociationSet Name="FK__Paquete__Usuario__7F2BE32F" Association="Self.FK__Paquete__Usuario__7F2BE32F">
-            <End Role="Usuario" EntitySet="Usuario" />
+          <AssociationSet Name="FK__PaqueteDi__Paque__01142BA1" Association="Self.FK__PaqueteDi__Paque__01142BA1">
             <End Role="Paquete" EntitySet="Paquete" />
+            <End Role="PaqueteDia" EntitySet="PaqueteDia" />
           </AssociationSet>
-          <AssociationSet Name="FK__PaqueteDi__Paque__02084FDA" Association="Self.FK__PaqueteDi__Paque__02084FDA">
-            <End Role="Paquete" EntitySet="Paquete" />
+          <AssociationSet Name="FK__PaqueteDi__Usuar__02FC7413" Association="Self.FK__PaqueteDi__Usuar__02FC7413">
+            <End Role="Usuario" EntitySet="Usuario" />
             <End Role="PaqueteDia" EntitySet="PaqueteDia" />
           </AssociationSet>
           <AssociationSet Name="FK__PaqueteDi__Usuar__03F0984C" Association="Self.FK__PaqueteDi__Usuar__03F0984C">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="PaqueteDia" EntitySet="PaqueteDia" />
           </AssociationSet>
-          <AssociationSet Name="FK__PaqueteDi__Usuar__04E4BC85" Association="Self.FK__PaqueteDi__Usuar__04E4BC85">
-            <End Role="Usuario" EntitySet="Usuario" />
-            <End Role="PaqueteDia" EntitySet="PaqueteDia" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PaqueteDia__Dia__02FC7413" Association="Self.FK__PaqueteDia__Dia__02FC7413">
+          <AssociationSet Name="FK__PaqueteDia__Dia__02084FDA" Association="Self.FK__PaqueteDia__Dia__02084FDA">
             <End Role="Dia" EntitySet="Dia" />
             <End Role="PaqueteDia" EntitySet="PaqueteDia" />
           </AssociationSet>
-          <AssociationSet Name="FK__PaqueteGr__Grupo__08B54D69" Association="Self.FK__PaqueteGr__Grupo__08B54D69">
+          <AssociationSet Name="FK__PaqueteGr__Grupo__07C12930" Association="Self.FK__PaqueteGr__Grupo__07C12930">
             <End Role="GrupoCliente" EntitySet="GrupoCliente" />
             <End Role="PaqueteGrupoCliente" EntitySet="PaqueteGrupoCliente" />
           </AssociationSet>
-          <AssociationSet Name="FK__PaqueteGr__Paque__07C12930" Association="Self.FK__PaqueteGr__Paque__07C12930">
+          <AssociationSet Name="FK__PaqueteGr__Paque__06CD04F7" Association="Self.FK__PaqueteGr__Paque__06CD04F7">
             <End Role="Paquete" EntitySet="Paquete" />
             <End Role="PaqueteGrupoCliente" EntitySet="PaqueteGrupoCliente" />
           </AssociationSet>
-          <AssociationSet Name="FK__PaquetePr__Paque__0B91BA14" Association="Self.FK__PaquetePr__Paque__0B91BA14">
+          <AssociationSet Name="FK__PaquetePr__Paque__0A9D95DB" Association="Self.FK__PaquetePr__Paque__0A9D95DB">
             <End Role="Paquete" EntitySet="Paquete" />
             <End Role="PaqueteProducto" EntitySet="PaqueteProducto" />
           </AssociationSet>
-          <AssociationSet Name="FK__PaquetePr__Produ__0C85DE4D" Association="Self.FK__PaquetePr__Produ__0C85DE4D">
+          <AssociationSet Name="FK__PaquetePr__Produ__0B91BA14" Association="Self.FK__PaquetePr__Produ__0B91BA14">
             <End Role="Producto" EntitySet="Producto" />
             <End Role="PaqueteProducto" EntitySet="PaqueteProducto" />
           </AssociationSet>
-          <AssociationSet Name="FK__Producto__Provee__619B8048" Association="Self.FK__Producto__Provee__619B8048">
+          <AssociationSet Name="FK__Producto__Provee__5FB337D6" Association="Self.FK__Producto__Provee__5FB337D6">
             <End Role="Proveedor" EntitySet="Proveedor" />
             <End Role="Producto" EntitySet="Producto" />
           </AssociationSet>
-          <AssociationSet Name="FK__Producto__TipoPr__60A75C0F" Association="Self.FK__Producto__TipoPr__60A75C0F">
+          <AssociationSet Name="FK__Producto__TipoPr__5EBF139D" Association="Self.FK__Producto__TipoPr__5EBF139D">
             <End Role="TipoProducto" EntitySet="TipoProducto" />
             <End Role="Producto" EntitySet="Producto" />
           </AssociationSet>
-          <AssociationSet Name="FK__Producto__Usuari__628FA481" Association="Self.FK__Producto__Usuari__628FA481">
+          <AssociationSet Name="FK__Producto__Usuari__60A75C0F" Association="Self.FK__Producto__Usuari__60A75C0F">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Producto" EntitySet="Producto" />
           </AssociationSet>
-          <AssociationSet Name="FK__Producto__Usuari__6383C8BA" Association="Self.FK__Producto__Usuari__6383C8BA">
+          <AssociationSet Name="FK__Producto__Usuari__619B8048" Association="Self.FK__Producto__Usuari__619B8048">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Producto" EntitySet="Producto" />
           </AssociationSet>
-          <AssociationSet Name="FK__Promocion__Grupo__2645B050" Association="Self.FK__Promocion__Grupo__2645B050">
+          <AssociationSet Name="FK__Promocion__Grupo__25518C17" Association="Self.FK__Promocion__Grupo__25518C17">
             <End Role="GrupoCliente" EntitySet="GrupoCliente" />
             <End Role="PromocionTipoCliente" EntitySet="PromocionTipoCliente" />
           </AssociationSet>
-          <AssociationSet Name="FK__Promocion__Paque__1AD3FDA4" Association="Self.FK__Promocion__Paque__1AD3FDA4">
+          <AssociationSet Name="FK__Promocion__Paque__19DFD96B" Association="Self.FK__Promocion__Paque__19DFD96B">
             <End Role="Paquete" EntitySet="Paquete" />
             <End Role="PromocionPaquete" EntitySet="PromocionPaquete" />
           </AssociationSet>
-          <AssociationSet Name="FK__Promocion__Produ__22751F6C" Association="Self.FK__Promocion__Produ__22751F6C">
+          <AssociationSet Name="FK__Promocion__Produ__2180FB33" Association="Self.FK__Promocion__Produ__2180FB33">
             <End Role="Producto" EntitySet="Producto" />
             <End Role="PromocionProducto" EntitySet="PromocionProducto" />
           </AssociationSet>
-          <AssociationSet Name="FK__Promocion__Promo__14270015" Association="Self.FK__Promocion__Promo__14270015">
+          <AssociationSet Name="FK__Promocion__Promo__1332DBDC" Association="Self.FK__Promocion__Promo__1332DBDC">
             <End Role="Promocion" EntitySet="Promocion" />
             <End Role="PromocionDia" EntitySet="PromocionDia" />
           </AssociationSet>
-          <AssociationSet Name="FK__Promocion__Promo__19DFD96B" Association="Self.FK__Promocion__Promo__19DFD96B">
+          <AssociationSet Name="FK__Promocion__Promo__18EBB532" Association="Self.FK__Promocion__Promo__18EBB532">
             <End Role="Promocion" EntitySet="Promocion" />
             <End Role="PromocionPaquete" EntitySet="PromocionPaquete" />
           </AssociationSet>
-          <AssociationSet Name="FK__Promocion__Promo__1DB06A4F" Association="Self.FK__Promocion__Promo__1DB06A4F">
+          <AssociationSet Name="FK__Promocion__Promo__1CBC4616" Association="Self.FK__Promocion__Promo__1CBC4616">
             <End Role="Promocion" EntitySet="Promocion" />
             <End Role="PromocionTipoProducto" EntitySet="PromocionTipoProducto" />
           </AssociationSet>
-          <AssociationSet Name="FK__Promocion__Promo__2180FB33" Association="Self.FK__Promocion__Promo__2180FB33">
+          <AssociationSet Name="FK__Promocion__Promo__208CD6FA" Association="Self.FK__Promocion__Promo__208CD6FA">
             <End Role="Promocion" EntitySet="Promocion" />
             <End Role="PromocionProducto" EntitySet="PromocionProducto" />
           </AssociationSet>
-          <AssociationSet Name="FK__Promocion__Promo__25518C17" Association="Self.FK__Promocion__Promo__25518C17">
+          <AssociationSet Name="FK__Promocion__Promo__245D67DE" Association="Self.FK__Promocion__Promo__245D67DE">
             <End Role="Promocion" EntitySet="Promocion" />
             <End Role="PromocionTipoCliente" EntitySet="PromocionTipoCliente" />
           </AssociationSet>
-          <AssociationSet Name="FK__Promocion__TipoP__1EA48E88" Association="Self.FK__Promocion__TipoP__1EA48E88">
+          <AssociationSet Name="FK__Promocion__TipoP__1DB06A4F" Association="Self.FK__Promocion__TipoP__1DB06A4F">
             <End Role="TipoProducto" EntitySet="TipoProducto" />
             <End Role="PromocionTipoProducto" EntitySet="PromocionTipoProducto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Promocion__Usuar__0F624AF8" Association="Self.FK__Promocion__Usuar__0F624AF8">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Promocion" EntitySet="Promocion" />
           </AssociationSet>
           <AssociationSet Name="FK__Promocion__Usuar__10566F31" Association="Self.FK__Promocion__Usuar__10566F31">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Promocion" EntitySet="Promocion" />
           </AssociationSet>
-          <AssociationSet Name="FK__Promocion__Usuar__114A936A" Association="Self.FK__Promocion__Usuar__114A936A">
+          <AssociationSet Name="FK__Promocion__Usuar__151B244E" Association="Self.FK__Promocion__Usuar__151B244E">
             <End Role="Usuario" EntitySet="Usuario" />
-            <End Role="Promocion" EntitySet="Promocion" />
+            <End Role="PromocionDia" EntitySet="PromocionDia" />
           </AssociationSet>
           <AssociationSet Name="FK__Promocion__Usuar__160F4887" Association="Self.FK__Promocion__Usuar__160F4887">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="PromocionDia" EntitySet="PromocionDia" />
           </AssociationSet>
-          <AssociationSet Name="FK__Promocion__Usuar__17036CC0" Association="Self.FK__Promocion__Usuar__17036CC0">
-            <End Role="Usuario" EntitySet="Usuario" />
-            <End Role="PromocionDia" EntitySet="PromocionDia" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PromocionDi__Dia__151B244E" Association="Self.FK__PromocionDi__Dia__151B244E">
+          <AssociationSet Name="FK__PromocionDi__Dia__14270015" Association="Self.FK__PromocionDi__Dia__14270015">
             <End Role="Dia" EntitySet="Dia" />
             <End Role="PromocionDia" EntitySet="PromocionDia" />
           </AssociationSet>
-          <AssociationSet Name="FK__Proveedor__Estad__5AEE82B9" Association="Self.FK__Proveedor__Estad__5AEE82B9">
+          <AssociationSet Name="FK__Proveedor__Estad__59063A47" Association="Self.FK__Proveedor__Estad__59063A47">
             <End Role="Estado" EntitySet="Estado" />
             <End Role="Proveedor" EntitySet="Proveedor" />
           </AssociationSet>
-          <AssociationSet Name="FK__Proveedor__Usuar__5BE2A6F2" Association="Self.FK__Proveedor__Usuar__5BE2A6F2">
+          <AssociationSet Name="FK__Proveedor__Usuar__59FA5E80" Association="Self.FK__Proveedor__Usuar__59FA5E80">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Proveedor" EntitySet="Proveedor" />
           </AssociationSet>
-          <AssociationSet Name="FK__Proveedor__Usuar__5CD6CB2B" Association="Self.FK__Proveedor__Usuar__5CD6CB2B">
+          <AssociationSet Name="FK__Proveedor__Usuar__5AEE82B9" Association="Self.FK__Proveedor__Usuar__5AEE82B9">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Proveedor" EntitySet="Proveedor" />
           </AssociationSet>
@@ -1671,25 +1622,21 @@
             <End Role="Rol" EntitySet="Rol" />
             <End Role="RolPagina" EntitySet="RolPagina" />
           </AssociationSet>
-          <AssociationSet Name="FK__TipoMovim__Usuar__6754599E" Association="Self.FK__TipoMovim__Usuar__6754599E">
+          <AssociationSet Name="FK__TipoMovim__Usuar__656C112C" Association="Self.FK__TipoMovim__Usuar__656C112C">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="TipoMovimiento" EntitySet="TipoMovimiento" />
           </AssociationSet>
-          <AssociationSet Name="FK__TipoMovim__Usuar__68487DD7" Association="Self.FK__TipoMovim__Usuar__68487DD7">
+          <AssociationSet Name="FK__TipoMovim__Usuar__66603565" Association="Self.FK__TipoMovim__Usuar__66603565">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="TipoMovimiento" EntitySet="TipoMovimiento" />
           </AssociationSet>
-          <AssociationSet Name="FK__TipoProdu__Usuar__44FF419A" Association="Self.FK__TipoProdu__Usuar__44FF419A">
+          <AssociationSet Name="FK__TipoProdu__Usuar__4316F928" Association="Self.FK__TipoProdu__Usuar__4316F928">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="TipoProducto" EntitySet="TipoProducto" />
           </AssociationSet>
-          <AssociationSet Name="FK__TipoProdu__Usuar__45F365D3" Association="Self.FK__TipoProdu__Usuar__45F365D3">
+          <AssociationSet Name="FK__TipoProdu__Usuar__440B1D61" Association="Self.FK__TipoProdu__Usuar__440B1D61">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="TipoProducto" EntitySet="TipoProducto" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Usuario__Emplead__4F7CD00D" Association="Self.FK__Usuario__Emplead__4F7CD00D">
-            <End Role="Empleado" EntitySet="Empleado" />
-            <End Role="Usuario" EntitySet="Usuario" />
           </AssociationSet>
           <AssociationSet Name="FK__Usuario__Rol__267ABA7A" Association="Self.FK__Usuario__Rol__267ABA7A">
             <End Role="Rol" EntitySet="Rol" />
@@ -1703,47 +1650,47 @@
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Usuario1" EntitySet="Usuario" />
           </AssociationSet>
-          <AssociationSet Name="FK__Vehiculo__Modelo__534D60F1" Association="Self.FK__Vehiculo__Modelo__534D60F1">
+          <AssociationSet Name="FK__Vehiculo__Modelo__5070F446" Association="Self.FK__Vehiculo__Modelo__5070F446">
             <End Role="Modelo" EntitySet="Modelo" />
             <End Role="Vehiculo" EntitySet="Vehiculo" />
           </AssociationSet>
-          <AssociationSet Name="FK__Vehiculo__TipoId__5441852A" Association="Self.FK__Vehiculo__TipoId__5441852A">
+          <AssociationSet Name="FK__Vehiculo__TipoId__5165187F" Association="Self.FK__Vehiculo__TipoId__5165187F">
             <End Role="TipoIdentificacion" EntitySet="TipoIdentificacion" />
             <End Role="Vehiculo" EntitySet="Vehiculo" />
           </AssociationSet>
-          <AssociationSet Name="FK__Vehiculo__Usuari__5535A963" Association="Self.FK__Vehiculo__Usuari__5535A963">
+          <AssociationSet Name="FK__Vehiculo__Usuari__52593CB8" Association="Self.FK__Vehiculo__Usuari__52593CB8">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Vehiculo" EntitySet="Vehiculo" />
           </AssociationSet>
-          <AssociationSet Name="FK__Vehiculo__Usuari__5629CD9C" Association="Self.FK__Vehiculo__Usuari__5629CD9C">
+          <AssociationSet Name="FK__Vehiculo__Usuari__534D60F1" Association="Self.FK__Vehiculo__Usuari__534D60F1">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Vehiculo" EntitySet="Vehiculo" />
           </AssociationSet>
-          <AssociationSet Name="FK__Venta__Cliente__29221CFB" Association="Self.FK__Venta__Cliente__29221CFB">
+          <AssociationSet Name="FK__Venta__Cliente__282DF8C2" Association="Self.FK__Venta__Cliente__282DF8C2">
             <End Role="Cliente" EntitySet="Cliente" />
             <End Role="Venta" EntitySet="Venta" />
           </AssociationSet>
-          <AssociationSet Name="FK__Venta__UsuarioVe__2A164134" Association="Self.FK__Venta__UsuarioVe__2A164134">
+          <AssociationSet Name="FK__Venta__UsuarioVe__29221CFB" Association="Self.FK__Venta__UsuarioVe__29221CFB">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Venta" EntitySet="Venta" />
           </AssociationSet>
-          <AssociationSet Name="FK__VentaDeta__Paque__2FCF1A8A" Association="Self.FK__VentaDeta__Paque__2FCF1A8A">
+          <AssociationSet Name="FK__VentaDeta__Paque__2EDAF651" Association="Self.FK__VentaDeta__Paque__2EDAF651">
             <End Role="Paquete" EntitySet="Paquete" />
             <End Role="VentaDetalle" EntitySet="VentaDetalle" />
           </AssociationSet>
-          <AssociationSet Name="FK__VentaDeta__Produ__2DE6D218" Association="Self.FK__VentaDeta__Produ__2DE6D218">
+          <AssociationSet Name="FK__VentaDeta__Produ__2CF2ADDF" Association="Self.FK__VentaDeta__Produ__2CF2ADDF">
             <End Role="Producto" EntitySet="Producto" />
             <End Role="VentaDetalle" EntitySet="VentaDetalle" />
           </AssociationSet>
-          <AssociationSet Name="FK__VentaDeta__Promo__30C33EC3" Association="Self.FK__VentaDeta__Promo__30C33EC3">
+          <AssociationSet Name="FK__VentaDeta__Promo__2FCF1A8A" Association="Self.FK__VentaDeta__Promo__2FCF1A8A">
             <End Role="Promocion" EntitySet="Promocion" />
             <End Role="VentaDetalle" EntitySet="VentaDetalle" />
           </AssociationSet>
-          <AssociationSet Name="FK__VentaDeta__Vehic__2EDAF651" Association="Self.FK__VentaDeta__Vehic__2EDAF651">
+          <AssociationSet Name="FK__VentaDeta__Vehic__2DE6D218" Association="Self.FK__VentaDeta__Vehic__2DE6D218">
             <End Role="Vehiculo" EntitySet="Vehiculo" />
             <End Role="VentaDetalle" EntitySet="VentaDetalle" />
           </AssociationSet>
-          <AssociationSet Name="FK__VentaDeta__Venta__2CF2ADDF" Association="Self.FK__VentaDeta__Venta__2CF2ADDF">
+          <AssociationSet Name="FK__VentaDeta__Venta__2BFE89A6" Association="Self.FK__VentaDeta__Venta__2BFE89A6">
             <End Role="Venta" EntitySet="Venta" />
             <End Role="VentaDetalle" EntitySet="VentaDetalle" />
           </AssociationSet>
@@ -1759,7 +1706,7 @@
           </Key>
           <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Empleado" Relationship="Self.FK__Empleado__BaseSa__4CA06362" FromRole="BaseSalario" ToRole="Empleado" />
+          <NavigationProperty Name="Empleado" Relationship="Self.FK__Empleado__BaseSa__4AB81AF0" FromRole="BaseSalario" ToRole="Empleado" />
         </EntityType>
         <EntityType Name="Cliente">
           <Key>
@@ -1767,7 +1714,7 @@
           </Key>
           <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Tipo" Type="Boolean" />
-          <Property Name="Nombre" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Apellido" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Apellido2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="RFC" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
@@ -1786,11 +1733,11 @@
           <Property Name="FechaAlta" Type="DateTime" Precision="3" />
           <Property Name="UsuarioMod" Type="Int64" />
           <Property Name="FechaMod" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Estado1" Relationship="Self.FK__Cliente__Estado__778AC167" FromRole="Cliente" ToRole="Estado" />
-          <NavigationProperty Name="GrupoCliente1" Relationship="Self.FK__Cliente__GrupoCl__787EE5A0" FromRole="Cliente" ToRole="GrupoCliente" />
-          <NavigationProperty Name="Usuario" Relationship="Self.FK__Cliente__Usuario__797309D9" FromRole="Cliente" ToRole="Usuario" />
-          <NavigationProperty Name="Usuario1" Relationship="Self.FK__Cliente__Usuario__7A672E12" FromRole="Cliente" ToRole="Usuario" />
-          <NavigationProperty Name="Venta" Relationship="Self.FK__Venta__Cliente__29221CFB" FromRole="Cliente" ToRole="Venta" />
+          <NavigationProperty Name="Estado1" Relationship="Self.FK__Cliente__Estado__76969D2E" FromRole="Cliente" ToRole="Estado" />
+          <NavigationProperty Name="GrupoCliente1" Relationship="Self.FK__Cliente__GrupoCl__778AC167" FromRole="Cliente" ToRole="GrupoCliente" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK__Cliente__Usuario__787EE5A0" FromRole="Cliente" ToRole="Usuario" />
+          <NavigationProperty Name="Usuario1" Relationship="Self.FK__Cliente__Usuario__797309D9" FromRole="Cliente" ToRole="Usuario" />
+          <NavigationProperty Name="Venta" Relationship="Self.FK__Venta__Cliente__282DF8C2" FromRole="Cliente" ToRole="Venta" />
         </EntityType>
         <EntityType Name="Color">
           <Key>
@@ -1798,12 +1745,6 @@
           </Key>
           <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="UsuarioAlta" Type="Int64" />
-          <Property Name="FechaAlta" Type="DateTime" Precision="3" />
-          <Property Name="UsuarioMod" Type="Int64" />
-          <Property Name="FechaMod" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Usuario" Relationship="Self.FK__Color__UsuarioAl__403A8C7D" FromRole="Color" ToRole="Usuario" />
-          <NavigationProperty Name="Usuario1" Relationship="Self.FK__Color__UsuarioMo__412EB0B6" FromRole="Color" ToRole="Usuario" />
         </EntityType>
         <EntityType Name="Configuracion">
           <Key>
@@ -1820,8 +1761,8 @@
           </Key>
           <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="PaqueteDia" Relationship="Self.FK__PaqueteDia__Dia__02FC7413" FromRole="Dia" ToRole="PaqueteDia" />
-          <NavigationProperty Name="PromocionDia" Relationship="Self.FK__PromocionDi__Dia__151B244E" FromRole="Dia" ToRole="PromocionDia" />
+          <NavigationProperty Name="PaqueteDia" Relationship="Self.FK__PaqueteDia__Dia__02084FDA" FromRole="Dia" ToRole="PaqueteDia" />
+          <NavigationProperty Name="PromocionDia" Relationship="Self.FK__PromocionDi__Dia__14270015" FromRole="Dia" ToRole="PromocionDia" />
         </EntityType>
         <EntityType Name="Empleado">
           <Key>
@@ -1829,7 +1770,7 @@
           </Key>
           <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="RFC" Type="String" MaxLength="13" FixedLength="true" Unicode="false" />
-          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Nombre" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="Apellido" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Apellido2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Calle" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
@@ -1850,11 +1791,10 @@
           <Property Name="FechaAlta" Type="DateTime" Precision="3" />
           <Property Name="UsuarioMod" Type="Int64" />
           <Property Name="FechaMod" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="BaseSalario1" Relationship="Self.FK__Empleado__BaseSa__4CA06362" FromRole="Empleado" ToRole="BaseSalario" />
-          <NavigationProperty Name="Estado1" Relationship="Self.FK__Empleado__Estado__4BAC3F29" FromRole="Empleado" ToRole="Estado" />
-          <NavigationProperty Name="Usuario" Relationship="Self.FK__Empleado__Usuari__4D94879B" FromRole="Empleado" ToRole="Usuario" />
-          <NavigationProperty Name="Usuario1" Relationship="Self.FK__Empleado__Usuari__4E88ABD4" FromRole="Empleado" ToRole="Usuario" />
-          <NavigationProperty Name="Usuario2" Relationship="Self.FK__Usuario__Emplead__4F7CD00D" FromRole="Empleado" ToRole="Usuario" />
+          <NavigationProperty Name="BaseSalario1" Relationship="Self.FK__Empleado__BaseSa__4AB81AF0" FromRole="Empleado" ToRole="BaseSalario" />
+          <NavigationProperty Name="Estado1" Relationship="Self.FK__Empleado__Estado__49C3F6B7" FromRole="Empleado" ToRole="Estado" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK__Empleado__Usuari__4BAC3F29" FromRole="Empleado" ToRole="Usuario" />
+          <NavigationProperty Name="Usuario1" Relationship="Self.FK__Empleado__Usuari__4CA06362" FromRole="Empleado" ToRole="Usuario" />
         </EntityType>
         <EntityType Name="Estado">
           <Key>
@@ -1867,12 +1807,12 @@
           <Property Name="FechaAlta" Type="DateTime" Precision="3" />
           <Property Name="UsuarioMod" Type="Int64" />
           <Property Name="FechaMod" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Cliente" Relationship="Self.FK__Cliente__Estado__778AC167" FromRole="Estado" ToRole="Cliente" />
-          <NavigationProperty Name="Empleado" Relationship="Self.FK__Empleado__Estado__4BAC3F29" FromRole="Estado" ToRole="Empleado" />
+          <NavigationProperty Name="Cliente" Relationship="Self.FK__Cliente__Estado__76969D2E" FromRole="Estado" ToRole="Cliente" />
+          <NavigationProperty Name="Empleado" Relationship="Self.FK__Empleado__Estado__49C3F6B7" FromRole="Estado" ToRole="Empleado" />
           <NavigationProperty Name="Pais1" Relationship="Self.FK__Estado__Pais__30F848ED" FromRole="Estado" ToRole="Pais" />
           <NavigationProperty Name="Usuario" Relationship="Self.FK__Estado__UsuarioA__31EC6D26" FromRole="Estado" ToRole="Usuario" />
           <NavigationProperty Name="Usuario1" Relationship="Self.FK__Estado__UsuarioM__32E0915F" FromRole="Estado" ToRole="Usuario" />
-          <NavigationProperty Name="Proveedor" Relationship="Self.FK__Proveedor__Estad__5AEE82B9" FromRole="Estado" ToRole="Proveedor" />
+          <NavigationProperty Name="Proveedor" Relationship="Self.FK__Proveedor__Estad__59063A47" FromRole="Estado" ToRole="Proveedor" />
         </EntityType>
         <EntityType Name="GrupoCliente">
           <Key>
@@ -1884,11 +1824,11 @@
           <Property Name="FechaAlta" Type="DateTime" Precision="3" />
           <Property Name="UsuarioMod" Type="Int64" />
           <Property Name="FechaMod" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Cliente" Relationship="Self.FK__Cliente__GrupoCl__787EE5A0" FromRole="GrupoCliente" ToRole="Cliente" />
-          <NavigationProperty Name="Usuario" Relationship="Self.FK__GrupoClie__Usuar__71D1E811" FromRole="GrupoCliente" ToRole="Usuario" />
-          <NavigationProperty Name="Usuario1" Relationship="Self.FK__GrupoClie__Usuar__72C60C4A" FromRole="GrupoCliente" ToRole="Usuario" />
-          <NavigationProperty Name="PaqueteGrupoCliente" Relationship="Self.FK__PaqueteGr__Grupo__08B54D69" FromRole="GrupoCliente" ToRole="PaqueteGrupoCliente" />
-          <NavigationProperty Name="PromocionTipoCliente" Relationship="Self.FK__Promocion__Grupo__2645B050" FromRole="GrupoCliente" ToRole="PromocionTipoCliente" />
+          <NavigationProperty Name="Cliente" Relationship="Self.FK__Cliente__GrupoCl__778AC167" FromRole="GrupoCliente" ToRole="Cliente" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK__GrupoClie__Usuar__6FE99F9F" FromRole="GrupoCliente" ToRole="Usuario" />
+          <NavigationProperty Name="Usuario1" Relationship="Self.FK__GrupoClie__Usuar__70DDC3D8" FromRole="GrupoCliente" ToRole="Usuario" />
+          <NavigationProperty Name="PaqueteGrupoCliente" Relationship="Self.FK__PaqueteGr__Grupo__07C12930" FromRole="GrupoCliente" ToRole="PaqueteGrupoCliente" />
+          <NavigationProperty Name="PromocionTipoCliente" Relationship="Self.FK__Promocion__Grupo__25518C17" FromRole="GrupoCliente" ToRole="PromocionTipoCliente" />
         </EntityType>
         <EntityType Name="Logs">
           <Key>
@@ -1898,7 +1838,7 @@
           <Property Name="Fecha" Type="DateTime" Precision="3" />
           <Property Name="Descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="Usuario" Type="Int64" />
-          <NavigationProperty Name="Usuario1" Relationship="Self.FK__Logs__Usuario__3587F3E0" FromRole="Logs" ToRole="Usuario" />
+          <NavigationProperty Name="Usuario1" Relationship="Self.FK__Logs__Usuario__3493CFA7" FromRole="Logs" ToRole="Usuario" />
         </EntityType>
         <EntityType Name="Marca">
           <Key>
@@ -1928,7 +1868,7 @@
           <NavigationProperty Name="Marca1" Relationship="Self.FK__Modelo__Marca__3A81B327" FromRole="Modelo" ToRole="Marca" />
           <NavigationProperty Name="Usuario" Relationship="Self.FK__Modelo__UsuarioA__3B75D760" FromRole="Modelo" ToRole="Usuario" />
           <NavigationProperty Name="Usuario1" Relationship="Self.FK__Modelo__UsuarioM__3C69FB99" FromRole="Modelo" ToRole="Usuario" />
-          <NavigationProperty Name="Vehiculo" Relationship="Self.FK__Vehiculo__Modelo__534D60F1" FromRole="Modelo" ToRole="Vehiculo" />
+          <NavigationProperty Name="Vehiculo" Relationship="Self.FK__Vehiculo__Modelo__5070F446" FromRole="Modelo" ToRole="Vehiculo" />
         </EntityType>
         <EntityType Name="Movimiento">
           <Key>
@@ -1944,10 +1884,10 @@
           <Property Name="FechaAlta" Type="DateTime" Precision="3" />
           <Property Name="UsuarioMod" Type="Int64" />
           <Property Name="FechaMod" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Producto1" Relationship="Self.FK__Movimient__Produ__6C190EBB" FromRole="Movimiento" ToRole="Producto" />
-          <NavigationProperty Name="TipoMovimiento" Relationship="Self.FK__Movimient__TipoM__6B24EA82" FromRole="Movimiento" ToRole="TipoMovimiento" />
-          <NavigationProperty Name="Usuario" Relationship="Self.FK__Movimient__Usuar__6D0D32F4" FromRole="Movimiento" ToRole="Usuario" />
-          <NavigationProperty Name="Usuario1" Relationship="Self.FK__Movimient__Usuar__6E01572D" FromRole="Movimiento" ToRole="Usuario" />
+          <NavigationProperty Name="Producto1" Relationship="Self.FK__Movimient__Produ__6A30C649" FromRole="Movimiento" ToRole="Producto" />
+          <NavigationProperty Name="TipoMovimiento" Relationship="Self.FK__Movimient__TipoM__693CA210" FromRole="Movimiento" ToRole="TipoMovimiento" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK__Movimient__Usuar__6B24EA82" FromRole="Movimiento" ToRole="Usuario" />
+          <NavigationProperty Name="Usuario1" Relationship="Self.FK__Movimient__Usuar__6C190EBB" FromRole="Movimiento" ToRole="Usuario" />
         </EntityType>
         <EntityType Name="Pagina">
           <Key>
@@ -1987,13 +1927,13 @@
           <Property Name="FechaAlta" Type="DateTime" Precision="3" />
           <Property Name="UsuarioMod" Type="Int64" />
           <Property Name="FechaMod" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Usuario" Relationship="Self.FK__Paquete__Usuario__7E37BEF6" FromRole="Paquete" ToRole="Usuario" />
-          <NavigationProperty Name="Usuario1" Relationship="Self.FK__Paquete__Usuario__7F2BE32F" FromRole="Paquete" ToRole="Usuario" />
-          <NavigationProperty Name="PaqueteDia" Relationship="Self.FK__PaqueteDi__Paque__02084FDA" FromRole="Paquete" ToRole="PaqueteDia" />
-          <NavigationProperty Name="PaqueteGrupoCliente" Relationship="Self.FK__PaqueteGr__Paque__07C12930" FromRole="Paquete" ToRole="PaqueteGrupoCliente" />
-          <NavigationProperty Name="PaqueteProducto" Relationship="Self.FK__PaquetePr__Paque__0B91BA14" FromRole="Paquete" ToRole="PaqueteProducto" />
-          <NavigationProperty Name="PromocionPaquete" Relationship="Self.FK__Promocion__Paque__1AD3FDA4" FromRole="Paquete" ToRole="PromocionPaquete" />
-          <NavigationProperty Name="VentaDetalle" Relationship="Self.FK__VentaDeta__Paque__2FCF1A8A" FromRole="Paquete" ToRole="VentaDetalle" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK__Paquete__Usuario__7D439ABD" FromRole="Paquete" ToRole="Usuario" />
+          <NavigationProperty Name="Usuario1" Relationship="Self.FK__Paquete__Usuario__7E37BEF6" FromRole="Paquete" ToRole="Usuario" />
+          <NavigationProperty Name="PaqueteDia" Relationship="Self.FK__PaqueteDi__Paque__01142BA1" FromRole="Paquete" ToRole="PaqueteDia" />
+          <NavigationProperty Name="PaqueteGrupoCliente" Relationship="Self.FK__PaqueteGr__Paque__06CD04F7" FromRole="Paquete" ToRole="PaqueteGrupoCliente" />
+          <NavigationProperty Name="PaqueteProducto" Relationship="Self.FK__PaquetePr__Paque__0A9D95DB" FromRole="Paquete" ToRole="PaqueteProducto" />
+          <NavigationProperty Name="PromocionPaquete" Relationship="Self.FK__Promocion__Paque__19DFD96B" FromRole="Paquete" ToRole="PromocionPaquete" />
+          <NavigationProperty Name="VentaDetalle" Relationship="Self.FK__VentaDeta__Paque__2EDAF651" FromRole="Paquete" ToRole="VentaDetalle" />
         </EntityType>
         <EntityType Name="PaqueteDia">
           <Key>
@@ -2006,10 +1946,10 @@
           <Property Name="FechaAlta" Type="DateTime" Precision="3" />
           <Property Name="UsuarioMod" Type="Int64" />
           <Property Name="FechaMod" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Dia1" Relationship="Self.FK__PaqueteDia__Dia__02FC7413" FromRole="PaqueteDia" ToRole="Dia" />
-          <NavigationProperty Name="Paquete1" Relationship="Self.FK__PaqueteDi__Paque__02084FDA" FromRole="PaqueteDia" ToRole="Paquete" />
-          <NavigationProperty Name="Usuario" Relationship="Self.FK__PaqueteDi__Usuar__03F0984C" FromRole="PaqueteDia" ToRole="Usuario" />
-          <NavigationProperty Name="Usuario1" Relationship="Self.FK__PaqueteDi__Usuar__04E4BC85" FromRole="PaqueteDia" ToRole="Usuario" />
+          <NavigationProperty Name="Dia1" Relationship="Self.FK__PaqueteDia__Dia__02084FDA" FromRole="PaqueteDia" ToRole="Dia" />
+          <NavigationProperty Name="Paquete1" Relationship="Self.FK__PaqueteDi__Paque__01142BA1" FromRole="PaqueteDia" ToRole="Paquete" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK__PaqueteDi__Usuar__02FC7413" FromRole="PaqueteDia" ToRole="Usuario" />
+          <NavigationProperty Name="Usuario1" Relationship="Self.FK__PaqueteDi__Usuar__03F0984C" FromRole="PaqueteDia" ToRole="Usuario" />
         </EntityType>
         <EntityType Name="PaqueteGrupoCliente">
           <Key>
@@ -2018,8 +1958,8 @@
           <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Paquete" Type="Int64" />
           <Property Name="GrupoCliente" Type="Int64" />
-          <NavigationProperty Name="GrupoCliente1" Relationship="Self.FK__PaqueteGr__Grupo__08B54D69" FromRole="PaqueteGrupoCliente" ToRole="GrupoCliente" />
-          <NavigationProperty Name="Paquete1" Relationship="Self.FK__PaqueteGr__Paque__07C12930" FromRole="PaqueteGrupoCliente" ToRole="Paquete" />
+          <NavigationProperty Name="GrupoCliente1" Relationship="Self.FK__PaqueteGr__Grupo__07C12930" FromRole="PaqueteGrupoCliente" ToRole="GrupoCliente" />
+          <NavigationProperty Name="Paquete1" Relationship="Self.FK__PaqueteGr__Paque__06CD04F7" FromRole="PaqueteGrupoCliente" ToRole="Paquete" />
         </EntityType>
         <EntityType Name="PaqueteProducto">
           <Key>
@@ -2028,8 +1968,8 @@
           <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Paquete" Type="Int64" />
           <Property Name="Producto" Type="Int64" />
-          <NavigationProperty Name="Paquete1" Relationship="Self.FK__PaquetePr__Paque__0B91BA14" FromRole="PaqueteProducto" ToRole="Paquete" />
-          <NavigationProperty Name="Producto1" Relationship="Self.FK__PaquetePr__Produ__0C85DE4D" FromRole="PaqueteProducto" ToRole="Producto" />
+          <NavigationProperty Name="Paquete1" Relationship="Self.FK__PaquetePr__Paque__0A9D95DB" FromRole="PaqueteProducto" ToRole="Paquete" />
+          <NavigationProperty Name="Producto1" Relationship="Self.FK__PaquetePr__Produ__0B91BA14" FromRole="PaqueteProducto" ToRole="Producto" />
         </EntityType>
         <EntityType Name="Producto">
           <Key>
@@ -2049,14 +1989,14 @@
           <Property Name="FechaAlta" Type="DateTime" Precision="3" />
           <Property Name="UsuarioMod" Type="Int64" />
           <Property Name="FechaMod" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Movimiento" Relationship="Self.FK__Movimient__Produ__6C190EBB" FromRole="Producto" ToRole="Movimiento" />
-          <NavigationProperty Name="PaqueteProducto" Relationship="Self.FK__PaquetePr__Produ__0C85DE4D" FromRole="Producto" ToRole="PaqueteProducto" />
-          <NavigationProperty Name="Proveedor1" Relationship="Self.FK__Producto__Provee__619B8048" FromRole="Producto" ToRole="Proveedor" />
-          <NavigationProperty Name="TipoProducto1" Relationship="Self.FK__Producto__TipoPr__60A75C0F" FromRole="Producto" ToRole="TipoProducto" />
-          <NavigationProperty Name="Usuario" Relationship="Self.FK__Producto__Usuari__628FA481" FromRole="Producto" ToRole="Usuario" />
-          <NavigationProperty Name="Usuario1" Relationship="Self.FK__Producto__Usuari__6383C8BA" FromRole="Producto" ToRole="Usuario" />
-          <NavigationProperty Name="PromocionProducto" Relationship="Self.FK__Promocion__Produ__22751F6C" FromRole="Producto" ToRole="PromocionProducto" />
-          <NavigationProperty Name="VentaDetalle" Relationship="Self.FK__VentaDeta__Produ__2DE6D218" FromRole="Producto" ToRole="VentaDetalle" />
+          <NavigationProperty Name="Movimiento" Relationship="Self.FK__Movimient__Produ__6A30C649" FromRole="Producto" ToRole="Movimiento" />
+          <NavigationProperty Name="PaqueteProducto" Relationship="Self.FK__PaquetePr__Produ__0B91BA14" FromRole="Producto" ToRole="PaqueteProducto" />
+          <NavigationProperty Name="Proveedor1" Relationship="Self.FK__Producto__Provee__5FB337D6" FromRole="Producto" ToRole="Proveedor" />
+          <NavigationProperty Name="TipoProducto1" Relationship="Self.FK__Producto__TipoPr__5EBF139D" FromRole="Producto" ToRole="TipoProducto" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK__Producto__Usuari__60A75C0F" FromRole="Producto" ToRole="Usuario" />
+          <NavigationProperty Name="Usuario1" Relationship="Self.FK__Producto__Usuari__619B8048" FromRole="Producto" ToRole="Usuario" />
+          <NavigationProperty Name="PromocionProducto" Relationship="Self.FK__Promocion__Produ__2180FB33" FromRole="Producto" ToRole="PromocionProducto" />
+          <NavigationProperty Name="VentaDetalle" Relationship="Self.FK__VentaDeta__Produ__2CF2ADDF" FromRole="Producto" ToRole="VentaDetalle" />
         </EntityType>
         <EntityType Name="Promocion">
           <Key>
@@ -2080,14 +2020,14 @@
           <Property Name="FechaAlta" Type="DateTime" Precision="3" />
           <Property Name="UsuarioMod" Type="Int64" />
           <Property Name="FechaMod" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="PromocionDia" Relationship="Self.FK__Promocion__Promo__14270015" FromRole="Promocion" ToRole="PromocionDia" />
-          <NavigationProperty Name="PromocionPaquete" Relationship="Self.FK__Promocion__Promo__19DFD96B" FromRole="Promocion" ToRole="PromocionPaquete" />
-          <NavigationProperty Name="PromocionTipoProducto" Relationship="Self.FK__Promocion__Promo__1DB06A4F" FromRole="Promocion" ToRole="PromocionTipoProducto" />
-          <NavigationProperty Name="PromocionProducto" Relationship="Self.FK__Promocion__Promo__2180FB33" FromRole="Promocion" ToRole="PromocionProducto" />
-          <NavigationProperty Name="PromocionTipoCliente" Relationship="Self.FK__Promocion__Promo__25518C17" FromRole="Promocion" ToRole="PromocionTipoCliente" />
-          <NavigationProperty Name="Usuario" Relationship="Self.FK__Promocion__Usuar__10566F31" FromRole="Promocion" ToRole="Usuario" />
-          <NavigationProperty Name="Usuario1" Relationship="Self.FK__Promocion__Usuar__114A936A" FromRole="Promocion" ToRole="Usuario" />
-          <NavigationProperty Name="VentaDetalle" Relationship="Self.FK__VentaDeta__Promo__30C33EC3" FromRole="Promocion" ToRole="VentaDetalle" />
+          <NavigationProperty Name="PromocionDia" Relationship="Self.FK__Promocion__Promo__1332DBDC" FromRole="Promocion" ToRole="PromocionDia" />
+          <NavigationProperty Name="PromocionPaquete" Relationship="Self.FK__Promocion__Promo__18EBB532" FromRole="Promocion" ToRole="PromocionPaquete" />
+          <NavigationProperty Name="PromocionTipoProducto" Relationship="Self.FK__Promocion__Promo__1CBC4616" FromRole="Promocion" ToRole="PromocionTipoProducto" />
+          <NavigationProperty Name="PromocionProducto" Relationship="Self.FK__Promocion__Promo__208CD6FA" FromRole="Promocion" ToRole="PromocionProducto" />
+          <NavigationProperty Name="PromocionTipoCliente" Relationship="Self.FK__Promocion__Promo__245D67DE" FromRole="Promocion" ToRole="PromocionTipoCliente" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK__Promocion__Usuar__0F624AF8" FromRole="Promocion" ToRole="Usuario" />
+          <NavigationProperty Name="Usuario1" Relationship="Self.FK__Promocion__Usuar__10566F31" FromRole="Promocion" ToRole="Usuario" />
+          <NavigationProperty Name="VentaDetalle" Relationship="Self.FK__VentaDeta__Promo__2FCF1A8A" FromRole="Promocion" ToRole="VentaDetalle" />
         </EntityType>
         <EntityType Name="PromocionDia">
           <Key>
@@ -2100,10 +2040,10 @@
           <Property Name="FechaAlta" Type="DateTime" Precision="3" />
           <Property Name="UsuarioMod" Type="Int64" />
           <Property Name="FechaMod" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Dia1" Relationship="Self.FK__PromocionDi__Dia__151B244E" FromRole="PromocionDia" ToRole="Dia" />
-          <NavigationProperty Name="Promocion1" Relationship="Self.FK__Promocion__Promo__14270015" FromRole="PromocionDia" ToRole="Promocion" />
-          <NavigationProperty Name="Usuario" Relationship="Self.FK__Promocion__Usuar__160F4887" FromRole="PromocionDia" ToRole="Usuario" />
-          <NavigationProperty Name="Usuario1" Relationship="Self.FK__Promocion__Usuar__17036CC0" FromRole="PromocionDia" ToRole="Usuario" />
+          <NavigationProperty Name="Dia1" Relationship="Self.FK__PromocionDi__Dia__14270015" FromRole="PromocionDia" ToRole="Dia" />
+          <NavigationProperty Name="Promocion1" Relationship="Self.FK__Promocion__Promo__1332DBDC" FromRole="PromocionDia" ToRole="Promocion" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK__Promocion__Usuar__151B244E" FromRole="PromocionDia" ToRole="Usuario" />
+          <NavigationProperty Name="Usuario1" Relationship="Self.FK__Promocion__Usuar__160F4887" FromRole="PromocionDia" ToRole="Usuario" />
         </EntityType>
         <EntityType Name="PromocionPaquete">
           <Key>
@@ -2112,8 +2052,8 @@
           <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Promocion" Type="Int64" />
           <Property Name="Paquete" Type="Int64" />
-          <NavigationProperty Name="Paquete1" Relationship="Self.FK__Promocion__Paque__1AD3FDA4" FromRole="PromocionPaquete" ToRole="Paquete" />
-          <NavigationProperty Name="Promocion1" Relationship="Self.FK__Promocion__Promo__19DFD96B" FromRole="PromocionPaquete" ToRole="Promocion" />
+          <NavigationProperty Name="Paquete1" Relationship="Self.FK__Promocion__Paque__19DFD96B" FromRole="PromocionPaquete" ToRole="Paquete" />
+          <NavigationProperty Name="Promocion1" Relationship="Self.FK__Promocion__Promo__18EBB532" FromRole="PromocionPaquete" ToRole="Promocion" />
         </EntityType>
         <EntityType Name="PromocionProducto">
           <Key>
@@ -2122,8 +2062,8 @@
           <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Promocion" Type="Int64" />
           <Property Name="Producto" Type="Int64" />
-          <NavigationProperty Name="Producto1" Relationship="Self.FK__Promocion__Produ__22751F6C" FromRole="PromocionProducto" ToRole="Producto" />
-          <NavigationProperty Name="Promocion1" Relationship="Self.FK__Promocion__Promo__2180FB33" FromRole="PromocionProducto" ToRole="Promocion" />
+          <NavigationProperty Name="Producto1" Relationship="Self.FK__Promocion__Produ__2180FB33" FromRole="PromocionProducto" ToRole="Producto" />
+          <NavigationProperty Name="Promocion1" Relationship="Self.FK__Promocion__Promo__208CD6FA" FromRole="PromocionProducto" ToRole="Promocion" />
         </EntityType>
         <EntityType Name="PromocionTipoCliente">
           <Key>
@@ -2132,8 +2072,8 @@
           <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Promocion" Type="Int64" />
           <Property Name="GrupoCliente" Type="Int64" />
-          <NavigationProperty Name="GrupoCliente1" Relationship="Self.FK__Promocion__Grupo__2645B050" FromRole="PromocionTipoCliente" ToRole="GrupoCliente" />
-          <NavigationProperty Name="Promocion1" Relationship="Self.FK__Promocion__Promo__25518C17" FromRole="PromocionTipoCliente" ToRole="Promocion" />
+          <NavigationProperty Name="GrupoCliente1" Relationship="Self.FK__Promocion__Grupo__25518C17" FromRole="PromocionTipoCliente" ToRole="GrupoCliente" />
+          <NavigationProperty Name="Promocion1" Relationship="Self.FK__Promocion__Promo__245D67DE" FromRole="PromocionTipoCliente" ToRole="Promocion" />
         </EntityType>
         <EntityType Name="PromocionTipoProducto">
           <Key>
@@ -2142,8 +2082,8 @@
           <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Promocion" Type="Int64" />
           <Property Name="TipoProducto" Type="Int64" />
-          <NavigationProperty Name="Promocion1" Relationship="Self.FK__Promocion__Promo__1DB06A4F" FromRole="PromocionTipoProducto" ToRole="Promocion" />
-          <NavigationProperty Name="TipoProducto1" Relationship="Self.FK__Promocion__TipoP__1EA48E88" FromRole="PromocionTipoProducto" ToRole="TipoProducto" />
+          <NavigationProperty Name="Promocion1" Relationship="Self.FK__Promocion__Promo__1CBC4616" FromRole="PromocionTipoProducto" ToRole="Promocion" />
+          <NavigationProperty Name="TipoProducto1" Relationship="Self.FK__Promocion__TipoP__1DB06A4F" FromRole="PromocionTipoProducto" ToRole="TipoProducto" />
         </EntityType>
         <EntityType Name="Proveedor">
           <Key>
@@ -2151,7 +2091,7 @@
           </Key>
           <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Tipo" Type="Boolean" />
-          <Property Name="Nombre" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Apellido" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Apellido2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="RFC" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
@@ -2169,10 +2109,10 @@
           <Property Name="FechaAlta" Type="DateTime" Precision="3" />
           <Property Name="UsuarioMod" Type="Int64" />
           <Property Name="FechaMod" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Estado1" Relationship="Self.FK__Proveedor__Estad__5AEE82B9" FromRole="Proveedor" ToRole="Estado" />
-          <NavigationProperty Name="Producto" Relationship="Self.FK__Producto__Provee__619B8048" FromRole="Proveedor" ToRole="Producto" />
-          <NavigationProperty Name="Usuario" Relationship="Self.FK__Proveedor__Usuar__5BE2A6F2" FromRole="Proveedor" ToRole="Usuario" />
-          <NavigationProperty Name="Usuario1" Relationship="Self.FK__Proveedor__Usuar__5CD6CB2B" FromRole="Proveedor" ToRole="Usuario" />
+          <NavigationProperty Name="Estado1" Relationship="Self.FK__Proveedor__Estad__59063A47" FromRole="Proveedor" ToRole="Estado" />
+          <NavigationProperty Name="Producto" Relationship="Self.FK__Producto__Provee__5FB337D6" FromRole="Proveedor" ToRole="Producto" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK__Proveedor__Usuar__59FA5E80" FromRole="Proveedor" ToRole="Usuario" />
+          <NavigationProperty Name="Usuario1" Relationship="Self.FK__Proveedor__Usuar__5AEE82B9" FromRole="Proveedor" ToRole="Usuario" />
         </EntityType>
         <EntityType Name="Rol">
           <Key>
@@ -2199,7 +2139,7 @@
           </Key>
           <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Vehiculo" Relationship="Self.FK__Vehiculo__TipoId__5441852A" FromRole="TipoIdentificacion" ToRole="Vehiculo" />
+          <NavigationProperty Name="Vehiculo" Relationship="Self.FK__Vehiculo__TipoId__5165187F" FromRole="TipoIdentificacion" ToRole="Vehiculo" />
         </EntityType>
         <EntityType Name="TipoMovimiento">
           <Key>
@@ -2212,9 +2152,9 @@
           <Property Name="FechaAlta" Type="DateTime" Precision="3" />
           <Property Name="UsuarioMod" Type="Int64" />
           <Property Name="FechaMod" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Movimiento" Relationship="Self.FK__Movimient__TipoM__6B24EA82" FromRole="TipoMovimiento" ToRole="Movimiento" />
-          <NavigationProperty Name="Usuario" Relationship="Self.FK__TipoMovim__Usuar__6754599E" FromRole="TipoMovimiento" ToRole="Usuario" />
-          <NavigationProperty Name="Usuario1" Relationship="Self.FK__TipoMovim__Usuar__68487DD7" FromRole="TipoMovimiento" ToRole="Usuario" />
+          <NavigationProperty Name="Movimiento" Relationship="Self.FK__Movimient__TipoM__693CA210" FromRole="TipoMovimiento" ToRole="Movimiento" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK__TipoMovim__Usuar__656C112C" FromRole="TipoMovimiento" ToRole="Usuario" />
+          <NavigationProperty Name="Usuario1" Relationship="Self.FK__TipoMovim__Usuar__66603565" FromRole="TipoMovimiento" ToRole="Usuario" />
         </EntityType>
         <EntityType Name="TipoProducto">
           <Key>
@@ -2226,10 +2166,10 @@
           <Property Name="FechaAlta" Type="DateTime" Precision="3" />
           <Property Name="UsuarioMod" Type="Int64" />
           <Property Name="FechaMod" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Producto" Relationship="Self.FK__Producto__TipoPr__60A75C0F" FromRole="TipoProducto" ToRole="Producto" />
-          <NavigationProperty Name="PromocionTipoProducto" Relationship="Self.FK__Promocion__TipoP__1EA48E88" FromRole="TipoProducto" ToRole="PromocionTipoProducto" />
-          <NavigationProperty Name="Usuario" Relationship="Self.FK__TipoProdu__Usuar__44FF419A" FromRole="TipoProducto" ToRole="Usuario" />
-          <NavigationProperty Name="Usuario1" Relationship="Self.FK__TipoProdu__Usuar__45F365D3" FromRole="TipoProducto" ToRole="Usuario" />
+          <NavigationProperty Name="Producto" Relationship="Self.FK__Producto__TipoPr__5EBF139D" FromRole="TipoProducto" ToRole="Producto" />
+          <NavigationProperty Name="PromocionTipoProducto" Relationship="Self.FK__Promocion__TipoP__1DB06A4F" FromRole="TipoProducto" ToRole="PromocionTipoProducto" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK__TipoProdu__Usuar__4316F928" FromRole="TipoProducto" ToRole="Usuario" />
+          <NavigationProperty Name="Usuario1" Relationship="Self.FK__TipoProdu__Usuar__440B1D61" FromRole="TipoProducto" ToRole="Usuario" />
         </EntityType>
         <EntityType Name="Usuario">
           <Key>
@@ -2244,51 +2184,47 @@
           <Property Name="FechaAlta" Type="DateTime" Precision="3" />
           <Property Name="UsuarioMod" Type="Int64" />
           <Property Name="FechaMod" Type="DateTime" Precision="3" />
-          <Property Name="Empleado" Type="Int64" />
-          <NavigationProperty Name="Cliente" Relationship="Self.FK__Cliente__Usuario__797309D9" FromRole="Usuario" ToRole="Cliente" />
-          <NavigationProperty Name="Cliente1" Relationship="Self.FK__Cliente__Usuario__7A672E12" FromRole="Usuario" ToRole="Cliente" />
-          <NavigationProperty Name="Color" Relationship="Self.FK__Color__UsuarioAl__403A8C7D" FromRole="Usuario" ToRole="Color" />
-          <NavigationProperty Name="Color1" Relationship="Self.FK__Color__UsuarioMo__412EB0B6" FromRole="Usuario" ToRole="Color" />
-          <NavigationProperty Name="Empleado1" Relationship="Self.FK__Empleado__Usuari__4D94879B" FromRole="Usuario" ToRole="Empleado" />
-          <NavigationProperty Name="Empleado2" Relationship="Self.FK__Empleado__Usuari__4E88ABD4" FromRole="Usuario" ToRole="Empleado" />
-          <NavigationProperty Name="Empleado3" Relationship="Self.FK__Usuario__Emplead__4F7CD00D" FromRole="Usuario" ToRole="Empleado" />
+          <NavigationProperty Name="Cliente" Relationship="Self.FK__Cliente__Usuario__787EE5A0" FromRole="Usuario" ToRole="Cliente" />
+          <NavigationProperty Name="Cliente1" Relationship="Self.FK__Cliente__Usuario__797309D9" FromRole="Usuario" ToRole="Cliente" />
+          <NavigationProperty Name="Empleado" Relationship="Self.FK__Empleado__Usuari__4BAC3F29" FromRole="Usuario" ToRole="Empleado" />
+          <NavigationProperty Name="Empleado1" Relationship="Self.FK__Empleado__Usuari__4CA06362" FromRole="Usuario" ToRole="Empleado" />
           <NavigationProperty Name="Estado" Relationship="Self.FK__Estado__UsuarioA__31EC6D26" FromRole="Usuario" ToRole="Estado" />
           <NavigationProperty Name="Estado1" Relationship="Self.FK__Estado__UsuarioM__32E0915F" FromRole="Usuario" ToRole="Estado" />
-          <NavigationProperty Name="GrupoCliente" Relationship="Self.FK__GrupoClie__Usuar__71D1E811" FromRole="Usuario" ToRole="GrupoCliente" />
-          <NavigationProperty Name="GrupoCliente1" Relationship="Self.FK__GrupoClie__Usuar__72C60C4A" FromRole="Usuario" ToRole="GrupoCliente" />
-          <NavigationProperty Name="Logs" Relationship="Self.FK__Logs__Usuario__3587F3E0" FromRole="Usuario" ToRole="Logs" />
+          <NavigationProperty Name="GrupoCliente" Relationship="Self.FK__GrupoClie__Usuar__6FE99F9F" FromRole="Usuario" ToRole="GrupoCliente" />
+          <NavigationProperty Name="GrupoCliente1" Relationship="Self.FK__GrupoClie__Usuar__70DDC3D8" FromRole="Usuario" ToRole="GrupoCliente" />
+          <NavigationProperty Name="Logs" Relationship="Self.FK__Logs__Usuario__3493CFA7" FromRole="Usuario" ToRole="Logs" />
           <NavigationProperty Name="Marca" Relationship="Self.FK__Marca__UsuarioAl__36B12243" FromRole="Usuario" ToRole="Marca" />
           <NavigationProperty Name="Marca1" Relationship="Self.FK__Marca__UsuarioMo__37A5467C" FromRole="Usuario" ToRole="Marca" />
           <NavigationProperty Name="Modelo" Relationship="Self.FK__Modelo__UsuarioA__3B75D760" FromRole="Usuario" ToRole="Modelo" />
           <NavigationProperty Name="Modelo1" Relationship="Self.FK__Modelo__UsuarioM__3C69FB99" FromRole="Usuario" ToRole="Modelo" />
-          <NavigationProperty Name="Movimiento" Relationship="Self.FK__Movimient__Usuar__6D0D32F4" FromRole="Usuario" ToRole="Movimiento" />
-          <NavigationProperty Name="Movimiento1" Relationship="Self.FK__Movimient__Usuar__6E01572D" FromRole="Usuario" ToRole="Movimiento" />
+          <NavigationProperty Name="Movimiento" Relationship="Self.FK__Movimient__Usuar__6B24EA82" FromRole="Usuario" ToRole="Movimiento" />
+          <NavigationProperty Name="Movimiento1" Relationship="Self.FK__Movimient__Usuar__6C190EBB" FromRole="Usuario" ToRole="Movimiento" />
           <NavigationProperty Name="Pais" Relationship="Self.FK__Pais__UsuarioAlt__2C3393D0" FromRole="Usuario" ToRole="Pais" />
           <NavigationProperty Name="Pais1" Relationship="Self.FK__Pais__UsuarioMod__2D27B809" FromRole="Usuario" ToRole="Pais" />
-          <NavigationProperty Name="Paquete" Relationship="Self.FK__Paquete__Usuario__7E37BEF6" FromRole="Usuario" ToRole="Paquete" />
-          <NavigationProperty Name="Paquete1" Relationship="Self.FK__Paquete__Usuario__7F2BE32F" FromRole="Usuario" ToRole="Paquete" />
-          <NavigationProperty Name="PaqueteDia" Relationship="Self.FK__PaqueteDi__Usuar__03F0984C" FromRole="Usuario" ToRole="PaqueteDia" />
-          <NavigationProperty Name="PaqueteDia1" Relationship="Self.FK__PaqueteDi__Usuar__04E4BC85" FromRole="Usuario" ToRole="PaqueteDia" />
-          <NavigationProperty Name="Producto" Relationship="Self.FK__Producto__Usuari__628FA481" FromRole="Usuario" ToRole="Producto" />
-          <NavigationProperty Name="Producto1" Relationship="Self.FK__Producto__Usuari__6383C8BA" FromRole="Usuario" ToRole="Producto" />
-          <NavigationProperty Name="Promocion" Relationship="Self.FK__Promocion__Usuar__10566F31" FromRole="Usuario" ToRole="Promocion" />
-          <NavigationProperty Name="Promocion1" Relationship="Self.FK__Promocion__Usuar__114A936A" FromRole="Usuario" ToRole="Promocion" />
-          <NavigationProperty Name="PromocionDia" Relationship="Self.FK__Promocion__Usuar__160F4887" FromRole="Usuario" ToRole="PromocionDia" />
-          <NavigationProperty Name="PromocionDia1" Relationship="Self.FK__Promocion__Usuar__17036CC0" FromRole="Usuario" ToRole="PromocionDia" />
-          <NavigationProperty Name="Proveedor" Relationship="Self.FK__Proveedor__Usuar__5BE2A6F2" FromRole="Usuario" ToRole="Proveedor" />
-          <NavigationProperty Name="Proveedor1" Relationship="Self.FK__Proveedor__Usuar__5CD6CB2B" FromRole="Usuario" ToRole="Proveedor" />
+          <NavigationProperty Name="Paquete" Relationship="Self.FK__Paquete__Usuario__7D439ABD" FromRole="Usuario" ToRole="Paquete" />
+          <NavigationProperty Name="Paquete1" Relationship="Self.FK__Paquete__Usuario__7E37BEF6" FromRole="Usuario" ToRole="Paquete" />
+          <NavigationProperty Name="PaqueteDia" Relationship="Self.FK__PaqueteDi__Usuar__02FC7413" FromRole="Usuario" ToRole="PaqueteDia" />
+          <NavigationProperty Name="PaqueteDia1" Relationship="Self.FK__PaqueteDi__Usuar__03F0984C" FromRole="Usuario" ToRole="PaqueteDia" />
+          <NavigationProperty Name="Producto" Relationship="Self.FK__Producto__Usuari__60A75C0F" FromRole="Usuario" ToRole="Producto" />
+          <NavigationProperty Name="Producto1" Relationship="Self.FK__Producto__Usuari__619B8048" FromRole="Usuario" ToRole="Producto" />
+          <NavigationProperty Name="Promocion" Relationship="Self.FK__Promocion__Usuar__0F624AF8" FromRole="Usuario" ToRole="Promocion" />
+          <NavigationProperty Name="Promocion1" Relationship="Self.FK__Promocion__Usuar__10566F31" FromRole="Usuario" ToRole="Promocion" />
+          <NavigationProperty Name="PromocionDia" Relationship="Self.FK__Promocion__Usuar__151B244E" FromRole="Usuario" ToRole="PromocionDia" />
+          <NavigationProperty Name="PromocionDia1" Relationship="Self.FK__Promocion__Usuar__160F4887" FromRole="Usuario" ToRole="PromocionDia" />
+          <NavigationProperty Name="Proveedor" Relationship="Self.FK__Proveedor__Usuar__59FA5E80" FromRole="Usuario" ToRole="Proveedor" />
+          <NavigationProperty Name="Proveedor1" Relationship="Self.FK__Proveedor__Usuar__5AEE82B9" FromRole="Usuario" ToRole="Proveedor" />
           <NavigationProperty Name="Rol1" Relationship="Self.FK__Usuario__Rol__267ABA7A" FromRole="Usuario" ToRole="Rol" />
-          <NavigationProperty Name="TipoMovimiento" Relationship="Self.FK__TipoMovim__Usuar__6754599E" FromRole="Usuario" ToRole="TipoMovimiento" />
-          <NavigationProperty Name="TipoMovimiento1" Relationship="Self.FK__TipoMovim__Usuar__68487DD7" FromRole="Usuario" ToRole="TipoMovimiento" />
-          <NavigationProperty Name="TipoProducto" Relationship="Self.FK__TipoProdu__Usuar__44FF419A" FromRole="Usuario" ToRole="TipoProducto" />
-          <NavigationProperty Name="TipoProducto1" Relationship="Self.FK__TipoProdu__Usuar__45F365D3" FromRole="Usuario" ToRole="TipoProducto" />
+          <NavigationProperty Name="TipoMovimiento" Relationship="Self.FK__TipoMovim__Usuar__656C112C" FromRole="Usuario" ToRole="TipoMovimiento" />
+          <NavigationProperty Name="TipoMovimiento1" Relationship="Self.FK__TipoMovim__Usuar__66603565" FromRole="Usuario" ToRole="TipoMovimiento" />
+          <NavigationProperty Name="TipoProducto" Relationship="Self.FK__TipoProdu__Usuar__4316F928" FromRole="Usuario" ToRole="TipoProducto" />
+          <NavigationProperty Name="TipoProducto1" Relationship="Self.FK__TipoProdu__Usuar__440B1D61" FromRole="Usuario" ToRole="TipoProducto" />
           <NavigationProperty Name="Usuario1" Relationship="Self.FK__Usuario__Usuario__276EDEB3" FromRole="Usuario" ToRole="Usuario1" />
           <NavigationProperty Name="Usuario2" Relationship="Self.FK__Usuario__Usuario__276EDEB3" FromRole="Usuario1" ToRole="Usuario" />
           <NavigationProperty Name="Usuario11" Relationship="Self.FK__Usuario__Usuario__286302EC" FromRole="Usuario" ToRole="Usuario1" />
           <NavigationProperty Name="Usuario3" Relationship="Self.FK__Usuario__Usuario__286302EC" FromRole="Usuario1" ToRole="Usuario" />
-          <NavigationProperty Name="Vehiculo" Relationship="Self.FK__Vehiculo__Usuari__5535A963" FromRole="Usuario" ToRole="Vehiculo" />
-          <NavigationProperty Name="Vehiculo1" Relationship="Self.FK__Vehiculo__Usuari__5629CD9C" FromRole="Usuario" ToRole="Vehiculo" />
-          <NavigationProperty Name="Venta" Relationship="Self.FK__Venta__UsuarioVe__2A164134" FromRole="Usuario" ToRole="Venta" />
+          <NavigationProperty Name="Vehiculo" Relationship="Self.FK__Vehiculo__Usuari__52593CB8" FromRole="Usuario" ToRole="Vehiculo" />
+          <NavigationProperty Name="Vehiculo1" Relationship="Self.FK__Vehiculo__Usuari__534D60F1" FromRole="Usuario" ToRole="Vehiculo" />
+          <NavigationProperty Name="Venta" Relationship="Self.FK__Venta__UsuarioVe__29221CFB" FromRole="Usuario" ToRole="Venta" />
         </EntityType>
         <EntityType Name="Vehiculo">
           <Key>
@@ -2306,11 +2242,11 @@
           <Property Name="FechaAlta" Type="DateTime" Precision="3" />
           <Property Name="UsuarioMod" Type="Int64" />
           <Property Name="FechaMod" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Modelo1" Relationship="Self.FK__Vehiculo__Modelo__534D60F1" FromRole="Vehiculo" ToRole="Modelo" />
-          <NavigationProperty Name="TipoIdentificacion1" Relationship="Self.FK__Vehiculo__TipoId__5441852A" FromRole="Vehiculo" ToRole="TipoIdentificacion" />
-          <NavigationProperty Name="Usuario" Relationship="Self.FK__Vehiculo__Usuari__5535A963" FromRole="Vehiculo" ToRole="Usuario" />
-          <NavigationProperty Name="Usuario1" Relationship="Self.FK__Vehiculo__Usuari__5629CD9C" FromRole="Vehiculo" ToRole="Usuario" />
-          <NavigationProperty Name="VentaDetalle" Relationship="Self.FK__VentaDeta__Vehic__2EDAF651" FromRole="Vehiculo" ToRole="VentaDetalle" />
+          <NavigationProperty Name="Modelo1" Relationship="Self.FK__Vehiculo__Modelo__5070F446" FromRole="Vehiculo" ToRole="Modelo" />
+          <NavigationProperty Name="TipoIdentificacion1" Relationship="Self.FK__Vehiculo__TipoId__5165187F" FromRole="Vehiculo" ToRole="TipoIdentificacion" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK__Vehiculo__Usuari__52593CB8" FromRole="Vehiculo" ToRole="Usuario" />
+          <NavigationProperty Name="Usuario1" Relationship="Self.FK__Vehiculo__Usuari__534D60F1" FromRole="Vehiculo" ToRole="Usuario" />
+          <NavigationProperty Name="VentaDetalle" Relationship="Self.FK__VentaDeta__Vehic__2DE6D218" FromRole="Vehiculo" ToRole="VentaDetalle" />
         </EntityType>
         <EntityType Name="Venta">
           <Key>
@@ -2321,9 +2257,9 @@
           <Property Name="Fecha" Type="DateTime" Precision="3" />
           <Property Name="Cliente" Type="Int64" />
           <Property Name="UsuarioVenta" Type="Int64" />
-          <NavigationProperty Name="Cliente1" Relationship="Self.FK__Venta__Cliente__29221CFB" FromRole="Venta" ToRole="Cliente" />
-          <NavigationProperty Name="Usuario" Relationship="Self.FK__Venta__UsuarioVe__2A164134" FromRole="Venta" ToRole="Usuario" />
-          <NavigationProperty Name="VentaDetalle" Relationship="Self.FK__VentaDeta__Venta__2CF2ADDF" FromRole="Venta" ToRole="VentaDetalle" />
+          <NavigationProperty Name="Cliente1" Relationship="Self.FK__Venta__Cliente__282DF8C2" FromRole="Venta" ToRole="Cliente" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK__Venta__UsuarioVe__29221CFB" FromRole="Venta" ToRole="Usuario" />
+          <NavigationProperty Name="VentaDetalle" Relationship="Self.FK__VentaDeta__Venta__2BFE89A6" FromRole="Venta" ToRole="VentaDetalle" />
         </EntityType>
         <EntityType Name="VentaDetalle">
           <Key>
@@ -2338,11 +2274,11 @@
           <Property Name="Vehiculo" Type="Int64" />
           <Property Name="Paquete" Type="Int64" />
           <Property Name="Promocion" Type="Int64" />
-          <NavigationProperty Name="Paquete1" Relationship="Self.FK__VentaDeta__Paque__2FCF1A8A" FromRole="VentaDetalle" ToRole="Paquete" />
-          <NavigationProperty Name="Producto1" Relationship="Self.FK__VentaDeta__Produ__2DE6D218" FromRole="VentaDetalle" ToRole="Producto" />
-          <NavigationProperty Name="Promocion1" Relationship="Self.FK__VentaDeta__Promo__30C33EC3" FromRole="VentaDetalle" ToRole="Promocion" />
-          <NavigationProperty Name="Vehiculo1" Relationship="Self.FK__VentaDeta__Vehic__2EDAF651" FromRole="VentaDetalle" ToRole="Vehiculo" />
-          <NavigationProperty Name="Venta1" Relationship="Self.FK__VentaDeta__Venta__2CF2ADDF" FromRole="VentaDetalle" ToRole="Venta" />
+          <NavigationProperty Name="Paquete1" Relationship="Self.FK__VentaDeta__Paque__2EDAF651" FromRole="VentaDetalle" ToRole="Paquete" />
+          <NavigationProperty Name="Producto1" Relationship="Self.FK__VentaDeta__Produ__2CF2ADDF" FromRole="VentaDetalle" ToRole="Producto" />
+          <NavigationProperty Name="Promocion1" Relationship="Self.FK__VentaDeta__Promo__2FCF1A8A" FromRole="VentaDetalle" ToRole="Promocion" />
+          <NavigationProperty Name="Vehiculo1" Relationship="Self.FK__VentaDeta__Vehic__2DE6D218" FromRole="VentaDetalle" ToRole="Vehiculo" />
+          <NavigationProperty Name="Venta1" Relationship="Self.FK__VentaDeta__Venta__2BFE89A6" FromRole="VentaDetalle" ToRole="Venta" />
         </EntityType>
         <EntityType Name="VentaDia">
           <Key>
@@ -2352,7 +2288,7 @@
           <Property Name="Fecha" Type="DateTime" Precision="3" />
           <Property Name="Total" Type="Decimal" Precision="19" Scale="4" />
         </EntityType>
-        <Association Name="FK__Empleado__BaseSa__4CA06362">
+        <Association Name="FK__Empleado__BaseSa__4AB81AF0">
           <End Role="BaseSalario" Type="Self.BaseSalario" Multiplicity="0..1" />
           <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2364,7 +2300,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Cliente__Estado__778AC167">
+        <Association Name="FK__Cliente__Estado__76969D2E">
           <End Role="Estado" Type="Self.Estado" Multiplicity="0..1" />
           <End Role="Cliente" Type="Self.Cliente" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2376,7 +2312,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Cliente__GrupoCl__787EE5A0">
+        <Association Name="FK__Cliente__GrupoCl__778AC167">
           <End Role="GrupoCliente" Type="Self.GrupoCliente" Multiplicity="0..1" />
           <End Role="Cliente" Type="Self.Cliente" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2388,7 +2324,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Cliente__Usuario__797309D9">
+        <Association Name="FK__Cliente__Usuario__787EE5A0">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
           <End Role="Cliente" Type="Self.Cliente" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2400,7 +2336,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Cliente__Usuario__7A672E12">
+        <Association Name="FK__Cliente__Usuario__797309D9">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
           <End Role="Cliente" Type="Self.Cliente" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2412,7 +2348,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Venta__Cliente__29221CFB">
+        <Association Name="FK__Venta__Cliente__282DF8C2">
           <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
           <End Role="Venta" Type="Self.Venta" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2424,31 +2360,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Color__UsuarioAl__403A8C7D">
-          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
-          <End Role="Color" Type="Self.Color" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Usuario">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Color">
-              <PropertyRef Name="UsuarioAlta" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Color__UsuarioMo__412EB0B6">
-          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
-          <End Role="Color" Type="Self.Color" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Usuario">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Color">
-              <PropertyRef Name="UsuarioMod" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PaqueteDia__Dia__02FC7413">
+        <Association Name="FK__PaqueteDia__Dia__02084FDA">
           <End Role="Dia" Type="Self.Dia" Multiplicity="0..1" />
           <End Role="PaqueteDia" Type="Self.PaqueteDia" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2460,7 +2372,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PromocionDi__Dia__151B244E">
+        <Association Name="FK__PromocionDi__Dia__14270015">
           <End Role="Dia" Type="Self.Dia" Multiplicity="0..1" />
           <End Role="PromocionDia" Type="Self.PromocionDia" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2472,7 +2384,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Empleado__Estado__4BAC3F29">
+        <Association Name="FK__Empleado__Estado__49C3F6B7">
           <End Role="Estado" Type="Self.Estado" Multiplicity="0..1" />
           <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2484,7 +2396,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Empleado__Usuari__4D94879B">
+        <Association Name="FK__Empleado__Usuari__4BAC3F29">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
           <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2496,7 +2408,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Empleado__Usuari__4E88ABD4">
+        <Association Name="FK__Empleado__Usuari__4CA06362">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
           <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2505,18 +2417,6 @@
             </Principal>
             <Dependent Role="Empleado">
               <PropertyRef Name="UsuarioMod" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Usuario__Emplead__4F7CD00D">
-          <End Role="Empleado" Type="Self.Empleado" Multiplicity="0..1" />
-          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Empleado">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Usuario">
-              <PropertyRef Name="Empleado" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2556,7 +2456,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Proveedor__Estad__5AEE82B9">
+        <Association Name="FK__Proveedor__Estad__59063A47">
           <End Role="Estado" Type="Self.Estado" Multiplicity="0..1" />
           <End Role="Proveedor" Type="Self.Proveedor" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2568,7 +2468,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__GrupoClie__Usuar__71D1E811">
+        <Association Name="FK__GrupoClie__Usuar__6FE99F9F">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
           <End Role="GrupoCliente" Type="Self.GrupoCliente" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2580,7 +2480,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__GrupoClie__Usuar__72C60C4A">
+        <Association Name="FK__GrupoClie__Usuar__70DDC3D8">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
           <End Role="GrupoCliente" Type="Self.GrupoCliente" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2592,7 +2492,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PaqueteGr__Grupo__08B54D69">
+        <Association Name="FK__PaqueteGr__Grupo__07C12930">
           <End Role="GrupoCliente" Type="Self.GrupoCliente" Multiplicity="0..1" />
           <End Role="PaqueteGrupoCliente" Type="Self.PaqueteGrupoCliente" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2604,7 +2504,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Promocion__Grupo__2645B050">
+        <Association Name="FK__Promocion__Grupo__25518C17">
           <End Role="GrupoCliente" Type="Self.GrupoCliente" Multiplicity="0..1" />
           <End Role="PromocionTipoCliente" Type="Self.PromocionTipoCliente" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2616,7 +2516,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Logs__Usuario__3587F3E0">
+        <Association Name="FK__Logs__Usuario__3493CFA7">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
           <End Role="Logs" Type="Self.Logs" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2688,7 +2588,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Vehiculo__Modelo__534D60F1">
+        <Association Name="FK__Vehiculo__Modelo__5070F446">
           <End Role="Modelo" Type="Self.Modelo" Multiplicity="0..1" />
           <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2700,7 +2600,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Movimient__Produ__6C190EBB">
+        <Association Name="FK__Movimient__Produ__6A30C649">
           <End Role="Producto" Type="Self.Producto" Multiplicity="0..1" />
           <End Role="Movimiento" Type="Self.Movimiento" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2712,7 +2612,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Movimient__TipoM__6B24EA82">
+        <Association Name="FK__Movimient__TipoM__693CA210">
           <End Role="TipoMovimiento" Type="Self.TipoMovimiento" Multiplicity="0..1" />
           <End Role="Movimiento" Type="Self.Movimiento" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2724,7 +2624,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Movimient__Usuar__6D0D32F4">
+        <Association Name="FK__Movimient__Usuar__6B24EA82">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
           <End Role="Movimiento" Type="Self.Movimiento" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2736,7 +2636,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Movimient__Usuar__6E01572D">
+        <Association Name="FK__Movimient__Usuar__6C190EBB">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
           <End Role="Movimiento" Type="Self.Movimiento" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2784,7 +2684,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Paquete__Usuario__7E37BEF6">
+        <Association Name="FK__Paquete__Usuario__7D439ABD">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
           <End Role="Paquete" Type="Self.Paquete" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2796,7 +2696,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Paquete__Usuario__7F2BE32F">
+        <Association Name="FK__Paquete__Usuario__7E37BEF6">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
           <End Role="Paquete" Type="Self.Paquete" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2808,7 +2708,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PaqueteDi__Paque__02084FDA">
+        <Association Name="FK__PaqueteDi__Paque__01142BA1">
           <End Role="Paquete" Type="Self.Paquete" Multiplicity="0..1" />
           <End Role="PaqueteDia" Type="Self.PaqueteDia" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2820,7 +2720,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PaqueteGr__Paque__07C12930">
+        <Association Name="FK__PaqueteGr__Paque__06CD04F7">
           <End Role="Paquete" Type="Self.Paquete" Multiplicity="0..1" />
           <End Role="PaqueteGrupoCliente" Type="Self.PaqueteGrupoCliente" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2832,7 +2732,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PaquetePr__Paque__0B91BA14">
+        <Association Name="FK__PaquetePr__Paque__0A9D95DB">
           <End Role="Paquete" Type="Self.Paquete" Multiplicity="0..1" />
           <End Role="PaqueteProducto" Type="Self.PaqueteProducto" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2844,7 +2744,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Promocion__Paque__1AD3FDA4">
+        <Association Name="FK__Promocion__Paque__19DFD96B">
           <End Role="Paquete" Type="Self.Paquete" Multiplicity="0..1" />
           <End Role="PromocionPaquete" Type="Self.PromocionPaquete" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2856,7 +2756,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__VentaDeta__Paque__2FCF1A8A">
+        <Association Name="FK__VentaDeta__Paque__2EDAF651">
           <End Role="Paquete" Type="Self.Paquete" Multiplicity="0..1" />
           <End Role="VentaDetalle" Type="Self.VentaDetalle" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2865,6 +2765,18 @@
             </Principal>
             <Dependent Role="VentaDetalle">
               <PropertyRef Name="Paquete" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PaqueteDi__Usuar__02FC7413">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="PaqueteDia" Type="Self.PaqueteDia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PaqueteDia">
+              <PropertyRef Name="UsuarioAlta" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2876,23 +2788,11 @@
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="PaqueteDia">
-              <PropertyRef Name="UsuarioAlta" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PaqueteDi__Usuar__04E4BC85">
-          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
-          <End Role="PaqueteDia" Type="Self.PaqueteDia" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Usuario">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="PaqueteDia">
               <PropertyRef Name="UsuarioMod" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PaquetePr__Produ__0C85DE4D">
+        <Association Name="FK__PaquetePr__Produ__0B91BA14">
           <End Role="Producto" Type="Self.Producto" Multiplicity="0..1" />
           <End Role="PaqueteProducto" Type="Self.PaqueteProducto" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2904,7 +2804,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Producto__Provee__619B8048">
+        <Association Name="FK__Producto__Provee__5FB337D6">
           <End Role="Proveedor" Type="Self.Proveedor" Multiplicity="0..1" />
           <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2916,7 +2816,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Producto__TipoPr__60A75C0F">
+        <Association Name="FK__Producto__TipoPr__5EBF139D">
           <End Role="TipoProducto" Type="Self.TipoProducto" Multiplicity="0..1" />
           <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2928,7 +2828,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Producto__Usuari__628FA481">
+        <Association Name="FK__Producto__Usuari__60A75C0F">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
           <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2940,7 +2840,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Producto__Usuari__6383C8BA">
+        <Association Name="FK__Producto__Usuari__619B8048">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
           <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2952,7 +2852,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Promocion__Produ__22751F6C">
+        <Association Name="FK__Promocion__Produ__2180FB33">
           <End Role="Producto" Type="Self.Producto" Multiplicity="0..1" />
           <End Role="PromocionProducto" Type="Self.PromocionProducto" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2964,7 +2864,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__VentaDeta__Produ__2DE6D218">
+        <Association Name="FK__VentaDeta__Produ__2CF2ADDF">
           <End Role="Producto" Type="Self.Producto" Multiplicity="0..1" />
           <End Role="VentaDetalle" Type="Self.VentaDetalle" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2976,7 +2876,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Promocion__Promo__14270015">
+        <Association Name="FK__Promocion__Promo__1332DBDC">
           <End Role="Promocion" Type="Self.Promocion" Multiplicity="0..1" />
           <End Role="PromocionDia" Type="Self.PromocionDia" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2988,7 +2888,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Promocion__Promo__19DFD96B">
+        <Association Name="FK__Promocion__Promo__18EBB532">
           <End Role="Promocion" Type="Self.Promocion" Multiplicity="0..1" />
           <End Role="PromocionPaquete" Type="Self.PromocionPaquete" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3000,7 +2900,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Promocion__Promo__1DB06A4F">
+        <Association Name="FK__Promocion__Promo__1CBC4616">
           <End Role="Promocion" Type="Self.Promocion" Multiplicity="0..1" />
           <End Role="PromocionTipoProducto" Type="Self.PromocionTipoProducto" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3012,7 +2912,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Promocion__Promo__2180FB33">
+        <Association Name="FK__Promocion__Promo__208CD6FA">
           <End Role="Promocion" Type="Self.Promocion" Multiplicity="0..1" />
           <End Role="PromocionProducto" Type="Self.PromocionProducto" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3024,7 +2924,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Promocion__Promo__25518C17">
+        <Association Name="FK__Promocion__Promo__245D67DE">
           <End Role="Promocion" Type="Self.Promocion" Multiplicity="0..1" />
           <End Role="PromocionTipoCliente" Type="Self.PromocionTipoCliente" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3036,7 +2936,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Promocion__Usuar__10566F31">
+        <Association Name="FK__Promocion__Usuar__0F624AF8">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
           <End Role="Promocion" Type="Self.Promocion" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3048,7 +2948,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Promocion__Usuar__114A936A">
+        <Association Name="FK__Promocion__Usuar__10566F31">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
           <End Role="Promocion" Type="Self.Promocion" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3060,7 +2960,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__VentaDeta__Promo__30C33EC3">
+        <Association Name="FK__VentaDeta__Promo__2FCF1A8A">
           <End Role="Promocion" Type="Self.Promocion" Multiplicity="0..1" />
           <End Role="VentaDetalle" Type="Self.VentaDetalle" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3072,7 +2972,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Promocion__Usuar__160F4887">
+        <Association Name="FK__Promocion__Usuar__151B244E">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
           <End Role="PromocionDia" Type="Self.PromocionDia" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3084,7 +2984,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Promocion__Usuar__17036CC0">
+        <Association Name="FK__Promocion__Usuar__160F4887">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
           <End Role="PromocionDia" Type="Self.PromocionDia" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3096,7 +2996,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Promocion__TipoP__1EA48E88">
+        <Association Name="FK__Promocion__TipoP__1DB06A4F">
           <End Role="TipoProducto" Type="Self.TipoProducto" Multiplicity="0..1" />
           <End Role="PromocionTipoProducto" Type="Self.PromocionTipoProducto" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3108,7 +3008,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Proveedor__Usuar__5BE2A6F2">
+        <Association Name="FK__Proveedor__Usuar__59FA5E80">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
           <End Role="Proveedor" Type="Self.Proveedor" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3120,7 +3020,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Proveedor__Usuar__5CD6CB2B">
+        <Association Name="FK__Proveedor__Usuar__5AEE82B9">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
           <End Role="Proveedor" Type="Self.Proveedor" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3156,7 +3056,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Vehiculo__TipoId__5441852A">
+        <Association Name="FK__Vehiculo__TipoId__5165187F">
           <End Role="TipoIdentificacion" Type="Self.TipoIdentificacion" Multiplicity="0..1" />
           <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3168,7 +3068,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__TipoMovim__Usuar__6754599E">
+        <Association Name="FK__TipoMovim__Usuar__656C112C">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
           <End Role="TipoMovimiento" Type="Self.TipoMovimiento" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3180,7 +3080,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__TipoMovim__Usuar__68487DD7">
+        <Association Name="FK__TipoMovim__Usuar__66603565">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
           <End Role="TipoMovimiento" Type="Self.TipoMovimiento" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3192,7 +3092,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__TipoProdu__Usuar__44FF419A">
+        <Association Name="FK__TipoProdu__Usuar__4316F928">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
           <End Role="TipoProducto" Type="Self.TipoProducto" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3204,7 +3104,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__TipoProdu__Usuar__45F365D3">
+        <Association Name="FK__TipoProdu__Usuar__440B1D61">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
           <End Role="TipoProducto" Type="Self.TipoProducto" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3240,7 +3140,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Vehiculo__Usuari__5535A963">
+        <Association Name="FK__Vehiculo__Usuari__52593CB8">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
           <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3252,7 +3152,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Vehiculo__Usuari__5629CD9C">
+        <Association Name="FK__Vehiculo__Usuari__534D60F1">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
           <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3264,7 +3164,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Venta__UsuarioVe__2A164134">
+        <Association Name="FK__Venta__UsuarioVe__29221CFB">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
           <End Role="Venta" Type="Self.Venta" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3276,7 +3176,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__VentaDeta__Vehic__2EDAF651">
+        <Association Name="FK__VentaDeta__Vehic__2DE6D218">
           <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="0..1" />
           <End Role="VentaDetalle" Type="Self.VentaDetalle" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3288,7 +3188,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__VentaDeta__Venta__2CF2ADDF">
+        <Association Name="FK__VentaDeta__Venta__2BFE89A6">
           <End Role="Venta" Type="Self.Venta" Multiplicity="0..1" />
           <End Role="VentaDetalle" Type="Self.VentaDetalle" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3337,61 +3237,49 @@
           <EntitySet Name="Venta" EntityType="Self.Venta" />
           <EntitySet Name="VentaDetalle" EntityType="Self.VentaDetalle" />
           <EntitySet Name="VentaDia" EntityType="Self.VentaDia" />
-          <AssociationSet Name="FK__Empleado__BaseSa__4CA06362" Association="Self.FK__Empleado__BaseSa__4CA06362">
+          <AssociationSet Name="FK__Empleado__BaseSa__4AB81AF0" Association="Self.FK__Empleado__BaseSa__4AB81AF0">
             <End Role="BaseSalario" EntitySet="BaseSalario" />
             <End Role="Empleado" EntitySet="Empleado" />
           </AssociationSet>
-          <AssociationSet Name="FK__Cliente__Estado__778AC167" Association="Self.FK__Cliente__Estado__778AC167">
+          <AssociationSet Name="FK__Cliente__Estado__76969D2E" Association="Self.FK__Cliente__Estado__76969D2E">
             <End Role="Estado" EntitySet="Estado" />
             <End Role="Cliente" EntitySet="Cliente" />
           </AssociationSet>
-          <AssociationSet Name="FK__Cliente__GrupoCl__787EE5A0" Association="Self.FK__Cliente__GrupoCl__787EE5A0">
+          <AssociationSet Name="FK__Cliente__GrupoCl__778AC167" Association="Self.FK__Cliente__GrupoCl__778AC167">
             <End Role="GrupoCliente" EntitySet="GrupoCliente" />
+            <End Role="Cliente" EntitySet="Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cliente__Usuario__787EE5A0" Association="Self.FK__Cliente__Usuario__787EE5A0">
+            <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Cliente" EntitySet="Cliente" />
           </AssociationSet>
           <AssociationSet Name="FK__Cliente__Usuario__797309D9" Association="Self.FK__Cliente__Usuario__797309D9">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Cliente" EntitySet="Cliente" />
           </AssociationSet>
-          <AssociationSet Name="FK__Cliente__Usuario__7A672E12" Association="Self.FK__Cliente__Usuario__7A672E12">
-            <End Role="Usuario" EntitySet="Usuario" />
-            <End Role="Cliente" EntitySet="Cliente" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Venta__Cliente__29221CFB" Association="Self.FK__Venta__Cliente__29221CFB">
+          <AssociationSet Name="FK__Venta__Cliente__282DF8C2" Association="Self.FK__Venta__Cliente__282DF8C2">
             <End Role="Cliente" EntitySet="Cliente" />
             <End Role="Venta" EntitySet="Venta" />
           </AssociationSet>
-          <AssociationSet Name="FK__Color__UsuarioAl__403A8C7D" Association="Self.FK__Color__UsuarioAl__403A8C7D">
-            <End Role="Usuario" EntitySet="Usuario" />
-            <End Role="Color" EntitySet="Color" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Color__UsuarioMo__412EB0B6" Association="Self.FK__Color__UsuarioMo__412EB0B6">
-            <End Role="Usuario" EntitySet="Usuario" />
-            <End Role="Color" EntitySet="Color" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PaqueteDia__Dia__02FC7413" Association="Self.FK__PaqueteDia__Dia__02FC7413">
+          <AssociationSet Name="FK__PaqueteDia__Dia__02084FDA" Association="Self.FK__PaqueteDia__Dia__02084FDA">
             <End Role="Dia" EntitySet="Dia" />
             <End Role="PaqueteDia" EntitySet="PaqueteDia" />
           </AssociationSet>
-          <AssociationSet Name="FK__PromocionDi__Dia__151B244E" Association="Self.FK__PromocionDi__Dia__151B244E">
+          <AssociationSet Name="FK__PromocionDi__Dia__14270015" Association="Self.FK__PromocionDi__Dia__14270015">
             <End Role="Dia" EntitySet="Dia" />
             <End Role="PromocionDia" EntitySet="PromocionDia" />
           </AssociationSet>
-          <AssociationSet Name="FK__Empleado__Estado__4BAC3F29" Association="Self.FK__Empleado__Estado__4BAC3F29">
+          <AssociationSet Name="FK__Empleado__Estado__49C3F6B7" Association="Self.FK__Empleado__Estado__49C3F6B7">
             <End Role="Estado" EntitySet="Estado" />
             <End Role="Empleado" EntitySet="Empleado" />
           </AssociationSet>
-          <AssociationSet Name="FK__Empleado__Usuari__4D94879B" Association="Self.FK__Empleado__Usuari__4D94879B">
+          <AssociationSet Name="FK__Empleado__Usuari__4BAC3F29" Association="Self.FK__Empleado__Usuari__4BAC3F29">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Empleado" EntitySet="Empleado" />
           </AssociationSet>
-          <AssociationSet Name="FK__Empleado__Usuari__4E88ABD4" Association="Self.FK__Empleado__Usuari__4E88ABD4">
+          <AssociationSet Name="FK__Empleado__Usuari__4CA06362" Association="Self.FK__Empleado__Usuari__4CA06362">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Empleado" EntitySet="Empleado" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Usuario__Emplead__4F7CD00D" Association="Self.FK__Usuario__Emplead__4F7CD00D">
-            <End Role="Empleado" EntitySet="Empleado" />
-            <End Role="Usuario" EntitySet="Usuario" />
           </AssociationSet>
           <AssociationSet Name="FK__Estado__Pais__30F848ED" Association="Self.FK__Estado__Pais__30F848ED">
             <End Role="Pais" EntitySet="Pais" />
@@ -3405,27 +3293,27 @@
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Estado" EntitySet="Estado" />
           </AssociationSet>
-          <AssociationSet Name="FK__Proveedor__Estad__5AEE82B9" Association="Self.FK__Proveedor__Estad__5AEE82B9">
+          <AssociationSet Name="FK__Proveedor__Estad__59063A47" Association="Self.FK__Proveedor__Estad__59063A47">
             <End Role="Estado" EntitySet="Estado" />
             <End Role="Proveedor" EntitySet="Proveedor" />
           </AssociationSet>
-          <AssociationSet Name="FK__GrupoClie__Usuar__71D1E811" Association="Self.FK__GrupoClie__Usuar__71D1E811">
+          <AssociationSet Name="FK__GrupoClie__Usuar__6FE99F9F" Association="Self.FK__GrupoClie__Usuar__6FE99F9F">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="GrupoCliente" EntitySet="GrupoCliente" />
           </AssociationSet>
-          <AssociationSet Name="FK__GrupoClie__Usuar__72C60C4A" Association="Self.FK__GrupoClie__Usuar__72C60C4A">
+          <AssociationSet Name="FK__GrupoClie__Usuar__70DDC3D8" Association="Self.FK__GrupoClie__Usuar__70DDC3D8">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="GrupoCliente" EntitySet="GrupoCliente" />
           </AssociationSet>
-          <AssociationSet Name="FK__PaqueteGr__Grupo__08B54D69" Association="Self.FK__PaqueteGr__Grupo__08B54D69">
+          <AssociationSet Name="FK__PaqueteGr__Grupo__07C12930" Association="Self.FK__PaqueteGr__Grupo__07C12930">
             <End Role="GrupoCliente" EntitySet="GrupoCliente" />
             <End Role="PaqueteGrupoCliente" EntitySet="PaqueteGrupoCliente" />
           </AssociationSet>
-          <AssociationSet Name="FK__Promocion__Grupo__2645B050" Association="Self.FK__Promocion__Grupo__2645B050">
+          <AssociationSet Name="FK__Promocion__Grupo__25518C17" Association="Self.FK__Promocion__Grupo__25518C17">
             <End Role="GrupoCliente" EntitySet="GrupoCliente" />
             <End Role="PromocionTipoCliente" EntitySet="PromocionTipoCliente" />
           </AssociationSet>
-          <AssociationSet Name="FK__Logs__Usuario__3587F3E0" Association="Self.FK__Logs__Usuario__3587F3E0">
+          <AssociationSet Name="FK__Logs__Usuario__3493CFA7" Association="Self.FK__Logs__Usuario__3493CFA7">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Logs" EntitySet="Logs" />
           </AssociationSet>
@@ -3449,23 +3337,23 @@
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Modelo" EntitySet="Modelo" />
           </AssociationSet>
-          <AssociationSet Name="FK__Vehiculo__Modelo__534D60F1" Association="Self.FK__Vehiculo__Modelo__534D60F1">
+          <AssociationSet Name="FK__Vehiculo__Modelo__5070F446" Association="Self.FK__Vehiculo__Modelo__5070F446">
             <End Role="Modelo" EntitySet="Modelo" />
             <End Role="Vehiculo" EntitySet="Vehiculo" />
           </AssociationSet>
-          <AssociationSet Name="FK__Movimient__Produ__6C190EBB" Association="Self.FK__Movimient__Produ__6C190EBB">
+          <AssociationSet Name="FK__Movimient__Produ__6A30C649" Association="Self.FK__Movimient__Produ__6A30C649">
             <End Role="Producto" EntitySet="Producto" />
             <End Role="Movimiento" EntitySet="Movimiento" />
           </AssociationSet>
-          <AssociationSet Name="FK__Movimient__TipoM__6B24EA82" Association="Self.FK__Movimient__TipoM__6B24EA82">
+          <AssociationSet Name="FK__Movimient__TipoM__693CA210" Association="Self.FK__Movimient__TipoM__693CA210">
             <End Role="TipoMovimiento" EntitySet="TipoMovimiento" />
             <End Role="Movimiento" EntitySet="Movimiento" />
           </AssociationSet>
-          <AssociationSet Name="FK__Movimient__Usuar__6D0D32F4" Association="Self.FK__Movimient__Usuar__6D0D32F4">
+          <AssociationSet Name="FK__Movimient__Usuar__6B24EA82" Association="Self.FK__Movimient__Usuar__6B24EA82">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Movimiento" EntitySet="Movimiento" />
           </AssociationSet>
-          <AssociationSet Name="FK__Movimient__Usuar__6E01572D" Association="Self.FK__Movimient__Usuar__6E01572D">
+          <AssociationSet Name="FK__Movimient__Usuar__6C190EBB" Association="Self.FK__Movimient__Usuar__6C190EBB">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Movimiento" EntitySet="Movimiento" />
           </AssociationSet>
@@ -3481,119 +3369,119 @@
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Pais" EntitySet="Pais" />
           </AssociationSet>
+          <AssociationSet Name="FK__Paquete__Usuario__7D439ABD" Association="Self.FK__Paquete__Usuario__7D439ABD">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Paquete" EntitySet="Paquete" />
+          </AssociationSet>
           <AssociationSet Name="FK__Paquete__Usuario__7E37BEF6" Association="Self.FK__Paquete__Usuario__7E37BEF6">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Paquete" EntitySet="Paquete" />
           </AssociationSet>
-          <AssociationSet Name="FK__Paquete__Usuario__7F2BE32F" Association="Self.FK__Paquete__Usuario__7F2BE32F">
-            <End Role="Usuario" EntitySet="Usuario" />
-            <End Role="Paquete" EntitySet="Paquete" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PaqueteDi__Paque__02084FDA" Association="Self.FK__PaqueteDi__Paque__02084FDA">
+          <AssociationSet Name="FK__PaqueteDi__Paque__01142BA1" Association="Self.FK__PaqueteDi__Paque__01142BA1">
             <End Role="Paquete" EntitySet="Paquete" />
             <End Role="PaqueteDia" EntitySet="PaqueteDia" />
           </AssociationSet>
-          <AssociationSet Name="FK__PaqueteGr__Paque__07C12930" Association="Self.FK__PaqueteGr__Paque__07C12930">
+          <AssociationSet Name="FK__PaqueteGr__Paque__06CD04F7" Association="Self.FK__PaqueteGr__Paque__06CD04F7">
             <End Role="Paquete" EntitySet="Paquete" />
             <End Role="PaqueteGrupoCliente" EntitySet="PaqueteGrupoCliente" />
           </AssociationSet>
-          <AssociationSet Name="FK__PaquetePr__Paque__0B91BA14" Association="Self.FK__PaquetePr__Paque__0B91BA14">
+          <AssociationSet Name="FK__PaquetePr__Paque__0A9D95DB" Association="Self.FK__PaquetePr__Paque__0A9D95DB">
             <End Role="Paquete" EntitySet="Paquete" />
             <End Role="PaqueteProducto" EntitySet="PaqueteProducto" />
           </AssociationSet>
-          <AssociationSet Name="FK__Promocion__Paque__1AD3FDA4" Association="Self.FK__Promocion__Paque__1AD3FDA4">
+          <AssociationSet Name="FK__Promocion__Paque__19DFD96B" Association="Self.FK__Promocion__Paque__19DFD96B">
             <End Role="Paquete" EntitySet="Paquete" />
             <End Role="PromocionPaquete" EntitySet="PromocionPaquete" />
           </AssociationSet>
-          <AssociationSet Name="FK__VentaDeta__Paque__2FCF1A8A" Association="Self.FK__VentaDeta__Paque__2FCF1A8A">
+          <AssociationSet Name="FK__VentaDeta__Paque__2EDAF651" Association="Self.FK__VentaDeta__Paque__2EDAF651">
             <End Role="Paquete" EntitySet="Paquete" />
             <End Role="VentaDetalle" EntitySet="VentaDetalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PaqueteDi__Usuar__02FC7413" Association="Self.FK__PaqueteDi__Usuar__02FC7413">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="PaqueteDia" EntitySet="PaqueteDia" />
           </AssociationSet>
           <AssociationSet Name="FK__PaqueteDi__Usuar__03F0984C" Association="Self.FK__PaqueteDi__Usuar__03F0984C">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="PaqueteDia" EntitySet="PaqueteDia" />
           </AssociationSet>
-          <AssociationSet Name="FK__PaqueteDi__Usuar__04E4BC85" Association="Self.FK__PaqueteDi__Usuar__04E4BC85">
-            <End Role="Usuario" EntitySet="Usuario" />
-            <End Role="PaqueteDia" EntitySet="PaqueteDia" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PaquetePr__Produ__0C85DE4D" Association="Self.FK__PaquetePr__Produ__0C85DE4D">
+          <AssociationSet Name="FK__PaquetePr__Produ__0B91BA14" Association="Self.FK__PaquetePr__Produ__0B91BA14">
             <End Role="Producto" EntitySet="Producto" />
             <End Role="PaqueteProducto" EntitySet="PaqueteProducto" />
           </AssociationSet>
-          <AssociationSet Name="FK__Producto__Provee__619B8048" Association="Self.FK__Producto__Provee__619B8048">
+          <AssociationSet Name="FK__Producto__Provee__5FB337D6" Association="Self.FK__Producto__Provee__5FB337D6">
             <End Role="Proveedor" EntitySet="Proveedor" />
             <End Role="Producto" EntitySet="Producto" />
           </AssociationSet>
-          <AssociationSet Name="FK__Producto__TipoPr__60A75C0F" Association="Self.FK__Producto__TipoPr__60A75C0F">
+          <AssociationSet Name="FK__Producto__TipoPr__5EBF139D" Association="Self.FK__Producto__TipoPr__5EBF139D">
             <End Role="TipoProducto" EntitySet="TipoProducto" />
             <End Role="Producto" EntitySet="Producto" />
           </AssociationSet>
-          <AssociationSet Name="FK__Producto__Usuari__628FA481" Association="Self.FK__Producto__Usuari__628FA481">
+          <AssociationSet Name="FK__Producto__Usuari__60A75C0F" Association="Self.FK__Producto__Usuari__60A75C0F">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Producto" EntitySet="Producto" />
           </AssociationSet>
-          <AssociationSet Name="FK__Producto__Usuari__6383C8BA" Association="Self.FK__Producto__Usuari__6383C8BA">
+          <AssociationSet Name="FK__Producto__Usuari__619B8048" Association="Self.FK__Producto__Usuari__619B8048">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Producto" EntitySet="Producto" />
           </AssociationSet>
-          <AssociationSet Name="FK__Promocion__Produ__22751F6C" Association="Self.FK__Promocion__Produ__22751F6C">
+          <AssociationSet Name="FK__Promocion__Produ__2180FB33" Association="Self.FK__Promocion__Produ__2180FB33">
             <End Role="Producto" EntitySet="Producto" />
             <End Role="PromocionProducto" EntitySet="PromocionProducto" />
           </AssociationSet>
-          <AssociationSet Name="FK__VentaDeta__Produ__2DE6D218" Association="Self.FK__VentaDeta__Produ__2DE6D218">
+          <AssociationSet Name="FK__VentaDeta__Produ__2CF2ADDF" Association="Self.FK__VentaDeta__Produ__2CF2ADDF">
             <End Role="Producto" EntitySet="Producto" />
             <End Role="VentaDetalle" EntitySet="VentaDetalle" />
           </AssociationSet>
-          <AssociationSet Name="FK__Promocion__Promo__14270015" Association="Self.FK__Promocion__Promo__14270015">
+          <AssociationSet Name="FK__Promocion__Promo__1332DBDC" Association="Self.FK__Promocion__Promo__1332DBDC">
             <End Role="Promocion" EntitySet="Promocion" />
             <End Role="PromocionDia" EntitySet="PromocionDia" />
           </AssociationSet>
-          <AssociationSet Name="FK__Promocion__Promo__19DFD96B" Association="Self.FK__Promocion__Promo__19DFD96B">
+          <AssociationSet Name="FK__Promocion__Promo__18EBB532" Association="Self.FK__Promocion__Promo__18EBB532">
             <End Role="Promocion" EntitySet="Promocion" />
             <End Role="PromocionPaquete" EntitySet="PromocionPaquete" />
           </AssociationSet>
-          <AssociationSet Name="FK__Promocion__Promo__1DB06A4F" Association="Self.FK__Promocion__Promo__1DB06A4F">
+          <AssociationSet Name="FK__Promocion__Promo__1CBC4616" Association="Self.FK__Promocion__Promo__1CBC4616">
             <End Role="Promocion" EntitySet="Promocion" />
             <End Role="PromocionTipoProducto" EntitySet="PromocionTipoProducto" />
           </AssociationSet>
-          <AssociationSet Name="FK__Promocion__Promo__2180FB33" Association="Self.FK__Promocion__Promo__2180FB33">
+          <AssociationSet Name="FK__Promocion__Promo__208CD6FA" Association="Self.FK__Promocion__Promo__208CD6FA">
             <End Role="Promocion" EntitySet="Promocion" />
             <End Role="PromocionProducto" EntitySet="PromocionProducto" />
           </AssociationSet>
-          <AssociationSet Name="FK__Promocion__Promo__25518C17" Association="Self.FK__Promocion__Promo__25518C17">
+          <AssociationSet Name="FK__Promocion__Promo__245D67DE" Association="Self.FK__Promocion__Promo__245D67DE">
             <End Role="Promocion" EntitySet="Promocion" />
             <End Role="PromocionTipoCliente" EntitySet="PromocionTipoCliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Promocion__Usuar__0F624AF8" Association="Self.FK__Promocion__Usuar__0F624AF8">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Promocion" EntitySet="Promocion" />
           </AssociationSet>
           <AssociationSet Name="FK__Promocion__Usuar__10566F31" Association="Self.FK__Promocion__Usuar__10566F31">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Promocion" EntitySet="Promocion" />
           </AssociationSet>
-          <AssociationSet Name="FK__Promocion__Usuar__114A936A" Association="Self.FK__Promocion__Usuar__114A936A">
-            <End Role="Usuario" EntitySet="Usuario" />
-            <End Role="Promocion" EntitySet="Promocion" />
-          </AssociationSet>
-          <AssociationSet Name="FK__VentaDeta__Promo__30C33EC3" Association="Self.FK__VentaDeta__Promo__30C33EC3">
+          <AssociationSet Name="FK__VentaDeta__Promo__2FCF1A8A" Association="Self.FK__VentaDeta__Promo__2FCF1A8A">
             <End Role="Promocion" EntitySet="Promocion" />
             <End Role="VentaDetalle" EntitySet="VentaDetalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Promocion__Usuar__151B244E" Association="Self.FK__Promocion__Usuar__151B244E">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="PromocionDia" EntitySet="PromocionDia" />
           </AssociationSet>
           <AssociationSet Name="FK__Promocion__Usuar__160F4887" Association="Self.FK__Promocion__Usuar__160F4887">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="PromocionDia" EntitySet="PromocionDia" />
           </AssociationSet>
-          <AssociationSet Name="FK__Promocion__Usuar__17036CC0" Association="Self.FK__Promocion__Usuar__17036CC0">
-            <End Role="Usuario" EntitySet="Usuario" />
-            <End Role="PromocionDia" EntitySet="PromocionDia" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Promocion__TipoP__1EA48E88" Association="Self.FK__Promocion__TipoP__1EA48E88">
+          <AssociationSet Name="FK__Promocion__TipoP__1DB06A4F" Association="Self.FK__Promocion__TipoP__1DB06A4F">
             <End Role="TipoProducto" EntitySet="TipoProducto" />
             <End Role="PromocionTipoProducto" EntitySet="PromocionTipoProducto" />
           </AssociationSet>
-          <AssociationSet Name="FK__Proveedor__Usuar__5BE2A6F2" Association="Self.FK__Proveedor__Usuar__5BE2A6F2">
+          <AssociationSet Name="FK__Proveedor__Usuar__59FA5E80" Association="Self.FK__Proveedor__Usuar__59FA5E80">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Proveedor" EntitySet="Proveedor" />
           </AssociationSet>
-          <AssociationSet Name="FK__Proveedor__Usuar__5CD6CB2B" Association="Self.FK__Proveedor__Usuar__5CD6CB2B">
+          <AssociationSet Name="FK__Proveedor__Usuar__5AEE82B9" Association="Self.FK__Proveedor__Usuar__5AEE82B9">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Proveedor" EntitySet="Proveedor" />
           </AssociationSet>
@@ -3605,23 +3493,23 @@
             <End Role="Rol" EntitySet="Rol" />
             <End Role="Usuario" EntitySet="Usuario" />
           </AssociationSet>
-          <AssociationSet Name="FK__Vehiculo__TipoId__5441852A" Association="Self.FK__Vehiculo__TipoId__5441852A">
+          <AssociationSet Name="FK__Vehiculo__TipoId__5165187F" Association="Self.FK__Vehiculo__TipoId__5165187F">
             <End Role="TipoIdentificacion" EntitySet="TipoIdentificacion" />
             <End Role="Vehiculo" EntitySet="Vehiculo" />
           </AssociationSet>
-          <AssociationSet Name="FK__TipoMovim__Usuar__6754599E" Association="Self.FK__TipoMovim__Usuar__6754599E">
+          <AssociationSet Name="FK__TipoMovim__Usuar__656C112C" Association="Self.FK__TipoMovim__Usuar__656C112C">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="TipoMovimiento" EntitySet="TipoMovimiento" />
           </AssociationSet>
-          <AssociationSet Name="FK__TipoMovim__Usuar__68487DD7" Association="Self.FK__TipoMovim__Usuar__68487DD7">
+          <AssociationSet Name="FK__TipoMovim__Usuar__66603565" Association="Self.FK__TipoMovim__Usuar__66603565">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="TipoMovimiento" EntitySet="TipoMovimiento" />
           </AssociationSet>
-          <AssociationSet Name="FK__TipoProdu__Usuar__44FF419A" Association="Self.FK__TipoProdu__Usuar__44FF419A">
+          <AssociationSet Name="FK__TipoProdu__Usuar__4316F928" Association="Self.FK__TipoProdu__Usuar__4316F928">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="TipoProducto" EntitySet="TipoProducto" />
           </AssociationSet>
-          <AssociationSet Name="FK__TipoProdu__Usuar__45F365D3" Association="Self.FK__TipoProdu__Usuar__45F365D3">
+          <AssociationSet Name="FK__TipoProdu__Usuar__440B1D61" Association="Self.FK__TipoProdu__Usuar__440B1D61">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="TipoProducto" EntitySet="TipoProducto" />
           </AssociationSet>
@@ -3633,23 +3521,23 @@
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Usuario1" EntitySet="Usuario" />
           </AssociationSet>
-          <AssociationSet Name="FK__Vehiculo__Usuari__5535A963" Association="Self.FK__Vehiculo__Usuari__5535A963">
+          <AssociationSet Name="FK__Vehiculo__Usuari__52593CB8" Association="Self.FK__Vehiculo__Usuari__52593CB8">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Vehiculo" EntitySet="Vehiculo" />
           </AssociationSet>
-          <AssociationSet Name="FK__Vehiculo__Usuari__5629CD9C" Association="Self.FK__Vehiculo__Usuari__5629CD9C">
+          <AssociationSet Name="FK__Vehiculo__Usuari__534D60F1" Association="Self.FK__Vehiculo__Usuari__534D60F1">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Vehiculo" EntitySet="Vehiculo" />
           </AssociationSet>
-          <AssociationSet Name="FK__Venta__UsuarioVe__2A164134" Association="Self.FK__Venta__UsuarioVe__2A164134">
+          <AssociationSet Name="FK__Venta__UsuarioVe__29221CFB" Association="Self.FK__Venta__UsuarioVe__29221CFB">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Venta" EntitySet="Venta" />
           </AssociationSet>
-          <AssociationSet Name="FK__VentaDeta__Vehic__2EDAF651" Association="Self.FK__VentaDeta__Vehic__2EDAF651">
+          <AssociationSet Name="FK__VentaDeta__Vehic__2DE6D218" Association="Self.FK__VentaDeta__Vehic__2DE6D218">
             <End Role="Vehiculo" EntitySet="Vehiculo" />
             <End Role="VentaDetalle" EntitySet="VentaDetalle" />
           </AssociationSet>
-          <AssociationSet Name="FK__VentaDeta__Venta__2CF2ADDF" Association="Self.FK__VentaDeta__Venta__2CF2ADDF">
+          <AssociationSet Name="FK__VentaDeta__Venta__2BFE89A6" Association="Self.FK__VentaDeta__Venta__2BFE89A6">
             <End Role="Venta" EntitySet="Venta" />
             <End Role="VentaDetalle" EntitySet="VentaDetalle" />
           </AssociationSet>
@@ -3700,10 +3588,6 @@
               <MappingFragment StoreEntitySet="Color">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="UsuarioAlta" ColumnName="UsuarioAlta" />
-                <ScalarProperty Name="FechaAlta" ColumnName="FechaAlta" />
-                <ScalarProperty Name="UsuarioMod" ColumnName="UsuarioMod" />
-                <ScalarProperty Name="FechaMod" ColumnName="FechaMod" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -4080,7 +3964,6 @@
                 <ScalarProperty Name="FechaAlta" ColumnName="FechaAlta" />
                 <ScalarProperty Name="UsuarioMod" ColumnName="UsuarioMod" />
                 <ScalarProperty Name="FechaMod" ColumnName="FechaMod" />
-                <ScalarProperty Name="Empleado" ColumnName="Empleado" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

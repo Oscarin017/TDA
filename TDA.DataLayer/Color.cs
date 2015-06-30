@@ -16,12 +16,5 @@ namespace TDA.DataLayer
     {
         public long ID { get; set; }
         public string Nombre { get; set; }
-        public Nullable<long> UsuarioAlta { get; set; }
-        public Nullable<System.DateTime> FechaAlta { get; set; }
-        public Nullable<long> UsuarioMod { get; set; }
-        public Nullable<System.DateTime> FechaMod { get; set; }
-    
-        public virtual Usuario Usuario { get; set; }
-        public virtual Usuario Usuario1 { get; set; }
     }
 }

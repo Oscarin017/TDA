@@ -68,9 +68,9 @@ namespace TDA.Service
         {
             return _dataBaseTool.UpdateUsuario(usu);
         }
-        public List<Usuarios> SelectUsuario()
+        public List<Usuarios> SelectUsuario(Usuarios usu)
         {
-            return _dataBaseTool.SelectUsuarios();
+            return _dataBaseTool.SelectUsuarios(usu);
         }
 
         #endregion
@@ -88,9 +88,9 @@ namespace TDA.Service
         {
             return _dataBaseTool.DeletePais(pai);
         }
-        public List<Paises> SelectPais()
+        public List<Paises> SelectPais(Paises pai)
         {
-            return _dataBaseTool.SelectPais();
+            return _dataBaseTool.SelectPais(pai);
         }
         #endregion
 
@@ -103,9 +103,9 @@ namespace TDA.Service
         {
             return _dataBaseTool.UpdateEstado(est);
         }
-        public List<Estados> SelectEstado()
+        public List<Estados> SelectEstado(Estados est)
         {
-            return _dataBaseTool.SelectEstado();
+            return _dataBaseTool.SelectEstado(est);
         }
         #endregion
 
@@ -122,9 +122,9 @@ namespace TDA.Service
         {
             return _dataBaseTool.DeleteMarca(mar);
         }
-        public List<Marcas> SelectMarca()
+        public List<Marcas> SelectMarca(Marcas mar)
         {
-            return _dataBaseTool.SelectMarca();
+            return _dataBaseTool.SelectMarca(mar);
         }
         #endregion
 
@@ -141,9 +141,9 @@ namespace TDA.Service
         {
             return _dataBaseTool.DeleteModelo(mod);
         }
-        public List<Modelos> SelectModelo()
+        public List<Modelos> SelectModelo(Modelos mod)
         {
-            return _dataBaseTool.SelectModelo();
+            return _dataBaseTool.SelectModelo(mod);
         }
         #endregion
 
@@ -160,9 +160,13 @@ namespace TDA.Service
         {
             return _dataBaseTool.DeleteColor(col);
         }
-        public List<Colores> SelectColor()
+        public List<Colores> SelectColor(Colores col)
         {
-            return _dataBaseTool.SelectColor();
+            return _dataBaseTool.SelectColor(col);
+        }
+        public List<Colores> BuscarColorID(long ID)
+        {
+            return _dataBaseTool.BuscarColorID(ID);
         }
         #endregion
 
@@ -179,9 +183,9 @@ namespace TDA.Service
         {
             return _dataBaseTool.DeleteTipoProducto(tip);
         }
-        public List<TipoProductos> SelectTipoProducto()
+        public List<TipoProductos> SelectTipoProducto(TipoProductos tip)
         {
-            return _dataBaseTool.SelectTipoProducto();
+            return _dataBaseTool.SelectTipoProducto(tip);
         }
         #endregion
 
@@ -198,9 +202,9 @@ namespace TDA.Service
         {
             return _dataBaseTool.DeleteEmpleado(emp);
         }
-        public List<Empleados> SelectEmpleado()
+        public List<Empleados> SelectEmpleado(Empleados emp)
         {
-            return _dataBaseTool.SelectEmpleado();
+            return _dataBaseTool.SelectEmpleado(emp);
         }
         #endregion
 
@@ -478,5 +482,63 @@ namespace TDA.Service
             return _dataBaseTool.SelectPromocionGrupoCliente();
         }
         #endregion
+
+        #region Tabla Venta 
+        public Resultado InsertVenta(Ventas ven)
+        {
+            return _dataBaseTool.InsertVenta(ven);
+        }
+        public Resultado DeleteVenta(Ventas ven)
+        {
+            return _dataBaseTool.DeleteVenta(ven);
+        }
+        public List<Ventas> SelectVenta()
+        {
+            return _dataBaseTool.SelectVenta();
+        }
+        #endregion
+
+        #region Tabla Venta Detalle
+        public Resultado InsertVentaDetalle(VentaDetalles ved)
+        {
+            return _dataBaseTool.InsertVentaDetalle(ved);
+        }
+        public Resultado DeleteVentaDetalle(VentaDetalles ved)
+        {
+            return _dataBaseTool.DeleteVentaDetalle(ved);
+        }
+        public List<VentaDetalles> SelectVentaDetalle()
+        {
+            return _dataBaseTool.SelectVentaDetalle();
+        }
+        #endregion
+
+        #region Tabla Venta Dia
+        public Resultado InsertVentaDia(VentaDias ved)
+        {
+            return _dataBaseTool.InsertVentaDia(ved);
+        }
+        public Resultado DeleteVentaDia(VentaDias ved)
+        {
+            return _dataBaseTool.DeleteVentaDia(ved);
+        }
+        public List<VentaDias> SelectVentaDia()
+        {
+            return _dataBaseTool.SelectVentaDia();
+        }
+        #endregion
+
+        #region Tabla Logs
+        public Resultado InsertLog(Log log)
+        {
+            return _dataBaseTool.InsertLog(log);
+        }
+        public List<Log> SelectLog()
+        {
+            return _dataBaseTool.SelectLog();
+        }
+        #endregion
+
+
     }
 }

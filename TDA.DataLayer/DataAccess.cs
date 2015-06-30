@@ -233,7 +233,7 @@ namespace TDA.DataLayer
         private List<Usuarios> BuscarUsuarios(String Alias)
         {
             var usuarios = (from a in _context.Usuario
-                            where a.Alias == Alias
+                            where a.Alias.Contains(Alias)
                             select new Usuarios
                             {
                                 ID = a.ID,
@@ -271,7 +271,7 @@ namespace TDA.DataLayer
         private List<Usuarios> BuscarUsuarios(String Alias, long? Rol)
         {
             var usuarios = (from a in _context.Usuario
-                            where a.Alias == Alias && a.Rol == Rol
+                            where a.Alias.Contains(Alias) && a.Rol == Rol
                             select new Usuarios
                             {
                                 ID = a.ID,
@@ -436,7 +436,7 @@ namespace TDA.DataLayer
         public List<Paises> BuscarPais(String Nombre)
         {
             var paises = (from a in _context.Pais
-                          where a.Nombre == Nombre
+                          where a.Nombre.Contains(Nombre)
                           select new Paises
                           {
                               ID = a.ID,
@@ -571,7 +571,7 @@ namespace TDA.DataLayer
         public List<Estados> BuscarEstado(String Nombre)
         {
             var estados = (from a in _context.Estado
-                           where a.Nombre == Nombre
+                           where a.Nombre.Contains(Nombre)
                            select new Estados
                            {
                                ID = a.ID,
@@ -603,7 +603,7 @@ namespace TDA.DataLayer
         public List<Estados> BuscarEstado(String Nombre, long? Pais)
         {
             var estados = (from a in _context.Estado
-                           where a.Nombre == Nombre && a.Pais == Pais
+                           where a.Nombre.Contains(Nombre) && a.Pais == Pais
                            select new Estados
                            {
                                ID = a.ID,
@@ -752,7 +752,7 @@ namespace TDA.DataLayer
         public List<Marcas> BuscarMarca(String Nombre)
         {
             var marcas = (from a in _context.Marca
-                          where a.Nombre == Nombre
+                          where a.Nombre.Contains(Nombre)
                           select new Marcas
                           {
                               ID = a.ID,
@@ -901,7 +901,7 @@ namespace TDA.DataLayer
         public List<Modelos> BuscarModelo(String Nombre)
         {
             var modelos = (from a in _context.Modelo
-                           where a.Nombre == Nombre
+                           where a.Nombre.Contains(Nombre)
                            select new Modelos
                            {
                                ID = a.ID,
@@ -933,7 +933,7 @@ namespace TDA.DataLayer
         public List<Modelos> BuscarModelo(String Nombre, long? Marca)
         {
             var modelos = (from a in _context.Modelo
-                           where a.Nombre == Nombre && a.Marca == Marca
+                           where a.Nombre.Contains(Nombre) && a.Marca == Marca
                            select new Modelos
                            {
                                ID = a.ID,
@@ -1070,7 +1070,7 @@ namespace TDA.DataLayer
         public List<Colores> BuscarColor(String Nombre)
         {
             var colores = (from a in _context.Color
-                           where a.Nombre == Nombre
+                           where a.Nombre.Contains(Nombre)
                            select new Colores
                            {
                                ID = a.ID,
@@ -1226,7 +1226,7 @@ namespace TDA.DataLayer
         public List<TipoProductos> BuscarTipoProducto(String Nombre)
         {
             var tipos = (from a in _context.TipoProducto
-                         where a.Nombre == Nombre
+                         where a.Nombre.Contains(Nombre)
                          select new TipoProductos
                          {
                              ID = a.ID,

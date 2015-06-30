@@ -72,6 +72,10 @@ namespace TDA.Service
         {
             return _dataBaseTool.SelectUsuarios(usu);
         }
+        public List<Usuarios> BuscarUsuarioID(long ID)
+        {
+            return _dataBaseTool.BuscarUsuariosID(ID);
+        }
 
         #endregion
 
@@ -92,6 +96,10 @@ namespace TDA.Service
         {
             return _dataBaseTool.SelectPais(pai);
         }
+        public List<Paises> BuscarPaisID(long ID)
+        {
+            return _dataBaseTool.BuscarPaisID(ID);
+        }
         #endregion
 
         #region Tabla  Estado
@@ -106,6 +114,10 @@ namespace TDA.Service
         public List<Estados> SelectEstado(Estados est)
         {
             return _dataBaseTool.SelectEstado(est);
+        }
+        public List<Estados> BuscarEstadoID(long ID)
+        {
+            return _dataBaseTool.BuscarEstadoID(ID);
         }
         #endregion
 
@@ -126,6 +138,10 @@ namespace TDA.Service
         {
             return _dataBaseTool.SelectMarca(mar);
         }
+        public List<Marcas> BuscarMarcaID(long ID)
+        {
+            return _dataBaseTool.BuscarMarcaID(ID);
+        }
         #endregion
 
         #region Tabla  Modelo
@@ -144,6 +160,10 @@ namespace TDA.Service
         public List<Modelos> SelectModelo(Modelos mod)
         {
             return _dataBaseTool.SelectModelo(mod);
+        }
+        public List<Modelos> BuscarModeloID(long ID)
+        {
+            return _dataBaseTool.BuscarModeloID(ID);
         }
         #endregion
 
@@ -186,6 +206,10 @@ namespace TDA.Service
         public List<TipoProductos> SelectTipoProducto(TipoProductos tip)
         {
             return _dataBaseTool.SelectTipoProducto(tip);
+        }
+        public List<TipoProductos> BuscarTipoProductoID(long ID)
+        {
+            return _dataBaseTool.BuscarTipoProductoID(ID);
         }
         #endregion
 

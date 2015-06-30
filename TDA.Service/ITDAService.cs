@@ -50,6 +50,8 @@ namespace TDA.Service
         Resultado UpdateUsuario(Usuarios usu);
         [OperationContract]
         List<Usuarios> SelectUsuario(Usuarios usu);
+        [OperationContract]
+        List<Usuarios> BuscarUsuarioID(long ID);
         #endregion
 
         #region Tabla Pais
@@ -61,6 +63,8 @@ namespace TDA.Service
         Resultado DeletePais(Paises pai);
         [OperationContract]
         List<Paises> SelectPais(Paises pai);
+        [OperationContract]
+        List<Paises> BuscarPaisID(long ID);
         #endregion
 
         #region Tabla Estado
@@ -70,6 +74,8 @@ namespace TDA.Service
         Resultado UpdateEstado(Estados est);
         [OperationContract]
         List<Estados> SelectEstado(Estados est);
+        [OperationContract]
+        List<Estados> BuscarEstadoID(long ID);
         #endregion
 
         #region Tabla Marca
@@ -81,6 +87,8 @@ namespace TDA.Service
         Resultado DeleteMarca(Marcas mar);
         [OperationContract]
         List<Marcas> SelectMarca(Marcas mar);
+        [OperationContract]
+        List<Marcas> BuscarMarcaID(long ID);
         #endregion
 
         #region Tabla Modelo
@@ -92,6 +100,8 @@ namespace TDA.Service
         Resultado DeleteModelo(Modelos mod);
         [OperationContract]
         List<Modelos> SelectModelo(Modelos mod);
+        [OperationContract]
+        List<Modelos> BuscarModeloID(long ID);
         #endregion
 
         #region Tabla Color
@@ -116,6 +126,8 @@ namespace TDA.Service
         Resultado DeleteTipoProducto(TipoProductos tip);
         [OperationContract]
         List<TipoProductos> SelectTipoProducto(TipoProductos tip);
+        [OperationContract]
+        List<TipoProductos> BuscarTipoProductoID(long ID);
         #endregion
 
         #region Tabla Empleado

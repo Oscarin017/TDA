@@ -211,6 +211,25 @@ namespace TDA.DataLayer
                 return BuscarUsuarios();
             }
         }
+        public List<Usuarios> BuscarUsuariosID(long ID)
+        {
+            var usuarios = (from a in _context.Usuario
+                            where a.ID == ID
+                            select new Usuarios
+                            {
+                                ID = a.ID,
+                                Alias = a.Alias,
+                                Contraseña = a.Contrasena,
+                                Email = a.Email,
+                                //Empleado = a.Empleado,
+                                Rol = a.Rol,
+                                UsuarioAlta = a.UsuarioAlta,
+                                UsuarioMod = a.UsuarioMod,
+                                FechaAlta = a.FechaAlta,
+                                FechaMod = a.FechaMod
+                            }).ToList();
+            return usuarios;
+        }
         //Buscar Alias y Rol
         private List<Usuarios> BuscarUsuarios()
         {
@@ -418,6 +437,21 @@ namespace TDA.DataLayer
             }
 
         }
+        public List<Paises> BuscarPaisID(long ID)
+        {
+            var paises = (from a in _context.Pais
+                          where a.ID == ID
+                          select new Paises
+                          {
+                              ID = a.ID,
+                              Nombre = a.Nombre,
+                              UsuarioAlta = a.UsuarioAlta,
+                              UsuarioMod = a.UsuarioMod,
+                              FechaAlta = a.FechaAlta,
+                              FechaMod = a.FechaMod
+                          }).ToList();
+            return paises;
+        }
         //Buscar por Nombre
         public List<Paises> BuscarPais()
         {
@@ -551,6 +585,22 @@ namespace TDA.DataLayer
             {
                 return BuscarEstado();
             }
+        }
+        public List<Estados> BuscarEstadoID(long ID)
+        {
+            var estados = (from a in _context.Estado
+                           where a.ID == ID
+                           select new Estados
+                           {
+                               ID = a.ID,
+                               Nombre = a.Nombre,
+                               Pais = a.Pais,
+                               UsuarioAlta = a.UsuarioAlta,
+                               UsuarioMod = a.UsuarioMod,
+                               FechaAlta = a.FechaAlta,
+                               FechaMod = a.FechaMod
+                           }).ToList();
+            return estados;
         }
         //Buscar por Pais y Nombre
         public List<Estados> BuscarEstado()
@@ -734,6 +784,21 @@ namespace TDA.DataLayer
             }
             return BuscarMarca();
         }
+        public List<Marcas> BuscarMarcaID(long ID)
+        {
+            var marcas = (from a in _context.Marca
+                          where a.ID == ID
+                          select new Marcas
+                          {
+                              ID = a.ID,
+                              Nombre = a.Nombre,
+                              UsuarioAlta = a.UsuarioAlta,
+                              UsuarioMod = a.UsuarioMod,
+                              FechaAlta = a.FechaAlta,
+                              FechaMod = a.FechaMod
+                          }).ToList();
+            return marcas;
+        }
         // Buscar por Nombre
         public List<Marcas> BuscarMarca()
         {
@@ -881,6 +946,22 @@ namespace TDA.DataLayer
             {
                 return BuscarModelo();
             }
+        }
+        public List<Modelos> BuscarModeloID(long ID)
+        {
+            var modelos = (from a in _context.Modelo
+                           where a.ID == ID
+                           select new Modelos
+                           {
+                               ID = a.ID,
+                               Nombre = a.Nombre,
+                               Marca = a.Marca,
+                               UsuarioAlta = a.UsuarioAlta,
+                               UsuarioMod = a.UsuarioMod,
+                               FechaAlta = a.FechaAlta,
+                               FechaMod = a.FechaMod
+                           }).ToList();
+            return modelos;
         }
         //Buscar por Nombre y Marca
         public List<Modelos> BuscarModelo()
@@ -1207,6 +1288,21 @@ namespace TDA.DataLayer
                 return BuscarTipoProducto(tip.Nombre);
             }
             return BuscarTipoProducto();
+        }
+        public List<TipoProductos> BuscarTipoProductoID(long ID)
+        {
+            var tipos = (from a in _context.TipoProducto
+                         where a.ID == ID
+                         select new TipoProductos
+                         {
+                             ID = a.ID,
+                             Nombre = a.Nombre,
+                             UsuarioAlta = a.UsuarioAlta,
+                             UsuarioMod = a.UsuarioMod,
+                             FechaAlta = a.FechaAlta,
+                             FechaMod = a.FechaMod
+                         }).ToList();
+            return tipos;
         }
         //Buscar Tipo de Producto por Nombre
         public List<TipoProductos> BuscarTipoProducto()

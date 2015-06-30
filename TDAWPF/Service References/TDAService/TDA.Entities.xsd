@@ -602,4 +602,69 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfPromocionGrupoClientes" nillable="true" type="tns:ArrayOfPromocionGrupoClientes" />
+  <xs:complexType name="Ventas">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Cliente" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="Fecha" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="Total" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="UsuarioVenta" nillable="true" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Ventas" nillable="true" type="tns:Ventas" />
+  <xs:complexType name="ArrayOfVentas">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Ventas" nillable="true" type="tns:Ventas" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfVentas" nillable="true" type="tns:ArrayOfVentas" />
+  <xs:complexType name="VentaDetalles">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Color" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="Paquete" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="Producto" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="Promocion" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="Subtotal" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Vehiculo" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="Venta" nillable="true" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="VentaDetalles" nillable="true" type="tns:VentaDetalles" />
+  <xs:complexType name="ArrayOfVentaDetalles">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VentaDetalles" nillable="true" type="tns:VentaDetalles" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfVentaDetalles" nillable="true" type="tns:ArrayOfVentaDetalles" />
+  <xs:complexType name="VentaDias">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Fecha" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="Total" nillable="true" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="VentaDias" nillable="true" type="tns:VentaDias" />
+  <xs:complexType name="ArrayOfVentaDias">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VentaDias" nillable="true" type="tns:VentaDias" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfVentaDias" nillable="true" type="tns:ArrayOfVentaDias" />
+  <xs:complexType name="Log">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Fecha" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="Usuario" nillable="true" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Log" nillable="true" type="tns:Log" />
+  <xs:complexType name="ArrayOfLog">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Log" nillable="true" type="tns:Log" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfLog" nillable="true" type="tns:ArrayOfLog" />
 </xs:schema>

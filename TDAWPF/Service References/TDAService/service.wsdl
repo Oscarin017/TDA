@@ -182,6 +182,12 @@
   <wsdl:message name="ITDAService_SelectColor_OutputMessage">
     <wsdl:part name="parameters" element="tns:SelectColorResponse" />
   </wsdl:message>
+  <wsdl:message name="ITDAService_BuscarColorID_InputMessage">
+    <wsdl:part name="parameters" element="tns:BuscarColorID" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_BuscarColorID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BuscarColorIDResponse" />
+  </wsdl:message>
   <wsdl:message name="ITDAService_InsertTipoProducto_InputMessage">
     <wsdl:part name="parameters" element="tns:InsertTipoProducto" />
   </wsdl:message>
@@ -572,6 +578,72 @@
   <wsdl:message name="ITDAService_SelectPromocionGrupoCliente_OutputMessage">
     <wsdl:part name="parameters" element="tns:SelectPromocionGrupoClienteResponse" />
   </wsdl:message>
+  <wsdl:message name="ITDAService_InsertVenta_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertVenta" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_InsertVenta_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertVentaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_DeleteVenta_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteVenta" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_DeleteVenta_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteVentaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_SelectVenta_InputMessage">
+    <wsdl:part name="parameters" element="tns:SelectVenta" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_SelectVenta_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SelectVentaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_InsertVentaDetalle_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertVentaDetalle" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_InsertVentaDetalle_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertVentaDetalleResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_DeleteVentaDetalle_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteVentaDetalle" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_DeleteVentaDetalle_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteVentaDetalleResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_SelectVentaDetalle_InputMessage">
+    <wsdl:part name="parameters" element="tns:SelectVentaDetalle" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_SelectVentaDetalle_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SelectVentaDetalleResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_InsertVentaDia_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertVentaDia" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_InsertVentaDia_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertVentaDiaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_DeleteVentaDia_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteVentaDia" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_DeleteVentaDia_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteVentaDiaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_SelectVentaDia_InputMessage">
+    <wsdl:part name="parameters" element="tns:SelectVentaDia" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_SelectVentaDia_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SelectVentaDiaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_InsertLog_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertLog" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_InsertLog_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertLogResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_SelectLog_InputMessage">
+    <wsdl:part name="parameters" element="tns:SelectLog" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_SelectLog_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SelectLogResponse" />
+  </wsdl:message>
   <wsdl:portType name="ITDAService">
     <wsdl:operation name="SelectConfiguracion">
       <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/SelectConfiguracion" message="tns:ITDAService_SelectConfiguracion_InputMessage" />
@@ -684,6 +756,10 @@
     <wsdl:operation name="SelectColor">
       <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/SelectColor" message="tns:ITDAService_SelectColor_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/SelectColorResponse" message="tns:ITDAService_SelectColor_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BuscarColorID">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/BuscarColorID" message="tns:ITDAService_BuscarColorID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/BuscarColorIDResponse" message="tns:ITDAService_BuscarColorID_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="InsertTipoProducto">
       <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/InsertTipoProducto" message="tns:ITDAService_InsertTipoProducto_InputMessage" />
@@ -945,6 +1021,50 @@
       <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/SelectPromocionGrupoCliente" message="tns:ITDAService_SelectPromocionGrupoCliente_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/SelectPromocionGrupoClienteResponse" message="tns:ITDAService_SelectPromocionGrupoCliente_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="InsertVenta">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/InsertVenta" message="tns:ITDAService_InsertVenta_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/InsertVentaResponse" message="tns:ITDAService_InsertVenta_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteVenta">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/DeleteVenta" message="tns:ITDAService_DeleteVenta_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/DeleteVentaResponse" message="tns:ITDAService_DeleteVenta_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectVenta">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/SelectVenta" message="tns:ITDAService_SelectVenta_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/SelectVentaResponse" message="tns:ITDAService_SelectVenta_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertVentaDetalle">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/InsertVentaDetalle" message="tns:ITDAService_InsertVentaDetalle_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/InsertVentaDetalleResponse" message="tns:ITDAService_InsertVentaDetalle_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteVentaDetalle">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/DeleteVentaDetalle" message="tns:ITDAService_DeleteVentaDetalle_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/DeleteVentaDetalleResponse" message="tns:ITDAService_DeleteVentaDetalle_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectVentaDetalle">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/SelectVentaDetalle" message="tns:ITDAService_SelectVentaDetalle_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/SelectVentaDetalleResponse" message="tns:ITDAService_SelectVentaDetalle_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertVentaDia">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/InsertVentaDia" message="tns:ITDAService_InsertVentaDia_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/InsertVentaDiaResponse" message="tns:ITDAService_InsertVentaDia_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteVentaDia">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/DeleteVentaDia" message="tns:ITDAService_DeleteVentaDia_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/DeleteVentaDiaResponse" message="tns:ITDAService_DeleteVentaDia_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectVentaDia">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/SelectVentaDia" message="tns:ITDAService_SelectVentaDia_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/SelectVentaDiaResponse" message="tns:ITDAService_SelectVentaDia_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertLog">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/InsertLog" message="tns:ITDAService_InsertLog_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/InsertLogResponse" message="tns:ITDAService_InsertLog_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectLog">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/SelectLog" message="tns:ITDAService_SelectLog_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/SelectLogResponse" message="tns:ITDAService_SelectLog_OutputMessage" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_ITDAService" type="tns:ITDAService">
     <wsp:PolicyReference URI="#BasicHttpBinding_ITDAService_policy" />
@@ -1194,6 +1314,15 @@
     </wsdl:operation>
     <wsdl:operation name="SelectColor">
       <soap:operation soapAction="http://tempuri.org/ITDAService/SelectColor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuscarColorID">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/BuscarColorID" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1779,6 +1908,105 @@
     </wsdl:operation>
     <wsdl:operation name="SelectPromocionGrupoCliente">
       <soap:operation soapAction="http://tempuri.org/ITDAService/SelectPromocionGrupoCliente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertVenta">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/InsertVenta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteVenta">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/DeleteVenta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectVenta">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/SelectVenta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertVentaDetalle">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/InsertVentaDetalle" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteVentaDetalle">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/DeleteVentaDetalle" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectVentaDetalle">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/SelectVentaDetalle" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertVentaDia">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/InsertVentaDia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteVentaDia">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/DeleteVentaDia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectVentaDia">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/SelectVentaDia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertLog">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/InsertLog" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectLog">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/SelectLog" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

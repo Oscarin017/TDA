@@ -389,6 +389,7 @@
     <None Include="Properties\DataSources\TDA.Entities.Empleados.datasource" />
     <None Include="Properties\DataSources\TDA.Entities.Estados.datasource" />
     <None Include="Properties\DataSources\TDA.Entities.GrupoClientes.datasource" />
+    <None Include="Properties\DataSources\TDA.Entities.Log.datasource" />
     <None Include="Properties\DataSources\TDA.Entities.Marcas.datasource" />
     <None Include="Properties\DataSources\TDA.Entities.Modelos.datasource" />
     <None Include="Properties\DataSources\TDA.Entities.Movimientos.datasource" />
@@ -414,6 +415,9 @@
     <None Include="Properties\DataSources\TDA.Entities.TipoProductos.datasource" />
     <None Include="Properties\DataSources\TDA.Entities.Usuarios.datasource" />
     <None Include="Properties\DataSources\TDA.Entities.Vehiculos.datasource" />
+    <None Include="Properties\DataSources\TDA.Entities.VentaDetalles.datasource" />
+    <None Include="Properties\DataSources\TDA.Entities.VentaDias.datasource" />
+    <None Include="Properties\DataSources\TDA.Entities.Ventas.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

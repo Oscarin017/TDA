@@ -30,8 +30,9 @@ namespace TDAWPF.Layouts
 
         private void cargarGrid()
         {
+            Colores c = new Colores();
             TDAService.TDAServiceClient color = new TDAService.TDAServiceClient();
-            var resultado = color.SelectColor();
+            var resultado = color.SelectColor(c);
             color.Close();
             lstColor.Clear();
 
@@ -62,8 +63,8 @@ namespace TDAWPF.Layouts
         private void btnModificar_Click(object sender, RoutedEventArgs e)
         {
             Colores r = ((Button)sender).DataContext as Colores;
-            string sID = r.ID.ToString();
-            Popups.Color w = new Popups.Color(sID);
+            long lID = r.ID;
+            Popups.Color w = new Popups.Color(lID);
             w.ShowDialog();
         }
 

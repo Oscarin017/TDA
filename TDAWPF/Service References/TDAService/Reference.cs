@@ -64,10 +64,10 @@ namespace TDAWPF.TDAService {
         System.Threading.Tasks.Task<TDA.Entities.Resultado> UpdateUsuarioAsync(TDA.Entities.Usuarios usu);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/SelectUsuario", ReplyAction="http://tempuri.org/ITDAService/SelectUsuarioResponse")]
-        TDA.Entities.Usuarios[] SelectUsuario();
+        TDA.Entities.Usuarios[] SelectUsuario(TDA.Entities.Usuarios usu);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/SelectUsuario", ReplyAction="http://tempuri.org/ITDAService/SelectUsuarioResponse")]
-        System.Threading.Tasks.Task<TDA.Entities.Usuarios[]> SelectUsuarioAsync();
+        System.Threading.Tasks.Task<TDA.Entities.Usuarios[]> SelectUsuarioAsync(TDA.Entities.Usuarios usu);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/InsertPais", ReplyAction="http://tempuri.org/ITDAService/InsertPaisResponse")]
         TDA.Entities.Resultado InsertPais(TDA.Entities.Paises pai);
@@ -88,10 +88,10 @@ namespace TDAWPF.TDAService {
         System.Threading.Tasks.Task<TDA.Entities.Resultado> DeletePaisAsync(TDA.Entities.Paises pai);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/SelectPais", ReplyAction="http://tempuri.org/ITDAService/SelectPaisResponse")]
-        TDA.Entities.Paises[] SelectPais();
+        TDA.Entities.Paises[] SelectPais(TDA.Entities.Paises pai);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/SelectPais", ReplyAction="http://tempuri.org/ITDAService/SelectPaisResponse")]
-        System.Threading.Tasks.Task<TDA.Entities.Paises[]> SelectPaisAsync();
+        System.Threading.Tasks.Task<TDA.Entities.Paises[]> SelectPaisAsync(TDA.Entities.Paises pai);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/InsertEstado", ReplyAction="http://tempuri.org/ITDAService/InsertEstadoResponse")]
         TDA.Entities.Resultado InsertEstado(TDA.Entities.Estados est);
@@ -106,10 +106,10 @@ namespace TDAWPF.TDAService {
         System.Threading.Tasks.Task<TDA.Entities.Resultado> UpdateEstadoAsync(TDA.Entities.Estados est);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/SelectEstado", ReplyAction="http://tempuri.org/ITDAService/SelectEstadoResponse")]
-        TDA.Entities.Estados[] SelectEstado();
+        TDA.Entities.Estados[] SelectEstado(TDA.Entities.Estados est);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/SelectEstado", ReplyAction="http://tempuri.org/ITDAService/SelectEstadoResponse")]
-        System.Threading.Tasks.Task<TDA.Entities.Estados[]> SelectEstadoAsync();
+        System.Threading.Tasks.Task<TDA.Entities.Estados[]> SelectEstadoAsync(TDA.Entities.Estados est);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/InsertMarca", ReplyAction="http://tempuri.org/ITDAService/InsertMarcaResponse")]
         TDA.Entities.Resultado InsertMarca(TDA.Entities.Marcas mar);
@@ -130,10 +130,10 @@ namespace TDAWPF.TDAService {
         System.Threading.Tasks.Task<TDA.Entities.Resultado> DeleteMarcaAsync(TDA.Entities.Marcas mar);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/SelectMarca", ReplyAction="http://tempuri.org/ITDAService/SelectMarcaResponse")]
-        TDA.Entities.Marcas[] SelectMarca();
+        TDA.Entities.Marcas[] SelectMarca(TDA.Entities.Marcas mar);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/SelectMarca", ReplyAction="http://tempuri.org/ITDAService/SelectMarcaResponse")]
-        System.Threading.Tasks.Task<TDA.Entities.Marcas[]> SelectMarcaAsync();
+        System.Threading.Tasks.Task<TDA.Entities.Marcas[]> SelectMarcaAsync(TDA.Entities.Marcas mar);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/InsertModelo", ReplyAction="http://tempuri.org/ITDAService/InsertModeloResponse")]
         TDA.Entities.Resultado InsertModelo(TDA.Entities.Modelos mod);
@@ -154,10 +154,10 @@ namespace TDAWPF.TDAService {
         System.Threading.Tasks.Task<TDA.Entities.Resultado> DeleteModeloAsync(TDA.Entities.Modelos mod);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/SelectModelo", ReplyAction="http://tempuri.org/ITDAService/SelectModeloResponse")]
-        TDA.Entities.Modelos[] SelectModelo();
+        TDA.Entities.Modelos[] SelectModelo(TDA.Entities.Modelos mod);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/SelectModelo", ReplyAction="http://tempuri.org/ITDAService/SelectModeloResponse")]
-        System.Threading.Tasks.Task<TDA.Entities.Modelos[]> SelectModeloAsync();
+        System.Threading.Tasks.Task<TDA.Entities.Modelos[]> SelectModeloAsync(TDA.Entities.Modelos mod);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/InsertColor", ReplyAction="http://tempuri.org/ITDAService/InsertColorResponse")]
         TDA.Entities.Resultado InsertColor(TDA.Entities.Colores col);
@@ -178,10 +178,16 @@ namespace TDAWPF.TDAService {
         System.Threading.Tasks.Task<TDA.Entities.Resultado> DeleteColorAsync(TDA.Entities.Colores col);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/SelectColor", ReplyAction="http://tempuri.org/ITDAService/SelectColorResponse")]
-        TDA.Entities.Colores[] SelectColor();
+        TDA.Entities.Colores[] SelectColor(TDA.Entities.Colores col);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/SelectColor", ReplyAction="http://tempuri.org/ITDAService/SelectColorResponse")]
-        System.Threading.Tasks.Task<TDA.Entities.Colores[]> SelectColorAsync();
+        System.Threading.Tasks.Task<TDA.Entities.Colores[]> SelectColorAsync(TDA.Entities.Colores col);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/BuscarColorID", ReplyAction="http://tempuri.org/ITDAService/BuscarColorIDResponse")]
+        TDA.Entities.Colores[] BuscarColorID(long ID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/BuscarColorID", ReplyAction="http://tempuri.org/ITDAService/BuscarColorIDResponse")]
+        System.Threading.Tasks.Task<TDA.Entities.Colores[]> BuscarColorIDAsync(long ID);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/InsertTipoProducto", ReplyAction="http://tempuri.org/ITDAService/InsertTipoProductoResponse")]
         TDA.Entities.Resultado InsertTipoProducto(TDA.Entities.TipoProductos tip);
@@ -202,10 +208,10 @@ namespace TDAWPF.TDAService {
         System.Threading.Tasks.Task<TDA.Entities.Resultado> DeleteTipoProductoAsync(TDA.Entities.TipoProductos tip);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/SelectTipoProducto", ReplyAction="http://tempuri.org/ITDAService/SelectTipoProductoResponse")]
-        TDA.Entities.TipoProductos[] SelectTipoProducto();
+        TDA.Entities.TipoProductos[] SelectTipoProducto(TDA.Entities.TipoProductos tip);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/SelectTipoProducto", ReplyAction="http://tempuri.org/ITDAService/SelectTipoProductoResponse")]
-        System.Threading.Tasks.Task<TDA.Entities.TipoProductos[]> SelectTipoProductoAsync();
+        System.Threading.Tasks.Task<TDA.Entities.TipoProductos[]> SelectTipoProductoAsync(TDA.Entities.TipoProductos tip);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/InsertEmpleado", ReplyAction="http://tempuri.org/ITDAService/InsertEmpleadoResponse")]
         TDA.Entities.Resultado InsertEmpleado(TDA.Entities.Empleados emp);
@@ -226,10 +232,10 @@ namespace TDAWPF.TDAService {
         System.Threading.Tasks.Task<TDA.Entities.Resultado> DeleteEmpleadoAsync(TDA.Entities.Empleados emp);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/SelectEmpleado", ReplyAction="http://tempuri.org/ITDAService/SelectEmpleadoResponse")]
-        TDA.Entities.Empleados[] SelectEmpleado();
+        TDA.Entities.Empleados[] SelectEmpleado(TDA.Entities.Empleados emp);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/SelectEmpleado", ReplyAction="http://tempuri.org/ITDAService/SelectEmpleadoResponse")]
-        System.Threading.Tasks.Task<TDA.Entities.Empleados[]> SelectEmpleadoAsync();
+        System.Threading.Tasks.Task<TDA.Entities.Empleados[]> SelectEmpleadoAsync(TDA.Entities.Empleados emp);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/InsertVehiculo", ReplyAction="http://tempuri.org/ITDAService/InsertVehiculoResponse")]
         TDA.Entities.Resultado InsertVehiculo(TDA.Entities.Vehiculos veh);
@@ -572,6 +578,72 @@ namespace TDAWPF.TDAService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/SelectPromocionGrupoCliente", ReplyAction="http://tempuri.org/ITDAService/SelectPromocionGrupoClienteResponse")]
         System.Threading.Tasks.Task<TDA.Entities.PromocionGrupoClientes[]> SelectPromocionGrupoClienteAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/InsertVenta", ReplyAction="http://tempuri.org/ITDAService/InsertVentaResponse")]
+        TDA.Entities.Resultado InsertVenta(TDA.Entities.Ventas ven);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/InsertVenta", ReplyAction="http://tempuri.org/ITDAService/InsertVentaResponse")]
+        System.Threading.Tasks.Task<TDA.Entities.Resultado> InsertVentaAsync(TDA.Entities.Ventas ven);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/DeleteVenta", ReplyAction="http://tempuri.org/ITDAService/DeleteVentaResponse")]
+        TDA.Entities.Resultado DeleteVenta(TDA.Entities.Ventas ven);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/DeleteVenta", ReplyAction="http://tempuri.org/ITDAService/DeleteVentaResponse")]
+        System.Threading.Tasks.Task<TDA.Entities.Resultado> DeleteVentaAsync(TDA.Entities.Ventas ven);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/SelectVenta", ReplyAction="http://tempuri.org/ITDAService/SelectVentaResponse")]
+        TDA.Entities.Ventas[] SelectVenta();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/SelectVenta", ReplyAction="http://tempuri.org/ITDAService/SelectVentaResponse")]
+        System.Threading.Tasks.Task<TDA.Entities.Ventas[]> SelectVentaAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/InsertVentaDetalle", ReplyAction="http://tempuri.org/ITDAService/InsertVentaDetalleResponse")]
+        TDA.Entities.Resultado InsertVentaDetalle(TDA.Entities.VentaDetalles ved);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/InsertVentaDetalle", ReplyAction="http://tempuri.org/ITDAService/InsertVentaDetalleResponse")]
+        System.Threading.Tasks.Task<TDA.Entities.Resultado> InsertVentaDetalleAsync(TDA.Entities.VentaDetalles ved);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/DeleteVentaDetalle", ReplyAction="http://tempuri.org/ITDAService/DeleteVentaDetalleResponse")]
+        TDA.Entities.Resultado DeleteVentaDetalle(TDA.Entities.VentaDetalles ved);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/DeleteVentaDetalle", ReplyAction="http://tempuri.org/ITDAService/DeleteVentaDetalleResponse")]
+        System.Threading.Tasks.Task<TDA.Entities.Resultado> DeleteVentaDetalleAsync(TDA.Entities.VentaDetalles ved);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/SelectVentaDetalle", ReplyAction="http://tempuri.org/ITDAService/SelectVentaDetalleResponse")]
+        TDA.Entities.VentaDetalles[] SelectVentaDetalle();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/SelectVentaDetalle", ReplyAction="http://tempuri.org/ITDAService/SelectVentaDetalleResponse")]
+        System.Threading.Tasks.Task<TDA.Entities.VentaDetalles[]> SelectVentaDetalleAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/InsertVentaDia", ReplyAction="http://tempuri.org/ITDAService/InsertVentaDiaResponse")]
+        TDA.Entities.Resultado InsertVentaDia(TDA.Entities.VentaDias ved);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/InsertVentaDia", ReplyAction="http://tempuri.org/ITDAService/InsertVentaDiaResponse")]
+        System.Threading.Tasks.Task<TDA.Entities.Resultado> InsertVentaDiaAsync(TDA.Entities.VentaDias ved);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/DeleteVentaDia", ReplyAction="http://tempuri.org/ITDAService/DeleteVentaDiaResponse")]
+        TDA.Entities.Resultado DeleteVentaDia(TDA.Entities.VentaDias ved);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/DeleteVentaDia", ReplyAction="http://tempuri.org/ITDAService/DeleteVentaDiaResponse")]
+        System.Threading.Tasks.Task<TDA.Entities.Resultado> DeleteVentaDiaAsync(TDA.Entities.VentaDias ved);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/SelectVentaDia", ReplyAction="http://tempuri.org/ITDAService/SelectVentaDiaResponse")]
+        TDA.Entities.VentaDias[] SelectVentaDia();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/SelectVentaDia", ReplyAction="http://tempuri.org/ITDAService/SelectVentaDiaResponse")]
+        System.Threading.Tasks.Task<TDA.Entities.VentaDias[]> SelectVentaDiaAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/InsertLog", ReplyAction="http://tempuri.org/ITDAService/InsertLogResponse")]
+        TDA.Entities.Resultado InsertLog(TDA.Entities.Log log);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/InsertLog", ReplyAction="http://tempuri.org/ITDAService/InsertLogResponse")]
+        System.Threading.Tasks.Task<TDA.Entities.Resultado> InsertLogAsync(TDA.Entities.Log log);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/SelectLog", ReplyAction="http://tempuri.org/ITDAService/SelectLogResponse")]
+        TDA.Entities.Log[] SelectLog();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/SelectLog", ReplyAction="http://tempuri.org/ITDAService/SelectLogResponse")]
+        System.Threading.Tasks.Task<TDA.Entities.Log[]> SelectLogAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -665,12 +737,12 @@ namespace TDAWPF.TDAService {
             return base.Channel.UpdateUsuarioAsync(usu);
         }
         
-        public TDA.Entities.Usuarios[] SelectUsuario() {
-            return base.Channel.SelectUsuario();
+        public TDA.Entities.Usuarios[] SelectUsuario(TDA.Entities.Usuarios usu) {
+            return base.Channel.SelectUsuario(usu);
         }
         
-        public System.Threading.Tasks.Task<TDA.Entities.Usuarios[]> SelectUsuarioAsync() {
-            return base.Channel.SelectUsuarioAsync();
+        public System.Threading.Tasks.Task<TDA.Entities.Usuarios[]> SelectUsuarioAsync(TDA.Entities.Usuarios usu) {
+            return base.Channel.SelectUsuarioAsync(usu);
         }
         
         public TDA.Entities.Resultado InsertPais(TDA.Entities.Paises pai) {
@@ -697,12 +769,12 @@ namespace TDAWPF.TDAService {
             return base.Channel.DeletePaisAsync(pai);
         }
         
-        public TDA.Entities.Paises[] SelectPais() {
-            return base.Channel.SelectPais();
+        public TDA.Entities.Paises[] SelectPais(TDA.Entities.Paises pai) {
+            return base.Channel.SelectPais(pai);
         }
         
-        public System.Threading.Tasks.Task<TDA.Entities.Paises[]> SelectPaisAsync() {
-            return base.Channel.SelectPaisAsync();
+        public System.Threading.Tasks.Task<TDA.Entities.Paises[]> SelectPaisAsync(TDA.Entities.Paises pai) {
+            return base.Channel.SelectPaisAsync(pai);
         }
         
         public TDA.Entities.Resultado InsertEstado(TDA.Entities.Estados est) {
@@ -721,12 +793,12 @@ namespace TDAWPF.TDAService {
             return base.Channel.UpdateEstadoAsync(est);
         }
         
-        public TDA.Entities.Estados[] SelectEstado() {
-            return base.Channel.SelectEstado();
+        public TDA.Entities.Estados[] SelectEstado(TDA.Entities.Estados est) {
+            return base.Channel.SelectEstado(est);
         }
         
-        public System.Threading.Tasks.Task<TDA.Entities.Estados[]> SelectEstadoAsync() {
-            return base.Channel.SelectEstadoAsync();
+        public System.Threading.Tasks.Task<TDA.Entities.Estados[]> SelectEstadoAsync(TDA.Entities.Estados est) {
+            return base.Channel.SelectEstadoAsync(est);
         }
         
         public TDA.Entities.Resultado InsertMarca(TDA.Entities.Marcas mar) {
@@ -753,12 +825,12 @@ namespace TDAWPF.TDAService {
             return base.Channel.DeleteMarcaAsync(mar);
         }
         
-        public TDA.Entities.Marcas[] SelectMarca() {
-            return base.Channel.SelectMarca();
+        public TDA.Entities.Marcas[] SelectMarca(TDA.Entities.Marcas mar) {
+            return base.Channel.SelectMarca(mar);
         }
         
-        public System.Threading.Tasks.Task<TDA.Entities.Marcas[]> SelectMarcaAsync() {
-            return base.Channel.SelectMarcaAsync();
+        public System.Threading.Tasks.Task<TDA.Entities.Marcas[]> SelectMarcaAsync(TDA.Entities.Marcas mar) {
+            return base.Channel.SelectMarcaAsync(mar);
         }
         
         public TDA.Entities.Resultado InsertModelo(TDA.Entities.Modelos mod) {
@@ -785,12 +857,12 @@ namespace TDAWPF.TDAService {
             return base.Channel.DeleteModeloAsync(mod);
         }
         
-        public TDA.Entities.Modelos[] SelectModelo() {
-            return base.Channel.SelectModelo();
+        public TDA.Entities.Modelos[] SelectModelo(TDA.Entities.Modelos mod) {
+            return base.Channel.SelectModelo(mod);
         }
         
-        public System.Threading.Tasks.Task<TDA.Entities.Modelos[]> SelectModeloAsync() {
-            return base.Channel.SelectModeloAsync();
+        public System.Threading.Tasks.Task<TDA.Entities.Modelos[]> SelectModeloAsync(TDA.Entities.Modelos mod) {
+            return base.Channel.SelectModeloAsync(mod);
         }
         
         public TDA.Entities.Resultado InsertColor(TDA.Entities.Colores col) {
@@ -817,12 +889,20 @@ namespace TDAWPF.TDAService {
             return base.Channel.DeleteColorAsync(col);
         }
         
-        public TDA.Entities.Colores[] SelectColor() {
-            return base.Channel.SelectColor();
+        public TDA.Entities.Colores[] SelectColor(TDA.Entities.Colores col) {
+            return base.Channel.SelectColor(col);
         }
         
-        public System.Threading.Tasks.Task<TDA.Entities.Colores[]> SelectColorAsync() {
-            return base.Channel.SelectColorAsync();
+        public System.Threading.Tasks.Task<TDA.Entities.Colores[]> SelectColorAsync(TDA.Entities.Colores col) {
+            return base.Channel.SelectColorAsync(col);
+        }
+        
+        public TDA.Entities.Colores[] BuscarColorID(long ID) {
+            return base.Channel.BuscarColorID(ID);
+        }
+        
+        public System.Threading.Tasks.Task<TDA.Entities.Colores[]> BuscarColorIDAsync(long ID) {
+            return base.Channel.BuscarColorIDAsync(ID);
         }
         
         public TDA.Entities.Resultado InsertTipoProducto(TDA.Entities.TipoProductos tip) {
@@ -849,12 +929,12 @@ namespace TDAWPF.TDAService {
             return base.Channel.DeleteTipoProductoAsync(tip);
         }
         
-        public TDA.Entities.TipoProductos[] SelectTipoProducto() {
-            return base.Channel.SelectTipoProducto();
+        public TDA.Entities.TipoProductos[] SelectTipoProducto(TDA.Entities.TipoProductos tip) {
+            return base.Channel.SelectTipoProducto(tip);
         }
         
-        public System.Threading.Tasks.Task<TDA.Entities.TipoProductos[]> SelectTipoProductoAsync() {
-            return base.Channel.SelectTipoProductoAsync();
+        public System.Threading.Tasks.Task<TDA.Entities.TipoProductos[]> SelectTipoProductoAsync(TDA.Entities.TipoProductos tip) {
+            return base.Channel.SelectTipoProductoAsync(tip);
         }
         
         public TDA.Entities.Resultado InsertEmpleado(TDA.Entities.Empleados emp) {
@@ -881,12 +961,12 @@ namespace TDAWPF.TDAService {
             return base.Channel.DeleteEmpleadoAsync(emp);
         }
         
-        public TDA.Entities.Empleados[] SelectEmpleado() {
-            return base.Channel.SelectEmpleado();
+        public TDA.Entities.Empleados[] SelectEmpleado(TDA.Entities.Empleados emp) {
+            return base.Channel.SelectEmpleado(emp);
         }
         
-        public System.Threading.Tasks.Task<TDA.Entities.Empleados[]> SelectEmpleadoAsync() {
-            return base.Channel.SelectEmpleadoAsync();
+        public System.Threading.Tasks.Task<TDA.Entities.Empleados[]> SelectEmpleadoAsync(TDA.Entities.Empleados emp) {
+            return base.Channel.SelectEmpleadoAsync(emp);
         }
         
         public TDA.Entities.Resultado InsertVehiculo(TDA.Entities.Vehiculos veh) {
@@ -1343,6 +1423,94 @@ namespace TDAWPF.TDAService {
         
         public System.Threading.Tasks.Task<TDA.Entities.PromocionGrupoClientes[]> SelectPromocionGrupoClienteAsync() {
             return base.Channel.SelectPromocionGrupoClienteAsync();
+        }
+        
+        public TDA.Entities.Resultado InsertVenta(TDA.Entities.Ventas ven) {
+            return base.Channel.InsertVenta(ven);
+        }
+        
+        public System.Threading.Tasks.Task<TDA.Entities.Resultado> InsertVentaAsync(TDA.Entities.Ventas ven) {
+            return base.Channel.InsertVentaAsync(ven);
+        }
+        
+        public TDA.Entities.Resultado DeleteVenta(TDA.Entities.Ventas ven) {
+            return base.Channel.DeleteVenta(ven);
+        }
+        
+        public System.Threading.Tasks.Task<TDA.Entities.Resultado> DeleteVentaAsync(TDA.Entities.Ventas ven) {
+            return base.Channel.DeleteVentaAsync(ven);
+        }
+        
+        public TDA.Entities.Ventas[] SelectVenta() {
+            return base.Channel.SelectVenta();
+        }
+        
+        public System.Threading.Tasks.Task<TDA.Entities.Ventas[]> SelectVentaAsync() {
+            return base.Channel.SelectVentaAsync();
+        }
+        
+        public TDA.Entities.Resultado InsertVentaDetalle(TDA.Entities.VentaDetalles ved) {
+            return base.Channel.InsertVentaDetalle(ved);
+        }
+        
+        public System.Threading.Tasks.Task<TDA.Entities.Resultado> InsertVentaDetalleAsync(TDA.Entities.VentaDetalles ved) {
+            return base.Channel.InsertVentaDetalleAsync(ved);
+        }
+        
+        public TDA.Entities.Resultado DeleteVentaDetalle(TDA.Entities.VentaDetalles ved) {
+            return base.Channel.DeleteVentaDetalle(ved);
+        }
+        
+        public System.Threading.Tasks.Task<TDA.Entities.Resultado> DeleteVentaDetalleAsync(TDA.Entities.VentaDetalles ved) {
+            return base.Channel.DeleteVentaDetalleAsync(ved);
+        }
+        
+        public TDA.Entities.VentaDetalles[] SelectVentaDetalle() {
+            return base.Channel.SelectVentaDetalle();
+        }
+        
+        public System.Threading.Tasks.Task<TDA.Entities.VentaDetalles[]> SelectVentaDetalleAsync() {
+            return base.Channel.SelectVentaDetalleAsync();
+        }
+        
+        public TDA.Entities.Resultado InsertVentaDia(TDA.Entities.VentaDias ved) {
+            return base.Channel.InsertVentaDia(ved);
+        }
+        
+        public System.Threading.Tasks.Task<TDA.Entities.Resultado> InsertVentaDiaAsync(TDA.Entities.VentaDias ved) {
+            return base.Channel.InsertVentaDiaAsync(ved);
+        }
+        
+        public TDA.Entities.Resultado DeleteVentaDia(TDA.Entities.VentaDias ved) {
+            return base.Channel.DeleteVentaDia(ved);
+        }
+        
+        public System.Threading.Tasks.Task<TDA.Entities.Resultado> DeleteVentaDiaAsync(TDA.Entities.VentaDias ved) {
+            return base.Channel.DeleteVentaDiaAsync(ved);
+        }
+        
+        public TDA.Entities.VentaDias[] SelectVentaDia() {
+            return base.Channel.SelectVentaDia();
+        }
+        
+        public System.Threading.Tasks.Task<TDA.Entities.VentaDias[]> SelectVentaDiaAsync() {
+            return base.Channel.SelectVentaDiaAsync();
+        }
+        
+        public TDA.Entities.Resultado InsertLog(TDA.Entities.Log log) {
+            return base.Channel.InsertLog(log);
+        }
+        
+        public System.Threading.Tasks.Task<TDA.Entities.Resultado> InsertLogAsync(TDA.Entities.Log log) {
+            return base.Channel.InsertLogAsync(log);
+        }
+        
+        public TDA.Entities.Log[] SelectLog() {
+            return base.Channel.SelectLog();
+        }
+        
+        public System.Threading.Tasks.Task<TDA.Entities.Log[]> SelectLogAsync() {
+            return base.Channel.SelectLogAsync();
         }
     }
 }

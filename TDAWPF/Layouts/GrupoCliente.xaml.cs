@@ -30,22 +30,22 @@ namespace TDAWPF.Layouts
 
         private void cargarGrid(GrupoClientes gc)
         {
-            TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
-            var resultado = tda.SelectGrupoCliente(gc);
-            tda.Close();
-            lstGC.Clear();
+            //TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
+            //var resultado = tda.SelectGrupoCliente(gc);
+            //tda.Close();
+            //lstGC.Clear();
 
-            foreach (var r in resultado)
-            {
-                lstGC.Add(new GrupoClientes()
-                {
-                    ID = r.ID,
-                    Nombre = r.Nombre
-                });
-            }
+            //foreach (var r in resultado)
+            //{
+            //    lstGC.Add(new GrupoClientes()
+            //    {
+            //        ID = r.ID,
+            //        Nombre = r.Nombre
+            //    });
+            //}
 
-            dg.ItemsSource = null;
-            dg.ItemsSource = lstGC;   
+            //dg.ItemsSource = null;
+            //dg.ItemsSource = lstGC;   
         }
 
         private void dg_Loaded(object sender, RoutedEventArgs e)

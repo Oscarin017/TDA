@@ -26,8 +26,8 @@
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <Button x:Name="btnModificar" BorderThickness="3" BorderBrush="DarkBlue" Background="Blue" Height="50" Width="150" Foreground="White" FontFamily="Arial" FontWeight="ExtraBlack" FontSize="20" Content="Modificar" Grid.Column="1" Visibility="Hidden" />
-            <Button x:Name="btnRegistrar" BorderThickness="3" BorderBrush="DarkGreen" Background="Green" Height="50" Width="150" Foreground="White" FontFamily="Arial" FontWeight="ExtraBlack" FontSize="20" Content="Registrar" Grid.Column="1" Visibility="Hidden" />
+            <Button x:Name="btnModificar" BorderThickness="3" BorderBrush="DarkBlue" Background="Blue" Height="50" Width="150" Foreground="White" FontFamily="Arial" FontWeight="ExtraBlack" FontSize="20" Content="Modificar" Grid.Column="1" Visibility="Hidden"  Click="btnModificar_Click" />
+            <Button x:Name="btnRegistrar" BorderThickness="3" BorderBrush="DarkGreen" Background="Green" Height="50" Width="150" Foreground="White" FontFamily="Arial" FontWeight="ExtraBlack" FontSize="20" Content="Registrar" Grid.Column="1" Visibility="Hidden" Click="btnRegistrar_Click" />
             <Button x:Name="btnCancelar" BorderThickness="3" BorderBrush="DarkRed" Background="Red" Height="50" Width="150" Foreground="White" FontFamily="Arial" FontWeight="ExtraBlack" FontSize="20" Content="Cancelar" Grid.Column="3" Click="btnCancelar_Click" />
         </Grid>
     </Grid>

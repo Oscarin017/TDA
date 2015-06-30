@@ -40,22 +40,22 @@ namespace TDAWPF.Popups
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            if (lID == 0)
-            {
-                btnRegistrar.Visibility = Visibility.Visible;
-            }
-            else if (lID != 0)
-            {
-                btnModificar.Visibility = Visibility.Visible;
-                TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
-                var resultado = tda.BuscarGrupoClienteID(lID);
-                tda.Close();
+            //if (lID == 0)
+            //{
+            //    btnRegistrar.Visibility = Visibility.Visible;
+            //}
+            //else if (lID != 0)
+            //{
+            //    btnModificar.Visibility = Visibility.Visible;
+            //    TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
+            //    var resultado = tda.BuscarGrupoClienteID(lID);
+            //    tda.Close();
 
-                foreach (var r in resultado)
-                {
-                    txtNombre.Text = r.Nombre;
-                }
-            }
+            //    foreach (var r in resultado)
+            //    {
+            //        txtNombre.Text = r.Nombre;
+            //    }
+            //}
         }
 
         private void btnRegistrar_Click(object sender, RoutedEventArgs e)

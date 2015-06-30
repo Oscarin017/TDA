@@ -39,6 +39,7 @@ namespace TDAWPF.Layouts
             {
                 lstColor.Add(new Colores()
                 {
+                    ID = r.ID,
                     Nombre = r.Nombre
                 });
             }
@@ -56,6 +57,19 @@ namespace TDAWPF.Layouts
         {
             Popups.Color w = new Popups.Color();
             w.ShowDialog();
+        }
+
+        private void btnModificar_Click(object sender, RoutedEventArgs e)
+        {
+            Colores r = ((Button)sender).DataContext as Colores;
+            string sID = r.ID.ToString();
+            Popups.Color w = new Popups.Color(sID);
+            w.ShowDialog();
+        }
+
+        private void btnEliminar_Click(object sender, RoutedEventArgs e)
+        {
+
         }        
     }
 }

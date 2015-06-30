@@ -15,6 +15,5 @@ namespace TDAWPF
     /// </summary>
     public partial class App : Application
     {
-       
     }
 }

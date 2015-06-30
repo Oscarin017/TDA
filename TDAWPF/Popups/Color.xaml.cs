@@ -19,14 +19,34 @@ namespace TDAWPF.Popups
     /// </summary>
     public partial class Color : Window
     {
+        private string sID;
+
         public Color()
         {
             InitializeComponent();
         }
 
+        public Color(string ID)
+        {
+            InitializeComponent();
+            sID = ID;
+        }
+
         private void btnCancelar_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (sID == null)
+            {
+                btnRegistrar.Visibility = Visibility.Visible;
+            }
+            else if (sID != null)
+            {
+                btnModificar.Visibility = Visibility.Visible;
+            }
         }
     }
 }

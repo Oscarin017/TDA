@@ -30,8 +30,14 @@ namespace TDAWPF.Controles
 
         public string Text
         {
-            get { return tbP.Text; }
-            set { tbP.Text = value; }
+            get { return tb.Text; }
+            set { tb.Text = value; }
+        }
+
+        public bool IsReadOnly
+        {
+            get { return tb.IsReadOnly; }
+            set { tb.IsReadOnly = value; }
         }
 
         private void TextBox_GotFocus(object sender, RoutedEventArgs e)

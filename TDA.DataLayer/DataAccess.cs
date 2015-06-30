@@ -2578,18 +2578,57 @@ namespace TDA.DataLayer
             resultado.Referencia = false;
             return resultado;
         }
-        public List<GrupoClientes> SelectGrupoCliente()
+        public List<GrupoClientes> SelectGrupoCliente(GrupoClientes gcl)
+        {
+            if (!String.IsNullOrWhiteSpace(gcl.Nombre))
+            {
+                return BuscarGrupoCliente(gcl.Nombre);
+            }
+            return BuscarGrupoCliente();
+        }
+        public List<GrupoClientes> BuscarGrupoClienteID(long ID)
         {
             var grupos = (from a in _context.GrupoCliente
-                         select new GrupoClientes
-                         {
-                             ID = a.ID,
-                             Nombre = a.Nombre,
-                             UsuarioAlta = a.UsuarioAlta,
-                             UsuarioMod = a.UsuarioMod,
-                             FechaAlta = a.FechaAlta,
-                             FechaMod = a.FechaMod
-                         }).ToList();
+                          where a.ID == ID
+                          select new GrupoClientes
+                          {
+                              ID = a.ID,
+                              Nombre = a.Nombre,
+                              UsuarioAlta = a.UsuarioAlta,
+                              UsuarioMod = a.UsuarioMod,
+                              FechaAlta = a.FechaAlta,
+                              FechaMod = a.FechaMod
+                          }).ToList();
+            return grupos;
+        }
+        //Buscar por nombre
+        public List<GrupoClientes> BuscarGrupoCliente()
+        {
+            var grupos = (from a in _context.GrupoCliente
+                          select new GrupoClientes
+                          {
+                              ID = a.ID,
+                              Nombre = a.Nombre,
+                              UsuarioAlta = a.UsuarioAlta,
+                              UsuarioMod = a.UsuarioMod,
+                              FechaAlta = a.FechaAlta,
+                              FechaMod = a.FechaMod
+                          }).ToList();
+            return grupos;
+        }
+        public List<GrupoClientes> BuscarGrupoCliente(String Nombre)
+        {
+            var grupos = (from a in _context.GrupoCliente
+                          where a.Nombre.Contains(Nombre)
+                          select new GrupoClientes
+                          {
+                              ID = a.ID,
+                              Nombre = a.Nombre,
+                              UsuarioAlta = a.UsuarioAlta,
+                              UsuarioMod = a.UsuarioMod,
+                              FechaAlta = a.FechaAlta,
+                              FechaMod = a.FechaMod
+                          }).ToList();
             return grupos;
         }
         #endregion

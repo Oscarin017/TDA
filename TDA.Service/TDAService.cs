@@ -332,10 +332,15 @@ namespace TDA.Service
         {
             return _dataBaseTool.DeleteGrupoCliente(gcl);
         }
-        public List<GrupoClientes> SelectGrupoCliente()
+        public List<GrupoClientes> SelectGrupoCliente(GrupoClientes gcl)
         {
-            return _dataBaseTool.SelectGrupoCliente();
+            return _dataBaseTool.SelectGrupoCliente(gcl);
         }
+        public List<GrupoClientes> BuscarGrupoClienteID(long ID)
+        {
+            return _dataBaseTool.BuscarGrupoClienteID(ID);
+        }
+
         #endregion
 
         #region Tabla Cliente

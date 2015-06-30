@@ -205,7 +205,9 @@ namespace TDA.Service
         [OperationContract]
         Resultado DeleteGrupoCliente(GrupoClientes gcl);
         [OperationContract]
-        List<GrupoClientes> SelectGrupoCliente();
+        List<GrupoClientes> SelectGrupoCliente(GrupoClientes gcl);
+        [OperationContract]
+        List<GrupoClientes> BuscarGrupoClienteID(long ID);
         #endregion
 
         #region Tabla Cliente

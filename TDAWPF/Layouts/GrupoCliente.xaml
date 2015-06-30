@@ -27,7 +27,7 @@
             <RowDefinition Height="500" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <Controles:TextBoxS x:Name="txtNombre" Text="Escribe Grupo del Cliente" Grid.Column="1" Grid.Row="1"/>
+        <Controles:TextBoxS x:Name="txtNombre" Text="Escribe" Grupo del Cliente" Grid.Column="1" Grid.Row="1"/>
         <Grid Grid.Column="7" Grid.Row="1" Grid.RowSpan="4">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="65" />

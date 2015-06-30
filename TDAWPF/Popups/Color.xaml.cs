@@ -21,7 +21,6 @@ namespace TDAWPF.Popups
     public partial class Color : Window
     {
         private long lID = 0;
-        List<Colores> lstColor = new List<Colores>();
 
         public Color()
         {
@@ -48,10 +47,9 @@ namespace TDAWPF.Popups
             else if (lID != 0)
             {
                 btnModificar.Visibility = Visibility.Visible;
-                TDAService.TDAServiceClient color = new TDAService.TDAServiceClient();
-                var resultado = color.BuscarColorID(lID);
-                color.Close();
-                lstColor.Clear();
+                TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
+                var resultado = tda.BuscarColorID(lID);
+                tda.Close();
 
                 foreach (var r in resultado)
                 {
@@ -62,22 +60,22 @@ namespace TDAWPF.Popups
 
         private void btnRegistrar_Click(object sender, RoutedEventArgs e)
         {
-            TDAService.TDAServiceClient color = new TDAService.TDAServiceClient();
+            TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
             Colores c = new Colores();
             c.Nombre = txtNombre.Text;
-            color.InsertColor(c);
-            color.Close();
+            tda.InsertColor(c);
+            tda.Close();
             this.Close();
         }
 
         private void btnModificar_Click(object sender, RoutedEventArgs e)
         {
-            TDAService.TDAServiceClient color = new TDAService.TDAServiceClient();
+            TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
             Colores c = new Colores();
             c.ID = lID;
             c.Nombre = txtNombre.Text;
-            color.UpdateColor(c);
-            color.Close();
+            tda.UpdateColor(c);
+            tda.Close();
             this.Close();
         }
     }

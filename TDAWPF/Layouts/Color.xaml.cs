@@ -28,12 +28,11 @@ namespace TDAWPF.Layouts
             InitializeComponent();
         }
 
-        private void cargarGrid()
+        private void cargarGrid(Colores c)
         {
-            Colores c = new Colores();
-            TDAService.TDAServiceClient color = new TDAService.TDAServiceClient();
-            var resultado = color.SelectColor(c);
-            color.Close();
+            TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
+            var resultado = tda.SelectColor(c);
+            tda.Close();
             lstColor.Clear();
 
             foreach (var r in resultado)
@@ -51,13 +50,21 @@ namespace TDAWPF.Layouts
 
         private void dg_Loaded(object sender, RoutedEventArgs e)
         {
-            cargarGrid();
+            cargarGrid(new Colores());
         }
+
+        private void btnSearch_Click(object sender, RoutedEventArgs e)
+        {
+            Colores c = new Colores();
+            c.Nombre = txtNombre.Text;
+            cargarGrid(c);
+        }    
         
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
             Popups.Color w = new Popups.Color();
             w.ShowDialog();
+            cargarGrid(new Colores());
         }
 
         private void btnModificar_Click(object sender, RoutedEventArgs e)
@@ -66,11 +73,12 @@ namespace TDAWPF.Layouts
             long lID = r.ID;
             Popups.Color w = new Popups.Color(lID);
             w.ShowDialog();
+            cargarGrid(new Colores());
         }
 
         private void btnEliminar_Click(object sender, RoutedEventArgs e)
         {
 
-        }        
+        }    
     }
 }

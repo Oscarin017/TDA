@@ -11,7 +11,7 @@
                 <ColumnDefinition Width="275" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <TextBox x:Name="tb" BorderBrush="{x:Null}" BorderThickness="0" VerticalContentAlignment="Center" FontFamily="Arial" FontSize="14" Foreground="Gray" Grid.Column="0" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"/>
+            <TextBox x:Name="tb" BorderBrush="{x:Null}" BorderThickness="0" VerticalContentAlignment="Center" FontFamily="Arial" FontSize="14" Foreground="Gray" Grid.Column="0" GotFocus="tb_GotFocus" LostFocus="tb_LostFocus" Loaded="tb_Loaded" TextChanged="tb_TextChanged"/>
             <Image Source="/TDAWPF;component/Imagenes/Pencil-mini.png"  Width="20" Height="20" Grid.Column="1" />
         </Grid>
     </Border>

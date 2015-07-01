@@ -56,7 +56,10 @@ namespace TDAWPF.Layouts
         private void btnSearch_Click(object sender, RoutedEventArgs e)
         {
             Paises p = new Paises();
-            p.Nombre = txtNombre.Text;
+            if (!txtNombre.PlaceHolder)
+            {
+                p.Nombre = txtNombre.Text;
+            }
             cargarGrid(p);
         }    
         

@@ -40,43 +40,59 @@ namespace TDAWPF.Popups
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            //if (lID == 0)
-            //{
-            //    btnRegistrar.Visibility = Visibility.Visible;
-            //}
-            //else if (lID != 0)
-            //{
-            //    btnModificar.Visibility = Visibility.Visible;
-            //    TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
-            //    var resultado = tda.BuscarGrupoClienteID(lID);
-            //    tda.Close();
+            if (lID == 0)
+            {
+                btnRegistrar.Visibility = Visibility.Visible;
+            }
+            else if (lID != 0)
+            {
+                btnModificar.Visibility = Visibility.Visible;
+                TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
+                var resultado = tda.BuscarGrupoClienteID(lID);
+                tda.Close();
 
-            //    foreach (var r in resultado)
-            //    {
-            //        txtNombre.Text = r.Nombre;
-            //    }
-            //}
+                foreach (var r in resultado)
+                {
+                    txtNombre.Text = r.Nombre;
+                }
+            }
         }
 
         private void btnRegistrar_Click(object sender, RoutedEventArgs e)
         {
-            TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
-            GrupoClientes gc = new GrupoClientes();
-            gc.Nombre = txtNombre.Text;
-            tda.InsertGrupoCliente(gc);
-            tda.Close();
-            this.Close();
+            if (!txtNombre.PlaceHolder)
+            {
+                TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
+                GrupoClientes gc = new GrupoClientes();
+                gc.Nombre = txtNombre.Text;
+                tda.InsertGrupoCliente(gc);
+                tda.Close();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Favor de llenar los campos.");
+            }
+            
         }
 
         private void btnModificar_Click(object sender, RoutedEventArgs e)
         {
-            TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
-            GrupoClientes gc = new GrupoClientes();
-            gc.ID = lID;
-            gc.Nombre = txtNombre.Text;
-            tda.UpdateGrupoCliente(gc);
-            tda.Close();
-            this.Close();
+            if (!txtNombre.PlaceHolder)
+            {
+                TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
+                GrupoClientes gc = new GrupoClientes();
+                gc.ID = lID;
+                gc.Nombre = txtNombre.Text;
+                tda.UpdateGrupoCliente(gc);
+                tda.Close();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Favor de llenar los campos.");
+            }
+            
         }
     }
 }

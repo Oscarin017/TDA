@@ -12,6 +12,7 @@ namespace TDA.Entities
     {
         [DataMember]
         public long ID { get; set; }
+
         [DataMember]
         public string Nombre { get; set; }
     }

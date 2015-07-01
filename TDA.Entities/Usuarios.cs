@@ -22,6 +22,8 @@ namespace TDA.Entities
         [DataMember]
         public long? Rol { get; set; }
         [DataMember]
+        public string RolNombre { get; set; }
+        [DataMember]
         public int? Empleado { get; set; }
         [DataMember]
         public long? UsuarioAlta { get; set; }

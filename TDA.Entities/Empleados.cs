@@ -56,5 +56,8 @@ namespace TDA.Entities
         public DateTime? FechaAlta { get; set; }
         [DataMember]
         public DateTime? FechaMod { get; set; }
+        [DataMember]
+        public long? Pais { get; set; }
+
     }
 }

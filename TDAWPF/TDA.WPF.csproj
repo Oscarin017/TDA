@@ -467,6 +467,12 @@
     <Resource Include="Imagenes\0289-forward3.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\TDA.Service\TDA.Service.csproj">
+      <Project>{8bb5b839-14f0-4861-ab9b-616a04e445cc}</Project>
+      <Name>TDA.Service</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
     <WCFMetadataStorage Include="Service References\TDAService\" />
   </ItemGroup>
   <ItemGroup>

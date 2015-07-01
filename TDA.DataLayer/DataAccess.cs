@@ -234,6 +234,7 @@ namespace TDA.DataLayer
         private List<Usuarios> BuscarUsuarios()
         {
             var usuarios = (from a in _context.Usuario
+                            join b in _context.Rol on a.Rol equals b.ID
                             select new Usuarios
                             {
                                 ID = a.ID,
@@ -242,6 +243,7 @@ namespace TDA.DataLayer
                                 Email = a.Email,
                                 //Empleado = a.Empleado,
                                 Rol = a.Rol,
+                                RolNombre = b.Nombre,
                                 UsuarioAlta = a.UsuarioAlta,
                                 UsuarioMod = a.UsuarioMod,
                                 FechaAlta = a.FechaAlta,
@@ -252,6 +254,7 @@ namespace TDA.DataLayer
         private List<Usuarios> BuscarUsuarios(String Alias)
         {
             var usuarios = (from a in _context.Usuario
+                            join b in _context.Rol on a.Rol equals b.ID
                             where a.Alias.Contains(Alias)
                             select new Usuarios
                             {
@@ -261,6 +264,7 @@ namespace TDA.DataLayer
                                 Email = a.Email,
                                 //Empleado = a.Empleado,
                                 Rol = a.Rol,
+                                RolNombre = b.Nombre,
                                 UsuarioAlta = a.UsuarioAlta,
                                 UsuarioMod = a.UsuarioMod,
                                 FechaAlta = a.FechaAlta,
@@ -271,6 +275,7 @@ namespace TDA.DataLayer
         private List<Usuarios> BuscarUsuarios(long? Rol)
         {
             var usuarios = (from a in _context.Usuario
+                            join b in _context.Rol on a.Rol equals b.ID
                             where a.Rol == Rol
                             select new Usuarios
                             {
@@ -280,6 +285,7 @@ namespace TDA.DataLayer
                                 Email = a.Email,
                                 //Empleado = a.Empleado,
                                 Rol = a.Rol,
+                                RolNombre = b.Nombre,
                                 UsuarioAlta = a.UsuarioAlta,
                                 UsuarioMod = a.UsuarioMod,
                                 FechaAlta = a.FechaAlta,
@@ -290,6 +296,7 @@ namespace TDA.DataLayer
         private List<Usuarios> BuscarUsuarios(String Alias, long? Rol)
         {
             var usuarios = (from a in _context.Usuario
+                            join b in _context.Rol on a.Rol equals b.ID
                             where a.Alias.Contains(Alias) && a.Rol == Rol
                             select new Usuarios
                             {
@@ -299,6 +306,7 @@ namespace TDA.DataLayer
                                 Email = a.Email,
                                 //Empleado = a.Empleado,
                                 Rol = a.Rol,
+                                RolNombre = b.Nombre,
                                 UsuarioAlta = a.UsuarioAlta,
                                 UsuarioMod = a.UsuarioMod,
                                 FechaAlta = a.FechaAlta,
@@ -606,6 +614,7 @@ namespace TDA.DataLayer
         public List<Estados> BuscarEstado()
         {
             var estados = (from a in _context.Estado
+                           join b in _context.Pais on a.Pais equals b.ID
                            select new Estados
                            {
                                ID = a.ID,
@@ -614,13 +623,15 @@ namespace TDA.DataLayer
                                UsuarioAlta = a.UsuarioAlta,
                                UsuarioMod = a.UsuarioMod,
                                FechaAlta = a.FechaAlta,
-                               FechaMod = a.FechaMod
+                               FechaMod = a.FechaMod,
+                               PaisNombre = b.Nombre
                            }).ToList();
             return estados;
         }
         public List<Estados> BuscarEstado(String Nombre)
         {
             var estados = (from a in _context.Estado
+                           join b in _context.Pais on a.Pais equals b.ID
                            where a.Nombre.Contains(Nombre)
                            select new Estados
                            {
@@ -630,13 +641,15 @@ namespace TDA.DataLayer
                                UsuarioAlta = a.UsuarioAlta,
                                UsuarioMod = a.UsuarioMod,
                                FechaAlta = a.FechaAlta,
-                               FechaMod = a.FechaMod
+                               FechaMod = a.FechaMod,
+                               PaisNombre = b.Nombre
                            }).ToList();
             return estados;
         }
         public List<Estados> BuscarEstado(long? Pais)
         {
             var estados = (from a in _context.Estado
+                           join b in _context.Pais on a.Pais equals b.ID
                            where a.Pais == Pais
                            select new Estados
                            {
@@ -646,13 +659,15 @@ namespace TDA.DataLayer
                                UsuarioAlta = a.UsuarioAlta,
                                UsuarioMod = a.UsuarioMod,
                                FechaAlta = a.FechaAlta,
-                               FechaMod = a.FechaMod
+                               FechaMod = a.FechaMod,
+                               PaisNombre = b.Nombre
                            }).ToList();
             return estados;
         }
         public List<Estados> BuscarEstado(String Nombre, long? Pais)
         {
             var estados = (from a in _context.Estado
+                           join b in _context.Pais on a.Pais equals b.ID
                            where a.Nombre.Contains(Nombre) && a.Pais == Pais
                            select new Estados
                            {
@@ -662,7 +677,8 @@ namespace TDA.DataLayer
                                UsuarioAlta = a.UsuarioAlta,
                                UsuarioMod = a.UsuarioMod,
                                FechaAlta = a.FechaAlta,
-                               FechaMod = a.FechaMod
+                               FechaMod = a.FechaMod,
+                               PaisNombre = b.Nombre
                            }).ToList();
             return estados;
         }
@@ -967,11 +983,13 @@ namespace TDA.DataLayer
         public List<Modelos> BuscarModelo()
         {
             var modelos = (from a in _context.Modelo
+                           join b in _context.Marca on a.Marca equals b.ID
                            select new Modelos
                            {
                                ID = a.ID,
                                Nombre = a.Nombre,
                                Marca = a.Marca,
+                               MarcaNombre = b.Nombre,
                                UsuarioAlta = a.UsuarioAlta,
                                UsuarioMod = a.UsuarioMod,
                                FechaAlta = a.FechaAlta,
@@ -982,12 +1000,14 @@ namespace TDA.DataLayer
         public List<Modelos> BuscarModelo(String Nombre)
         {
             var modelos = (from a in _context.Modelo
+                           join b in _context.Marca on a.Marca equals b.ID
                            where a.Nombre.Contains(Nombre)
                            select new Modelos
                            {
                                ID = a.ID,
                                Nombre = a.Nombre,
                                Marca = a.Marca,
+                               MarcaNombre = b.Nombre,
                                UsuarioAlta = a.UsuarioAlta,
                                UsuarioMod = a.UsuarioMod,
                                FechaAlta = a.FechaAlta,
@@ -998,12 +1018,14 @@ namespace TDA.DataLayer
         public List<Modelos> BuscarModelo(long? Marca)
         {
             var modelos = (from a in _context.Modelo
+                           join b in _context.Marca on a.Marca equals b.ID
                            where a.Marca == Marca
                            select new Modelos
                            {
                                ID = a.ID,
                                Nombre = a.Nombre,
                                Marca = a.Marca,
+                               MarcaNombre = b.Nombre,
                                UsuarioAlta = a.UsuarioAlta,
                                UsuarioMod = a.UsuarioMod,
                                FechaAlta = a.FechaAlta,
@@ -1014,12 +1036,14 @@ namespace TDA.DataLayer
         public List<Modelos> BuscarModelo(String Nombre, long? Marca)
         {
             var modelos = (from a in _context.Modelo
+                           join b in _context.Marca on a.Marca equals b.ID
                            where a.Nombre.Contains(Nombre) && a.Marca == Marca
                            select new Modelos
                            {
                                ID = a.ID,
                                Nombre = a.Nombre,
                                Marca = a.Marca,
+                               MarcaNombre = b.Nombre,
                                UsuarioAlta = a.UsuarioAlta,
                                UsuarioMod = a.UsuarioMod,
                                FechaAlta = a.FechaAlta,
@@ -1484,38 +1508,7 @@ namespace TDA.DataLayer
         public List<Empleados> SelectEmpleado(Empleados emp)
         {
             var empleados = (from a in _context.Empleado
-                          select new Empleados
-                          {
-                              ID = a.ID,
-                              Nombre = a.Nombre,
-                              RFC = a.RFC,
-                              Apellido = a.Apellido,
-                              Apellido2 = a.Apellido2,
-                              Calle = a.Calle,
-                              NumeroInterior = a.NumeroInterior,
-                              NumeroExterior = a.NumeroInterior,
-                              Colonia = a.Colonia,
-                              CP = a.CP,
-                              Localidad = a.Localidad,
-                              Ciudad = a.Ciudad,
-                              Telefono = a.Telefono,
-                              Email = a.Email,
-                              CURP = a.CURP,
-                              NSS = a.NSS,
-                              Salario = a.Salario,
-                              BaseSalario = a.BaseSalario,
-                              Estado = a.Estado,
-                              UsuarioAlta = a.UsuarioAlta,
-                              UsuarioMod = a.UsuarioMod,
-                              FechaAlta = a.FechaAlta,
-                              FechaMod = a.FechaMod
-                          }).ToList();
-            return empleados;
-        }
-        //Buscar Empleado por Pais, Estado, Ciudad, Nombre , Apellido, Curp
-        public List<Empleados> BuscarEmpleado()
-        {
-            var empleados = (from a in _context.Empleado
+                             join b in _context.Estado on a.Estado equals b.ID
                              select new Empleados
                              {
                                  ID = a.ID,
@@ -1540,258 +1533,14 @@ namespace TDA.DataLayer
                                  UsuarioAlta = a.UsuarioAlta,
                                  UsuarioMod = a.UsuarioMod,
                                  FechaAlta = a.FechaAlta,
-                                 FechaMod = a.FechaMod
+                                 FechaMod = a.FechaMod,
+                                 Pais = b.Pais
                              }).ToList();
             return empleados;
+            
+            
         }
-        public List<Empleados> BuscarEmpleadoN(String Nombre)
-        {
-            var empleados = (from a in _context.Empleado
-                             select new Empleados
-                             {
-                                 ID = a.ID,
-                                 Nombre = a.Nombre,
-                                 RFC = a.RFC,
-                                 Apellido = a.Apellido,
-                                 Apellido2 = a.Apellido2,
-                                 Calle = a.Calle,
-                                 NumeroInterior = a.NumeroInterior,
-                                 NumeroExterior = a.NumeroInterior,
-                                 Colonia = a.Colonia,
-                                 CP = a.CP,
-                                 Localidad = a.Localidad,
-                                 Ciudad = a.Ciudad,
-                                 Telefono = a.Telefono,
-                                 Email = a.Email,
-                                 CURP = a.CURP,
-                                 NSS = a.NSS,
-                                 Salario = a.Salario,
-                                 BaseSalario = a.BaseSalario,
-                                 Estado = a.Estado,
-                                 UsuarioAlta = a.UsuarioAlta,
-                                 UsuarioMod = a.UsuarioMod,
-                                 FechaAlta = a.FechaAlta,
-                                 FechaMod = a.FechaMod
-                             }).ToList();
-            return empleados;
-        }
-        public List<Empleados> BuscarEmpleadoNA(String Nombre, String Apellido)
-        {
-            var empleados = (from a in _context.Empleado
-                             select new Empleados
-                             {
-                                 ID = a.ID,
-                                 Nombre = a.Nombre,
-                                 RFC = a.RFC,
-                                 Apellido = a.Apellido,
-                                 Apellido2 = a.Apellido2,
-                                 Calle = a.Calle,
-                                 NumeroInterior = a.NumeroInterior,
-                                 NumeroExterior = a.NumeroInterior,
-                                 Colonia = a.Colonia,
-                                 CP = a.CP,
-                                 Localidad = a.Localidad,
-                                 Ciudad = a.Ciudad,
-                                 Telefono = a.Telefono,
-                                 Email = a.Email,
-                                 CURP = a.CURP,
-                                 NSS = a.NSS,
-                                 Salario = a.Salario,
-                                 BaseSalario = a.BaseSalario,
-                                 Estado = a.Estado,
-                                 UsuarioAlta = a.UsuarioAlta,
-                                 UsuarioMod = a.UsuarioMod,
-                                 FechaAlta = a.FechaAlta,
-                                 FechaMod = a.FechaMod
-                             }).ToList();
-            return empleados;
-        }
-        public List<Empleados> BuscarEmpleadoNAC(String Nombre, String Apellido, string CURP)
-        {
-            var empleados = (from a in _context.Empleado
-                             select new Empleados
-                             {
-                                 ID = a.ID,
-                                 Nombre = a.Nombre,
-                                 RFC = a.RFC,
-                                 Apellido = a.Apellido,
-                                 Apellido2 = a.Apellido2,
-                                 Calle = a.Calle,
-                                 NumeroInterior = a.NumeroInterior,
-                                 NumeroExterior = a.NumeroInterior,
-                                 Colonia = a.Colonia,
-                                 CP = a.CP,
-                                 Localidad = a.Localidad,
-                                 Ciudad = a.Ciudad,
-                                 Telefono = a.Telefono,
-                                 Email = a.Email,
-                                 CURP = a.CURP,
-                                 NSS = a.NSS,
-                                 Salario = a.Salario,
-                                 BaseSalario = a.BaseSalario,
-                                 Estado = a.Estado,
-                                 UsuarioAlta = a.UsuarioAlta,
-                                 UsuarioMod = a.UsuarioMod,
-                                 FechaAlta = a.FechaAlta,
-                                 FechaMod = a.FechaMod
-                             }).ToList();
-            return empleados;
-        }
-        public List<Empleados> BuscarEmpleadoNACP(String Nombre, String Apellido, string CURP, long? Pais)
-        {
-            var empleados = (from a in _context.Empleado
-                             select new Empleados
-                             {
-                                 ID = a.ID,
-                                 Nombre = a.Nombre,
-                                 RFC = a.RFC,
-                                 Apellido = a.Apellido,
-                                 Apellido2 = a.Apellido2,
-                                 Calle = a.Calle,
-                                 NumeroInterior = a.NumeroInterior,
-                                 NumeroExterior = a.NumeroInterior,
-                                 Colonia = a.Colonia,
-                                 CP = a.CP,
-                                 Localidad = a.Localidad,
-                                 Ciudad = a.Ciudad,
-                                 Telefono = a.Telefono,
-                                 Email = a.Email,
-                                 CURP = a.CURP,
-                                 NSS = a.NSS,
-                                 Salario = a.Salario,
-                                 BaseSalario = a.BaseSalario,
-                                 Estado = a.Estado,
-                                 UsuarioAlta = a.UsuarioAlta,
-                                 UsuarioMod = a.UsuarioMod,
-                                 FechaAlta = a.FechaAlta,
-                                 FechaMod = a.FechaMod
-                             }).ToList();
-            return empleados;
-        }
-        public List<Empleados> BuscarEmpleadoNACPE(String Nombre, String Apellido, string CURP, long? Pais, long? Estado)
-        {
-            var empleados = (from a in _context.Empleado
-                             select new Empleados
-                             {
-                                 ID = a.ID,
-                                 Nombre = a.Nombre,
-                                 RFC = a.RFC,
-                                 Apellido = a.Apellido,
-                                 Apellido2 = a.Apellido2,
-                                 Calle = a.Calle,
-                                 NumeroInterior = a.NumeroInterior,
-                                 NumeroExterior = a.NumeroInterior,
-                                 Colonia = a.Colonia,
-                                 CP = a.CP,
-                                 Localidad = a.Localidad,
-                                 Ciudad = a.Ciudad,
-                                 Telefono = a.Telefono,
-                                 Email = a.Email,
-                                 CURP = a.CURP,
-                                 NSS = a.NSS,
-                                 Salario = a.Salario,
-                                 BaseSalario = a.BaseSalario,
-                                 Estado = a.Estado,
-                                 UsuarioAlta = a.UsuarioAlta,
-                                 UsuarioMod = a.UsuarioMod,
-                                 FechaAlta = a.FechaAlta,
-                                 FechaMod = a.FechaMod
-                             }).ToList();
-            return empleados;
-        }
-        public List<Empleados> BuscarEmpleadoNACPEC(String Nombre, String Apellido, string CURP, long? Pais, long? Estado, string Ciudad)
-        {
-            var empleados = (from a in _context.Empleado
-                             select new Empleados
-                             {
-                                 ID = a.ID,
-                                 Nombre = a.Nombre,
-                                 RFC = a.RFC,
-                                 Apellido = a.Apellido,
-                                 Apellido2 = a.Apellido2,
-                                 Calle = a.Calle,
-                                 NumeroInterior = a.NumeroInterior,
-                                 NumeroExterior = a.NumeroInterior,
-                                 Colonia = a.Colonia,
-                                 CP = a.CP,
-                                 Localidad = a.Localidad,
-                                 Ciudad = a.Ciudad,
-                                 Telefono = a.Telefono,
-                                 Email = a.Email,
-                                 CURP = a.CURP,
-                                 NSS = a.NSS,
-                                 Salario = a.Salario,
-                                 BaseSalario = a.BaseSalario,
-                                 Estado = a.Estado,
-                                 UsuarioAlta = a.UsuarioAlta,
-                                 UsuarioMod = a.UsuarioMod,
-                                 FechaAlta = a.FechaAlta,
-                                 FechaMod = a.FechaMod
-                             }).ToList();
-            return empleados;
-        }
-        public List<Empleados> BuscarEmpleadoNA(String Apellido)
-        {
-            var empleados = (from a in _context.Empleado
-                             select new Empleados
-                             {
-                                 ID = a.ID,
-                                 Nombre = a.Nombre,
-                                 RFC = a.RFC,
-                                 Apellido = a.Apellido,
-                                 Apellido2 = a.Apellido2,
-                                 Calle = a.Calle,
-                                 NumeroInterior = a.NumeroInterior,
-                                 NumeroExterior = a.NumeroInterior,
-                                 Colonia = a.Colonia,
-                                 CP = a.CP,
-                                 Localidad = a.Localidad,
-                                 Ciudad = a.Ciudad,
-                                 Telefono = a.Telefono,
-                                 Email = a.Email,
-                                 CURP = a.CURP,
-                                 NSS = a.NSS,
-                                 Salario = a.Salario,
-                                 BaseSalario = a.BaseSalario,
-                                 Estado = a.Estado,
-                                 UsuarioAlta = a.UsuarioAlta,
-                                 UsuarioMod = a.UsuarioMod,
-                                 FechaAlta = a.FechaAlta,
-                                 FechaMod = a.FechaMod
-                             }).ToList();
-            return empleados;
-        }
-        public List<Empleados> BuscarEmpleadoNAC(String Apellido, string CURP)
-        {
-            var empleados = (from a in _context.Empleado
-                             select new Empleados
-                             {
-                                 ID = a.ID,
-                                 Nombre = a.Nombre,
-                                 RFC = a.RFC,
-                                 Apellido = a.Apellido,
-                                 Apellido2 = a.Apellido2,
-                                 Calle = a.Calle,
-                                 NumeroInterior = a.NumeroInterior,
-                                 NumeroExterior = a.NumeroInterior,
-                                 Colonia = a.Colonia,
-                                 CP = a.CP,
-                                 Localidad = a.Localidad,
-                                 Ciudad = a.Ciudad,
-                                 Telefono = a.Telefono,
-                                 Email = a.Email,
-                                 CURP = a.CURP,
-                                 NSS = a.NSS,
-                                 Salario = a.Salario,
-                                 BaseSalario = a.BaseSalario,
-                                 Estado = a.Estado,
-                                 UsuarioAlta = a.UsuarioAlta,
-                                 UsuarioMod = a.UsuarioMod,
-                                 FechaAlta = a.FechaAlta,
-                                 FechaMod = a.FechaMod
-                             }).ToList();
-            return empleados;
-        }
+        
         #endregion
 
         #region Tabla Vehiculo 

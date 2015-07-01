@@ -17,6 +17,8 @@ namespace TDA.Entities
         [DataMember]
         public long? Pais { get; set; }
         [DataMember]
+        public string PaisNombre { get; set; }
+        [DataMember]
         public long? UsuarioAlta { get; set; }
         [DataMember]
         public long? UsuarioMod { get; set; }

@@ -60,23 +60,39 @@ namespace TDAWPF.Popups
 
         private void btnRegistrar_Click(object sender, RoutedEventArgs e)
         {
-            TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
-            Paises p = new Paises();
-            p.Nombre = txtNombre.Text;
-            tda.InsertPais(p);
-            tda.Close();
-            this.Close();
+            if (!txtNombre.PlaceHolder)
+            {
+                TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
+                Paises p = new Paises();
+                p.Nombre = txtNombre.Text;
+                tda.InsertPais(p);
+                tda.Close();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Favor de llenar los campos.");
+            }
+            
         }
 
         private void btnModificar_Click(object sender, RoutedEventArgs e)
         {
-            TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
-            Paises p = new Paises();
-            p.ID = lID;
-            p.Nombre = txtNombre.Text;
-            tda.UpdatePais(p);
-            tda.Close();
-            this.Close();
+            if (!txtNombre.PlaceHolder)
+            {
+                TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
+                Paises p = new Paises();
+                p.ID = lID;
+                p.Nombre = txtNombre.Text;
+                tda.UpdatePais(p);
+                tda.Close();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Favor de llenar los campos.");
+            }
+            
         }
     }
 }

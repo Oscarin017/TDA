@@ -56,7 +56,10 @@ namespace TDAWPF.Layouts
         private void btnSearch_Click(object sender, RoutedEventArgs e)
         {
             Colores c = new Colores();
-            c.Nombre = txtNombre.Text;
+            if (!txtNombre.PlaceHolder)
+            {
+                c.Nombre = txtNombre.Text;
+            }
             cargarGrid(c);
         }    
         

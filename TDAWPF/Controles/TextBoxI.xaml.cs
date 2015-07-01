@@ -20,7 +20,8 @@ namespace TDAWPF.Controles
     /// </summary>
     public partial class TextBoxI : UserControl
     {
-        private bool bPlaceHolder = false;
+                private bool bInicial = false;
+        private bool bPlaceHolder = true;
         private string sPlaceHolcer = "";
 
         public TextBoxI()
@@ -34,35 +35,50 @@ namespace TDAWPF.Controles
             set { tb.Text = value; }
         }
 
-        public bool IsReadOnly
+        public bool PlaceHolder
         {
-            get { return tb.IsReadOnly; }
-            set { tb.IsReadOnly = value; }
+            get { return bPlaceHolder; }
+            set { bPlaceHolder = value; }
         }
 
-        private void TextBox_GotFocus(object sender, RoutedEventArgs e)
+        private void tb_GotFocus(object sender, RoutedEventArgs e)
         {
-            TextBox tb = (TextBox)sender;
-            if (!bPlaceHolder)
+            if(sPlaceHolcer == tb.Text)
             {
-                sPlaceHolcer = tb.Text;
                 tb.Text = "";
-                bPlaceHolder = true;
+                bPlaceHolder = false;
                 tb.Foreground = new SolidColorBrush(Colors.Black);
                 tb.FontWeight = FontWeights.Bold;
             }
         }
 
-        private void TextBox_LostFocus(object sender, RoutedEventArgs e)
+        private void tb_LostFocus(object sender, RoutedEventArgs e)
         {
-            TextBox tb = (TextBox)sender;
             if (tb.Text == "")
             {
                 tb.Text = sPlaceHolcer;
+                bPlaceHolder = true;
                 tb.Foreground = new SolidColorBrush(Colors.Gray);
                 tb.FontWeight = FontWeights.Normal;
             }
         }
 
+        private void tb_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (sPlaceHolcer != tb.Text)
+            {
+                tb.Foreground = new SolidColorBrush(Colors.Black);
+                tb.FontWeight = FontWeights.Bold;
+            }
+        }
+
+        private void tb_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!bInicial)
+            {
+                sPlaceHolcer = tb.Text;
+                bInicial = true;
+            }
+        }
     }
 }

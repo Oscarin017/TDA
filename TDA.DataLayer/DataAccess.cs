@@ -1360,7 +1360,7 @@ namespace TDA.DataLayer
         }
 
         #endregion
-        //*************************************************** TODO \\\\\\\\\/////////
+        
         #region Tabla Empleado
         public Resultado InsertEmpleado(Empleados emp)
         {
@@ -1536,12 +1536,20 @@ namespace TDA.DataLayer
                                  FechaMod = a.FechaMod,
                                  Pais = b.Pais
                              }).ToList();
+            empleados = empleados.Where(p => string.IsNullOrWhiteSpace(emp.Nombre) || p.Nombre.Contains(emp.Nombre)).ToList();
+            empleados = empleados.Where(p => string.IsNullOrWhiteSpace(emp.Apellido) || (p.Apellido.Contains(emp.Apellido) || p.Apellido2.Contains(emp.Apellido))).ToList();
+            empleados = empleados.Where(p => string.IsNullOrWhiteSpace(emp.CURP) || p.CURP.Contains(emp.CURP)).ToList();
+            empleados = empleados.Where(p => emp.Pais < 0 || p.Pais == emp.Pais).ToList();
+            empleados = empleados.Where(p => emp.Estado < 0 || p.Estado == emp.Estado).ToList();
+            empleados = empleados.Where(p => string.IsNullOrWhiteSpace(emp.Ciudad) || p.Ciudad.Contains(emp.Ciudad)).ToList();
             return empleados;
             
             
         }
         
         #endregion
+
+        //*************************************************** TODO \\\\\\\\\/////////
 
         #region Tabla Vehiculo 
         public Resultado InsertVehiculos(Vehiculos veh)

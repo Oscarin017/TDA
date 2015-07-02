@@ -44,6 +44,7 @@
     <Compile Include="Clientes.cs" />
     <Compile Include="Colores.cs" />
     <Compile Include="Configuraciones.cs" />
+    <Compile Include="DefaultValues.cs" />
     <Compile Include="Dias.cs" />
     <Compile Include="Empleados.cs" />
     <Compile Include="Estados.cs" />

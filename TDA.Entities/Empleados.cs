@@ -4,16 +4,30 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.Serialization;
+using System.ComponentModel;
 
 namespace TDA.Entities
 {
     [DataContract]
     public class Empleados
     {
+        
+
+        public Empleados()
+        {
+            Nombre = DefaultValues.defString;
+            Apellido = DefaultValues.defString;
+            CURP = DefaultValues.defString;
+            Pais = DefaultValues.deflong;
+            Estado = DefaultValues.deflong;
+            Ciudad = DefaultValues.defString;
+        }
+
+
         [DataMember]
         public long ID { get; set; }
         [DataMember]
-        public string RFC { get; set; }
+        public string RFC  { get; set; }
         [DataMember]
         public string Nombre { get; set; }
         [DataMember]

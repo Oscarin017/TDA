@@ -17,6 +17,12 @@ namespace TDA.Entities
         [DataMember]
         public long? Modelo { get; set; }
         [DataMember]
+        public string ModeloNombre { get; set; }
+        [DataMember]
+        public long? Marca { get; set; }
+        [DataMember]
+        public string MarcaNombre { get; set; }
+        [DataMember]
         public string Color { get; set; }
         [DataMember]
         public int? Ano { get; set; }

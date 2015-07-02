@@ -147,7 +147,7 @@ namespace TDA.Service
         [OperationContract]
         Resultado UpdateVehiculo(Vehiculos veh);
         [OperationContract]
-        List<Vehiculos> SelectVehiculo();
+        List<Vehiculos> SelectVehiculo(Vehiculos veh);
         #endregion
 
         #region Tabla Proveedor

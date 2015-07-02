@@ -1557,7 +1557,7 @@ namespace TDA.DataLayer
         #endregion
 
         //*************************************************** TODO \\\\\\\\\/////////
-
+        // buscar por Marca, Modelo, Año, Color y Numero de Serie
         #region Tabla Vehiculo 
         public Resultado InsertVehiculos(Vehiculos veh)
         {
@@ -1649,14 +1649,19 @@ namespace TDA.DataLayer
             resultado.YaExiste = false;
             return resultado;
         }
-        public List<Vehiculos> SelectVehiculos()
+        public List<Vehiculos> SelectVehiculos(Vehiculos veh)
         {
             var vehiculos = (from a in _context.Vehiculo
+                             join b in _context.Modelo on a.Modelo equals b.ID
+                             join c in _context.Marca on b.Marca equals c.ID
                            select new Vehiculos
                            {
                                ID = a.ID,
                                NoSerie = a.NoSerie,
                                Modelo = a.Modelo,
+                               ModeloNombre = b.Nombre,
+                               Marca = c.ID,
+                               MarcaNombre = c.Nombre,
                                Color = a.Color,
                                Ano = a.Ano,
                                Responsable = a.Resposable,
@@ -1667,6 +1672,11 @@ namespace TDA.DataLayer
                                FechaAlta = a.FechaAlta,
                                FechaMod = a.FechaMod
                            }).ToList();
+            vehiculos = vehiculos.Where(p => p.Marca < 0 || p.Marca == veh.Marca).ToList();
+            vehiculos = vehiculos.Where(p => p.Modelo < 0 || p.Modelo == veh.Modelo).ToList();
+            vehiculos = vehiculos.Where(p => p.Ano < 0 || p.Ano == veh.Ano).ToList();
+            vehiculos = vehiculos.Where(p => string.IsNullOrWhiteSpace(veh.Color) || p.Color.Contains(veh.Color)).ToList();
+            vehiculos = vehiculos.Where(p => string.IsNullOrWhiteSpace(veh.NoSerie) || p.NoSerie.Contains(veh.NoSerie)).ToList();
             return vehiculos;
         }
         #endregion

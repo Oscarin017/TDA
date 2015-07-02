@@ -241,9 +241,9 @@ namespace TDA.Service
         {
             return _dataBaseTool.UpdateVehiculos(veh);
         }
-        public List<Vehiculos> SelectVehiculo()
+        public List<Vehiculos> SelectVehiculo(Vehiculos veh)
         {
-            return _dataBaseTool.SelectVehiculos();
+            return _dataBaseTool.SelectVehiculos(veh);
         }
         #endregion
 

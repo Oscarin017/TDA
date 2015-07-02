@@ -577,7 +577,7 @@ namespace TDA.DataLayer
         }
         public List<Estados> SelectEstado(Estados est)
         {
-            if (String.IsNullOrWhiteSpace(est.Nombre))
+            if (!String.IsNullOrWhiteSpace(est.Nombre))
             {
                 if (est.Pais > 0)
                 {

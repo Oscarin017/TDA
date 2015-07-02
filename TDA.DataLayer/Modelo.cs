@@ -21,6 +21,7 @@ namespace TDA.DataLayer
     
         public long ID { get; set; }
         public string Nombre { get; set; }
+        public Nullable<int> Ano { get; set; }
         public Nullable<long> Marca { get; set; }
         public Nullable<long> UsuarioAlta { get; set; }
         public Nullable<System.DateTime> FechaAlta { get; set; }

@@ -35,10 +35,9 @@ namespace TDAWPF.Controles
             InitializeComponent();
         }
 
-        public string Text
+        public ItemCollection Items
         {
-            get { return cb.Text; }
-            set { cb.Text = value; }
+            get { return cb.Items; }
         }
 
         public int SelectedIndex
@@ -47,14 +46,19 @@ namespace TDAWPF.Controles
             set { cb.SelectedIndex = value; }
         }
 
+        public object SelectedItem
+        {
+            get { return cb.SelectedItem; }
+        }
+
         public string SelectedValue
         {
             get { return cb.SelectedValue.ToString(); }
         }
 
-        public ItemCollection Items
+        public string Text
         {
-            get { return cb.Items; }
+            get { return cb.Text; }
         }
 
         private void cb_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -70,8 +74,6 @@ namespace TDAWPF.Controles
                 cb.Foreground = new SolidColorBrush(Colors.Gray);
                 cb.FontWeight = FontWeights.Normal;
             }
-            Text = Text;
-            string s = cb.SelectedValue.ToString();
             this.OnSelectionChanged();
         }  
     }

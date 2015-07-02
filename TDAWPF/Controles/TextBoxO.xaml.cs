@@ -20,7 +20,7 @@ namespace TDAWPF.Controles
     /// </summary>
     public partial class TextBoxO : UserControl
     {
-                private bool bInicial = false;
+        private bool bInicial = false;
         private bool bPlaceHolder = true;
         private string sPlaceHolcer = "";
 
@@ -69,6 +69,7 @@ namespace TDAWPF.Controles
             {
                 tb.Foreground = new SolidColorBrush(Colors.Black);
                 tb.FontWeight = FontWeights.Bold;
+                bPlaceHolder = false;
             }
         }
 

@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\RTH\Documents\Visual Studio 2013\Projects\TDA\TDA.DataLayer\TDAModel.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\Oscarin\Google Drive\Proyectos\ITNNOVATION\TDA\TDA.DataLayer\TDAModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

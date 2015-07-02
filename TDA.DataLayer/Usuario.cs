@@ -18,8 +18,10 @@ namespace TDA.DataLayer
         {
             this.Cliente = new HashSet<Cliente>();
             this.Cliente1 = new HashSet<Cliente>();
-            this.Empleado = new HashSet<Empleado>();
+            this.Color = new HashSet<Color>();
+            this.Color1 = new HashSet<Color>();
             this.Empleado1 = new HashSet<Empleado>();
+            this.Empleado2 = new HashSet<Empleado>();
             this.Estado = new HashSet<Estado>();
             this.Estado1 = new HashSet<Estado>();
             this.GrupoCliente = new HashSet<GrupoCliente>();
@@ -65,11 +67,15 @@ namespace TDA.DataLayer
         public Nullable<System.DateTime> FechaAlta { get; set; }
         public Nullable<long> UsuarioMod { get; set; }
         public Nullable<System.DateTime> FechaMod { get; set; }
+        public Nullable<long> Empleado { get; set; }
     
         public virtual ICollection<Cliente> Cliente { get; set; }
         public virtual ICollection<Cliente> Cliente1 { get; set; }
-        public virtual ICollection<Empleado> Empleado { get; set; }
+        public virtual ICollection<Color> Color { get; set; }
+        public virtual ICollection<Color> Color1 { get; set; }
         public virtual ICollection<Empleado> Empleado1 { get; set; }
+        public virtual ICollection<Empleado> Empleado2 { get; set; }
+        public virtual Empleado Empleado3 { get; set; }
         public virtual ICollection<Estado> Estado { get; set; }
         public virtual ICollection<Estado> Estado1 { get; set; }
         public virtual ICollection<GrupoCliente> GrupoCliente { get; set; }

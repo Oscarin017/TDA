@@ -69,6 +69,7 @@ namespace TDAWPF.Controles
             {
                 tb.Foreground = new SolidColorBrush(Colors.Black);
                 tb.FontWeight = FontWeights.Bold;
+                bPlaceHolder = false;
             }
         }
 

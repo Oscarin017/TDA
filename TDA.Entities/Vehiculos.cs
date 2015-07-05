@@ -10,6 +10,15 @@ namespace TDA.Entities
     [DataContract]
     public class Vehiculos
     {
+        public Vehiculos()
+        {
+            Marca = DefaultValues.deflong;
+            Modelo = DefaultValues.deflong;
+            Ano = DefaultValues.defint;
+            Color = DefaultValues.defString;
+            NoSerie = DefaultValues.defString;
+        }
+
         [DataMember]
         public long ID { get; set; }
         [DataMember]

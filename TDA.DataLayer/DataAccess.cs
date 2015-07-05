@@ -241,7 +241,7 @@ namespace TDA.DataLayer
                                 Alias = a.Alias,
                                 Contraseña = a.Contrasena,
                                 Email = a.Email,
-                                //Empleado = a.Empleado,
+                                Empleado = a.Empleado,
                                 Rol = a.Rol,
                                 RolNombre = b.Nombre,
                                 UsuarioAlta = a.UsuarioAlta,
@@ -1553,6 +1553,40 @@ namespace TDA.DataLayer
             
             
         }
+        public List<Empleados> BuscarEmpleadoID(long? ID)
+        {
+            var empleados = (from a in _context.Empleado
+                             join b in _context.Estado on a.Estado equals b.ID
+                             where a.ID == ID
+                             select new Empleados
+                             {
+                                 ID = a.ID,
+                                 Nombre = a.Nombre,
+                                 RFC = a.RFC,
+                                 Apellido = a.Apellido,
+                                 Apellido2 = a.Apellido2,
+                                 Calle = a.Calle,
+                                 NumeroInterior = a.NumeroInterior,
+                                 NumeroExterior = a.NumeroInterior,
+                                 Colonia = a.Colonia,
+                                 CP = a.CP,
+                                 Localidad = a.Localidad,
+                                 Ciudad = a.Ciudad,
+                                 Telefono = a.Telefono,
+                                 Email = a.Email,
+                                 CURP = a.CURP,
+                                 NSS = a.NSS,
+                                 Salario = a.Salario,
+                                 BaseSalario = a.BaseSalario,
+                                 Estado = a.Estado,
+                                 UsuarioAlta = a.UsuarioAlta,
+                                 UsuarioMod = a.UsuarioMod,
+                                 FechaAlta = a.FechaAlta,
+                                 FechaMod = a.FechaMod,
+                                 Pais = b.Pais
+                             }).ToList();
+            return empleados;
+        }
         
         #endregion
 
@@ -1677,6 +1711,32 @@ namespace TDA.DataLayer
             vehiculos = vehiculos.Where(p => p.Ano < 0 || p.Ano == veh.Ano).ToList();
             vehiculos = vehiculos.Where(p => string.IsNullOrWhiteSpace(veh.Color) || p.Color.Contains(veh.Color)).ToList();
             vehiculos = vehiculos.Where(p => string.IsNullOrWhiteSpace(veh.NoSerie) || p.NoSerie.Contains(veh.NoSerie)).ToList();
+            return vehiculos;
+        }
+        public List<Vehiculos> BuscarVehiculosID(long? ID)
+        {
+            var vehiculos = (from a in _context.Vehiculo
+                             join b in _context.Modelo on a.Modelo equals b.ID
+                             join c in _context.Marca on b.Marca equals c.ID
+                             where a.ID == ID
+                             select new Vehiculos
+                             {
+                                 ID = a.ID,
+                                 NoSerie = a.NoSerie,
+                                 Modelo = a.Modelo,
+                                 ModeloNombre = b.Nombre,
+                                 Marca = c.ID,
+                                 MarcaNombre = c.Nombre,
+                                 Color = a.Color,
+                                 Ano = a.Ano,
+                                 Responsable = a.Resposable,
+                                 NumeroIdentificacion = a.NumeroIdentificacion,
+                                 TipoIdentificacion = a.TipoIdentificacion,
+                                 UsuarioAlta = a.UsuarioAlta,
+                                 UsuarioMod = a.UsuarioMod,
+                                 FechaAlta = a.FechaAlta,
+                                 FechaMod = a.FechaMod
+                             }).ToList();
             return vehiculos;
         }
         #endregion

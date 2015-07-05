@@ -230,6 +230,10 @@ namespace TDA.Service
         {
             return _dataBaseTool.SelectEmpleado(emp);
         }
+        public List<Empleados> BuscarEmpleadoID(long? ID)
+        {
+            return _dataBaseTool.BuscarEmpleadoID(ID);
+        }
         #endregion
 
         #region Tabla  Vehiculo
@@ -244,6 +248,10 @@ namespace TDA.Service
         public List<Vehiculos> SelectVehiculo(Vehiculos veh)
         {
             return _dataBaseTool.SelectVehiculos(veh);
+        }
+        public List<Vehiculos> BuscarVehiculoID(long? ID)
+        {
+            return _dataBaseTool.BuscarVehiculosID(ID);
         }
         #endregion
 

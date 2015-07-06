@@ -1431,43 +1431,31 @@ namespace TDA.DataLayer
         public Resultado UpdateEmpleado(Empleados emp)
         {
             Resultado resultado = new Resultado();
-            string empName = (from a in _context.Empleado
-                            select a.Nombre).FirstOrDefault();
-            if (string.IsNullOrEmpty(empName))
-            {
-                var empdb = (from a in _context.Empleado
-                             where a.ID == emp.ID
-                             select a).FirstOrDefault();
+            
+            var empdb = (from a in _context.Empleado
+                            where a.ID == emp.ID
+                            select a).FirstOrDefault();
 
-                empdb.Nombre = emp.Nombre;
-                empdb.RFC = emp.RFC;
-                empdb.Apellido = emp.Apellido;
-                empdb.Apellido2 = emp.Apellido2;
-                empdb.Calle = emp.Calle;
-                empdb.NumeroExterior = emp.NumeroExterior;
-                empdb.NumeroInterior = emp.NumeroInterior;
-                empdb.Colonia = emp.Colonia;
-                empdb.CP = emp.CP;
-                empdb.Localidad = emp.Localidad;
-                empdb.Ciudad = emp.Ciudad;
-                empdb.Telefono = emp.Telefono;
-                empdb.Email = emp.Email;
-                empdb.CURP = emp.CURP;
-                empdb.NSS = emp.NSS;
-                empdb.Salario = emp.Salario;
-                empdb.BaseSalario = emp.BaseSalario;
-                empdb.Estado = emp.Estado;
-                empdb.UsuarioMod = emp.UsuarioMod;
-                empdb.FechaMod = DateTime.Now;
-
-            }
-            else
-            {
-                resultado.Realizado = false;
-                resultado.ErrorDB = false;
-                resultado.YaExiste = true;
-                return resultado;
-            }
+            empdb.Nombre = emp.Nombre;
+            empdb.RFC = emp.RFC;
+            empdb.Apellido = emp.Apellido;
+            empdb.Apellido2 = emp.Apellido2;
+            empdb.Calle = emp.Calle;
+            empdb.NumeroExterior = emp.NumeroExterior;
+            empdb.NumeroInterior = emp.NumeroInterior;
+            empdb.Colonia = emp.Colonia;
+            empdb.CP = emp.CP;
+            empdb.Localidad = emp.Localidad;
+            empdb.Ciudad = emp.Ciudad;
+            empdb.Telefono = emp.Telefono;
+            empdb.Email = emp.Email;
+            empdb.CURP = emp.CURP;
+            empdb.NSS = emp.NSS;
+            empdb.Salario = emp.Salario;
+            empdb.BaseSalario = emp.BaseSalario;
+            empdb.Estado = emp.Estado;
+            empdb.UsuarioMod = emp.UsuarioMod;
+            empdb.FechaMod = DateTime.Now;
             try
             {
                 _context.SaveChanges();

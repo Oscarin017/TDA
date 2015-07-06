@@ -1589,10 +1589,9 @@ namespace TDA.DataLayer
         }
         
         #endregion
-
-        //*************************************************** TODO \\\\\\\\\/////////
-        // buscar por Marca, Modelo, Año, Color y Numero de Serie
+        
         #region Tabla Vehiculo 
+        // buscar por Marca, Modelo, Año, Color y Numero de Serie
         public Resultado InsertVehiculos(Vehiculos veh)
         {
             Resultado resultado = new Resultado();
@@ -1742,7 +1741,7 @@ namespace TDA.DataLayer
             return vehiculos;
         }
         #endregion
-
+        //*************************************************** TODO \\\\\\\\\/////////
         #region Tabla Proveedor
         public Resultado InsertProveedor(Proveedores pro)
         {
@@ -1891,9 +1890,11 @@ namespace TDA.DataLayer
             resultado.Referencia = false;
             return resultado;
         }
-        public List<Proveedores> SelectProveedor()
+        // Buscar Por Nombre, RFC, Pais, Estado, Ciudad
+        public List<Proveedores> SelectProveedor(Proveedores pro)
         {
             var proveedores = (from a in _context.Proveedor
+                               join b in _context.Estado on a.Estado equals b.ID
                          select new Proveedores
                          {
                              ID = a.ID,
@@ -1912,11 +1913,48 @@ namespace TDA.DataLayer
                              Telefono = a.Telefono,
                              Email = a.Email,
                              Estado = a.Estado,
+                             Pais = b.Pais,
                              UsuarioAlta = a.UsuarioAlta,
                              UsuarioMod = a.UsuarioMod,
                              FechaAlta = a.FechaAlta,
                              FechaMod = a.FechaMod
                          }).ToList();
+            proveedores = proveedores.Where(p => String.IsNullOrEmpty(pro.Nombre) || p.Nombre.Contains(pro.Nombre)).ToList();
+            proveedores = proveedores.Where(p => String.IsNullOrEmpty(pro.Apellido) || p.Apellido.Contains(pro.Apellido) || p.Apellido2.Contains(pro.Apellido)).ToList();
+            proveedores = proveedores.Where(p => pro.Pais < 0  || p.Pais == pro.Pais).ToList();
+            proveedores = proveedores.Where(p => pro.Estado < 0 || p.Estado == pro.Estado).ToList();
+            proveedores = proveedores.Where(p => String.IsNullOrEmpty(pro.Ciudad) || p.Ciudad.Contains(pro.Ciudad)).ToList();
+            return proveedores;
+        }
+        public List<Proveedores> BuscarProveedorID(long? ID)
+        {
+            var proveedores = (from a in _context.Proveedor
+                               join b in _context.Estado on a.Estado equals b.ID
+                               where a.ID == ID
+                               select new Proveedores
+                               {
+                                   ID = a.ID,
+                                   Nombre = a.Nombre,
+                                   Apellido = a.Apellido,
+                                   Apellido2 = a.Apellido2,
+                                   Tipo = (bool)a.Tipo,
+                                   RFC = a.RFC,
+                                   Calle = a.Calle,
+                                   NumeroInterior = a.NumeroInterior,
+                                   NumeroExterior = a.NumeroExterior,
+                                   Colonia = a.Colonia,
+                                   CP = a.CP,
+                                   Localidad = a.Localidad,
+                                   Ciudad = a.Ciudad,
+                                   Telefono = a.Telefono,
+                                   Email = a.Email,
+                                   Estado = a.Estado,
+                                   Pais = b.Pais,
+                                   UsuarioAlta = a.UsuarioAlta,
+                                   UsuarioMod = a.UsuarioMod,
+                                   FechaAlta = a.FechaAlta,
+                                   FechaMod = a.FechaMod
+                               }).ToList();
             return proveedores;
         }
         #endregion

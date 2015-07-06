@@ -10,6 +10,16 @@ namespace TDA.Entities
     [DataContract]
     public class Proveedores
     {
+        public Proveedores()
+        {
+            Nombre = DefaultValues.defString;
+            Apellido = DefaultValues.defString;
+            Pais = DefaultValues.deflong;
+            Estado = DefaultValues.deflong;
+            Ciudad = DefaultValues.defString;
+
+        }
+
         [DataMember]
         public long ID { get; set; }
         [DataMember]
@@ -50,6 +60,8 @@ namespace TDA.Entities
         public DateTime? FechaAlta { get; set; }
         [DataMember]
         public DateTime? FechaMod { get; set; }
+        [DataMember]
+        public long? Pais { get; set; }
         
     }
 }

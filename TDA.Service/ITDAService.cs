@@ -162,7 +162,9 @@ namespace TDA.Service
         [OperationContract]
         Resultado DeleteProveedor(Proveedores pro);
         [OperationContract]
-        List<Proveedores> SelectProveedor();
+        List<Proveedores> SelectProveedor(Proveedores pro);
+        [OperationContract]
+        List<Proveedores> BuscarProveedorID(long? ID);
         #endregion
 
         #region Tabla Dia

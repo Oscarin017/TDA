@@ -268,9 +268,13 @@ namespace TDA.Service
         {
             return _dataBaseTool.DeleteProveedor(pro);
         }
-        public List<Proveedores> SelectProveedor()
+        public List<Proveedores> SelectProveedor(Proveedores pro)
         {
-            return _dataBaseTool.SelectProveedor();
+            return _dataBaseTool.SelectProveedor(pro);
+        }
+        public List<Proveedores> SelectProveedor(long? ID)
+        {
+            return _dataBaseTool.BuscarProveedorID(ID);
         }
         #endregion
 

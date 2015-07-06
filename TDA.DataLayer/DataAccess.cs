@@ -1625,32 +1625,22 @@ namespace TDA.DataLayer
         public Resultado UpdateVehiculos(Vehiculos veh)
         {
             Resultado resultado = new Resultado();
-            string vehdb = (from a in _context.Vehiculo
-                         where a.NoSerie.ToUpper() == veh.NoSerie.ToUpper()
-                         select a.NoSerie).FirstOrDefault();
-            if (string.IsNullOrEmpty(vehdb))
-            {
-                var vehmod = (from a in _context.Vehiculo
-                             where a.ID == veh.ID
-                             select a).FirstOrDefault();
+            
+            
+            var vehmod = (from a in _context.Vehiculo
+                            where a.ID == veh.ID
+                            select a).FirstOrDefault();
 
-                vehmod.NoSerie = veh.NoSerie;
-                vehmod.Ano = veh.Ano;
-                vehmod.Resposable = veh.Responsable;
-                vehmod.NumeroIdentificacion = veh.NumeroIdentificacion;
-                vehmod.TipoIdentificacion = veh.TipoIdentificacion;
-                vehmod.Modelo = veh.Modelo;
-                vehmod.Color = veh.Color;
-                vehmod.UsuarioMod = veh.UsuarioMod;
-                vehmod.FechaMod = DateTime.Now;
-            }
-            else
-            {
-                resultado.Realizado = false;
-                resultado.ErrorDB = false;
-                resultado.YaExiste = true;
-                return resultado;
-            }
+            vehmod.NoSerie = veh.NoSerie;
+            vehmod.Ano = veh.Ano;
+            vehmod.Resposable = veh.Responsable;
+            vehmod.NumeroIdentificacion = veh.NumeroIdentificacion;
+            vehmod.TipoIdentificacion = veh.TipoIdentificacion;
+            vehmod.Modelo = veh.Modelo;
+            vehmod.Color = veh.Color;
+            vehmod.UsuarioMod = veh.UsuarioMod;
+            vehmod.FechaMod = DateTime.Now;
+           
             try
             {
                 _context.SaveChanges();

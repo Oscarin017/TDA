@@ -226,7 +226,9 @@ namespace TDA.Service
         [OperationContract]
         Resultado DeleteCliente(Clientes cli);
         [OperationContract]
-        List<Clientes> SelectCliente();
+        List<Clientes> SelectCliente(Clientes cli);
+        [OperationContract]
+        List<Clientes> BuscarClienteID(long? ID);
         #endregion
 
         #region Tabla Paquete

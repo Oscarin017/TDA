@@ -10,6 +10,14 @@ namespace TDA.Entities
     [DataContract]
     public class Productos
     {
+        public Productos()
+        {
+            TipoProducto = DefaultValues.deflong;
+            Proveedor = DefaultValues.deflong;
+            Codigo = DefaultValues.defString;
+            Descripcion = DefaultValues.defString;
+        }
+
         [DataMember]
         public long ID { get; set; }
         [DataMember]

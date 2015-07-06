@@ -297,7 +297,7 @@ namespace TDA.Service
         }
         public List<Productos> BuscarProductoID(long? ID)
         {
-            return _dataBaseTool.BuscarProducto(ID);
+            return _dataBaseTool.BuscarProductoID(ID);
         }
         #endregion
 
@@ -372,10 +372,15 @@ namespace TDA.Service
         {
             return _dataBaseTool.DeleteCliente(cli);
         }
-        public List<Clientes> SelectCliente()
+        public List<Clientes> SelectCliente(Clientes cli)
         {
-            return _dataBaseTool.SelectCliente();
+            return _dataBaseTool.SelectCliente(cli);
         }
+        public List<Clientes> BuscarClienteID(long? ID)
+        {
+            return _dataBaseTool.BuscarClienteID(ID);
+        }
+
         #endregion
 
         #region Tabla Paquete 

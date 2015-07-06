@@ -10,6 +10,16 @@ namespace TDA.Entities
     [DataContract]
     public class Clientes
     {
+        public Clientes()
+        {
+            Nombre = DefaultValues.defString;
+            RFC = DefaultValues.defString;
+            GrupoCliente = DefaultValues.deflong;
+            Pais = DefaultValues.deflong;
+            Estado = DefaultValues.deflong;
+            Ciudad = DefaultValues.defString;
+        }
+
         [DataMember]
         public long ID { get; set; }
         [DataMember]
@@ -27,6 +37,8 @@ namespace TDA.Entities
         [DataMember]
         public string NumeroExterior { get; set; }
         [DataMember]
+        public bool? Tipo { get; set; }
+        [DataMember]
         public string Colonia { get; set; }
         [DataMember]
         public int? CP { get; set; }
@@ -41,7 +53,11 @@ namespace TDA.Entities
         [DataMember]
         public long? Estado { get; set; }
         [DataMember]
+        public long? Pais { get; set; }
+        [DataMember]
         public long? GrupoCliente { get; set; }
+        [DataMember]
+        public string GrupoClienteNombre { get; set; }
         [DataMember]
         public long? UsuarioAlta { get; set; }
         [DataMember]

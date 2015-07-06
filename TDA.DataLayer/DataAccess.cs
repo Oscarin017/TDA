@@ -1776,42 +1776,30 @@ namespace TDA.DataLayer
         public Resultado UpdateProveedor(Proveedores pro)
         {
             Resultado resultado = new Resultado();
-            string proName = (from a in _context.Proveedor
-                            where a.Nombre.ToUpper() == pro.Nombre.ToUpper()
-                            || a.RFC.ToUpper() == pro.RFC.ToUpper()
-                            select a.Nombre).FirstOrDefault();
-            if (string.IsNullOrEmpty(proName))
-            {
-                var prodb = (from a in _context.Proveedor
-                             where a.ID == pro.ID
-                             select a).FirstOrDefault();
+            
+            var prodb = (from a in _context.Proveedor
+                            where a.ID == pro.ID
+                            select a).FirstOrDefault();
 
-                prodb.Nombre = pro.Nombre;
-                prodb.Apellido = pro.Apellido;
-                prodb.Apellido2 = pro.Apellido2;
-                prodb.Tipo = pro.Tipo;
-                prodb.RFC = pro.RFC;
-                prodb.Calle = pro.Calle;
-                prodb.NumeroExterior = pro.NumeroExterior;
-                prodb.NumeroInterior = pro.NumeroInterior;
-                prodb.Colonia = pro.Colonia;
-                prodb.CP = pro.CP;
-                prodb.Localidad = pro.Localidad;
-                prodb.Ciudad = pro.Ciudad;
-                prodb.Telefono = pro.Telefono;
-                prodb.Email = pro.Email;
-                prodb.Estado = pro.Estado;
-                prodb.UsuarioMod = pro.UsuarioMod;
-                prodb.FechaMod = DateTime.Now;
+            prodb.Nombre = pro.Nombre;
+            prodb.Apellido = pro.Apellido;
+            prodb.Apellido2 = pro.Apellido2;
+            prodb.Tipo = pro.Tipo;
+            prodb.RFC = pro.RFC;
+            prodb.Calle = pro.Calle;
+            prodb.NumeroExterior = pro.NumeroExterior;
+            prodb.NumeroInterior = pro.NumeroInterior;
+            prodb.Colonia = pro.Colonia;
+            prodb.CP = pro.CP;
+            prodb.Localidad = pro.Localidad;
+            prodb.Ciudad = pro.Ciudad;
+            prodb.Telefono = pro.Telefono;
+            prodb.Email = pro.Email;
+            prodb.Estado = pro.Estado;
+            prodb.UsuarioMod = pro.UsuarioMod;
+            prodb.FechaMod = DateTime.Now;
 
-            }
-            else
-            {
-                resultado.Realizado = false;
-                resultado.ErrorDB = false;
-                resultado.YaExiste = true;
-                return resultado;
-            }
+            
             try
             {
                 _context.SaveChanges();
@@ -1933,7 +1921,7 @@ namespace TDA.DataLayer
             return proveedores;
         }
         #endregion
-        //*************************************************** TODO \\\\\\\\\/////////
+        
         #region Tabla Prodcuto
         public Resultado InsertProducto(Productos pro)
         {
@@ -1987,36 +1975,24 @@ namespace TDA.DataLayer
         public Resultado UpdateProducto(Productos pro)
         {
             Resultado resultado = new Resultado();
-            string proName = (from a in _context.Producto
-                            where a.Codigo.ToUpper() == pro.Codigo.ToUpper()
-                            || a.Descripcion.ToUpper() == pro.Descripcion.ToUpper()
-                            select a.Codigo).FirstOrDefault();
-            if (string.IsNullOrEmpty(proName))
-            {
-                var prodb = (from a in _context.Producto
-                             where a.ID == pro.ID
-                             select a).FirstOrDefault();
+            
+            var prodb = (from a in _context.Producto
+                            where a.ID == pro.ID
+                            select a).FirstOrDefault();
 
-                prodb.Codigo = pro.Codigo;
-                prodb.Descripcion = pro.Descripcion;
-                prodb.PrecioVenta = pro.PrecioVenta;
-                prodb.PrecioCompra = pro.PrecioCompra;
-                prodb.IVAExcencto = pro.IVAExcento;
-                prodb.Observaciones = pro.Observaciones;
-                prodb.Servicio = pro.Servicio;
-                prodb.TipoProducto = pro.TipoProducto;
-                prodb.Proveedor = pro.Proveedor;
-                prodb.UsuarioMod = pro.UsuarioMod;
-                prodb.FechaMod = DateTime.Now;
+            prodb.Codigo = pro.Codigo;
+            prodb.Descripcion = pro.Descripcion;
+            prodb.PrecioVenta = pro.PrecioVenta;
+            prodb.PrecioCompra = pro.PrecioCompra;
+            prodb.IVAExcencto = pro.IVAExcento;
+            prodb.Observaciones = pro.Observaciones;
+            prodb.Servicio = pro.Servicio;
+            prodb.TipoProducto = pro.TipoProducto;
+            prodb.Proveedor = pro.Proveedor;
+            prodb.UsuarioMod = pro.UsuarioMod;
+            prodb.FechaMod = DateTime.Now;
 
-            }
-            else
-            {
-                resultado.Realizado = false;
-                resultado.ErrorDB = false;
-                resultado.YaExiste = true;
-                return resultado;
-            }
+            
             try
             {
                 _context.SaveChanges();
@@ -2099,7 +2075,7 @@ namespace TDA.DataLayer
             productos = productos.Where(p => string.IsNullOrWhiteSpace(pro.Descripcion) || p.Descripcion.Contains(pro.Descripcion)).ToList();
             return productos;
         }
-        public List<Productos> BuscarProducto(long? ID)
+        public List<Productos> BuscarProductoID(long? ID)
         {
             var productos = (from a in _context.Producto
                              join b in _context.Proveedor on a.Proveedor equals b.ID
@@ -2514,7 +2490,7 @@ namespace TDA.DataLayer
             return grupos;
         }
         #endregion
-
+        //*************************************************** TODO \\\\\\\\\/////////
         #region Tabla Cliente
         public Resultado InsertCliente(Clientes cli)
         {
@@ -2574,42 +2550,30 @@ namespace TDA.DataLayer
         public Resultado UpdateCliente(Clientes cli)
         {
             Resultado resultado = new Resultado();
-            string cliName = (from a in _context.Cliente
-                              where a.Nombre.ToUpper() == cli.Nombre.ToUpper()
-                              || a.RFC.ToUpper() == cli.RFC.ToUpper() 
-                              select a.Nombre).FirstOrDefault();
-            if (string.IsNullOrEmpty(cliName))
-            {
-                var clidb = (from a in _context.Cliente
-                             where a.ID == cli.ID
-                             select a).FirstOrDefault();
+            
+            var clidb = (from a in _context.Cliente
+                            where a.ID == cli.ID
+                            select a).FirstOrDefault();
 
-                clidb.Nombre = cli.Nombre;
-                clidb.Apellido = cli.Apellido;
-                clidb.Apellido2 = cli.Apellido2;
-                clidb.RFC = cli.RFC;
-                clidb.Calle = cli.Calle;
-                clidb.NumeroExterior = cli.NumeroExterior;
-                clidb.NumeroInterior = cli.NumeroInterior;
-                clidb.Colonia = cli.Colonia;
-                clidb.CP = cli.CP;
-                clidb.Localidad = cli.Localidad;
-                clidb.Ciudad = cli.Ciudad;
-                clidb.Telefono = cli.Telefono;
-                clidb.Email = cli.Email;
-                clidb.Estado = cli.Estado;
-                clidb.GrupoCliente = cli.GrupoCliente;
-                clidb.UsuarioMod = cli.UsuarioMod;
-                clidb.FechaMod = DateTime.Now;
+            clidb.Nombre = cli.Nombre;
+            clidb.Apellido = cli.Apellido;
+            clidb.Apellido2 = cli.Apellido2;
+            clidb.RFC = cli.RFC;
+            clidb.Calle = cli.Calle;
+            clidb.NumeroExterior = cli.NumeroExterior;
+            clidb.NumeroInterior = cli.NumeroInterior;
+            clidb.Colonia = cli.Colonia;
+            clidb.CP = cli.CP;
+            clidb.Localidad = cli.Localidad;
+            clidb.Ciudad = cli.Ciudad;
+            clidb.Telefono = cli.Telefono;
+            clidb.Email = cli.Email;
+            clidb.Estado = cli.Estado;
+            clidb.GrupoCliente = cli.GrupoCliente;
+            clidb.UsuarioMod = cli.UsuarioMod;
+            clidb.FechaMod = DateTime.Now;
 
-            }
-            else
-            {
-                resultado.Realizado = false;
-                resultado.ErrorDB = false;
-                resultado.YaExiste = true;
-                return resultado;
-            }
+            
             try
             {
                 _context.SaveChanges();
@@ -2663,13 +2627,16 @@ namespace TDA.DataLayer
             resultado.Referencia = false;
             return resultado;
         }
-        public List<Clientes> SelectCliente()
+        // Buscar por Nombre, RFC , Tipo, Pais, Estado, Ciudad
+        public List<Clientes> SelectCliente(Clientes cli)
         {
             var clientes = (from a in _context.Cliente
-                          select new Clientes
+                            join b in _context.GrupoCliente on a.GrupoCliente equals b.ID
+                            join c in _context.Estado on a.Estado equals c.ID
+                            select new Clientes
                           {
                               ID = a.ID,
-                              //Tipo = a.Tipo,
+                              Tipo = a.Tipo,
                               Nombre = a.Nombre,
                               Apellido = a.Apellido,
                               Apellido2 = a.Apellido2,
@@ -2684,12 +2651,54 @@ namespace TDA.DataLayer
                               Telefono = a.Telefono,
                               Email = a.Email,
                               Estado = a.Estado,
+                              Pais = c.Pais,
                               GrupoCliente = a.GrupoCliente,
+                              GrupoClienteNombre = b.Nombre,
                               UsuarioAlta = a.UsuarioAlta,
                               UsuarioMod = a.UsuarioMod,
                               FechaAlta = a.FechaAlta,
                               FechaMod = a.FechaMod
                           }).ToList();
+            clientes = clientes.Where(p => string.IsNullOrWhiteSpace(cli.Nombre) || p.Nombre.Contains(cli.Nombre) ).ToList();
+            clientes = clientes.Where(p => string.IsNullOrWhiteSpace(cli.RFC) || p.RFC.Contains(cli.RFC)).ToList();
+            clientes = clientes.Where(p => cli.GrupoCliente < 0 || p.GrupoCliente == cli.GrupoCliente).ToList();
+            clientes = clientes.Where(p => cli.Pais < 0 || p.Pais == cli.Pais).ToList();
+            clientes = clientes.Where(p => cli.Estado < 0 || p.Estado == cli.Estado).ToList();
+            clientes = clientes.Where(p => string.IsNullOrWhiteSpace(cli.Ciudad) || p.Ciudad.Contains(cli.Ciudad)).ToList();
+            return clientes;
+        }
+        public List<Clientes> BuscarClienteID(long? ID)
+        {
+            var clientes = (from a in _context.Cliente
+                            join b in _context.GrupoCliente on a.GrupoCliente equals b.ID
+                            join c in _context.Estado on a.Estado equals c.ID
+                            where a.ID == ID
+                            select new Clientes
+                            {
+                                ID = a.ID,
+                                Tipo = a.Tipo,
+                                Nombre = a.Nombre,
+                                Apellido = a.Apellido,
+                                Apellido2 = a.Apellido2,
+                                RFC = a.RFC,
+                                Calle = a.Calle,
+                                NumeroExterior = a.NumeroExterior,
+                                NumeroInterior = a.NumeroInterior,
+                                Colonia = a.Colonia,
+                                CP = a.CP,
+                                Localidad = a.Localidad,
+                                Ciudad = a.Ciudad,
+                                Telefono = a.Telefono,
+                                Email = a.Email,
+                                Estado = a.Estado,
+                                Pais = c.Pais,
+                                GrupoCliente = a.GrupoCliente,
+                                GrupoClienteNombre = b.Nombre,
+                                UsuarioAlta = a.UsuarioAlta,
+                                UsuarioMod = a.UsuarioMod,
+                                FechaAlta = a.FechaAlta,
+                                FechaMod = a.FechaMod
+                            }).ToList();
             return clientes;
         }
         #endregion

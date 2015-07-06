@@ -291,9 +291,13 @@ namespace TDA.Service
         {
             return _dataBaseTool.DeleteProducto(pro);
         }
-        public List<Productos> SelectProducto()
+        public List<Productos> SelectProducto(Productos pro)
         {
-            return _dataBaseTool.SelectProducto();
+            return _dataBaseTool.SelectProducto(pro);
+        }
+        public List<Productos> BuscarProductoID(long? ID)
+        {
+            return _dataBaseTool.BuscarProducto(ID);
         }
         #endregion
 

@@ -180,7 +180,9 @@ namespace TDA.Service
         [OperationContract]
         Resultado DeleteProducto(Productos pro);
         [OperationContract]
-        List<Productos> SelectProducto();
+        List<Productos> SelectProducto(Productos pro);
+        [OperationContract]
+        List<Productos> BuscarProductoID(long? ID);
         #endregion
 
         #region Tabla Tipo Movimiento

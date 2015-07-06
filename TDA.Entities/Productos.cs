@@ -29,6 +29,10 @@ namespace TDA.Entities
         [DataMember]
         public long? TipoProducto { get; set; }
         [DataMember]
+        public string TipoProductoNombre { get; set; }
+        [DataMember]
+        public string ProveedorNombre { get; set; }
+        [DataMember]
         public long? Proveedor { get; set; }
         [DataMember]
         public long? UsuarioAlta { get; set; }

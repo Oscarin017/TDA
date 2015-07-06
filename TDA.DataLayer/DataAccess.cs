@@ -2070,10 +2070,12 @@ namespace TDA.DataLayer
             resultado.Referencia = false;
             return resultado;
         }
-
-        public List<Productos> SelectProducto()
+        //Filtrar productos por tipo, proveedor, codigo y descripcion
+        public List<Productos> SelectProducto(Productos pro)
         {
             var productos = (from a in _context.Producto
+                             join b in _context.Proveedor on a.Proveedor equals b.ID
+                             join c in _context.TipoProducto on a.TipoProducto equals c.ID
                                select new Productos
                                {
                                    ID = a.ID,
@@ -2091,6 +2093,36 @@ namespace TDA.DataLayer
                                    FechaAlta = a.FechaAlta,
                                    FechaMod = a.FechaMod
                                }).ToList();
+            productos = productos.Where(p => pro.TipoProducto < 0 || p.TipoProducto == pro.TipoProducto ).ToList();
+            productos = productos.Where(p => pro.Proveedor < 0 || p.Proveedor == pro.Proveedor).ToList();
+            productos = productos.Where(p => string.IsNullOrWhiteSpace(pro.Codigo) || p.Codigo.Contains(pro.Codigo)).ToList();
+            productos = productos.Where(p => string.IsNullOrWhiteSpace(pro.Descripcion) || p.Descripcion.Contains(pro.Descripcion)).ToList();
+            return productos;
+        }
+        public List<Productos> BuscarProducto(long? ID)
+        {
+            var productos = (from a in _context.Producto
+                             join b in _context.Proveedor on a.Proveedor equals b.ID
+                             join c in _context.TipoProducto on a.TipoProducto equals c.ID
+                             where a.ID == ID
+                             select new Productos
+                             {
+                                 ID = a.ID,
+                                 Codigo = a.Codigo,
+                                 Descripcion = a.Descripcion,
+                                 PrecioVenta = a.PrecioVenta,
+                                 PrecioCompra = a.PrecioCompra,
+                                 Observaciones = a.Observaciones,
+                                 Servicio = a.Servicio,
+                                 IVAExcento = a.IVAExcencto,
+                                 TipoProducto = a.TipoProducto,
+                                 Proveedor = a.Proveedor,
+                                 UsuarioAlta = a.UsuarioAlta,
+                                 UsuarioMod = a.UsuarioMod,
+                                 FechaAlta = a.FechaAlta,
+                                 FechaMod = a.FechaMod
+                             }).ToList();
+           
             return productos;
         }
         #endregion

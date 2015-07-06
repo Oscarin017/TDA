@@ -272,6 +272,12 @@
   <wsdl:message name="ITDAService_SelectEmpleado_OutputMessage">
     <wsdl:part name="parameters" element="tns:SelectEmpleadoResponse" />
   </wsdl:message>
+  <wsdl:message name="ITDAService_BuscarEmpleadoID_InputMessage">
+    <wsdl:part name="parameters" element="tns:BuscarEmpleadoID" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_BuscarEmpleadoID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BuscarEmpleadoIDResponse" />
+  </wsdl:message>
   <wsdl:message name="ITDAService_InsertVehiculo_InputMessage">
     <wsdl:part name="parameters" element="tns:InsertVehiculo" />
   </wsdl:message>
@@ -864,6 +870,10 @@
     <wsdl:operation name="SelectEmpleado">
       <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/SelectEmpleado" message="tns:ITDAService_SelectEmpleado_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/SelectEmpleadoResponse" message="tns:ITDAService_SelectEmpleado_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BuscarEmpleadoID">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/BuscarEmpleadoID" message="tns:ITDAService_BuscarEmpleadoID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/BuscarEmpleadoIDResponse" message="tns:ITDAService_BuscarEmpleadoID_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="InsertVehiculo">
       <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/InsertVehiculo" message="tns:ITDAService_InsertVehiculo_InputMessage" />
@@ -1529,6 +1539,15 @@
     </wsdl:operation>
     <wsdl:operation name="SelectEmpleado">
       <soap:operation soapAction="http://tempuri.org/ITDAService/SelectEmpleado" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuscarEmpleadoID">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/BuscarEmpleadoID" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

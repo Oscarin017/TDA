@@ -273,6 +273,12 @@ namespace TDAWPF.TDAService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/SelectEmpleado", ReplyAction="http://tempuri.org/ITDAService/SelectEmpleadoResponse")]
         System.Threading.Tasks.Task<TDA.Entities.Empleados[]> SelectEmpleadoAsync(TDA.Entities.Empleados emp);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/BuscarEmpleadoID", ReplyAction="http://tempuri.org/ITDAService/BuscarEmpleadoIDResponse")]
+        TDA.Entities.Empleados[] BuscarEmpleadoID(System.Nullable<long> ID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/BuscarEmpleadoID", ReplyAction="http://tempuri.org/ITDAService/BuscarEmpleadoIDResponse")]
+        System.Threading.Tasks.Task<TDA.Entities.Empleados[]> BuscarEmpleadoIDAsync(System.Nullable<long> ID);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/InsertVehiculo", ReplyAction="http://tempuri.org/ITDAService/InsertVehiculoResponse")]
         TDA.Entities.Resultado InsertVehiculo(TDA.Entities.Vehiculos veh);
         
@@ -292,10 +298,10 @@ namespace TDAWPF.TDAService {
         System.Threading.Tasks.Task<TDA.Entities.Vehiculos[]> SelectVehiculoAsync(TDA.Entities.Vehiculos veh);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/BuscarVehiculoID", ReplyAction="http://tempuri.org/ITDAService/BuscarVehiculoIDResponse")]
-        TDA.Entities.Vehiculos[] BuscarVehiculoID(long ID);
+        TDA.Entities.Vehiculos[] BuscarVehiculoID(System.Nullable<long> ID);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/BuscarVehiculoID", ReplyAction="http://tempuri.org/ITDAService/BuscarVehiculoIDResponse")]
-        System.Threading.Tasks.Task<TDA.Entities.Vehiculos[]> BuscarVehiculoIDAsync(long ID);
+        System.Threading.Tasks.Task<TDA.Entities.Vehiculos[]> BuscarVehiculoIDAsync(System.Nullable<long> ID);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/InsertProveedor", ReplyAction="http://tempuri.org/ITDAService/InsertProveedorResponse")]
         TDA.Entities.Resultado InsertProveedor(TDA.Entities.Proveedores pro);
@@ -1065,6 +1071,14 @@ namespace TDAWPF.TDAService {
             return base.Channel.SelectEmpleadoAsync(emp);
         }
         
+        public TDA.Entities.Empleados[] BuscarEmpleadoID(System.Nullable<long> ID) {
+            return base.Channel.BuscarEmpleadoID(ID);
+        }
+        
+        public System.Threading.Tasks.Task<TDA.Entities.Empleados[]> BuscarEmpleadoIDAsync(System.Nullable<long> ID) {
+            return base.Channel.BuscarEmpleadoIDAsync(ID);
+        }
+        
         public TDA.Entities.Resultado InsertVehiculo(TDA.Entities.Vehiculos veh) {
             return base.Channel.InsertVehiculo(veh);
         }
@@ -1089,11 +1103,11 @@ namespace TDAWPF.TDAService {
             return base.Channel.SelectVehiculoAsync(veh);
         }
         
-        public TDA.Entities.Vehiculos[] BuscarVehiculoID(long ID) {
+        public TDA.Entities.Vehiculos[] BuscarVehiculoID(System.Nullable<long> ID) {
             return base.Channel.BuscarVehiculoID(ID);
         }
         
-        public System.Threading.Tasks.Task<TDA.Entities.Vehiculos[]> BuscarVehiculoIDAsync(long ID) {
+        public System.Threading.Tasks.Task<TDA.Entities.Vehiculos[]> BuscarVehiculoIDAsync(System.Nullable<long> ID) {
             return base.Channel.BuscarVehiculoIDAsync(ID);
         }
         

@@ -139,6 +139,8 @@ namespace TDA.Service
         Resultado DeleteEmpleado(Empleados emp);
         [OperationContract]
         List<Empleados> SelectEmpleado(Empleados emp);
+        [OperationContract]
+        List<Empleados> BuscarEmpleadoID(long? ID);
         #endregion
 
         #region Tabla Vehiculo
@@ -149,7 +151,7 @@ namespace TDA.Service
         [OperationContract]
         List<Vehiculos> SelectVehiculo(Vehiculos veh);
         [OperationContract]
-        List<Vehiculos> BuscarVehiculoID(long ID);
+        List<Vehiculos> BuscarVehiculoID(long? ID);
         #endregion
 
         #region Tabla Proveedor

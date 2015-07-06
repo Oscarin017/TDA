@@ -272,7 +272,7 @@ namespace TDA.Service
         {
             return _dataBaseTool.SelectProveedor(pro);
         }
-        public List<Proveedores> SelectProveedor(long? ID)
+        public List<Proveedores> BuscarProveedorID(long? ID)
         {
             return _dataBaseTool.BuscarProveedorID(ID);
         }

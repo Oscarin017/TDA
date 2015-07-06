@@ -1432,9 +1432,6 @@ namespace TDA.DataLayer
         {
             Resultado resultado = new Resultado();
             string empName = (from a in _context.Empleado
-                            where a.Email.ToUpper() == emp.Email.ToUpper()
-                            || a.NSS.ToUpper() == emp.NSS.ToUpper()
-                            || a.CURP.ToUpper() == emp.NSS.ToUpper()
                             select a.Nombre).FirstOrDefault();
             if (string.IsNullOrEmpty(empName))
             {
@@ -2095,6 +2092,7 @@ namespace TDA.DataLayer
             resultado.Referencia = false;
             return resultado;
         }
+
         public List<Productos> SelectProducto()
         {
             var productos = (from a in _context.Producto

@@ -67,7 +67,7 @@ namespace TDA.DataLayer
         #region Tabla Base Salario
         public List<BaseSalarios> SelectBaseSalario()
         {
-            var paginas = (from a in _context.BaseSalario
+            var paginas = (from a in _context.BaseSalario orderby a.ID
                            select new BaseSalarios
                            {
                                ID = a.ID,

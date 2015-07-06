@@ -20,6 +20,9 @@ namespace TDAWPF.Controles
     /// </summary>
     public partial class ComboBoxS : UserControl
     {
+        bool bInicial = false;
+        string sPlaceHolder = "";
+
         public event EventHandler SelectionChanged;
 
         public virtual void OnSelectionChanged()
@@ -63,9 +66,8 @@ namespace TDAWPF.Controles
 
         private void cb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ComboBox cb = (ComboBox)sender;
             if (cb.SelectedIndex != 0)
-            {
+            {                
                 cb.Foreground = new SolidColorBrush(Colors.Black);
                 cb.FontWeight = FontWeights.Bold;
             }
@@ -75,6 +77,21 @@ namespace TDAWPF.Controles
                 cb.FontWeight = FontWeights.Normal;
             }
             this.OnSelectionChanged();
-        }  
+        }
+        
+        public void Clear()
+        {
+            if (!bInicial)
+            {
+                bInicial = true;
+                ComboBoxItem cbi = (ComboBoxItem)cb.Items[0];
+                sPlaceHolder = cbi.Content.ToString();
+            }
+            cb.Items.Clear();
+            ComboBoxItem cbi1 = new ComboBoxItem();
+            cbi1.Content = sPlaceHolder;
+            cbi1.IsSelected = true;
+            cb.Items.Add(cbi1);
+        }
     }
 }

@@ -1679,6 +1679,27 @@ namespace TDA.DataLayer
             vehiculos = vehiculos.Where(p => string.IsNullOrWhiteSpace(veh.NoSerie) || p.NoSerie.Contains(veh.NoSerie)).ToList();
             return vehiculos;
         }
+
+        public List<Vehiculos> BuscarVehiculoID(long ID)
+        {
+            var vehiculos = (from a in _context.Vehiculo
+                             join b in _context.Modelo on a.Modelo equals b.ID
+                             join c in _context.Marca on b.Marca equals c.ID
+                           where a.ID == ID
+                           select new Vehiculos
+                           {
+                               ID = a.ID,
+                               Marca = c.ID,
+                               Modelo = a.Modelo,
+                               Ano = a.Ano,
+                               Color = a.Color,
+                               NoSerie = a.NoSerie,
+                               Responsable = a.Resposable,
+                               TipoIdentificacion = a.TipoIdentificacion
+
+                           }).ToList();
+            return vehiculos;
+        }
         #endregion
 
         #region Tabla Proveedor

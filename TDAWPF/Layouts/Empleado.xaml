@@ -31,7 +31,7 @@
         <Controles:TextBoxS x:Name="txtNombre" Text="Escribe Nombre" Grid.Column="1" Grid.Row="1"/>
         <Controles:TextBoxS x:Name="txtApellido" Text="Escribe Apellido" Grid.Column="3" Grid.Row="1"/>
         <Controles:TextBoxS x:Name="txtCurp" Text="Escribe CURP" Grid.Column="5" Grid.Row="1"/>
-        <Controles:ComboBoxS x:Name="cbPais" Grid.Column="1" Grid.Row="3">
+        <Controles:ComboBoxS x:Name="cbPais" Grid.Column="1" Grid.Row="3" SelectionChanged="cbPais_SelectionChanged">
             <Controles:ComboBoxS.Items>
                 <ComboBoxItem IsSelected="True" Content="Selecciona Pais"/>
             </Controles:ComboBoxS.Items>
@@ -56,7 +56,7 @@
                 <RowDefinition Height="65"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Button x:Name="btnSearch" Grid.Column="0" Grid.Row="0">
+            <Button x:Name="btnSearch" Grid.Column="0" Grid.Row="0" Click="btnSearch_Click">
                 <Button.Background>
                     <ImageBrush ImageSource="../Imagenes/0135-search.png"/>
                 </Button.Background>
@@ -67,6 +67,36 @@
                 </Button.Background>
             </Button>
         </Grid>
-        <DataGrid x:Name="dg" Width="960" VerticalAlignment="Top" HorizontalAlignment="Center" Grid.ColumnSpan="7" Grid.Column="1" Grid.Row="5"/>
+        <DataGrid x:Name="dg" Width="960" VerticalAlignment="Top" HorizontalAlignment="Center" Grid.ColumnSpan="7" Grid.Column="1" Grid.Row="5" AutoGenerateColumns="False" FontFamily="Arial" FontSize="14" FontWeight="Bold" IsReadOnly="True" Loaded="dg_Loaded" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding ID}" Visibility="Collapsed" />
+                <DataGridTextColumn Header="Apellido Paterno" Binding="{Binding Apellido}" Width="*" FontWeight="Normal" />
+                <DataGridTextColumn Header="Apellido Materno" Binding="{Binding Apellido2}" Width="*" FontWeight="Normal" />
+                <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}" Width="2*" FontWeight="Normal" />
+                <DataGridTextColumn Header="CURP" Binding="{Binding CURP}" Width="3*" FontWeight="Normal" />
+                <DataGridTemplateColumn MinWidth="30">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="btnModificar" Width="20" Height="20" Click="btnModificar_Click">
+                                <Button.Background>
+                                    <ImageBrush ImageSource="../Imagenes/Pencil-mini.png"/>
+                                </Button.Background>
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn MinWidth="30">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="btnEliminar" Width="20" Height="20" Click="btnEliminar_Click">
+                                <Button.Background>
+                                    <ImageBrush ImageSource="../Imagenes/0173-bin.png"/>
+                                </Button.Background>
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Page>

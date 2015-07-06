@@ -70,7 +70,7 @@ namespace TDAWPF.Popups
                 {
                     cbMarca.SelectedIndex = Convert.ToInt32(r.Marca);
                     txtNombre.Text = r.Nombre;
-                    txtAno.Text = r.Ano;
+                    txtAno.Text = r.Ano.ToString();
                 }
             }
         }
@@ -82,7 +82,7 @@ namespace TDAWPF.Popups
                 TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
                 Modelos es = new Modelos();
                 es.Nombre = txtNombre.Text;
-                es.Ano = txtAno;
+                es.Ano = Convert.ToInt32(txtAno.Text);
                 ComboBoxItem cbi = (ComboBoxItem)cbMarca.Items[cbMarca.SelectedIndex];
                 es.Marca = Convert.ToInt64(cbi.Uid);
                 tda.InsertModelo(es);
@@ -103,7 +103,7 @@ namespace TDAWPF.Popups
                 Modelos es = new Modelos();
                 es.ID = lID;
                 es.Nombre = txtNombre.Text;
-                es.Ano = txtAno.Text;
+                es.Ano = Convert.ToInt32(txtAno.Text);
                 ComboBoxItem cbi = (ComboBoxItem)cbMarca.Items[cbMarca.SelectedIndex];
                 es.Marca = Convert.ToInt64(cbi.Uid);
                 tda.UpdateModelo(es);

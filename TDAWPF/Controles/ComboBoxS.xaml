@@ -11,7 +11,7 @@
                 <ColumnDefinition Width="245" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <ComboBox x:Name="cb" BorderBrush="{x:Null}" BorderThickness="0" VerticalContentAlignment="Center" FontFamily="Arial" FontSize="14" Foreground="Gray" Grid.Column="0" SelectionChanged="cb_SelectionChanged" ItemsSource="{Binding Path=Items}"/>
+            <ComboBox x:Name="cb" BorderBrush="{x:Null}" BorderThickness="0" VerticalContentAlignment="Center" FontFamily="Arial" FontSize="14" Foreground="Gray" Grid.Column="0" SelectionChanged="cb_SelectionChanged" ItemsSource="{Binding Path=Items}" />
             <Image Source="/TDAWPF;component/Imagenes/Search-mini.png" Width="20" Height="20" Grid.Column="1" />
         </Grid>
     </Border>

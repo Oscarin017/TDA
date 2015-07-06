@@ -55,7 +55,8 @@ namespace TDAWPF.Layouts
                 {
                     ID = r.ID,
                     Nombre = r.Nombre,
-                    MarcaNombre = r.MarcaNombre
+                    MarcaNombre = r.MarcaNombre,
+                    Ano = r.Ano
                 });
             }
 

@@ -245,6 +245,10 @@ namespace TDA.Service
         {
             return _dataBaseTool.SelectVehiculos(veh);
         }
+        public List<Vehiculos> BuscarVehiculoID(long ID)
+        {
+            return _dataBaseTool.BuscarVehiculoID(ID);
+        }
         #endregion
 
         #region Tabla Proveedor

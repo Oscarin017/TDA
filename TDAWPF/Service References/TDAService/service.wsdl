@@ -290,6 +290,12 @@
   <wsdl:message name="ITDAService_SelectVehiculo_OutputMessage">
     <wsdl:part name="parameters" element="tns:SelectVehiculoResponse" />
   </wsdl:message>
+  <wsdl:message name="ITDAService_BuscarVehiculoID_InputMessage">
+    <wsdl:part name="parameters" element="tns:BuscarVehiculoID" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_BuscarVehiculoID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BuscarVehiculoIDResponse" />
+  </wsdl:message>
   <wsdl:message name="ITDAService_InsertProveedor_InputMessage">
     <wsdl:part name="parameters" element="tns:InsertProveedor" />
   </wsdl:message>
@@ -870,6 +876,10 @@
     <wsdl:operation name="SelectVehiculo">
       <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/SelectVehiculo" message="tns:ITDAService_SelectVehiculo_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/SelectVehiculoResponse" message="tns:ITDAService_SelectVehiculo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BuscarVehiculoID">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/BuscarVehiculoID" message="tns:ITDAService_BuscarVehiculoID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/BuscarVehiculoIDResponse" message="tns:ITDAService_BuscarVehiculoID_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="InsertProveedor">
       <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/InsertProveedor" message="tns:ITDAService_InsertProveedor_InputMessage" />
@@ -1546,6 +1556,15 @@
     </wsdl:operation>
     <wsdl:operation name="SelectVehiculo">
       <soap:operation soapAction="http://tempuri.org/ITDAService/SelectVehiculo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuscarVehiculoID">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/BuscarVehiculoID" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

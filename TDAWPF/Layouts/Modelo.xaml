@@ -58,7 +58,8 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding ID}" Visibility="Collapsed" />
                 <DataGridTextColumn Header="Marca" Binding="{Binding MarcaNombre}" Width="*" FontWeight="Normal" />
-                <DataGridTextColumn Header="Modelo" Binding="{Binding Nombre}" Width="2*" FontWeight="Normal" />
+                <DataGridTextColumn Header="Modelo" Binding="{Binding Nombre}" Width="3*" FontWeight="Normal" />
+                <DataGridTextColumn Header="Año" Binding="{Binding Ano}" Width="*" FontWeight="Normal" />
                 <DataGridTemplateColumn MinWidth="30">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>

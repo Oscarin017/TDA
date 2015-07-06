@@ -1726,7 +1726,7 @@ namespace TDA.DataLayer
             return vehiculos;
         }
         #endregion
-        //*************************************************** TODO \\\\\\\\\/////////
+ 
         #region Tabla Proveedor
         public Resultado InsertProveedor(Proveedores pro)
         {
@@ -1943,7 +1943,7 @@ namespace TDA.DataLayer
             return proveedores;
         }
         #endregion
-
+        //*************************************************** TODO \\\\\\\\\/////////
         #region Tabla Prodcuto
         public Resultado InsertProducto(Productos pro)
         {

@@ -67,7 +67,7 @@ namespace TDA.DataLayer
         #region Tabla Base Salario
         public List<BaseSalarios> SelectBaseSalario()
         {
-            var paginas = (from a in _context.BaseSalario orderby a.ID
+            var paginas = (from a in _context.BaseSalario
                            select new BaseSalarios
                            {
                                ID = a.ID,
@@ -1690,9 +1690,9 @@ namespace TDA.DataLayer
                                FechaAlta = a.FechaAlta,
                                FechaMod = a.FechaMod
                            }).ToList();
-            vehiculos = vehiculos.Where(p => p.Marca < 0 || p.Marca == veh.Marca).ToList();
-            vehiculos = vehiculos.Where(p => p.Modelo < 0 || p.Modelo == veh.Modelo).ToList();
-            vehiculos = vehiculos.Where(p => p.Ano < 0 || p.Ano == veh.Ano).ToList();
+            vehiculos = vehiculos.Where(p => veh.Marca < 0 || p.Marca == veh.Marca).ToList();
+            vehiculos = vehiculos.Where(p => veh.Modelo < 0 || p.Modelo == veh.Modelo).ToList();
+            vehiculos = vehiculos.Where(p => veh.Ano < 0 || p.Ano == veh.Ano).ToList();
             vehiculos = vehiculos.Where(p => string.IsNullOrWhiteSpace(veh.Color) || p.Color.Contains(veh.Color)).ToList();
             vehiculos = vehiculos.Where(p => string.IsNullOrWhiteSpace(veh.NoSerie) || p.NoSerie.Contains(veh.NoSerie)).ToList();
             return vehiculos;

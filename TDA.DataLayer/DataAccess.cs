@@ -2796,9 +2796,36 @@ namespace TDA.DataLayer
             resultado.YaExiste = false;
             return resultado;
         }
-        public List<Paquetes> SelectPaquete()
+        //Buscar por Nombre/Descripcion activo y grupoCliente
+        public List<Paquetes> SelectPaquete(Paquetes paq)
         {
             var paquetes = (from a in _context.Paquete
+                            select new Paquetes
+                            {
+                                ID = a.ID,
+                                Nombre = a.Nombre,
+                                Descripcion = a.Descripcion,
+                                Precio = a.Precio,
+                                ParaGrupoCliente = a.ParaGrupoCliente,
+                                Activo = a.Activo,
+                                FechaFin = a.FechaFin,
+                                FechaInicio = a.FechaInicio,
+                                UsuarioAlta = a.UsuarioAlta,
+                                UsuarioMod = a.UsuarioMod,
+                                FechaAlta = a.FechaAlta,
+                                FechaMod = a.FechaMod
+                            }).ToList();
+            
+            paquetes = paquetes.Where(p => string.IsNullOrWhiteSpace(paq.Nombre) || p.Nombre.Contains(paq.Nombre)|| p.Descripcion.Contains(paq.Nombre) ).ToList();
+            paquetes = paquetes.Where(p => paq.Activo == null || p.Activo == paq.Activo).ToList();
+            paquetes = paquetes.Where(p => paq.ParaGrupoCliente == null || p.ParaGrupoCliente == paq.ParaGrupoCliente).ToList();
+
+            return paquetes;
+        }
+        public List<Paquetes> BuscarPaqueteID(long? ID)
+        {
+            var paquetes = (from a in _context.Paquete
+                            where a.ID == ID
                             select new Paquetes
                             {
                                 ID = a.ID,

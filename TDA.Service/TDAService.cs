@@ -392,10 +392,15 @@ namespace TDA.Service
         {
             return _dataBaseTool.UpdatePaquete(paq);
         }
-        public List<Paquetes> SelectPaquete()
+        public List<Paquetes> SelectPaquete(Paquetes paq)
         {
-            return _dataBaseTool.SelectPaquete();
+            return _dataBaseTool.SelectPaquete(paq);
         }
+        public List<Paquetes> BuscarPaqueteID(long? ID)
+        {
+            return _dataBaseTool.BuscarPaqueteID(ID);
+        }
+
         #endregion
 
         #region Tabla Paquete Dia

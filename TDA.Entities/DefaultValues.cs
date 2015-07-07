@@ -11,5 +11,6 @@ namespace TDA.Entities
         public static string defString = "";
         public static long? deflong = -1;
         public static int? defint = -1;
+        public static bool? defbool = null;
     }
 }

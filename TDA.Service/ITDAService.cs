@@ -237,7 +237,9 @@ namespace TDA.Service
         [OperationContract]
         Resultado UpdatePaquete(Paquetes paq);
         [OperationContract]
-        List<Paquetes> SelectPaquete();
+        List<Paquetes> SelectPaquete(Paquetes paq);
+        [OperationContract]
+        List<Paquetes> BuscarPaqueteID(long? ID);
         #endregion
 
         #region Tabla Paquete Dia

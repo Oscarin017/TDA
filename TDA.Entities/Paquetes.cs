@@ -10,6 +10,13 @@ namespace TDA.Entities
     [DataContract]
     public class Paquetes
     {
+        public Paquetes()
+        {
+            Nombre = DefaultValues.defString;
+            ParaGrupoCliente = DefaultValues.defbool;
+            Activo = DefaultValues.defbool;
+        }
+
         [DataMember]
         public long ID { get; set; }
         [DataMember]

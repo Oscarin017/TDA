@@ -52,11 +52,13 @@ namespace TDAWPF.Controles
         public object SelectedItem
         {
             get { return cb.SelectedItem; }
+            set { cb.SelectedItem = value; }
         }
 
         public string SelectedValue
         {
             get { return cb.SelectedValue.ToString(); }
+            set { cb.SelectedValue = value; }
         }
 
         public string Text

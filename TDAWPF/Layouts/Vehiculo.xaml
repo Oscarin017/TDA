@@ -55,7 +55,7 @@
                 <RowDefinition Height="65"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Button x:Name="btnSearch" Grid.Column="0" Grid.Row="0">
+            <Button x:Name="btnSearch" Grid.Column="0" Grid.Row="0" Click="btnSearch_Click">
                 <Button.Background>
                     <ImageBrush ImageSource="../Imagenes/0135-search.png"/>
                 </Button.Background>

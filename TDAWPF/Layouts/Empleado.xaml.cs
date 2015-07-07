@@ -82,9 +82,11 @@ namespace TDAWPF.Layouts
 
         private void dg_Loaded(object sender, RoutedEventArgs e)
         {
-            cargarCBPais(new Paises());
+            cargarCBPais(new Paises());            
             cargarCBEstado(new Estados());
             cargarGrid(new Empleados());
+            ComboBoxItem cbi = new ComboBoxItem();
+            //cbPais.SelectedValue = "Mexico";
         }
 
         private void btnSearch_Click(object sender, RoutedEventArgs e)
@@ -139,13 +141,16 @@ namespace TDAWPF.Layouts
 
         private void cbPais_SelectionChanged(object sender, EventArgs e)
         {
+            Estados es = new Estados();
+            ComboBoxItem cbi = (ComboBoxItem)cbPais.SelectedItem;
             if (cbPais.SelectedIndex != 0)
             {
-                Estados es = new Estados();
-                ComboBoxItem cbi = (ComboBoxItem)cbPais.SelectedItem;
                 es.Pais = Convert.ToInt64(cbi.Uid);
-                cargarCBEstado(es);
             }
+            if (this.IsLoaded)
+            {
+                cargarCBEstado(es);
+            }                                            
         }    
     }
 }

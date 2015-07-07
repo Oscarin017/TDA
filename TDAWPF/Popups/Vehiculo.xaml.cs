@@ -124,7 +124,7 @@ namespace TDAWPF.Popups
                 v.NoSerie = txtNoSerie.Text;
                 v.Responsable = txtResponsable.Text;
                 ComboBoxItem cbi1 = (ComboBoxItem)cbTipo.Items[cbTipo.SelectedIndex];
-                v.TipoIdentificacion = Convert.ToInt64(cbi.Uid);
+                v.TipoIdentificacion = Convert.ToInt64(cbi1.Uid);
                 v.NumeroIdentificacion = txtNumeroIdentificacion.Text;
                 tda.InsertVehiculo(v);
                 tda.Close();
@@ -138,23 +138,28 @@ namespace TDAWPF.Popups
 
         private void btnModificar_Click(object sender, RoutedEventArgs e)
         {
-            //if (!txtNombre.PlaceHolder && cbMarca.SelectedIndex != 0)
-            //{
-            //    TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
-            //    Vehiculos es = new Vehiculos();
-            //    es.ID = lID;
-            //    es.Nombre = txtNombre.Text;
-            //    es.Ano = Convert.ToInt32(txtAno.Text);
-            //    ComboBoxItem cbi = (ComboBoxItem)cbMarca.Items[cbMarca.SelectedIndex];
-            //    es.Marca = Convert.ToInt64(cbi.Uid);
-            //    tda.UpdateVehiculo(es);
-            //    tda.Close();
-            //    this.Close();
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Favor de llenar los campos.");
-            //}
+            if (cbModelo.SelectedIndex != 0 && !txtAno.PlaceHolder && !txtColor.PlaceHolder && !txtNoSerie.PlaceHolder && !txtResponsable.PlaceHolder && cbTipo.SelectedIndex != 0 && !txtNumeroIdentificacion.PlaceHolder)
+            {
+                TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
+                Vehiculos v = new Vehiculos();
+                v.ID = lID;
+                ComboBoxItem cbi = (ComboBoxItem)cbModelo.Items[cbModelo.SelectedIndex];
+                v.Modelo = Convert.ToInt64(cbi.Uid);
+                v.Ano = Convert.ToInt32(txtAno.Text);
+                v.Color = txtColor.Text;
+                v.NoSerie = txtNoSerie.Text;
+                v.Responsable = txtResponsable.Text;
+                ComboBoxItem cbi1 = (ComboBoxItem)cbTipo.Items[cbTipo.SelectedIndex];
+                v.TipoIdentificacion = Convert.ToInt64(cbi1.Uid);
+                v.NumeroIdentificacion = txtNumeroIdentificacion.Text;
+                tda.UpdateVehiculo(v);
+                tda.Close();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Favor de llenar los campos.");
+            }
         }
 
         private void cbMarca_SelectionChanged(object sender, EventArgs e)

@@ -322,10 +322,16 @@ namespace TDAWPF.TDAService {
         System.Threading.Tasks.Task<TDA.Entities.Resultado> DeleteProveedorAsync(TDA.Entities.Proveedores pro);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/SelectProveedor", ReplyAction="http://tempuri.org/ITDAService/SelectProveedorResponse")]
-        TDA.Entities.Proveedores[] SelectProveedor();
+        TDA.Entities.Proveedores[] SelectProveedor(TDA.Entities.Proveedores pro);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/SelectProveedor", ReplyAction="http://tempuri.org/ITDAService/SelectProveedorResponse")]
-        System.Threading.Tasks.Task<TDA.Entities.Proveedores[]> SelectProveedorAsync();
+        System.Threading.Tasks.Task<TDA.Entities.Proveedores[]> SelectProveedorAsync(TDA.Entities.Proveedores pro);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/BuscarProveedorID", ReplyAction="http://tempuri.org/ITDAService/BuscarProveedorIDResponse")]
+        TDA.Entities.Proveedores[] BuscarProveedorID(System.Nullable<long> ID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/BuscarProveedorID", ReplyAction="http://tempuri.org/ITDAService/BuscarProveedorIDResponse")]
+        System.Threading.Tasks.Task<TDA.Entities.Proveedores[]> BuscarProveedorIDAsync(System.Nullable<long> ID);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/SelectDia", ReplyAction="http://tempuri.org/ITDAService/SelectDiaResponse")]
         TDA.Entities.Dias[] SelectDia();
@@ -1135,12 +1141,20 @@ namespace TDAWPF.TDAService {
             return base.Channel.DeleteProveedorAsync(pro);
         }
         
-        public TDA.Entities.Proveedores[] SelectProveedor() {
-            return base.Channel.SelectProveedor();
+        public TDA.Entities.Proveedores[] SelectProveedor(TDA.Entities.Proveedores pro) {
+            return base.Channel.SelectProveedor(pro);
         }
         
-        public System.Threading.Tasks.Task<TDA.Entities.Proveedores[]> SelectProveedorAsync() {
-            return base.Channel.SelectProveedorAsync();
+        public System.Threading.Tasks.Task<TDA.Entities.Proveedores[]> SelectProveedorAsync(TDA.Entities.Proveedores pro) {
+            return base.Channel.SelectProveedorAsync(pro);
+        }
+        
+        public TDA.Entities.Proveedores[] BuscarProveedorID(System.Nullable<long> ID) {
+            return base.Channel.BuscarProveedorID(ID);
+        }
+        
+        public System.Threading.Tasks.Task<TDA.Entities.Proveedores[]> BuscarProveedorIDAsync(System.Nullable<long> ID) {
+            return base.Channel.BuscarProveedorIDAsync(ID);
         }
         
         public TDA.Entities.Dias[] SelectDia() {

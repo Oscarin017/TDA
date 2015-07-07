@@ -71,10 +71,10 @@ namespace TDAWPF.Layouts
             }
         }
 
-        private void cargarGrid(Vehiculos m)
+        private void cargarGrid(Vehiculos v)
         {
             TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
-            var resultado = tda.SelectVehiculo(m);
+            var resultado = tda.SelectVehiculo(v);
             tda.Close();
             lstVehiculo.Clear();
 
@@ -123,7 +123,7 @@ namespace TDAWPF.Layouts
             ComboBoxItem cbi2 = (ComboBoxItem)cbColor.SelectedItem;
             if (cbColor.SelectedIndex != 0)
             {
-                v.Color = cbi1.Content.ToString();
+                v.Color = cbi2.Content.ToString();
             }
             if (!txtNoSerie.PlaceHolder)
             {                
@@ -155,11 +155,14 @@ namespace TDAWPF.Layouts
 
         private void cbMarca_SelectionChanged(object sender, EventArgs e)
         {
+            Modelos m = new Modelos();
+            ComboBoxItem cbi = (ComboBoxItem)cbMarca.SelectedItem;
             if (cbMarca.SelectedIndex != 0)
             {
-                Modelos m = new Modelos();
-                ComboBoxItem cbi = (ComboBoxItem)cbMarca.SelectedItem;
                 m.Marca = Convert.ToInt64(cbi.Uid);
+            }
+            if (this.IsLoaded)
+            {
                 cargarCBModelo(m);
             }
         }

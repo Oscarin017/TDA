@@ -47,6 +47,20 @@ namespace TDAWPF.Popups
             }
         }
 
+        private void cargarCBEmpleado()
+        {
+            TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
+            var resultado = tda.SelectEmpleado(new Empleados());
+            tda.Close();
+            foreach (var r in resultado)
+            {
+                ComboBoxItem cbi = new ComboBoxItem();
+                cbi.Uid = r.ID.ToString();
+                cbi.Content = r.Nombre + " " + r.Apellido + " " + r.Apellido2;
+                cbEmpleado.Items.Add(cbi);
+            }
+        }
+
         private void btnCancelar_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
@@ -55,6 +69,7 @@ namespace TDAWPF.Popups
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             cargarCBRol();
+            cargarCBEmpleado();
             if (lID == 0)
             {
                 btnRegistrar.Visibility = Visibility.Visible;
@@ -70,6 +85,17 @@ namespace TDAWPF.Popups
                 {
                     cbRol.SelectedIndex = Convert.ToInt32(r.Rol);
                     txtAlias.Text = r.Alias;
+                    txtContraseña.Text = r.Contraseña;
+                    if (r.Empleado != null)
+                    {
+                        cbEmpleado.SelectedIndex = Convert.ToInt32(r.Empleado);
+                        rbEmpleado.IsChecked = true;
+                    }
+                    else if (r.Empleado == null) ;
+                    {
+                        txtEmail.Text = r.Email;
+                        rbFuera.IsChecked = true;
+                    }
                 }
             }
         }

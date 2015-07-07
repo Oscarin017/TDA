@@ -134,12 +134,12 @@ namespace TDAWPF.Popups
                 em.RFC = txtRFC.Text;
                 em.CURP = txtCURP.Text;
                 em.NSS = txtNSS.Text;
-                ComboBoxItem cbi = (ComboBoxItem)cbPais.Items[cbBaseSalario.SelectedIndex];
+                ComboBoxItem cbi = (ComboBoxItem)cbBaseSalario.Items[cbBaseSalario.SelectedIndex];
                 em.BaseSalario = Convert.ToInt64(cbi.Uid);
                 em.Salario = Convert.ToDecimal(txtSalario.Text);
                 ComboBoxItem cbi1 = (ComboBoxItem)cbPais.Items[cbPais.SelectedIndex];
-                em.Pais = Convert.ToInt64(cbi.Uid);
-                ComboBoxItem cbi2 = (ComboBoxItem)cbPais.Items[cbEstado.SelectedIndex];
+                em.Pais = Convert.ToInt64(cbi1.Uid);
+                ComboBoxItem cbi2 = (ComboBoxItem)cbEstado.Items[cbEstado.SelectedIndex];
                 em.Estado = Convert.ToInt64(cbi2.Uid);
                 em.Ciudad = txtCiudad.Text;
                 em.Localidad = txtLocalidad.Text;
@@ -177,7 +177,7 @@ namespace TDAWPF.Popups
                 em.BaseSalario = Convert.ToInt64(cbi.Uid);
                 em.Salario = Convert.ToDecimal(txtSalario.Text);
                 ComboBoxItem cbi1 = (ComboBoxItem)cbPais.Items[cbPais.SelectedIndex];
-                em.Pais = Convert.ToInt64(cbi.Uid);
+                em.Pais = Convert.ToInt64(cbi1.Uid);
                 ComboBoxItem cbi2 = (ComboBoxItem)cbPais.Items[cbEstado.SelectedIndex];
                 em.Estado = Convert.ToInt64(cbi2.Uid);
                 em.Ciudad = txtCiudad.Text;

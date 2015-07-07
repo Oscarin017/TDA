@@ -33,9 +33,9 @@ namespace TDAWPF.Layouts
             TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
             var resultado = tda.SelectMarca(m);
             tda.Close();
+            var ordenado = resultado.OrderBy(Marcas => Marcas.Nombre).ToList();
             lstMarca.Clear();
-
-            foreach (var r in resultado)
+            foreach (var r in ordenado)
             {
                 lstMarca.Add(new Marcas()
                 {
@@ -43,7 +43,6 @@ namespace TDAWPF.Layouts
                     Nombre = r.Nombre
                 });
             }
-
             dg.ItemsSource = null;
             dg.ItemsSource = lstMarca;   
         }

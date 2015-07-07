@@ -21,10 +21,10 @@
         </Grid.ColumnDefinitions>
         <Controles:ComboBoxI x:Name="cbPais" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1" Grid.Row="1">
             <Controles:ComboBoxI.Items>
-                <ComboBoxItem IsSelected="True" Content="Selecciona Pais"/>
+                <ComboBoxItem IsSelected="True" Content="Selecciona Pais (Obligatorio)"/>
             </Controles:ComboBoxI.Items>
         </Controles:ComboBoxI>
-        <Controles:TextBoxI x:Name="txtNombre" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Escribe Nombre" Grid.Column="1" Grid.Row="3"/>
+        <Controles:TextBoxI x:Name="txtNombre" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Escribe Nombre (Obligatorio)" Grid.Column="1" Grid.Row="3"/>
         <Grid Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />

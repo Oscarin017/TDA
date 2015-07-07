@@ -37,36 +37,36 @@
             <ColumnDefinition Width="300" />
             <ColumnDefinition Width="75" />
         </Grid.ColumnDefinitions>
-        <Controles:TextBoxI x:Name="txtApellidoPaterno" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Escribe Apellido Paterno" Grid.Column="1" Grid.Row="1" />
-        <Controles:TextBoxI x:Name="txtApellidoMaterno" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Escribe Apellido Materno" Grid.Column="3" Grid.Row="1" />
-        <Controles:TextBoxI x:Name="txtNombre" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Escribe Nombre" Grid.Column="1" Grid.Row="3"/>
+        <Controles:TextBoxI x:Name="txtApellidoPaterno" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Escribe Apellido Paterno (Obligatorio)" Grid.Column="1" Grid.Row="1" />
+        <Controles:TextBoxI x:Name="txtApellidoMaterno" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Escribe Apellido Materno (Obligatorio)" Grid.Column="3" Grid.Row="1" />
+        <Controles:TextBoxI x:Name="txtNombre" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Escribe Nombre (Obligatorio)" Grid.Column="1" Grid.Row="3"/>
         <Controles:TextBoxI x:Name="txtRFC" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Escribe RFC" Grid.Column="3" Grid.Row="3"/>
-        <Controles:TextBoxI x:Name="txtCURP" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Escribe CURP" Grid.Column="1" Grid.Row="5"/>
+        <Controles:TextBoxI x:Name="txtCURP" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Escribe CURP (Obligatorio)" Grid.Column="1" Grid.Row="5"/>
         <Controles:TextBoxI x:Name="txtNSS" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Escribe NSS" Grid.Column="3" Grid.Row="5"/>
         <Controles:ComboBoxI x:Name="cbBaseSalario" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1" Grid.Row="7">
             <Controles:ComboBoxI.Items>
-                <ComboBoxItem IsSelected="True" Content="Selecciona Base Salario"/>
+                <ComboBoxItem IsSelected="True" Content="Selecciona Base Salario (Obligatorio)"/>
             </Controles:ComboBoxI.Items>
         </Controles:ComboBoxI>
-        <Controles:TextBoxI x:Name="txtSalario" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Escribe Salario" Grid.Column="3" Grid.Row="7"/>
+        <Controles:TextBoxI x:Name="txtSalario" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Escribe Salario (Obligatorio)" Grid.Column="3" Grid.Row="7"/>
         <Controles:ComboBoxI x:Name="cbPais" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1" Grid.Row="9" SelectionChanged="cbPais_SelectionChanged">
             <Controles:ComboBoxI.Items>
-                <ComboBoxItem IsSelected="True" Content="Selecciona Pais"/>
+                <ComboBoxItem IsSelected="True" Content="Selecciona Pais (Obligatorio)"/>
             </Controles:ComboBoxI.Items>
         </Controles:ComboBoxI>
         <Controles:ComboBoxI x:Name="cbEstado" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="3" Grid.Row="9">
             <Controles:ComboBoxI.Items>
-                <ComboBoxItem IsSelected="True" Content="Selecciona Estado"/>
+                <ComboBoxItem IsSelected="True" Content="Selecciona Estado (Obligatorio)"/>
             </Controles:ComboBoxI.Items>
         </Controles:ComboBoxI>
-        <Controles:TextBoxI x:Name="txtCiudad" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Escribe Ciudad" Grid.Column="1" Grid.Row="11"/>
+        <Controles:TextBoxI x:Name="txtCiudad" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Escribe Ciudad (Obligatorio)" Grid.Column="1" Grid.Row="11"/>
         <Controles:TextBoxI x:Name="txtLocalidad" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Escribe Localidad" Grid.Column="3" Grid.Row="11"/>
-        <Controles:TextBoxI x:Name="txtCalle" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Escribe Calle" Grid.Column="1" Grid.Row="13"/>
+        <Controles:TextBoxI x:Name="txtCalle" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Escribe Calle (Obligatorio)" Grid.Column="1" Grid.Row="13"/>
         <Controles:TextBoxI x:Name="txtNumeroExterior" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Escribe Numero Exterior" Grid.Column="3" Grid.Row="13"/>
         <Controles:TextBoxI x:Name="txtNumeroInterior" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Escribe Numero Interior" Grid.Column="1" Grid.Row="15"/>
         <Controles:TextBoxI x:Name="txtColonia" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Escribe Colonia" Grid.Column="3" Grid.Row="15"/>
-        <Controles:TextBoxI x:Name="txtCP" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Escribe C.P." Grid.Column="1" Grid.Row="17"/>
-        <Controles:TextBoxI x:Name="txtTelefono" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Escribe Telefono" Grid.Column="3" Grid.Row="17"/>
+        <Controles:TextBoxI x:Name="txtCP" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Escribe C.P. (Obligatorio)" Grid.Column="1" Grid.Row="17"/>
+        <Controles:TextBoxI x:Name="txtTelefono" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Escribe Telefono (Obligatorio)" Grid.Column="3" Grid.Row="17"/>
         <Controles:TextBoxI x:Name="txtEmail" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Escribe Email" Grid.Column="1" Grid.Row="19"/>
         <Grid Grid.Row="21" Grid.Column="2" Grid.ColumnSpan="3">
             <Grid.ColumnDefinitions>

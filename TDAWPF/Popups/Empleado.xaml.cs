@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using TDA.Entities;
+using TDAWPF.Funcionalidad;
 
 namespace TDAWPF.Popups
 {
@@ -33,49 +34,6 @@ namespace TDAWPF.Popups
             lID = ID;
         }
 
-        private void cargarCBPais(Paises p)
-        {
-            TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
-            var resultado = tda.SelectPais(p);
-            tda.Close();
-            foreach (var r in resultado)
-            {
-                ComboBoxItem cbi = new ComboBoxItem();
-                cbi.Uid = r.ID.ToString();
-                cbi.Content = r.Nombre;
-                cbPais.Items.Add(cbi);
-            }
-        }
-
-        private void cargarCBEstado(Estados e)
-        {
-            cbEstado.Clear();
-            TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
-            var resultado = tda.SelectEstado(e);
-            tda.Close();
-            foreach (var r in resultado)
-            {
-                ComboBoxItem cbi = new ComboBoxItem();
-                cbi.Uid = r.ID.ToString();
-                cbi.Content = r.Nombre;
-                cbEstado.Items.Add(cbi);
-            }
-        }
-
-        public void cargarCBBaseSalario()
-        {
-            TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
-            var resultado = tda.SelectBaseSalario();
-            tda.Close();
-            foreach (var r in resultado)
-            {
-                ComboBoxItem cbi = new ComboBoxItem();
-                cbi.Uid = r.ID.ToString();
-                cbi.Content = r.Nombre;
-                cbBaseSalario.Items.Add(cbi);
-            }
-        }
-
         private void btnCancelar_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
@@ -83,12 +41,13 @@ namespace TDAWPF.Popups
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            cargarCBPais(new Paises());
-            cargarCBEstado(new Estados());
-            cargarCBBaseSalario();
+            Llenado.cargarCBPais(new Paises(), cbPais);
+            Llenado.cargarCBEstado(new Estados(), cbEstado);
+            Llenado.cargarCBBaseSalario(cbBaseSalario);
             if (lID == 0)
             {
                 btnRegistrar.Visibility = Visibility.Visible;
+                Llenado.seleccionarDefaultPais(cbPais);
             }
             else if (lID != 0)
             {
@@ -96,7 +55,6 @@ namespace TDAWPF.Popups
                 TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
                 var resultado = tda.BuscarEmpleadoID(lID);
                 tda.Close();
-
                 foreach (var r in resultado)
                 {
                     txtApellidoPaterno.Text = r.Apellido;
@@ -105,10 +63,10 @@ namespace TDAWPF.Popups
                     txtRFC.Text = r.RFC;
                     txtCURP.Text = r.CURP;
                     txtNSS.Text = r.NSS;
-                    cbBaseSalario.SelectedIndex = Convert.ToInt32(r.BaseSalario);
+                    Llenado.seleccionarComboBoxUid(r.BaseSalario.ToString(), cbBaseSalario);
                     txtSalario.Text = r.Salario.ToString();
-                    cbPais.SelectedIndex = Convert.ToInt32(r.Pais);
-                    cbEstado.SelectedIndex = Convert.ToInt32(r.Estado);
+                    Llenado.seleccionarComboBoxUid(r.Pais.ToString(), cbPais);
+                    Llenado.seleccionarComboBoxUid(r.Estado.ToString(), cbEstado);
                     txtCiudad.Text = r.Ciudad;
                     txtLocalidad.Text = r.Localidad;
                     txtCalle.Text = r.Calle;
@@ -124,16 +82,30 @@ namespace TDAWPF.Popups
 
         private void btnRegistrar_Click(object sender, RoutedEventArgs e)
         {
-            if (!txtApellidoPaterno.PlaceHolder && !txtApellidoMaterno.PlaceHolder && !txtCURP.PlaceHolder && !txtNombre.PlaceHolder && cbBaseSalario.SelectedIndex != 0 && !txtSalario.PlaceHolder && cbPais.SelectedIndex != 0 && cbEstado.SelectedIndex != 0 && !txtCiudad.PlaceHolder && !txtCalle.PlaceHolder)
+            if (!txtApellidoPaterno.PlaceHolder && !txtApellidoMaterno.PlaceHolder && !txtNombre.PlaceHolder && !txtCURP.PlaceHolder && cbBaseSalario.SelectedIndex != 0 && !txtSalario.PlaceHolder && cbPais.SelectedIndex != 0 && cbEstado.SelectedIndex != 0 && !txtCiudad.PlaceHolder && !txtCalle.PlaceHolder && !txtCP.PlaceHolder && !txtTelefono.PlaceHolder)
             {
                 TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
                 Empleados em = new Empleados();
                 em.Apellido = txtApellidoPaterno.Text;
                 em.Apellido2 = txtApellidoMaterno.Text;
                 em.Nombre = txtNombre.Text;
-                em.RFC = txtRFC.Text;
+                if (txtRFC.PlaceHolder)
+                {
+                    em.RFC = "NA";
+                }
+                else
+                {
+                    em.RFC = txtRFC.Text;
+                }
                 em.CURP = txtCURP.Text;
-                em.NSS = txtNSS.Text;
+                if (txtNSS.PlaceHolder)
+                {
+                    em.NSS = "NA";
+                }
+                else
+                {
+                    em.NSS = txtNSS.Text;
+                }
                 ComboBoxItem cbi = (ComboBoxItem)cbBaseSalario.Items[cbBaseSalario.SelectedIndex];
                 em.BaseSalario = Convert.ToInt64(cbi.Uid);
                 em.Salario = Convert.ToDecimal(txtSalario.Text);
@@ -142,14 +114,49 @@ namespace TDAWPF.Popups
                 ComboBoxItem cbi2 = (ComboBoxItem)cbEstado.Items[cbEstado.SelectedIndex];
                 em.Estado = Convert.ToInt64(cbi2.Uid);
                 em.Ciudad = txtCiudad.Text;
-                em.Localidad = txtLocalidad.Text;
+                if (txtLocalidad.PlaceHolder)
+                {
+                    em.Localidad = "NA";
+                }
+                else
+                {
+                    em.Localidad = txtLocalidad.Text;
+                }
                 em.Calle = txtCalle.Text;
-                em.NumeroExterior = txtNumeroExterior.Text;
-                em.NumeroInterior= txtNumeroInterior.Text;
-                em.Colonia = txtColonia.Text;
+                if (txtNumeroExterior.PlaceHolder)
+                {
+                    em.NumeroExterior = "NA";
+                }
+                else
+                {
+                    em.NumeroExterior = txtNumeroExterior.Text;
+                }
+                if (txtNumeroInterior.PlaceHolder)
+                {
+                    em.NumeroInterior = "NA";
+                }
+                else
+                {
+                    em.NumeroInterior = txtNumeroInterior.Text;
+                }
+                if (txtColonia.PlaceHolder)
+                {
+                    em.Colonia = "NA";
+                }
+                else
+                {
+                    em.Colonia = txtColonia.Text;
+                }
                 em.CP = Convert.ToInt32(txtCP.Text);
                 em.Telefono = txtTelefono.Text;
-                em.Email = txtEmail.Text;                
+                if (txtEmail.PlaceHolder)
+                {
+                    em.Email = "NA";
+                }
+                else
+                {
+                    em.Email = txtEmail.Text;
+                }                 
                 tda.InsertEmpleado(em);
                 tda.Close();
                 this.Close();
@@ -162,7 +169,7 @@ namespace TDAWPF.Popups
 
         private void btnModificar_Click(object sender, RoutedEventArgs e)
         {
-            if (!txtApellidoPaterno.PlaceHolder && !txtApellidoMaterno.PlaceHolder && !txtCURP.PlaceHolder && !txtNombre.PlaceHolder && cbBaseSalario.SelectedIndex != 0 && !txtSalario.PlaceHolder && cbPais.SelectedIndex != 0 && cbEstado.SelectedIndex != 0 && !txtCiudad.PlaceHolder && !txtCalle.PlaceHolder)
+            if (!txtApellidoPaterno.PlaceHolder && !txtApellidoMaterno.PlaceHolder && !txtNombre.PlaceHolder && !txtCURP.PlaceHolder && cbBaseSalario.SelectedIndex != 0 && !txtSalario.PlaceHolder && cbPais.SelectedIndex != 0 && cbEstado.SelectedIndex != 0 && !txtCiudad.PlaceHolder && !txtCalle.PlaceHolder && !txtCP.PlaceHolder && !txtTelefono.PlaceHolder)
             {
                 TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
                 Empleados em = new Empleados();
@@ -170,25 +177,74 @@ namespace TDAWPF.Popups
                 em.Apellido = txtApellidoPaterno.Text;
                 em.Apellido2 = txtApellidoMaterno.Text;
                 em.Nombre = txtNombre.Text;
-                em.RFC = txtRFC.Text;
+                if (txtRFC.PlaceHolder)
+                {
+                    em.RFC = "NA";
+                }
+                else
+                {
+                    em.RFC = txtRFC.Text;
+                }
                 em.CURP = txtCURP.Text;
-                em.NSS = txtNSS.Text;
-                ComboBoxItem cbi = (ComboBoxItem)cbPais.Items[cbBaseSalario.SelectedIndex];
+                if (txtNSS.PlaceHolder)
+                {
+                    em.NSS = "NA";
+                }
+                else
+                {
+                    em.NSS = txtNSS.Text;
+                }
+                ComboBoxItem cbi = (ComboBoxItem)cbBaseSalario.Items[cbBaseSalario.SelectedIndex];
                 em.BaseSalario = Convert.ToInt64(cbi.Uid);
                 em.Salario = Convert.ToDecimal(txtSalario.Text);
                 ComboBoxItem cbi1 = (ComboBoxItem)cbPais.Items[cbPais.SelectedIndex];
                 em.Pais = Convert.ToInt64(cbi1.Uid);
-                ComboBoxItem cbi2 = (ComboBoxItem)cbPais.Items[cbEstado.SelectedIndex];
+                ComboBoxItem cbi2 = (ComboBoxItem)cbEstado.Items[cbEstado.SelectedIndex];
                 em.Estado = Convert.ToInt64(cbi2.Uid);
                 em.Ciudad = txtCiudad.Text;
-                em.Localidad = txtLocalidad.Text;
+                if (txtLocalidad.PlaceHolder)
+                {
+                    em.Localidad = "NA";
+                }
+                else
+                {
+                    em.Localidad = txtLocalidad.Text;
+                }
                 em.Calle = txtCalle.Text;
-                em.NumeroExterior = txtNumeroExterior.Text;
-                em.NumeroInterior = txtNumeroInterior.Text;
-                em.Colonia = txtColonia.Text;
+                if (txtNumeroExterior.PlaceHolder)
+                {
+                    em.NumeroExterior = "NA";
+                }
+                else
+                {
+                    em.NumeroExterior = txtNumeroExterior.Text;
+                }
+                if (txtNumeroInterior.PlaceHolder)
+                {
+                    em.NumeroInterior = "NA";
+                }
+                else
+                {
+                    em.NumeroInterior = txtNumeroInterior.Text;
+                }
+                if (txtColonia.PlaceHolder)
+                {
+                    em.Colonia = "NA";
+                }
+                else
+                {
+                    em.Colonia = txtColonia.Text;
+                }
                 em.CP = Convert.ToInt32(txtCP.Text);
                 em.Telefono = txtTelefono.Text;
-                em.Email = txtEmail.Text;   
+                if (txtEmail.PlaceHolder)
+                {
+                    em.Email = "NA";
+                }
+                else
+                {
+                    em.Email = txtEmail.Text;
+                }                
                 tda.UpdateEmpleado(em);
                 tda.Close();
                 this.Close();
@@ -201,13 +257,16 @@ namespace TDAWPF.Popups
 
         private void cbPais_SelectionChanged(object sender, EventArgs e)
         {
+            Estados es = new Estados();
+            ComboBoxItem cbi = (ComboBoxItem)cbPais.SelectedItem;
             if (cbPais.SelectedIndex != 0)
             {
-                Estados es = new Estados();
-                ComboBoxItem cbi = (ComboBoxItem)cbPais.SelectedItem;
                 es.Pais = Convert.ToInt64(cbi.Uid);
-                cargarCBEstado(es);
             }
+            if (this.IsLoaded)
+            {
+                Llenado.cargarCBEstado(es, cbEstado);
+            }     
         }
     }
 }

@@ -33,9 +33,9 @@ namespace TDAWPF.Layouts
             TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
             var resultado = tda.SelectColor(c);
             tda.Close();
+            var ordenado = resultado.OrderBy(Colores => Colores.Nombre).ToList();
             lstColor.Clear();
-
-            foreach (var r in resultado)
+            foreach (var r in ordenado)
             {
                 lstColor.Add(new Colores()
                 {
@@ -43,7 +43,6 @@ namespace TDAWPF.Layouts
                     Nombre = r.Nombre
                 });
             }
-
             dg.ItemsSource = null;
             dg.ItemsSource = lstColor;   
         }

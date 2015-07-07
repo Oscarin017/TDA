@@ -50,7 +50,6 @@ namespace TDAWPF.Popups
                 TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
                 var resultado = tda.BuscarGrupoClienteID(lID);
                 tda.Close();
-
                 foreach (var r in resultado)
                 {
                     txtNombre.Text = r.Nombre;

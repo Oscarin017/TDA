@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TDA.Entities;
+using TDAWPF.Funcionalidad;
 
 namespace TDAWPF.Layouts
 {
@@ -28,57 +29,14 @@ namespace TDAWPF.Layouts
             InitializeComponent();
         }
 
-        private void cargarCBMarca(Marcas m)
-        {
-            TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
-            var resultado = tda.SelectMarca(m);
-            tda.Close();
-            foreach (var r in resultado)
-            {
-                ComboBoxItem cbi = new ComboBoxItem();
-                cbi.Uid = r.ID.ToString();
-                cbi.Content = r.Nombre;
-                cbMarca.Items.Add(cbi);                
-            }
-        }
-
-        private void cargarCBModelo (Modelos m)
-        {
-            cbModelo.Clear();
-            TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
-            var resultado = tda.SelectModelo(m);
-            tda.Close();
-            foreach (var r in resultado)
-            {
-                ComboBoxItem cbi = new ComboBoxItem();
-                cbi.Uid = r.ID.ToString();
-                cbi.Content = r.Nombre;
-                cbModelo.Items.Add(cbi);
-            }
-        }
-
-        private void cargarCBColor(Colores c)
-        {
-            TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
-            var resultado = tda.SelectColor(c);
-            tda.Close();
-            foreach (var r in resultado)
-            {
-                ComboBoxItem cbi = new ComboBoxItem();
-                cbi.Uid = r.ID.ToString();
-                cbi.Content = r.Nombre;
-                cbColor.Items.Add(cbi);
-            }
-        }
-
         private void cargarGrid(Vehiculos v)
         {
             TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
             var resultado = tda.SelectVehiculo(v);
             tda.Close();
+            var ordenado = resultado.OrderBy(Vehiculos => Vehiculos.NoSerie);
             lstVehiculo.Clear();
-
-            foreach (var r in resultado)
+            foreach (var r in ordenado)
             {
                 lstVehiculo.Add(new Vehiculos()
                 {
@@ -90,16 +48,15 @@ namespace TDAWPF.Layouts
                     NoSerie = r.NoSerie
                 });
             }
-
             dg.ItemsSource = null;
             dg.ItemsSource = lstVehiculo;   
         }
 
         private void dg_Loaded(object sender, RoutedEventArgs e)
         {
-            cargarCBMarca(new Marcas());
-            cargarCBModelo(new Modelos ());
-            cargarCBColor(new Colores());
+            Llenado.cargarCBMarca(new Marcas(), cbMarca);
+            Llenado.cargarCBModelo(new Modelos(), cbModelo);
+            Llenado.cargarCBColor(new Colores(), cbColor);
             cargarGrid(new Vehiculos());
         }
 
@@ -163,8 +120,8 @@ namespace TDAWPF.Layouts
             }
             if (this.IsLoaded)
             {
-                cargarCBModelo(m);
-            }
+                Llenado.cargarCBModelo(m, cbModelo);
+            }    
         }
     }
 }

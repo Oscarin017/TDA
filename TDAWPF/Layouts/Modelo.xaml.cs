@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TDA.Entities;
+using TDAWPF.Funcionalidad;
 
 namespace TDAWPF.Layouts
 {
@@ -28,28 +29,14 @@ namespace TDAWPF.Layouts
             InitializeComponent();
         }
 
-        private void cargarCBMarca(Marcas m)
-        {
-            TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
-            var resultado = tda.SelectMarca(m);
-            tda.Close();
-            foreach (var r in resultado)
-            {
-                ComboBoxItem cbi = new ComboBoxItem();
-                cbi.Uid = r.ID.ToString();
-                cbi.Content = r.Nombre;
-                cbMarca.Items.Add(cbi);                
-            }
-        }
-
         private void cargarGrid(Modelos m)
         {
             TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
             var resultado = tda.SelectModelo(m);
             tda.Close();
+            var ordenado = resultado.OrderBy(Modelos => Modelos.MarcaNombre).ToList();
             lstModelo.Clear();
-
-            foreach (var r in resultado)
+            foreach (var r in ordenado)
             {
                 lstModelo.Add(new Modelos()
                 {
@@ -59,14 +46,13 @@ namespace TDAWPF.Layouts
                     Ano = r.Ano
                 });
             }
-
             dg.ItemsSource = null;
             dg.ItemsSource = lstModelo;   
         }
 
         private void dg_Loaded(object sender, RoutedEventArgs e)
         {
-            cargarCBMarca(new Marcas());
+            Llenado.cargarCBMarca(new Marcas(), cbMarca);
             cargarGrid(new Modelos());
         }
 

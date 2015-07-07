@@ -339,8 +339,10 @@
       <xs:element minOccurs="0" name="PrecioCompra" nillable="true" type="xs:decimal" />
       <xs:element minOccurs="0" name="PrecioVenta" nillable="true" type="xs:decimal" />
       <xs:element minOccurs="0" name="Proveedor" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="ProveedorNombre" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Servicio" nillable="true" type="xs:boolean" />
       <xs:element minOccurs="0" name="TipoProducto" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="TipoProductoNombre" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="UsuarioAlta" nillable="true" type="xs:long" />
       <xs:element minOccurs="0" name="UsuarioMod" nillable="true" type="xs:long" />
     </xs:sequence>
@@ -421,13 +423,16 @@
       <xs:element minOccurs="0" name="FechaAlta" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="FechaMod" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="GrupoCliente" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="GrupoClienteNombre" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ID" type="xs:long" />
       <xs:element minOccurs="0" name="Localidad" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Nombre" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="NumeroExterior" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="NumeroInterior" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Pais" nillable="true" type="xs:long" />
       <xs:element minOccurs="0" name="RFC" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Telefono" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Tipo" nillable="true" type="xs:boolean" />
       <xs:element minOccurs="0" name="UsuarioAlta" nillable="true" type="xs:long" />
       <xs:element minOccurs="0" name="UsuarioMod" nillable="true" type="xs:long" />
     </xs:sequence>

@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TDA.Entities;
+using TDAWPF.Funcionalidad;
 
 namespace TDAWPF.Layouts
 {
@@ -28,43 +29,14 @@ namespace TDAWPF.Layouts
             InitializeComponent();
         }
 
-        private void cargarCBPais(Paises p)
-        {
-            TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
-            var resultado = tda.SelectPais(p);
-            tda.Close();
-            foreach (var r in resultado)
-            {
-                ComboBoxItem cbi = new ComboBoxItem();
-                cbi.Uid = r.ID.ToString();
-                cbi.Content = r.Nombre;
-                cbPais.Items.Add(cbi);                
-            }
-        }
-
-        private void cargarCBEstado(Estados e)
-        {
-            cbEstado.Clear();
-            TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
-            var resultado = tda.SelectEstado(e);
-            tda.Close();
-            foreach (var r in resultado)
-            {
-                ComboBoxItem cbi = new ComboBoxItem();
-                cbi.Uid = r.ID.ToString();
-                cbi.Content = r.Nombre;
-                cbEstado.Items.Add(cbi);
-            }
-        }
-
         private void cargarGrid(Empleados e)
         {
             TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
             var resultado = tda.SelectEmpleado(e);
             tda.Close();
+            var ordenado = resultado.OrderBy(Empleados => Empleados.CURP).ToList();
             lstEmpleado.Clear();
-
-            foreach (var r in resultado)
+            foreach (var r in ordenado)
             {
                 lstEmpleado.Add(new Empleados()
                 {
@@ -75,18 +47,16 @@ namespace TDAWPF.Layouts
                     CURP = r.CURP
                 });
             }
-
             dg.ItemsSource = null;
             dg.ItemsSource = lstEmpleado;   
-        }
+        }        
 
         private void dg_Loaded(object sender, RoutedEventArgs e)
         {
-            cargarCBPais(new Paises());            
-            cargarCBEstado(new Estados());
+            Llenado.cargarCBPais(new Paises(), cbPais);
+            Llenado.cargarCBEstado(new Estados(), cbEstado);
             cargarGrid(new Empleados());
-            ComboBoxItem cbi = new ComboBoxItem();
-            //cbPais.SelectedValue = "Mexico";
+            Llenado.seleccionarDefaultPais(cbPais);
         }
 
         private void btnSearch_Click(object sender, RoutedEventArgs e)
@@ -149,7 +119,7 @@ namespace TDAWPF.Layouts
             }
             if (this.IsLoaded)
             {
-                cargarCBEstado(es);
+                Llenado.cargarCBEstado(es, cbEstado);
             }                                            
         }    
     }

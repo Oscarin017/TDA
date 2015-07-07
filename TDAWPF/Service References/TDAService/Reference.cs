@@ -358,10 +358,16 @@ namespace TDAWPF.TDAService {
         System.Threading.Tasks.Task<TDA.Entities.Resultado> DeleteProductoAsync(TDA.Entities.Productos pro);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/SelectProducto", ReplyAction="http://tempuri.org/ITDAService/SelectProductoResponse")]
-        TDA.Entities.Productos[] SelectProducto();
+        TDA.Entities.Productos[] SelectProducto(TDA.Entities.Productos pro);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/SelectProducto", ReplyAction="http://tempuri.org/ITDAService/SelectProductoResponse")]
-        System.Threading.Tasks.Task<TDA.Entities.Productos[]> SelectProductoAsync();
+        System.Threading.Tasks.Task<TDA.Entities.Productos[]> SelectProductoAsync(TDA.Entities.Productos pro);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/BuscarProductoID", ReplyAction="http://tempuri.org/ITDAService/BuscarProductoIDResponse")]
+        TDA.Entities.Productos[] BuscarProductoID(System.Nullable<long> ID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/BuscarProductoID", ReplyAction="http://tempuri.org/ITDAService/BuscarProductoIDResponse")]
+        System.Threading.Tasks.Task<TDA.Entities.Productos[]> BuscarProductoIDAsync(System.Nullable<long> ID);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/InsertTipoMovimiento", ReplyAction="http://tempuri.org/ITDAService/InsertTipoMovimientoResponse")]
         TDA.Entities.Resultado InsertTipoMovimiento(TDA.Entities.TipoMovimientos tim);
@@ -454,10 +460,16 @@ namespace TDAWPF.TDAService {
         System.Threading.Tasks.Task<TDA.Entities.Resultado> DeleteClienteAsync(TDA.Entities.Clientes cli);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/SelectCliente", ReplyAction="http://tempuri.org/ITDAService/SelectClienteResponse")]
-        TDA.Entities.Clientes[] SelectCliente();
+        TDA.Entities.Clientes[] SelectCliente(TDA.Entities.Clientes cli);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/SelectCliente", ReplyAction="http://tempuri.org/ITDAService/SelectClienteResponse")]
-        System.Threading.Tasks.Task<TDA.Entities.Clientes[]> SelectClienteAsync();
+        System.Threading.Tasks.Task<TDA.Entities.Clientes[]> SelectClienteAsync(TDA.Entities.Clientes cli);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/BuscarClienteID", ReplyAction="http://tempuri.org/ITDAService/BuscarClienteIDResponse")]
+        TDA.Entities.Clientes[] BuscarClienteID(System.Nullable<long> ID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/BuscarClienteID", ReplyAction="http://tempuri.org/ITDAService/BuscarClienteIDResponse")]
+        System.Threading.Tasks.Task<TDA.Entities.Clientes[]> BuscarClienteIDAsync(System.Nullable<long> ID);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/InsertPaquete", ReplyAction="http://tempuri.org/ITDAService/InsertPaqueteResponse")]
         TDA.Entities.Resultado InsertPaquete(TDA.Entities.Paquetes paq);
@@ -472,10 +484,16 @@ namespace TDAWPF.TDAService {
         System.Threading.Tasks.Task<TDA.Entities.Resultado> UpdatePaqueteAsync(TDA.Entities.Paquetes paq);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/SelectPaquete", ReplyAction="http://tempuri.org/ITDAService/SelectPaqueteResponse")]
-        TDA.Entities.Paquetes[] SelectPaquete();
+        TDA.Entities.Paquetes[] SelectPaquete(TDA.Entities.Paquetes paq);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/SelectPaquete", ReplyAction="http://tempuri.org/ITDAService/SelectPaqueteResponse")]
-        System.Threading.Tasks.Task<TDA.Entities.Paquetes[]> SelectPaqueteAsync();
+        System.Threading.Tasks.Task<TDA.Entities.Paquetes[]> SelectPaqueteAsync(TDA.Entities.Paquetes paq);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/BuscarPaqueteID", ReplyAction="http://tempuri.org/ITDAService/BuscarPaqueteIDResponse")]
+        TDA.Entities.Paquetes[] BuscarPaqueteID(System.Nullable<long> ID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/BuscarPaqueteID", ReplyAction="http://tempuri.org/ITDAService/BuscarPaqueteIDResponse")]
+        System.Threading.Tasks.Task<TDA.Entities.Paquetes[]> BuscarPaqueteIDAsync(System.Nullable<long> ID);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/InsertPaqueteDia", ReplyAction="http://tempuri.org/ITDAService/InsertPaqueteDiaResponse")]
         TDA.Entities.Resultado InsertPaqueteDia(TDA.Entities.PaqueteDias pqd);
@@ -1189,12 +1207,20 @@ namespace TDAWPF.TDAService {
             return base.Channel.DeleteProductoAsync(pro);
         }
         
-        public TDA.Entities.Productos[] SelectProducto() {
-            return base.Channel.SelectProducto();
+        public TDA.Entities.Productos[] SelectProducto(TDA.Entities.Productos pro) {
+            return base.Channel.SelectProducto(pro);
         }
         
-        public System.Threading.Tasks.Task<TDA.Entities.Productos[]> SelectProductoAsync() {
-            return base.Channel.SelectProductoAsync();
+        public System.Threading.Tasks.Task<TDA.Entities.Productos[]> SelectProductoAsync(TDA.Entities.Productos pro) {
+            return base.Channel.SelectProductoAsync(pro);
+        }
+        
+        public TDA.Entities.Productos[] BuscarProductoID(System.Nullable<long> ID) {
+            return base.Channel.BuscarProductoID(ID);
+        }
+        
+        public System.Threading.Tasks.Task<TDA.Entities.Productos[]> BuscarProductoIDAsync(System.Nullable<long> ID) {
+            return base.Channel.BuscarProductoIDAsync(ID);
         }
         
         public TDA.Entities.Resultado InsertTipoMovimiento(TDA.Entities.TipoMovimientos tim) {
@@ -1317,12 +1343,20 @@ namespace TDAWPF.TDAService {
             return base.Channel.DeleteClienteAsync(cli);
         }
         
-        public TDA.Entities.Clientes[] SelectCliente() {
-            return base.Channel.SelectCliente();
+        public TDA.Entities.Clientes[] SelectCliente(TDA.Entities.Clientes cli) {
+            return base.Channel.SelectCliente(cli);
         }
         
-        public System.Threading.Tasks.Task<TDA.Entities.Clientes[]> SelectClienteAsync() {
-            return base.Channel.SelectClienteAsync();
+        public System.Threading.Tasks.Task<TDA.Entities.Clientes[]> SelectClienteAsync(TDA.Entities.Clientes cli) {
+            return base.Channel.SelectClienteAsync(cli);
+        }
+        
+        public TDA.Entities.Clientes[] BuscarClienteID(System.Nullable<long> ID) {
+            return base.Channel.BuscarClienteID(ID);
+        }
+        
+        public System.Threading.Tasks.Task<TDA.Entities.Clientes[]> BuscarClienteIDAsync(System.Nullable<long> ID) {
+            return base.Channel.BuscarClienteIDAsync(ID);
         }
         
         public TDA.Entities.Resultado InsertPaquete(TDA.Entities.Paquetes paq) {
@@ -1341,12 +1375,20 @@ namespace TDAWPF.TDAService {
             return base.Channel.UpdatePaqueteAsync(paq);
         }
         
-        public TDA.Entities.Paquetes[] SelectPaquete() {
-            return base.Channel.SelectPaquete();
+        public TDA.Entities.Paquetes[] SelectPaquete(TDA.Entities.Paquetes paq) {
+            return base.Channel.SelectPaquete(paq);
         }
         
-        public System.Threading.Tasks.Task<TDA.Entities.Paquetes[]> SelectPaqueteAsync() {
-            return base.Channel.SelectPaqueteAsync();
+        public System.Threading.Tasks.Task<TDA.Entities.Paquetes[]> SelectPaqueteAsync(TDA.Entities.Paquetes paq) {
+            return base.Channel.SelectPaqueteAsync(paq);
+        }
+        
+        public TDA.Entities.Paquetes[] BuscarPaqueteID(System.Nullable<long> ID) {
+            return base.Channel.BuscarPaqueteID(ID);
+        }
+        
+        public System.Threading.Tasks.Task<TDA.Entities.Paquetes[]> BuscarPaqueteIDAsync(System.Nullable<long> ID) {
+            return base.Channel.BuscarPaqueteIDAsync(ID);
         }
         
         public TDA.Entities.Resultado InsertPaqueteDia(TDA.Entities.PaqueteDias pqd) {

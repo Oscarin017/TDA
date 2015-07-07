@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using TDA.Entities;
+using TDAWPF.Funcionalidad;
 
 namespace TDAWPF.Popups
 {
@@ -33,20 +34,6 @@ namespace TDAWPF.Popups
             lID = ID;
         }
 
-        private void cargarCBPais(Paises p)
-        {
-            TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
-            var resultado = tda.SelectPais(p);
-            tda.Close();
-            foreach (var r in resultado)
-            {
-                ComboBoxItem cbi = new ComboBoxItem();
-                cbi.Uid = r.ID.ToString();
-                cbi.Content = r.Nombre;
-                cbPais.Items.Add(cbi);
-            }
-        }
-
         private void btnCancelar_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
@@ -54,10 +41,11 @@ namespace TDAWPF.Popups
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            cargarCBPais(new Paises());
+            Llenado.cargarCBPais(new Paises(), cbPais);
             if (lID == 0)
             {
                 btnRegistrar.Visibility = Visibility.Visible;
+                Llenado.seleccionarDefaultPais(cbPais);
             }
             else if (lID != 0)
             {
@@ -65,10 +53,9 @@ namespace TDAWPF.Popups
                 TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
                 var resultado = tda.BuscarEstadoID(lID);
                 tda.Close();
-
                 foreach (var r in resultado)
                 {
-                    cbPais.SelectedIndex = Convert.ToInt32(r.Pais);
+                    Llenado.seleccionarComboBoxUid(r.Pais.ToString(), cbPais);
                     txtNombre.Text = r.Nombre;
                 }
             }

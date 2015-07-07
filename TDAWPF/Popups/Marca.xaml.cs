@@ -50,7 +50,6 @@ namespace TDAWPF.Popups
                 TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
                 var resultado = tda.BuscarMarcaID(lID);
                 tda.Close();
-
                 foreach (var r in resultado)
                 {
                     txtNombre.Text = r.Nombre;

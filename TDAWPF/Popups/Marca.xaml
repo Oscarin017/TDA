@@ -17,7 +17,7 @@
             <ColumnDefinition Width="300" />
             <ColumnDefinition Width="50" />
         </Grid.ColumnDefinitions>
-        <Controles:TextBoxI x:Name="txtNombre" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Escribe Nombre" Grid.Column="1" Grid.Row="1"/>
+        <Controles:TextBoxI x:Name="txtNombre" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Escribe Nombre (Obligatorio)" Grid.Column="1" Grid.Row="1"/>
         <Grid Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />

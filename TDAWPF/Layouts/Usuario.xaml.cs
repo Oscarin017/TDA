@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TDA.Entities;
+using TDAWPF.Funcionalidad;
 
 namespace TDAWPF.Layouts
 {
@@ -28,28 +29,14 @@ namespace TDAWPF.Layouts
             InitializeComponent();
         }
 
-        private void cargarCBRol()
-        {
-            TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
-            var resultado = tda.SelectRol();
-            tda.Close();
-            foreach (var r in resultado)
-            {
-                ComboBoxItem cbi = new ComboBoxItem();
-                cbi.Uid = r.ID.ToString();
-                cbi.Content = r.Nombre;
-                cbTipo.Items.Add(cbi);                
-            }
-        }
-
         private void cargarGrid(Usuarios u)
         {
             TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
             var resultado = tda.SelectUsuario(u);
             tda.Close();
+            var ordenado = resultado.OrderBy(Usuarios => Usuarios.RolNombre).ToList();
             lstUsuario.Clear();
-
-            foreach (var r in resultado)
+            foreach (var r in ordenado)
             {
                 lstUsuario.Add(new Usuarios()
                 {
@@ -58,14 +45,13 @@ namespace TDAWPF.Layouts
                     RolNombre = r.RolNombre
                 });
             }
-
             dg.ItemsSource = null;
             dg.ItemsSource = lstUsuario;   
         }
 
         private void dg_Loaded(object sender, RoutedEventArgs e)
         {
-            cargarCBRol();
+            Llenado.cargarCBRol(cbTipo);
             cargarGrid(new Usuarios());
         }
 

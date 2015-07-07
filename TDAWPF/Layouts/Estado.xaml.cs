@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TDA.Entities;
+using TDAWPF.Funcionalidad;
 
 namespace TDAWPF.Layouts
 {
@@ -28,28 +29,14 @@ namespace TDAWPF.Layouts
             InitializeComponent();
         }
 
-        private void cargarCBPais(Paises p)
-        {
-            TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
-            var resultado = tda.SelectPais(p);
-            tda.Close();
-            foreach (var r in resultado)
-            {
-                ComboBoxItem cbi = new ComboBoxItem();
-                cbi.Uid = r.ID.ToString();
-                cbi.Content = r.Nombre;
-                cbPais.Items.Add(cbi);                
-            }
-        }
-
         private void cargarGrid(Estados e)
         {
             TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
             var resultado = tda.SelectEstado(e);
             tda.Close();
+            var ordenado = resultado.OrderBy(Estados => Estados.PaisNombre).ToList();
             lstEstado.Clear();
-
-            foreach (var r in resultado)
+            foreach (var r in ordenado)
             {
                 lstEstado.Add(new Estados()
                 {
@@ -65,8 +52,9 @@ namespace TDAWPF.Layouts
 
         private void dg_Loaded(object sender, RoutedEventArgs e)
         {
-            cargarCBPais(new Paises());
+            Llenado.cargarCBPais(new Paises(), cbPais);
             cargarGrid(new Estados());
+            Llenado.seleccionarDefaultPais(cbPais);
         }
 
         private void btnSearch_Click(object sender, RoutedEventArgs e)

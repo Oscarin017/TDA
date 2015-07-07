@@ -539,7 +539,7 @@ namespace TDA.DataLayer
         {
             Resultado resultado = new Resultado();
             string estName = (from a in _context.Estado
-                              where a.Nombre.ToUpper() == est.Nombre.ToUpper()
+                              where a.Nombre.ToUpper() == est.Nombre.ToUpper() && a.Pais == est.Pais
                               select a.Nombre).FirstOrDefault();
             if (string.IsNullOrEmpty(estName))
             {
@@ -548,6 +548,7 @@ namespace TDA.DataLayer
                              select a).FirstOrDefault();
 
                 estdb.Nombre = est.Nombre;
+                estdb.Pais = est.Pais;
                 estdb.UsuarioMod = est.UsuarioMod;
                 estdb.FechaMod = DateTime.Now;
 

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using TDA.Entities;
+using TDAWPF.Funcionalidad;
 
 namespace TDAWPF.Popups
 {
@@ -33,20 +34,6 @@ namespace TDAWPF.Popups
             lID = ID;
         }
 
-        private void cargarCBMarca(Marcas m)
-        {
-            TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
-            var resultado = tda.SelectMarca(m);
-            tda.Close();
-            foreach (var r in resultado)
-            {
-                ComboBoxItem cbi = new ComboBoxItem();
-                cbi.Uid = r.ID.ToString();
-                cbi.Content = r.Nombre;
-                cbMarca.Items.Add(cbi);
-            }
-        }
-
         private void btnCancelar_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
@@ -54,7 +41,7 @@ namespace TDAWPF.Popups
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            cargarCBMarca(new Marcas());
+            Llenado.cargarCBMarca(new Marcas(), cbMarca);
             if (lID == 0)
             {
                 btnRegistrar.Visibility = Visibility.Visible;
@@ -65,7 +52,6 @@ namespace TDAWPF.Popups
                 TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
                 var resultado = tda.BuscarModeloID(lID);
                 tda.Close();
-
                 foreach (var r in resultado)
                 {
                     cbMarca.SelectedIndex = Convert.ToInt32(r.Marca);
@@ -77,7 +63,7 @@ namespace TDAWPF.Popups
 
         private void btnRegistrar_Click(object sender, RoutedEventArgs e)
         {
-            if (!txtNombre.PlaceHolder && cbMarca.SelectedIndex != 0)
+            if (!txtNombre.PlaceHolder && !txtAno.PlaceHolder && cbMarca.SelectedIndex != 0)
             {
                 TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
                 Modelos es = new Modelos();
@@ -97,7 +83,7 @@ namespace TDAWPF.Popups
 
         private void btnModificar_Click(object sender, RoutedEventArgs e)
         {
-            if (!txtNombre.PlaceHolder && cbMarca.SelectedIndex != 0)
+            if (!txtNombre.PlaceHolder && !txtAno.PlaceHolder && cbMarca.SelectedIndex != 0)
             {
                 TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
                 Modelos es = new Modelos();

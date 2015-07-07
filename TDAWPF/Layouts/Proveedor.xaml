@@ -69,7 +69,7 @@
         <DataGrid x:Name="dg" Width="960" VerticalAlignment="Top" HorizontalAlignment="Center" Grid.ColumnSpan="7" Grid.Column="1" Grid.Row="5" AutoGenerateColumns="False" FontFamily="Arial" FontSize="14" FontWeight="Bold" IsReadOnly="True" Loaded="dg_Loaded" >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding ID}" Visibility="Collapsed" />
-                <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre Apellido Apellido2}" Width="2*" FontWeight="Normal" />
+                <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}" Width="2*" FontWeight="Normal" />
                 <DataGridTextColumn Header="RFC" Binding="{Binding RFC}" Width="*" FontWeight="Normal" />
                 <DataGridTextColumn Header="Telefono" Binding="{Binding Telefono}" Width="*" FontWeight="Normal" />
                 <DataGridTemplateColumn MinWidth="30">

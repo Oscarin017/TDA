@@ -33,9 +33,9 @@ namespace TDAWPF.Layouts
             TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
             var resultado = tda.SelectPais(p);
             tda.Close();
+            var ordenado = resultado.OrderBy(Paises => Paises.Nombre).ToList();
             lstPais.Clear();
-
-            foreach (var r in resultado)
+            foreach (var r in ordenado)
             {
                 lstPais.Add(new Paises()
                 {
@@ -43,7 +43,6 @@ namespace TDAWPF.Layouts
                     Nombre = r.Nombre
                 });
             }
-
             dg.ItemsSource = null;
             dg.ItemsSource = lstPais;   
         }

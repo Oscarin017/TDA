@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TDA.Entities;
+using TDAWPF.Funcionalidad;
 
 namespace TDAWPF.Layouts
 {
@@ -28,64 +29,42 @@ namespace TDAWPF.Layouts
             InitializeComponent();
         }
 
-        private void cargarCBPais(Paises p)
-        {
-            TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
-            var resultado = tda.SelectPais(p);
-            tda.Close();
-            foreach (var r in resultado)
-            {
-                ComboBoxItem cbi = new ComboBoxItem();
-                cbi.Uid = r.ID.ToString();
-                cbi.Content = r.Nombre;
-                cbPais.Items.Add(cbi);
-            }
-        }
-
-        private void cargarCBEstado(Estados e)
-        {
-            cbEstado.Clear();
-            TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
-            var resultado = tda.SelectEstado(e);
-            tda.Close();
-            foreach (var r in resultado)
-            {
-                ComboBoxItem cbi = new ComboBoxItem();
-                cbi.Uid = r.ID.ToString();
-                cbi.Content = r.Nombre;
-                cbEstado.Items.Add(cbi);
-            }
-        }
-
         private void cargarGrid(Proveedores p)
         {
             TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
             var resultado = tda.SelectProveedor(p);
             tda.Close();
+            var ordenado = resultado.OrderBy(Proveedores => Proveedores.RFC);
             lstProveedor.Clear();
-
-            foreach (var r in resultado)
+            foreach (var r in ordenado)
             {
+                string sNombre = "";
+                if (r.Tipo)
+                {
+                    sNombre = r.Nombre;
+                }
+                else
+                {
+                    sNombre = r.Apellido + " " + r.Apellido2 + " " + r.Nombre;
+                }
                 lstProveedor.Add(new Proveedores()
                 {
                     ID = r.ID,
-                    Nombre = r.Nombre,
-                    Apellido = r.Apellido,
-                    Apellido2 = r.Apellido2,
+                    Nombre = sNombre,
                     RFC = r.RFC,
                     Telefono = r.Telefono
                 });
             }
-
             dg.ItemsSource = null;
             dg.ItemsSource = lstProveedor;
         }
 
         private void dg_Loaded(object sender, RoutedEventArgs e)
         {
-            cargarCBPais(new Paises());
-            cargarCBEstado(new Estados());
+            Llenado.cargarCBPais(new Paises(), cbPais);
+            Llenado.cargarCBEstado(new Estados(), cbEstado);
             cargarGrid(new Proveedores());
+            Llenado.seleccionarDefaultPais(cbPais);
         }
 
         private void btnSearch_Click(object sender, RoutedEventArgs e)
@@ -143,8 +122,8 @@ namespace TDAWPF.Layouts
             }
             if (this.IsLoaded)
             {
-                cargarCBEstado(es);
-            }
+                Llenado.cargarCBEstado(es, cbEstado);
+            }        
         }
     }
 }

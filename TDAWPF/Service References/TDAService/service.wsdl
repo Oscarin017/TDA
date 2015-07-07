@@ -362,6 +362,12 @@
   <wsdl:message name="ITDAService_SelectProducto_OutputMessage">
     <wsdl:part name="parameters" element="tns:SelectProductoResponse" />
   </wsdl:message>
+  <wsdl:message name="ITDAService_BuscarProductoID_InputMessage">
+    <wsdl:part name="parameters" element="tns:BuscarProductoID" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_BuscarProductoID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BuscarProductoIDResponse" />
+  </wsdl:message>
   <wsdl:message name="ITDAService_InsertTipoMovimiento_InputMessage">
     <wsdl:part name="parameters" element="tns:InsertTipoMovimiento" />
   </wsdl:message>
@@ -458,6 +464,12 @@
   <wsdl:message name="ITDAService_SelectCliente_OutputMessage">
     <wsdl:part name="parameters" element="tns:SelectClienteResponse" />
   </wsdl:message>
+  <wsdl:message name="ITDAService_BuscarClienteID_InputMessage">
+    <wsdl:part name="parameters" element="tns:BuscarClienteID" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_BuscarClienteID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BuscarClienteIDResponse" />
+  </wsdl:message>
   <wsdl:message name="ITDAService_InsertPaquete_InputMessage">
     <wsdl:part name="parameters" element="tns:InsertPaquete" />
   </wsdl:message>
@@ -475,6 +487,12 @@
   </wsdl:message>
   <wsdl:message name="ITDAService_SelectPaquete_OutputMessage">
     <wsdl:part name="parameters" element="tns:SelectPaqueteResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_BuscarPaqueteID_InputMessage">
+    <wsdl:part name="parameters" element="tns:BuscarPaqueteID" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_BuscarPaqueteID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BuscarPaqueteIDResponse" />
   </wsdl:message>
   <wsdl:message name="ITDAService_InsertPaqueteDia_InputMessage">
     <wsdl:part name="parameters" element="tns:InsertPaqueteDia" />
@@ -937,6 +955,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/SelectProducto" message="tns:ITDAService_SelectProducto_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/SelectProductoResponse" message="tns:ITDAService_SelectProducto_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="BuscarProductoID">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/BuscarProductoID" message="tns:ITDAService_BuscarProductoID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/BuscarProductoIDResponse" message="tns:ITDAService_BuscarProductoID_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="InsertTipoMovimiento">
       <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/InsertTipoMovimiento" message="tns:ITDAService_InsertTipoMovimiento_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/InsertTipoMovimientoResponse" message="tns:ITDAService_InsertTipoMovimiento_OutputMessage" />
@@ -1001,6 +1023,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/SelectCliente" message="tns:ITDAService_SelectCliente_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/SelectClienteResponse" message="tns:ITDAService_SelectCliente_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="BuscarClienteID">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/BuscarClienteID" message="tns:ITDAService_BuscarClienteID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/BuscarClienteIDResponse" message="tns:ITDAService_BuscarClienteID_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="InsertPaquete">
       <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/InsertPaquete" message="tns:ITDAService_InsertPaquete_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/InsertPaqueteResponse" message="tns:ITDAService_InsertPaquete_OutputMessage" />
@@ -1012,6 +1038,10 @@
     <wsdl:operation name="SelectPaquete">
       <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/SelectPaquete" message="tns:ITDAService_SelectPaquete_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/SelectPaqueteResponse" message="tns:ITDAService_SelectPaquete_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BuscarPaqueteID">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/BuscarPaqueteID" message="tns:ITDAService_BuscarPaqueteID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/BuscarPaqueteIDResponse" message="tns:ITDAService_BuscarPaqueteID_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="InsertPaqueteDia">
       <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/InsertPaqueteDia" message="tns:ITDAService_InsertPaqueteDia_InputMessage" />
@@ -1691,6 +1721,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="BuscarProductoID">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/BuscarProductoID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="InsertTipoMovimiento">
       <soap:operation soapAction="http://tempuri.org/ITDAService/InsertTipoMovimiento" style="document" />
       <wsdl:input>
@@ -1835,6 +1874,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="BuscarClienteID">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/BuscarClienteID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="InsertPaquete">
       <soap:operation soapAction="http://tempuri.org/ITDAService/InsertPaquete" style="document" />
       <wsdl:input>
@@ -1855,6 +1903,15 @@
     </wsdl:operation>
     <wsdl:operation name="SelectPaquete">
       <soap:operation soapAction="http://tempuri.org/ITDAService/SelectPaquete" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuscarPaqueteID">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/BuscarPaqueteID" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

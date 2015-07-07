@@ -58,6 +58,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Funcionalidad\Llenado.cs" />
     <Compile Include="Popups\Promocion.xaml.cs">
       <DependentUpon>Promocion.xaml</DependentUpon>
     </Compile>

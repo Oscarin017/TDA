@@ -33,9 +33,9 @@ namespace TDAWPF.Layouts
             TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
             var resultado = tda.SelectGrupoCliente(gc);
             tda.Close();
+            var ordenado = resultado.OrderBy(GrupoClientes => GrupoClientes.Nombre).ToList();
             lstGC.Clear();
-
-            foreach (var r in resultado)
+            foreach (var r in ordenado)
             {
                 lstGC.Add(new GrupoClientes()
                 {
@@ -43,7 +43,6 @@ namespace TDAWPF.Layouts
                     Nombre = r.Nombre
                 });
             }
-
             dg.ItemsSource = null;
             dg.ItemsSource = lstGC;   
         }

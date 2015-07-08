@@ -10,6 +10,17 @@ namespace TDA.Entities
     [DataContract]
     public class Promociones
     {
+        public Promociones()
+        {
+            Tipo = DefaultValues.defint;
+            Nombre = DefaultValues.defString;
+            Activo = DefaultValues.defbool;
+            ParaGrupoCliente = DefaultValues.defbool;
+            ParaPaquete = DefaultValues.defbool;
+            ParaTipoProducto = DefaultValues.defbool;
+            ParaProducto = DefaultValues.defbool;
+        }
+
         [DataMember]
         public long ID { get; set; }
         [DataMember]

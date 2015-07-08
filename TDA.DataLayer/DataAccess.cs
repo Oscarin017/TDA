@@ -2491,7 +2491,7 @@ namespace TDA.DataLayer
             return grupos;
         }
         #endregion
-        //*************************************************** TODO \\\\\\\\\/////////
+        
         #region Tabla Cliente
         public Resultado InsertCliente(Clientes cli)
         {
@@ -2754,33 +2754,22 @@ namespace TDA.DataLayer
         public Resultado UpdatePaquete(Paquetes paq)
         {
             Resultado resultado = new Resultado();
-            string paqName = (from a in _context.Paquete
-                              where a.Nombre.ToUpper() == paq.Nombre.ToUpper()
-                              select a.Nombre).FirstOrDefault();
-            if (string.IsNullOrEmpty(paqName))
-            {
-                var paqdb = (from a in _context.Paquete
-                             where a.ID == paq.ID
-                             select a).FirstOrDefault();
+            
+            var paqdb = (from a in _context.Paquete
+                            where a.ID == paq.ID
+                            select a).FirstOrDefault();
 
-                paqdb.Nombre = paq.Nombre;
-                paqdb.Descripcion = paq.Descripcion;
-                paqdb.Precio = paq.Precio;
-                paqdb.ParaGrupoCliente = paq.ParaGrupoCliente;
-                paqdb.Activo = paq.Activo;
-                paqdb.FechaInicio = paq.FechaInicio;
-                paqdb.FechaFin = paq.FechaFin;
-                paqdb.UsuarioMod = paq.UsuarioMod;
-                paqdb.FechaMod = DateTime.Now;
+            paqdb.Nombre = paq.Nombre;
+            paqdb.Descripcion = paq.Descripcion;
+            paqdb.Precio = paq.Precio;
+            paqdb.ParaGrupoCliente = paq.ParaGrupoCliente;
+            paqdb.Activo = paq.Activo;
+            paqdb.FechaInicio = paq.FechaInicio;
+            paqdb.FechaFin = paq.FechaFin;
+            paqdb.UsuarioMod = paq.UsuarioMod;
+            paqdb.FechaMod = DateTime.Now;
 
-            }
-            else
-            {
-                resultado.Realizado = false;
-                resultado.ErrorDB = false;
-                resultado.YaExiste = true;
-                return resultado;
-            }
+           
             try
             {
                 _context.SaveChanges();
@@ -3047,7 +3036,7 @@ namespace TDA.DataLayer
             return paquetes;
         }
         #endregion
-
+        //*************************************************** TODO \\\\\\\\\/////////
         #region Tabla Promocion 
         public Resultado InsertPromocion(Promociones pro)
         {
@@ -3104,39 +3093,28 @@ namespace TDA.DataLayer
         public Resultado UpdatePromocion(Promociones pro)
         {
             Resultado resultado = new Resultado();
-            string proName = (from a in _context.Promocion
-                              where a.Nombre.ToUpper() == pro.Nombre.ToUpper()
-                              select a.Nombre).FirstOrDefault();
-            if (string.IsNullOrEmpty(proName))
-            {
-                var prodb = (from a in _context.Promocion
-                             where a.ID == pro.ID
-                             select a).FirstOrDefault();
+            
+            var prodb = (from a in _context.Promocion
+                            where a.ID == pro.ID
+                            select a).FirstOrDefault();
 
-                prodb.Nombre = pro.Nombre;
-                prodb.Descripcion = pro.Descripcion;
-                prodb.Tipo = pro.Tipo;
-                prodb.Valor = pro.Valor;
-                prodb.Comprar = pro.Comprar;
-                prodb.Pagar = pro.Pagar;
-                prodb.Activo = pro.Activo;
-                prodb.FechaInicio = pro.FechaInicio;
-                prodb.FechaFin = pro.FechaFin;
-                prodb.ParaPaquete = pro.ParaPaquete;
-                prodb.ParaTipoProducto = pro.ParaTipoProducto;
-                prodb.ParaProducto = pro.ParaProducto;
-                prodb.ParaGrupoCliente = pro.ParaGrupoCliente;
-                prodb.UsuarioMod = pro.UsuarioMod;
-                prodb.FechaMod = DateTime.Now;
+            prodb.Nombre = pro.Nombre;
+            prodb.Descripcion = pro.Descripcion;
+            prodb.Tipo = pro.Tipo;
+            prodb.Valor = pro.Valor;
+            prodb.Comprar = pro.Comprar;
+            prodb.Pagar = pro.Pagar;
+            prodb.Activo = pro.Activo;
+            prodb.FechaInicio = pro.FechaInicio;
+            prodb.FechaFin = pro.FechaFin;
+            prodb.ParaPaquete = pro.ParaPaquete;
+            prodb.ParaTipoProducto = pro.ParaTipoProducto;
+            prodb.ParaProducto = pro.ParaProducto;
+            prodb.ParaGrupoCliente = pro.ParaGrupoCliente;
+            prodb.UsuarioMod = pro.UsuarioMod;
+            prodb.FechaMod = DateTime.Now;
 
-            }
-            else
-            {
-                resultado.Realizado = false;
-                resultado.ErrorDB = false;
-                resultado.YaExiste = true;
-                return resultado;
-            }
+            
             try
             {
                 _context.SaveChanges();
@@ -3153,7 +3131,8 @@ namespace TDA.DataLayer
             resultado.YaExiste = false;
             return resultado;
         }
-        public List<Promociones> SelectPromocion()
+        //Buscar por Tipo, Nombre, Activa, GrupoCliente, Tipo Producto,Producto, Paquete
+        public List<Promociones> SelectPromocion(Promociones pro)
         {
             var promociones = (from a in _context.Promocion
                             select new Promociones
@@ -3177,6 +3156,41 @@ namespace TDA.DataLayer
                                 FechaAlta = a.FechaAlta,
                                 FechaMod = a.FechaMod
                             }).ToList();
+            promociones = promociones.Where(p => pro.Tipo < 0 || p.Tipo == pro.Tipo ).ToList();
+            promociones = promociones.Where(p => string.IsNullOrWhiteSpace(pro.Nombre) || p.Tipo == pro.Tipo).ToList();
+            promociones = promociones.Where(p => pro.Activo == null || p.Activo == pro.Activo).ToList();
+            promociones = promociones.Where(p => pro.ParaGrupoCliente == null || p.ParaGrupoCliente == pro.ParaGrupoCliente).ToList();
+            promociones = promociones.Where(p => pro.ParaTipoProducto == null || p.ParaTipoProducto == pro.ParaTipoProducto).ToList();
+            promociones = promociones.Where(p => pro.ParaProducto == null || p.ParaProducto == pro.ParaProducto).ToList();
+            promociones = promociones.Where(p => pro.ParaPaquete == null || p.ParaPaquete == pro.ParaPaquete).ToList();
+            return promociones;
+        }
+        public List<Promociones> BuscarPromocionID(long? ID)
+        {
+            var promociones = (from a in _context.Promocion
+                               where a.ID == ID
+                               select new Promociones
+                               {
+                                   ID = a.ID,
+                                   Nombre = a.Nombre,
+                                   Descripcion = a.Descripcion,
+                                   Tipo = a.Tipo,
+                                   Valor = a.Valor,
+                                   Comprar = a.Comprar,
+                                   Pagar = a.Pagar,
+                                   Activo = a.Activo,
+                                   FechaInicio = a.FechaInicio,
+                                   FechaFin = a.FechaFin,
+                                   ParaPaquete = a.ParaPaquete,
+                                   ParaTipoProducto = a.ParaTipoProducto,
+                                   ParaGrupoCliente = a.ParaGrupoCliente,
+                                   ParaProducto = a.ParaProducto,
+                                   UsuarioAlta = a.UsuarioAlta,
+                                   UsuarioMod = a.UsuarioMod,
+                                   FechaAlta = a.FechaAlta,
+                                   FechaMod = a.FechaMod
+                               }).ToList();
+            
             return promociones;
         }
         #endregion

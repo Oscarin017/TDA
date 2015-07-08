@@ -275,7 +275,9 @@ namespace TDA.Service
         [OperationContract]
         Resultado UpdatePromocion(Promociones pro);
         [OperationContract]
-        List<Promociones> SelectPromocion();
+        List<Promociones> SelectPromocion(Promociones pro);
+        [OperationContract]
+        List<Promociones> BuscarPromocionID(long? ID);
         #endregion
 
         #region Tabla Promocion Dia

@@ -457,9 +457,13 @@ namespace TDA.Service
         {
             return _dataBaseTool.UpdatePromocion(pro);
         }
-        public List<Promociones> SelectPromocion()
+        public List<Promociones> SelectPromocion(Promociones pro)
         {
-            return _dataBaseTool.SelectPromocion();
+            return _dataBaseTool.SelectPromocion(pro);
+        }
+        public List<Promociones> SelectPromocionID(long? ID)
+        {
+            return _dataBaseTool.BuscarPromocionID(ID);
         }
         #endregion
 

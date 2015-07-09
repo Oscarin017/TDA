@@ -37,17 +37,17 @@
         </Grid>
         <Controles:ComboBoxI x:Name="cbRol" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1" Grid.Row="3">
             <Controles:ComboBoxI.Items>
-                <ComboBoxItem IsSelected="True" Content="Selecciona Rol"/>
+                <ComboBoxItem IsSelected="True" Content="Selecciona Rol (Obligatorio)"/>
             </Controles:ComboBoxI.Items>
         </Controles:ComboBoxI>
         <Controles:ComboBoxI x:Name="cbEmpleado" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1" Grid.Row="5" >
             <Controles:ComboBoxI.Items>
-                <ComboBoxItem IsSelected="True" Content="Selecciona Empleado"/>
+                <ComboBoxItem IsSelected="True" Content="Selecciona Empleado (Obligatorio)"/>
             </Controles:ComboBoxI.Items>
         </Controles:ComboBoxI>
-        <Controles:TextBoxI x:Name="txtEmail" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Escribe Email" Grid.Column="1" Grid.Row="5" Visibility="Collapsed"/>
-        <Controles:TextBoxI x:Name="txtAlias" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Escribe Alias" Grid.Column="1" Grid.Row="7"/>
-        <Controles:TextBoxI x:Name="txtContraseña" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Escribe Contraseña" Grid.Column="1" Grid.Row="9"/>
+        <Controles:TextBoxI x:Name="txtEmail" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Escribe Email (Obligatorio)" Grid.Column="1" Grid.Row="5" Visibility="Collapsed"/>
+        <Controles:TextBoxI x:Name="txtAlias" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Escribe Alias (Obligatorio)" Grid.Column="1" Grid.Row="7"/>
+        <Controles:TextBoxI x:Name="txtContraseña" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Escribe Contraseña (Obligatorio)" Grid.Column="1" Grid.Row="9"/>
         <Grid Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />

@@ -33,24 +33,24 @@
         </Grid.ColumnDefinitions>
         <Controles:ComboBoxI x:Name="cbMarca" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1" Grid.Row="1" SelectionChanged="cbMarca_SelectionChanged">
             <Controles:ComboBoxI.Items>
-                <ComboBoxItem IsSelected="True" Content="Selecciona Marca"/>
+                <ComboBoxItem IsSelected="True" Content="Selecciona Marca (Obligatorio)"/>
             </Controles:ComboBoxI.Items>
         </Controles:ComboBoxI>
         <Controles:ComboBoxI x:Name="cbModelo" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1" Grid.Row="3">
             <Controles:ComboBoxI.Items>
-                <ComboBoxItem IsSelected="True" Content="Selecciona Modelo"/>
+                <ComboBoxItem IsSelected="True" Content="Selecciona Modelo (Obligatorio)"/>
             </Controles:ComboBoxI.Items>
         </Controles:ComboBoxI>
-        <Controles:TextBoxI x:Name="txtAno" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Escribe Año" Grid.Column="1" Grid.Row="5"/>
-        <Controles:TextBoxI x:Name="txtColor" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Escribe Color" Grid.Column="1" Grid.Row="7"/>
-        <Controles:TextBoxI x:Name="txtNoSerie" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Escribe Numero de Serie" Grid.Column="1" Grid.Row="9"/>
-        <Controles:TextBoxI x:Name="txtResponsable" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Escribe Nombre Responsable" Grid.Column="1" Grid.Row="11"/>
+        <Controles:TextBoxI x:Name="txtAno" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Escribe Año (Obligatorio)" Grid.Column="1" Grid.Row="5"/>
+        <Controles:TextBoxI x:Name="txtColor" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Escribe Color (Obligatorio)" Grid.Column="1" Grid.Row="7"/>
+        <Controles:TextBoxI x:Name="txtNoSerie" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Escribe Numero de Serie (Obligatorio)" Grid.Column="1" Grid.Row="9"/>
+        <Controles:TextBoxI x:Name="txtResponsable" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Escribe Nombre Responsable (Obligatorio)" Grid.Column="1" Grid.Row="11"/>
         <Controles:ComboBoxI x:Name="cbTipo" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1" Grid.Row="13">
             <Controles:ComboBoxI.Items>
-                <ComboBoxItem IsSelected="True" Content="Selecciona Tipo de Identificacion"/>
+                <ComboBoxItem IsSelected="True" Content="Selecciona Tipo de Identificacion (Obligatorio)"/>
             </Controles:ComboBoxI.Items>
         </Controles:ComboBoxI>
-        <Controles:TextBoxI x:Name="txtNumeroIdentificacion" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Escribe Numero de Identificacion" Grid.Column="1" Grid.Row="15"/>
+        <Controles:TextBoxI x:Name="txtNumeroIdentificacion" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Escribe Numero de Identificacion (Obligatorio)" Grid.Column="1" Grid.Row="15"/>
         <Grid Grid.Row="17" Grid.Column="0" Grid.ColumnSpan="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />

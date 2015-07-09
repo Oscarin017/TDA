@@ -70,14 +70,29 @@ namespace TDAWPF.Popups
                     Llenado.seleccionarComboBoxUid(r.Pais.ToString(), cbPais);
                     Llenado.seleccionarComboBoxUid(r.Estado.ToString(), cbEstado);
                     txtCiudad.Text = r.Ciudad;
-                    txtLocalidad.Text = r.Localidad;
+                    if (r.Localidad != null)
+                    {
+                        txtLocalidad.Text = r.Localidad;
+                    }
                     txtCalle.Text = r.Calle;
-                    txtNumeroExterior.Text = r.NumeroExterior;
-                    txtNumeroInterior.Text = r.NumeroInterior;
-                    txtColonia.Text = r.Colonia;
+                    if (r.NumeroExterior != null)
+                    {
+                        txtNumeroExterior.Text = r.NumeroExterior;
+                    }
+                    if (r.NumeroInterior != null)
+                    {
+                        txtNumeroInterior.Text = r.NumeroInterior;
+                    }
+                    if (r.Colonia != null)
+                    {
+                        txtColonia.Text = r.Colonia;
+                    }
                     txtCP.Text = r.CP.ToString();
                     txtTelefono.Text = r.Telefono;
-                    txtEmail.Text = r.Email;
+                    if (r.Email != null)
+                    {
+                        txtEmail.Text = r.Email;
+                    }
                 }
             }
         }
@@ -91,8 +106,8 @@ namespace TDAWPF.Popups
                 if (rbMoral.IsChecked == true)
                 {
                     p.Tipo = true;
-                    p.Apellido = "NA";
-                    p.Apellido2 = "NA";
+                    p.Apellido = null;
+                    p.Apellido2 = null;
                 }
                 else if (rbFisica.IsChecked == true)
                 {
@@ -103,7 +118,7 @@ namespace TDAWPF.Popups
                 p.Nombre = txtNombre.Text;
                 if (txtRFC.PlaceHolder)
                 {
-                    p.RFC = "NA";
+                    p.RFC = null;
                 }
                 else
                 {
@@ -116,7 +131,7 @@ namespace TDAWPF.Popups
                 p.Ciudad = txtCiudad.Text;
                 if (txtLocalidad.PlaceHolder)
                 {
-                    p.Localidad = "NA";
+                    p.Localidad = null;
                 }
                 else
                 {
@@ -125,7 +140,7 @@ namespace TDAWPF.Popups
                 p.Calle = txtCalle.Text;
                 if (txtNumeroExterior.PlaceHolder)
                 {
-                    p.NumeroExterior = "NA";
+                    p.NumeroExterior = null;
                 }
                 else
                 {
@@ -133,7 +148,7 @@ namespace TDAWPF.Popups
                 }
                 if (txtNumeroInterior.PlaceHolder)
                 {
-                    p.NumeroInterior = "NA";
+                    p.NumeroInterior = null;
                 }
                 else
                 {
@@ -141,7 +156,7 @@ namespace TDAWPF.Popups
                 }
                 if (txtColonia.PlaceHolder)
                 {
-                    p.Colonia = "NA";
+                    p.Colonia = null;
                 }
                 else
                 {
@@ -151,7 +166,7 @@ namespace TDAWPF.Popups
                 p.Telefono = txtTelefono.Text;
                 if (txtEmail.PlaceHolder)
                 {
-                    p.Email = "NA";
+                    p.Email = null;
                 }
                 else
                 {
@@ -176,8 +191,8 @@ namespace TDAWPF.Popups
                 if (rbMoral.IsChecked == true)
                 {
                     p.Tipo = true;
-                    p.Apellido = "NA";
-                    p.Apellido2 = "NA";
+                    p.Apellido = null;
+                    p.Apellido2 = null;
                 }
                 else if (rbFisica.IsChecked == true)
                 {
@@ -191,7 +206,7 @@ namespace TDAWPF.Popups
                 p.Nombre = txtNombre.Text;
                 if (txtRFC.PlaceHolder)
                 {
-                    p.RFC = "NA";
+                    p.RFC = null;
                 }
                 else
                 {
@@ -204,7 +219,7 @@ namespace TDAWPF.Popups
                 p.Ciudad = txtCiudad.Text;
                 if (txtLocalidad.PlaceHolder)
                 {
-                    p.Localidad = "NA";
+                    p.Localidad = null;
                 }
                 else
                 {
@@ -213,7 +228,7 @@ namespace TDAWPF.Popups
                 p.Calle = txtCalle.Text;
                 if (txtNumeroExterior.PlaceHolder)
                 {
-                    p.NumeroExterior = "NA";
+                    p.NumeroExterior = null;
                 }
                 else
                 {
@@ -221,7 +236,7 @@ namespace TDAWPF.Popups
                 }
                 if (txtNumeroInterior.PlaceHolder)
                 {
-                    p.NumeroInterior = "NA";
+                    p.NumeroInterior = null;
                 }
                 else
                 {
@@ -229,7 +244,7 @@ namespace TDAWPF.Popups
                 }
                 if (txtColonia.PlaceHolder)
                 {
-                    p.Colonia = "NA";
+                    p.Colonia = null;
                 }
                 else
                 {
@@ -239,7 +254,7 @@ namespace TDAWPF.Popups
                 p.Telefono = txtTelefono.Text;
                 if (txtEmail.PlaceHolder)
                 {
-                    p.Email = "NA";
+                    p.Email = null;
                 }
                 else
                 {

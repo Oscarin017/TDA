@@ -1376,7 +1376,7 @@ namespace TDA.DataLayer
             string empdb = (from a in _context.Empleado
                             where a.Email.ToUpper() == emp.Email.ToUpper()
                             ||  a.NSS.ToUpper() == emp.NSS.ToUpper()
-                            || a.CURP.ToUpper() == emp.NSS.ToUpper()
+                            || a.CURP.ToUpper() == emp.CURP.ToUpper()
                             select a.Nombre).FirstOrDefault();
             if (string.IsNullOrEmpty(empdb))
             {
@@ -2504,6 +2504,7 @@ namespace TDA.DataLayer
             {
                 Cliente cliNew = new Cliente()
                 {
+                    Tipo = cli.Tipo,
                     Nombre = cli.Nombre,
                     Apellido = cli.Apellido,
                     Apellido2 = cli.Apellido2,
@@ -2555,7 +2556,7 @@ namespace TDA.DataLayer
             var clidb = (from a in _context.Cliente
                             where a.ID == cli.ID
                             select a).FirstOrDefault();
-
+            cli.Tipo = cli.Tipo;
             clidb.Nombre = cli.Nombre;
             clidb.Apellido = cli.Apellido;
             clidb.Apellido2 = cli.Apellido2;
@@ -2632,8 +2633,9 @@ namespace TDA.DataLayer
         public List<Clientes> SelectCliente(Clientes cli)
         {
             var clientes = (from a in _context.Cliente
-                            join b in _context.GrupoCliente on a.GrupoCliente equals b.ID
+                            join b in _context.GrupoCliente on a.GrupoCliente equals b.ID into JoinGrupoCliente
                             join c in _context.Estado on a.Estado equals c.ID
+                            from b in JoinGrupoCliente.DefaultIfEmpty()
                             select new Clientes
                           {
                               ID = a.ID,
@@ -2671,8 +2673,9 @@ namespace TDA.DataLayer
         public List<Clientes> BuscarClienteID(long? ID)
         {
             var clientes = (from a in _context.Cliente
-                            join b in _context.GrupoCliente on a.GrupoCliente equals b.ID
+                            join b in _context.GrupoCliente on a.GrupoCliente equals b.ID into JoinGrupoCliente
                             join c in _context.Estado on a.Estado equals c.ID
+                            from b in JoinGrupoCliente.DefaultIfEmpty()
                             where a.ID == ID
                             select new Clientes
                             {

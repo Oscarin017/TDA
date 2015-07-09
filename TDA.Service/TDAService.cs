@@ -473,7 +473,7 @@ namespace TDA.Service
         {
             return _dataBaseTool.SelectPromocion(pro);
         }
-        public List<Promociones> SelectPromocionID(long? ID)
+        public List<Promociones> BuscarPromocionID(long? ID)
         {
             return _dataBaseTool.BuscarPromocionID(ID);
         }

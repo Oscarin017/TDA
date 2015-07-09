@@ -60,22 +60,43 @@ namespace TDAWPF.Popups
                     txtApellidoPaterno.Text = r.Apellido;
                     txtApellidoMaterno.Text = r.Apellido2;
                     txtNombre.Text = r.Nombre;
-                    txtRFC.Text = r.RFC;
+                    if (r.RFC != null)
+                    {
+                        txtRFC.Text = r.RFC;
+                    }
                     txtCURP.Text = r.CURP;
-                    txtNSS.Text = r.NSS;
+                    if (r.NSS != null)
+                    {
+                        txtNSS.Text = r.NSS;
+                    }
                     Llenado.seleccionarComboBoxUid(r.BaseSalario.ToString(), cbBaseSalario);
                     txtSalario.Text = r.Salario.ToString();
                     Llenado.seleccionarComboBoxUid(r.Pais.ToString(), cbPais);
                     Llenado.seleccionarComboBoxUid(r.Estado.ToString(), cbEstado);
                     txtCiudad.Text = r.Ciudad;
-                    txtLocalidad.Text = r.Localidad;
+                    if (r.Localidad != null)
+                    {
+                        txtLocalidad.Text = r.Localidad;
+                    }
                     txtCalle.Text = r.Calle;
-                    txtNumeroExterior.Text = r.NumeroExterior;
-                    txtNumeroInterior.Text = r.NumeroInterior;
-                    txtColonia.Text = r.Colonia;
+                    if (r.NumeroExterior != null)
+                    {
+                        txtNumeroExterior.Text = r.NumeroExterior;
+                    }
+                    if (r.NumeroInterior != null)
+                    {
+                        txtNumeroInterior.Text = r.NumeroInterior;
+                    }
+                    if (r.Colonia != null)
+                    {
+                        txtColonia.Text = r.Colonia;
+                    }
                     txtCP.Text = r.CP.ToString();
                     txtTelefono.Text = r.Telefono;
-                    txtEmail.Text = r.Email;
+                    if (r.Email != null)
+                    {
+                        txtEmail.Text = r.Email;
+                    }
                 }
             }
         }
@@ -91,7 +112,7 @@ namespace TDAWPF.Popups
                 em.Nombre = txtNombre.Text;
                 if (txtRFC.PlaceHolder)
                 {
-                    em.RFC = "NA";
+                    em.RFC = null;
                 }
                 else
                 {
@@ -100,7 +121,7 @@ namespace TDAWPF.Popups
                 em.CURP = txtCURP.Text;
                 if (txtNSS.PlaceHolder)
                 {
-                    em.NSS = "NA";
+                    em.NSS = null;
                 }
                 else
                 {
@@ -116,7 +137,7 @@ namespace TDAWPF.Popups
                 em.Ciudad = txtCiudad.Text;
                 if (txtLocalidad.PlaceHolder)
                 {
-                    em.Localidad = "NA";
+                    em.Localidad = null;
                 }
                 else
                 {
@@ -125,7 +146,7 @@ namespace TDAWPF.Popups
                 em.Calle = txtCalle.Text;
                 if (txtNumeroExterior.PlaceHolder)
                 {
-                    em.NumeroExterior = "NA";
+                    em.NumeroExterior = null;
                 }
                 else
                 {
@@ -133,7 +154,7 @@ namespace TDAWPF.Popups
                 }
                 if (txtNumeroInterior.PlaceHolder)
                 {
-                    em.NumeroInterior = "NA";
+                    em.NumeroInterior = null;
                 }
                 else
                 {
@@ -141,7 +162,7 @@ namespace TDAWPF.Popups
                 }
                 if (txtColonia.PlaceHolder)
                 {
-                    em.Colonia = "NA";
+                    em.Colonia = null;
                 }
                 else
                 {
@@ -151,7 +172,7 @@ namespace TDAWPF.Popups
                 em.Telefono = txtTelefono.Text;
                 if (txtEmail.PlaceHolder)
                 {
-                    em.Email = "NA";
+                    em.Email = null;
                 }
                 else
                 {
@@ -179,7 +200,7 @@ namespace TDAWPF.Popups
                 em.Nombre = txtNombre.Text;
                 if (txtRFC.PlaceHolder)
                 {
-                    em.RFC = "NA";
+                    em.RFC = null;
                 }
                 else
                 {
@@ -188,7 +209,7 @@ namespace TDAWPF.Popups
                 em.CURP = txtCURP.Text;
                 if (txtNSS.PlaceHolder)
                 {
-                    em.NSS = "NA";
+                    em.NSS = null;
                 }
                 else
                 {
@@ -204,7 +225,7 @@ namespace TDAWPF.Popups
                 em.Ciudad = txtCiudad.Text;
                 if (txtLocalidad.PlaceHolder)
                 {
-                    em.Localidad = "NA";
+                    em.Localidad = null;
                 }
                 else
                 {
@@ -213,7 +234,7 @@ namespace TDAWPF.Popups
                 em.Calle = txtCalle.Text;
                 if (txtNumeroExterior.PlaceHolder)
                 {
-                    em.NumeroExterior = "NA";
+                    em.NumeroExterior = null;
                 }
                 else
                 {
@@ -221,7 +242,7 @@ namespace TDAWPF.Popups
                 }
                 if (txtNumeroInterior.PlaceHolder)
                 {
-                    em.NumeroInterior = "NA";
+                    em.NumeroInterior = null;
                 }
                 else
                 {
@@ -229,7 +250,7 @@ namespace TDAWPF.Popups
                 }
                 if (txtColonia.PlaceHolder)
                 {
-                    em.Colonia = "NA";
+                    em.Colonia = null;
                 }
                 else
                 {
@@ -239,7 +260,7 @@ namespace TDAWPF.Popups
                 em.Telefono = txtTelefono.Text;
                 if (txtEmail.PlaceHolder)
                 {
-                    em.Email = "NA";
+                    em.Email = null;
                 }
                 else
                 {

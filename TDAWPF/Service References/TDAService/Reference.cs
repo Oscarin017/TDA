@@ -562,10 +562,16 @@ namespace TDAWPF.TDAService {
         System.Threading.Tasks.Task<TDA.Entities.Resultado> UpdatePromocionAsync(TDA.Entities.Promociones pro);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/SelectPromocion", ReplyAction="http://tempuri.org/ITDAService/SelectPromocionResponse")]
-        TDA.Entities.Promociones[] SelectPromocion();
+        TDA.Entities.Promociones[] SelectPromocion(TDA.Entities.Promociones pro);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/SelectPromocion", ReplyAction="http://tempuri.org/ITDAService/SelectPromocionResponse")]
-        System.Threading.Tasks.Task<TDA.Entities.Promociones[]> SelectPromocionAsync();
+        System.Threading.Tasks.Task<TDA.Entities.Promociones[]> SelectPromocionAsync(TDA.Entities.Promociones pro);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/BuscarPromocionID", ReplyAction="http://tempuri.org/ITDAService/BuscarPromocionIDResponse")]
+        TDA.Entities.Promociones[] BuscarPromocionID(System.Nullable<long> ID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/BuscarPromocionID", ReplyAction="http://tempuri.org/ITDAService/BuscarPromocionIDResponse")]
+        System.Threading.Tasks.Task<TDA.Entities.Promociones[]> BuscarPromocionIDAsync(System.Nullable<long> ID);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/InsertPromocionDia", ReplyAction="http://tempuri.org/ITDAService/InsertPromocionDiaResponse")]
         TDA.Entities.Resultado InsertPromocionDia(TDA.Entities.PromocionDias prd);
@@ -1479,12 +1485,20 @@ namespace TDAWPF.TDAService {
             return base.Channel.UpdatePromocionAsync(pro);
         }
         
-        public TDA.Entities.Promociones[] SelectPromocion() {
-            return base.Channel.SelectPromocion();
+        public TDA.Entities.Promociones[] SelectPromocion(TDA.Entities.Promociones pro) {
+            return base.Channel.SelectPromocion(pro);
         }
         
-        public System.Threading.Tasks.Task<TDA.Entities.Promociones[]> SelectPromocionAsync() {
-            return base.Channel.SelectPromocionAsync();
+        public System.Threading.Tasks.Task<TDA.Entities.Promociones[]> SelectPromocionAsync(TDA.Entities.Promociones pro) {
+            return base.Channel.SelectPromocionAsync(pro);
+        }
+        
+        public TDA.Entities.Promociones[] BuscarPromocionID(System.Nullable<long> ID) {
+            return base.Channel.BuscarPromocionID(ID);
+        }
+        
+        public System.Threading.Tasks.Task<TDA.Entities.Promociones[]> BuscarPromocionIDAsync(System.Nullable<long> ID) {
+            return base.Channel.BuscarPromocionIDAsync(ID);
         }
         
         public TDA.Entities.Resultado InsertPromocionDia(TDA.Entities.PromocionDias prd) {

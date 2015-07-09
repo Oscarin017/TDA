@@ -116,6 +116,21 @@ namespace TDAWPF.Funcionalidad
             }
         }
 
+        public static void cargarCBGrupoCliente(GrupoClientes gc, Controles.ComboBoxI cb)
+        {
+            TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
+            var resultado = tda.SelectGrupoCliente(gc);
+            tda.Close();
+            var ordenado = resultado.OrderBy(GrupoClientes => GrupoClientes.Nombre);
+            foreach (var r in ordenado)
+            {
+                ComboBoxItem cbi = new ComboBoxItem();
+                cbi.Uid = r.ID.ToString();
+                cbi.Content = r.Nombre;
+                cb.Items.Add(cbi);
+            }
+        }
+
         public static void seleccionarDefaultPais(Controles.ComboBoxI cb)
         {
             foreach (ComboBoxItem cbi in cb.Items)
@@ -221,6 +236,21 @@ namespace TDAWPF.Funcionalidad
             var resultado = tda.SelectRol();
             tda.Close();
             var ordenado = resultado.OrderBy(Roles => Roles.Nombre).ToList();
+            foreach (var r in ordenado)
+            {
+                ComboBoxItem cbi = new ComboBoxItem();
+                cbi.Uid = r.ID.ToString();
+                cbi.Content = r.Nombre;
+                cb.Items.Add(cbi);
+            }
+        }
+
+        public static void cargarCBGrupoCliente(GrupoClientes gc, Controles.ComboBoxS cb)
+        {
+            TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
+            var resultado = tda.SelectGrupoCliente(gc);
+            tda.Close();
+            var ordenado = resultado.OrderBy(GrupoClientes => GrupoClientes.Nombre);
             foreach (var r in ordenado)
             {
                 ComboBoxItem cbi = new ComboBoxItem();

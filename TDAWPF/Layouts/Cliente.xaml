@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       mc:Ignorable="d" 
       d:DesignHeight="650" d:DesignWidth="1000"
-	Title="Cliente" Loaded="Page_Loaded">
+	Title="Cliente" >
     <Grid x:Name="gPrincipal" Background="White" AllowDrop="True" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
@@ -29,9 +29,9 @@
         </Grid.RowDefinitions>
         <Controles:TextBoxS x:Name="txtNombre" Text="Escribe Nombre" Grid.Column="1" Grid.Row="1"/>
         <Controles:TextBoxS x:Name="txtRFC" Text="Escribe RFC" Grid.Column="3" Grid.Row="1"/>
-        <Controles:ComboBoxS x:Name="cbTipo" Grid.Column="5" Grid.Row="1">
+        <Controles:ComboBoxS x:Name="cbGrupoCliente" Grid.Column="5" Grid.Row="1">
             <Controles:ComboBoxS.Items>
-                <ComboBoxItem IsSelected="True" Content="Selecciona Tipo"/>
+                <ComboBoxItem IsSelected="True" Content="Selecciona GrupoCliente"/>
             </Controles:ComboBoxS.Items>
         </Controles:ComboBoxS>
         <Controles:ComboBoxS x:Name="cbPais" Grid.Column="1" Grid.Row="3">
@@ -59,7 +59,7 @@
                 <RowDefinition Height="65"/>
                 <RowDefinition Height="*"/>                
             </Grid.RowDefinitions>
-            <Button x:Name="btnSearch" Grid.Column="0" Grid.Row="0">
+            <Button x:Name="btnSearch" Grid.Column="0" Grid.Row="0" Click="btnSearch_Click">
                 <Button.Background>
                     <ImageBrush ImageSource="../Imagenes/0135-search.png"/>
                 </Button.Background>
@@ -70,6 +70,36 @@
                 </Button.Background>
             </Button>
         </Grid>
-        <DataGrid x:Name="dg" Width="960" VerticalAlignment="Top" HorizontalAlignment="Center" Grid.ColumnSpan="7" Grid.Column="1" Grid.Row="5"/>
+        <DataGrid x:Name="dg" Width="960" VerticalAlignment="Top" HorizontalAlignment="Center" Grid.ColumnSpan="7" Grid.Column="1" Grid.Row="5" AutoGenerateColumns="False" FontFamily="Arial" FontSize="14" FontWeight="Bold" IsReadOnly="True" Loaded="dg_Loaded" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding ID}" Visibility="Collapsed" />
+                <DataGridTextColumn Header="Grupo Cliente" Binding="{Binding GrupoClienteNombre}" Width="*" FontWeight="Normal" />
+                <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}" Width="2*" FontWeight="Normal" />
+                <DataGridTextColumn Header="RFC" Binding="{Binding RFC}" Width="*" FontWeight="Normal" />
+                
+                <DataGridTemplateColumn MinWidth="30">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="btnModificar" Width="20" Height="20" Click="btnModificar_Click">
+                                <Button.Background>
+                                    <ImageBrush ImageSource="../Imagenes/Pencil-mini.png"/>
+                                </Button.Background>
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn MinWidth="30">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="btnEliminar" Width="20" Height="20" Click="btnEliminar_Click">
+                                <Button.Background>
+                                    <ImageBrush ImageSource="../Imagenes/0173-bin.png"/>
+                                </Button.Background>
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Page>

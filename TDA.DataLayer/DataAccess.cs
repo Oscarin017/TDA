@@ -2905,6 +2905,22 @@ namespace TDA.DataLayer
                             }).ToList();
             return paquetes;
         }
+        public List<PaqueteDias> BuscarPaqueteDiaID(long? ID)
+        {
+            var paquetes = (from a in _context.PaqueteDia
+                            where a.Paquete == ID
+                            select new PaqueteDias
+                            {
+                                ID = a.ID,
+                                Paquete = a.Paquete,
+                                Dia = a.Dia,
+                                UsuarioAlta = a.UsuarioAlta,
+                                UsuarioMod = a.UsuarioMod,
+                                FechaAlta = a.FechaAlta,
+                                FechaMod = a.FechaMod
+                            }).ToList();
+            return paquetes;
+        }
         #endregion
 
         #region Tabla Paquete Grupo Cliente 
@@ -2970,6 +2986,18 @@ namespace TDA.DataLayer
                             }).ToList();
             return paquetes;
         }
+        public List<PaqueteGrupoClientes> BuscarPaqueteGrupoClienteID(long? ID)
+        {
+            var paquetes = (from a in _context.PaqueteGrupoCliente
+                            where a.Paquete == ID
+                            select new PaqueteGrupoClientes
+                            {
+                                ID = a.ID,
+                                Paquete = a.Paquete,
+                                GrupoCliente = a.GrupoCliente
+                            }).ToList();
+            return paquetes;
+        }
         #endregion
 
         #region Tabla Paquete Producto 
@@ -3027,6 +3055,18 @@ namespace TDA.DataLayer
         public List<PaqueteProductos> SelectPaqueteProducto()
         {
             var paquetes = (from a in _context.PaqueteProducto
+                            select new PaqueteProductos
+                            {
+                                ID = a.ID,
+                                Paquete = a.Paquete,
+                                Producto = a.Producto
+                            }).ToList();
+            return paquetes;
+        }
+        public List<PaqueteProductos> BuscarPaqueteProductoID(long? ID)
+        {
+            var paquetes = (from a in _context.PaqueteProducto
+                            where a.Paquete == ID
                             select new PaqueteProductos
                             {
                                 ID = a.ID,
@@ -3265,6 +3305,22 @@ namespace TDA.DataLayer
                             }).ToList();
             return promocion;
         }
+        public List<PromocionDias> BuscarPromocionDiaID(long? ID)
+        {
+            var promocion = (from a in _context.PromocionDia
+                             where a.Promocion == ID
+                             select new PromocionDias
+                             {
+                                 ID = a.ID,
+                                 Promocion = a.Promocion,
+                                 Dia = a.Dia,
+                                 UsuarioAlta = a.UsuarioAlta,
+                                 UsuarioMod = a.UsuarioMod,
+                                 FechaAlta = a.FechaAlta,
+                                 FechaMod = a.FechaMod
+                             }).ToList();
+            return promocion;
+        }
         #endregion
 
         #region Tabla Promocion Paquete
@@ -3322,6 +3378,18 @@ namespace TDA.DataLayer
         public List<PromocionPaquetes> SelectPromocionPaquete()
         {
             var promos = (from a in _context.PromocionPaquete
+                          select new PromocionPaquetes
+                          {
+                              ID = a.ID,
+                              Promocion = a.Promocion,
+                              Paquete = a.Paquete
+                          }).ToList();
+            return promos;
+        }
+        public List<PromocionPaquetes> BuscarPromocionPaqueteID(long? ID)
+        {
+            var promos = (from a in _context.PromocionPaquete
+                          where a.Promocion == ID
                           select new PromocionPaquetes
                           {
                               ID = a.ID,
@@ -3395,6 +3463,18 @@ namespace TDA.DataLayer
                           }).ToList();
             return promos;
         }
+        public List<PromocionTipoProductos> BuscarPromocionTipoProductoID(long? ID)
+        {
+            var promos = (from a in _context.PromocionTipoProducto
+                          where a.Promocion == ID
+                          select new PromocionTipoProductos
+                          {
+                              ID = a.ID,
+                              Promocion = a.Promocion,
+                              TipoProducto = a.TipoProducto
+                          }).ToList();
+            return promos;
+        }
         #endregion
 
         #region Tabla Promocion Producto
@@ -3452,6 +3532,18 @@ namespace TDA.DataLayer
         public List<PromocionProductos> SelectPromocionProducto()
         {
             var promos = (from a in _context.PromocionProducto
+                          select new PromocionProductos
+                          {
+                              ID = a.ID,
+                              Promocion = a.Promocion,
+                              Producto = a.Producto
+                          }).ToList();
+            return promos;
+        }
+        public List<PromocionProductos> BuscarPromocionProductoID(long? ID)
+        {
+            var promos = (from a in _context.PromocionProducto
+                          where a.Promocion == ID
                           select new PromocionProductos
                           {
                               ID = a.ID,
@@ -3523,6 +3615,18 @@ namespace TDA.DataLayer
                                 Promocion = a.Promocion,
                                 GrupoCliente = a.GrupoCliente
                             }).ToList();
+            return promos;
+        }
+        public List<PromocionGrupoClientes> BuscarPromocionGrupoClienteID(long? ID)
+        {
+            var promos = (from a in _context.PromocionTipoCliente
+                          where a.Promocion == ID
+                          select new PromocionGrupoClientes
+                          {
+                              ID = a.ID,
+                              Promocion = a.Promocion,
+                              GrupoCliente = a.GrupoCliente
+                          }).ToList();
             return promos;
         }
         #endregion

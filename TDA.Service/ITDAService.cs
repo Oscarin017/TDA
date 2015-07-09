@@ -249,6 +249,8 @@ namespace TDA.Service
         Resultado DeletePaqueteDia(PaqueteDias pqd);
         [OperationContract]
         List<PaqueteDias> SelectPaqueteDia();
+        [OperationContract]
+        List<PaqueteDias> BuscarPaqueteDiaID(long? ID);
         #endregion
 
         #region Tabla Paquete Grupo Cliente
@@ -258,6 +260,8 @@ namespace TDA.Service
         Resultado DeletePaqueteGrupoCliente(PaqueteGrupoClientes pgc);
         [OperationContract]
         List<PaqueteGrupoClientes> SelectPaqueteGrupoCliente();
+        [OperationContract]
+        List<PaqueteGrupoClientes> BuscarPaqueteGrupoClienteID(long? ID);
         #endregion
 
         #region Tabla Paquete Producto
@@ -267,6 +271,8 @@ namespace TDA.Service
         Resultado DeletePaqueteProducto(PaqueteProductos ppr);
         [OperationContract]
         List<PaqueteProductos> SelectPaqueteProducto();
+        [OperationContract]
+        List<PaqueteProductos> BuscarPaqueteProductoID(long? ID);
         #endregion
 
         #region Tabla Promocion
@@ -287,6 +293,8 @@ namespace TDA.Service
         Resultado DeletePromocionDia(PromocionDias prd);
         [OperationContract]
         List<PromocionDias> SelectPromocionDia();
+        [OperationContract]
+        List<PromocionDias> BuscarPromocionDiaID(long? ID);
         #endregion
 
         #region Tabla Promocion Paquete
@@ -296,6 +304,8 @@ namespace TDA.Service
         Resultado DeletePromocionPaquete(PromocionPaquetes prp);
         [OperationContract]
         List<PromocionPaquetes> SelectPromocionPaquete();
+        [OperationContract]
+        List<PromocionPaquetes> BuscarPromocionPaqueteID(long? ID);
         #endregion
 
         #region Tabla Promocion Tipo Producto
@@ -305,6 +315,8 @@ namespace TDA.Service
         Resultado DeletePromocionTipoProducto(PromocionTipoProductos ptp);
         [OperationContract]
         List<PromocionTipoProductos> SelectPromocionTipoProducto();
+        [OperationContract]
+        List<PromocionTipoProductos> BuscarPromocionTipoProductoID(long? ID);
         #endregion
 
         #region Tabla Promocion Producto 
@@ -314,6 +326,8 @@ namespace TDA.Service
         Resultado DeletePromocionProducto(PromocionProductos ppr);
         [OperationContract]
         List<PromocionProductos> SelectPromocionProducto();
+        [OperationContract]
+        List<PromocionProductos> BuscarPromocionProductoID(long? ID);
         #endregion
 
         #region Tabla Promocion Grupo Cliente
@@ -323,6 +337,8 @@ namespace TDA.Service
         Resultado DeletePromocionGrupoCliente(PromocionGrupoClientes ppr);
         [OperationContract]
         List<PromocionGrupoClientes> SelectPromocionGrupoCliente();
+        [OperationContract]
+        List<PromocionGrupoClientes> BuscarPromocionGrupoClienteID(long? ID);
         #endregion
 
         #region Tabla Venta

@@ -416,6 +416,10 @@ namespace TDA.Service
         {
             return _dataBaseTool.SelectPaqueteDia();
         }
+        public List<PaqueteDias> BuscarPaqueteDiaID(long? ID)
+        {
+            return _dataBaseTool.BuscarPaqueteDiaID(ID);
+        }
         #endregion
 
         #region Tabla Paquete Grupo Cliente
@@ -431,6 +435,10 @@ namespace TDA.Service
         {
             return _dataBaseTool.SelectPaqueteGrupoCliente();
         }
+        public List<PaqueteGrupoClientes> BuscarPaqueteGrupoClienteID(long? ID)
+        {
+            return _dataBaseTool.BuscarPaqueteGrupoClienteID(ID);
+        }
         #endregion
 
         #region Tabla Paquete Producto
@@ -445,6 +453,10 @@ namespace TDA.Service
         public List<PaqueteProductos> SelectPaqueteProducto()
         {
             return _dataBaseTool.SelectPaqueteProducto();
+        }
+        public List<PaqueteProductos> BuscarPaqueteProductoID(long? ID)
+        {
+            return _dataBaseTool.BuscarPaqueteProductoID(ID);
         }
         #endregion
 
@@ -480,6 +492,10 @@ namespace TDA.Service
         {
             return _dataBaseTool.SelectPromocionDia();
         }
+        public List<PromocionDias> BuscarPromocionDiaID(long? ID)
+        {
+            return _dataBaseTool.BuscarPromocionDiaID(ID);
+        }
         #endregion
 
         #region Tabla Promocion Paquete
@@ -494,6 +510,10 @@ namespace TDA.Service
         public List<PromocionPaquetes> SelectPromocionPaquete()
         {
             return _dataBaseTool.SelectPromocionPaquete();
+        }
+        public List<PromocionPaquetes> BuscarPromocionPaqueteID(long? ID)
+        {
+            return _dataBaseTool.BuscarPromocionPaqueteID(ID);
         }
         #endregion
 
@@ -510,6 +530,10 @@ namespace TDA.Service
         {
             return _dataBaseTool.SelectPromocionTipoProducto();
         }
+        public List<PromocionTipoProductos> BuscarPromocionTipoProductoID(long? ID)
+        {
+            return _dataBaseTool.BuscarPromocionTipoProductoID(ID);
+        }
         #endregion
         
         #region Tabla Promocion Producto
@@ -525,6 +549,10 @@ namespace TDA.Service
         {
             return _dataBaseTool.SelectPromocionProducto();
         }
+        public List<PromocionProductos> BuscarPromocionProductoID(long? ID)
+        {
+            return _dataBaseTool.BuscarPromocionProductoID(ID);
+        }
         #endregion
 
         #region Tabla Promocion Grupo Cliente
@@ -539,6 +567,10 @@ namespace TDA.Service
         public List<PromocionGrupoClientes> SelectPromocionGrupoCliente()
         {
             return _dataBaseTool.SelectPromocionGrupoCliente();
+        }
+        public List<PromocionGrupoClientes> BuscarPromocionGrupoClienteID(long? ID)
+        {
+            return _dataBaseTool.BuscarPromocionGrupoClienteID(ID);
         }
         #endregion
 

@@ -33,6 +33,8 @@ namespace TDA.Entities
         [DataMember]
         public bool? Servicio { get; set; }
         [DataMember]
+        public decimal? IVA { get; set; }
+        [DataMember]
         public bool? IVAExcento { get; set; }
         [DataMember]
         public long? TipoProducto { get; set; }

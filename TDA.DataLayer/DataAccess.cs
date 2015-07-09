@@ -1953,6 +1953,7 @@ namespace TDA.DataLayer
                     Codigo = pro.Codigo,
                     Descripcion = pro.Descripcion,
                     PrecioVenta = pro.PrecioVenta,
+                    IVA = pro.IVA,
                     PrecioCompra = pro.PrecioCompra,
                     Observaciones = pro.Observaciones,
                     IVAExcencto = pro.IVAExcento,
@@ -2000,6 +2001,7 @@ namespace TDA.DataLayer
             prodb.Descripcion = pro.Descripcion;
             prodb.PrecioVenta = pro.PrecioVenta;
             prodb.PrecioCompra = pro.PrecioCompra;
+            prodb.IVA = pro.IVA;
             prodb.IVAExcencto = pro.IVAExcento;
             prodb.Observaciones = pro.Observaciones;
             prodb.Servicio = pro.Servicio;
@@ -2076,6 +2078,7 @@ namespace TDA.DataLayer
                                    PrecioVenta = a.PrecioVenta,
                                    PrecioCompra = a.PrecioCompra,
                                    Observaciones = a.Observaciones,
+                                   IVA = a.IVA,
                                    Servicio = a.Servicio,
                                    IVAExcento = a.IVAExcencto,
                                    TipoProducto = a.TipoProducto,
@@ -2108,6 +2111,7 @@ namespace TDA.DataLayer
                                  PrecioCompra = a.PrecioCompra,
                                  Observaciones = a.Observaciones,
                                  Servicio = a.Servicio,
+                                 IVA = a.IVA,
                                  IVAExcento = a.IVAExcencto,
                                  TipoProducto = a.TipoProducto,
                                  Proveedor = a.Proveedor,

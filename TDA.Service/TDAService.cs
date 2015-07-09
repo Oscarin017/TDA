@@ -234,6 +234,10 @@ namespace TDA.Service
         {
             return _dataBaseTool.BuscarEmpleadoID(ID);
         }
+        public List<string> SelectCiudadEmpleado(long? ID)
+        {
+            return _dataBaseTool.SelectCiudadEmpleado(ID);
+        }
         #endregion
 
         #region Tabla  Vehiculo
@@ -275,6 +279,10 @@ namespace TDA.Service
         public List<Proveedores> BuscarProveedorID(long? ID)
         {
             return _dataBaseTool.BuscarProveedorID(ID);
+        }
+        public List<string> SelectCiudadProveedor(long? ID)
+        {
+            return _dataBaseTool.SelectCiudadProveedor(ID);
         }
         #endregion
 
@@ -380,7 +388,10 @@ namespace TDA.Service
         {
             return _dataBaseTool.BuscarClienteID(ID);
         }
-
+        public List<string> SelectCiudadCliente(long? ID)
+        {
+            return _dataBaseTool.SelectCiudadCliente(ID);
+        }
         #endregion
 
         #region Tabla Paquete 

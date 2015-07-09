@@ -141,6 +141,8 @@ namespace TDA.Service
         List<Empleados> SelectEmpleado(Empleados emp);
         [OperationContract]
         List<Empleados> BuscarEmpleadoID(long? ID);
+        [OperationContract]
+        List<string> SelectCiudadEmpleado(long? ID);
         #endregion
 
         #region Tabla Vehiculo
@@ -165,6 +167,8 @@ namespace TDA.Service
         List<Proveedores> SelectProveedor(Proveedores pro);
         [OperationContract]
         List<Proveedores> BuscarProveedorID(long? ID);
+        [OperationContract]
+        List<string> SelectCiudadProveedor(long? ID);
         #endregion
 
         #region Tabla Dia
@@ -229,6 +233,8 @@ namespace TDA.Service
         List<Clientes> SelectCliente(Clientes cli);
         [OperationContract]
         List<Clientes> BuscarClienteID(long? ID);
+        [OperationContract]
+        List<string> SelectCiudadCliente(long? ID);
         #endregion
 
         #region Tabla Paquete

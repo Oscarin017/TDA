@@ -16,7 +16,6 @@ namespace TDA.DataLayer
     {
         public long ID { get; set; }
         public string Nombre { get; set; }
-        public Nullable<decimal> Valor { get; set; }
         public Nullable<bool> Activo { get; set; }
     }
 }

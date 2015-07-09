@@ -19,7 +19,6 @@ namespace TDA.DataLayer
                          {
                              ID = a.ID,
                              Nombre = a.Nombre,
-                             Valor = a.Valor,
                              Activo = a.Activo
                          }).ToList();
             return conf;
@@ -1939,7 +1938,7 @@ namespace TDA.DataLayer
         }
         #endregion
         
-        #region Tabla Prodcuto
+        #region Tabla Producto
         public Resultado InsertProducto(Productos pro)
         {
             Resultado resultado = new Resultado();
@@ -2081,6 +2080,8 @@ namespace TDA.DataLayer
                                    IVAExcento = a.IVAExcencto,
                                    TipoProducto = a.TipoProducto,
                                    Proveedor = a.Proveedor,
+                                   ProveedorNombre = b.Nombre + " " + b.Apellido + " " + b.Apellido2,
+                                   TipoProductoNombre = c.Nombre,
                                    UsuarioAlta = a.UsuarioAlta,
                                    UsuarioMod = a.UsuarioMod,
                                    FechaAlta = a.FechaAlta,

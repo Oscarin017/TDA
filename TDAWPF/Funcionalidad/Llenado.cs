@@ -131,6 +131,36 @@ namespace TDAWPF.Funcionalidad
             }
         }
 
+        public static void cargarCBTipoProducto(TipoProductos tp, Controles.ComboBoxI cb)
+        {
+            TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
+            var resultado = tda.SelectTipoProducto(tp);
+            tda.Close();
+            var ordenado = resultado.OrderBy(TipoProductos => TipoProductos.Nombre);
+            foreach (var r in ordenado)
+            {
+                ComboBoxItem cbi = new ComboBoxItem();
+                cbi.Uid = r.ID.ToString();
+                cbi.Content = r.Nombre;
+                cb.Items.Add(cbi);
+            }
+        }
+
+        public static void cargarCBProveedor(Proveedores p, Controles.ComboBoxI cb)
+        {
+            TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
+            var resultado = tda.SelectProveedor(p);
+            tda.Close();
+            var ordenado = resultado.OrderBy(Proveedores => Proveedores.RFC);
+            foreach (var r in ordenado)
+            {
+                ComboBoxItem cbi = new ComboBoxItem();
+                cbi.Uid = r.ID.ToString();
+                cbi.Content = r.Nombre + " " + r.Apellido + " " + r.Apellido2;
+                cb.Items.Add(cbi);
+            }
+        }
+
         public static void seleccionarDefaultPais(Controles.ComboBoxI cb)
         {
             foreach (ComboBoxItem cbi in cb.Items)
@@ -256,6 +286,36 @@ namespace TDAWPF.Funcionalidad
                 ComboBoxItem cbi = new ComboBoxItem();
                 cbi.Uid = r.ID.ToString();
                 cbi.Content = r.Nombre;
+                cb.Items.Add(cbi);
+            }
+        }
+
+        public static void cargarCBTipoProducto(TipoProductos tp, Controles.ComboBoxS cb)
+        {
+            TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
+            var resultado = tda.SelectTipoProducto(tp);
+            tda.Close();
+            var ordenado = resultado.OrderBy(TipoProductos => TipoProductos.Nombre);
+            foreach (var r in ordenado)
+            {
+                ComboBoxItem cbi = new ComboBoxItem();
+                cbi.Uid = r.ID.ToString();
+                cbi.Content = r.Nombre;
+                cb.Items.Add(cbi);
+            }
+        }
+
+        public static void cargarCBProveedor(Proveedores p, Controles.ComboBoxS cb)
+        {
+            TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
+            var resultado = tda.SelectProveedor(p);
+            tda.Close();
+            var ordenado = resultado.OrderBy(Proveedores => Proveedores.RFC);
+            foreach (var r in ordenado)
+            {
+                ComboBoxItem cbi = new ComboBoxItem();
+                cbi.Uid = r.ID.ToString();
+                cbi.Content = r.Nombre + " " + r.Apellido + " " + r.Apellido2;
                 cb.Items.Add(cbi);
             }
         }

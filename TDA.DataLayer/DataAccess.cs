@@ -1539,6 +1539,14 @@ namespace TDA.DataLayer
             
             
         }
+        public List<string> SelectCiudadEmpleado(long? est)
+        {
+            var ciudades = (from a in _context.Empleado
+                            where a.Estado == est
+                            select a.Ciudad
+                            ).ToList();
+            return ciudades;
+        }
         public List<Empleados> BuscarEmpleadoID(long? ID)
         {
             var empleados = (from a in _context.Empleado
@@ -1889,6 +1897,14 @@ namespace TDA.DataLayer
             proveedores = proveedores.Where(p => pro.Estado < 0 || p.Estado == pro.Estado).ToList();
             proveedores = proveedores.Where(p => String.IsNullOrEmpty(pro.Ciudad) || p.Ciudad.Contains(pro.Ciudad)).ToList();
             return proveedores;
+        }
+        public List<string> SelectCiudadProveedor(long? est)
+        {
+            var ciudades = (from a in _context.Proveedor
+                            where a.Estado == est
+                            select a.Ciudad
+                            ).ToList();
+            return ciudades;
         }
         public List<Proveedores> BuscarProveedorID(long? ID)
         {
@@ -2670,6 +2686,14 @@ namespace TDA.DataLayer
             clientes = clientes.Where(p => string.IsNullOrWhiteSpace(cli.Ciudad) || p.Ciudad.Contains(cli.Ciudad)).ToList();
             return clientes;
         }
+        public List<string> SelectCiudadCliente(long? est)
+        {
+            var ciudades = (from a in _context.Cliente
+                            where a.Estado == est
+                            select a.Ciudad
+                            ).ToList();
+            return ciudades;
+        }
         public List<Clientes> BuscarClienteID(long? ID)
         {
             var clientes = (from a in _context.Cliente
@@ -3079,7 +3103,7 @@ namespace TDA.DataLayer
             return paquetes;
         }
         #endregion
-        //*************************************************** TODO \\\\\\\\\/////////
+        
         #region Tabla Promocion 
         public Resultado InsertPromocion(Promociones pro)
         {

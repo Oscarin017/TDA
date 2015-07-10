@@ -62,7 +62,6 @@ namespace TDAWPF.Layouts
         private void dg_Loaded(object sender, RoutedEventArgs e)
         {
             Llenado.cargarCBPais(new Paises(), cbPais);
-            Llenado.cargarCBEstado(new Estados(), cbEstado);
             Llenado.cargarCBGrupoCliente(new GrupoClientes(), cbGrupoCliente);
             cargarGrid(new Clientes());
             Llenado.seleccionarDefaultPais(cbPais);
@@ -81,6 +80,11 @@ namespace TDAWPF.Layouts
             {
                 c.Estado = Convert.ToInt64(cbi1.Uid);
             }
+            ComboBoxItem cbi2 = (ComboBoxItem)cbCiudad.SelectedItem;
+            if (cbCiudad.SelectedIndex != 0)
+            {
+                c.Ciudad = cbi2.Content.ToString();
+            }
             if (!txtNombre.PlaceHolder)
             {
                 c.Nombre = txtNombre.Text;
@@ -89,10 +93,10 @@ namespace TDAWPF.Layouts
             {
                 c.RFC = txtRFC.Text;
             }
-            ComboBoxItem cbi2 = new ComboBoxItem();
+            ComboBoxItem cbi3 = (ComboBoxItem)cbGrupoCliente.SelectedItem;
             if (cbGrupoCliente.SelectedIndex != 0)
             {
-                c.GrupoCliente = Convert.ToInt64(cbi2.Uid);  
+                c.GrupoCliente = Convert.ToInt64(cbi3.Uid);  
             }
             cargarGrid(c);
         }
@@ -129,7 +133,22 @@ namespace TDAWPF.Layouts
             if (this.IsLoaded)
             {
                 Llenado.cargarCBEstado(es, cbEstado);
+                Llenado.cargarCBCiudadCliente(Convert.ToInt64(es.Pais), 0, cbCiudad);
             }        
+        }
+
+        private void cbEstado_SelectionChanged(object sender, EventArgs e)
+        {
+            Estados es = new Estados();
+            ComboBoxItem cbi = (ComboBoxItem)cbEstado.SelectedItem;
+            if (cbEstado.SelectedIndex > 0)
+            {
+                es.ID = Convert.ToInt64(cbi.Uid);
+            }
+            if (this.IsLoaded)
+            {
+                Llenado.cargarCBCiudadCliente(Convert.ToInt64(es.Pais), Convert.ToInt64(es.ID), cbCiudad);
+            }
         }
     }
 }

@@ -12,7 +12,7 @@ namespace TDA.Service
 {
     [ServiceContract]
     public interface ITDAService
-    {
+    {        
         #region Tabla Configuraciones
         [OperationContract]
         List<Configuraciones> SelectConfiguracion();
@@ -78,6 +78,16 @@ namespace TDA.Service
         List<Estados> BuscarEstadoID(long ID);
         #endregion
 
+        #region Tabla Ciudad
+        [OperationContract]
+        List<string> SelectCiudadCliente(long lPais, long lEstado);
+        [OperationContract]
+        List<string> SelectCiudadEmpleado(long lPais, long lEstado);
+        [OperationContract]
+        List<string> SelectCiudadProveedor(long lPais, long lEstado);
+
+        #endregion
+
         #region Tabla Marca
         [OperationContract]
         Resultado InsertMarca(Marcas mar);
@@ -141,8 +151,6 @@ namespace TDA.Service
         List<Empleados> SelectEmpleado(Empleados emp);
         [OperationContract]
         List<Empleados> BuscarEmpleadoID(long? ID);
-        [OperationContract]
-        List<string> SelectCiudadEmpleado(long? ID);
         #endregion
 
         #region Tabla Vehiculo
@@ -167,8 +175,6 @@ namespace TDA.Service
         List<Proveedores> SelectProveedor(Proveedores pro);
         [OperationContract]
         List<Proveedores> BuscarProveedorID(long? ID);
-        [OperationContract]
-        List<string> SelectCiudadProveedor(long? ID);
         #endregion
 
         #region Tabla Dia
@@ -233,8 +239,6 @@ namespace TDA.Service
         List<Clientes> SelectCliente(Clientes cli);
         [OperationContract]
         List<Clientes> BuscarClienteID(long? ID);
-        [OperationContract]
-        List<string> SelectCiudadCliente(long? ID);
         #endregion
 
         #region Tabla Paquete

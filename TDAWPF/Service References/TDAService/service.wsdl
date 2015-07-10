@@ -12,8 +12,21 @@
       <xsd:import namespace="http://tempuri.org/" />
       <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import namespace="http://schemas.datacontract.org/2004/07/TDA.Entities" />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
+  <wsdl:message name="ITDAService_InsertLog_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertLog" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_InsertLog_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertLogResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_SelectLog_InputMessage">
+    <wsdl:part name="parameters" element="tns:SelectLog" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_SelectLog_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SelectLogResponse" />
+  </wsdl:message>
   <wsdl:message name="ITDAService_SelectConfiguracion_InputMessage">
     <wsdl:part name="parameters" element="tns:SelectConfiguracion" />
   </wsdl:message>
@@ -127,6 +140,24 @@
   </wsdl:message>
   <wsdl:message name="ITDAService_BuscarEstadoID_OutputMessage">
     <wsdl:part name="parameters" element="tns:BuscarEstadoIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_SelectCiudadCliente_InputMessage">
+    <wsdl:part name="parameters" element="tns:SelectCiudadCliente" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_SelectCiudadCliente_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SelectCiudadClienteResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_SelectCiudadEmpleado_InputMessage">
+    <wsdl:part name="parameters" element="tns:SelectCiudadEmpleado" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_SelectCiudadEmpleado_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SelectCiudadEmpleadoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_SelectCiudadProveedor_InputMessage">
+    <wsdl:part name="parameters" element="tns:SelectCiudadProveedor" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_SelectCiudadProveedor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SelectCiudadProveedorResponse" />
   </wsdl:message>
   <wsdl:message name="ITDAService_InsertMarca_InputMessage">
     <wsdl:part name="parameters" element="tns:InsertMarca" />
@@ -764,19 +795,15 @@
   <wsdl:message name="ITDAService_SelectVentaDia_OutputMessage">
     <wsdl:part name="parameters" element="tns:SelectVentaDiaResponse" />
   </wsdl:message>
-  <wsdl:message name="ITDAService_InsertLog_InputMessage">
-    <wsdl:part name="parameters" element="tns:InsertLog" />
-  </wsdl:message>
-  <wsdl:message name="ITDAService_InsertLog_OutputMessage">
-    <wsdl:part name="parameters" element="tns:InsertLogResponse" />
-  </wsdl:message>
-  <wsdl:message name="ITDAService_SelectLog_InputMessage">
-    <wsdl:part name="parameters" element="tns:SelectLog" />
-  </wsdl:message>
-  <wsdl:message name="ITDAService_SelectLog_OutputMessage">
-    <wsdl:part name="parameters" element="tns:SelectLogResponse" />
-  </wsdl:message>
   <wsdl:portType name="ITDAService">
+    <wsdl:operation name="InsertLog">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/InsertLog" message="tns:ITDAService_InsertLog_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/InsertLogResponse" message="tns:ITDAService_InsertLog_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectLog">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/SelectLog" message="tns:ITDAService_SelectLog_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/SelectLogResponse" message="tns:ITDAService_SelectLog_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="SelectConfiguracion">
       <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/SelectConfiguracion" message="tns:ITDAService_SelectConfiguracion_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/SelectConfiguracionResponse" message="tns:ITDAService_SelectConfiguracion_OutputMessage" />
@@ -852,6 +879,18 @@
     <wsdl:operation name="BuscarEstadoID">
       <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/BuscarEstadoID" message="tns:ITDAService_BuscarEstadoID_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/BuscarEstadoIDResponse" message="tns:ITDAService_BuscarEstadoID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectCiudadCliente">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/SelectCiudadCliente" message="tns:ITDAService_SelectCiudadCliente_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/SelectCiudadClienteResponse" message="tns:ITDAService_SelectCiudadCliente_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectCiudadEmpleado">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/SelectCiudadEmpleado" message="tns:ITDAService_SelectCiudadEmpleado_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/SelectCiudadEmpleadoResponse" message="tns:ITDAService_SelectCiudadEmpleado_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectCiudadProveedor">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/SelectCiudadProveedor" message="tns:ITDAService_SelectCiudadProveedor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/SelectCiudadProveedorResponse" message="tns:ITDAService_SelectCiudadProveedor_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="InsertMarca">
       <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/InsertMarca" message="tns:ITDAService_InsertMarca_InputMessage" />
@@ -1277,18 +1316,28 @@
       <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/SelectVentaDia" message="tns:ITDAService_SelectVentaDia_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/SelectVentaDiaResponse" message="tns:ITDAService_SelectVentaDia_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="InsertLog">
-      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/InsertLog" message="tns:ITDAService_InsertLog_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/InsertLogResponse" message="tns:ITDAService_InsertLog_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="SelectLog">
-      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/SelectLog" message="tns:ITDAService_SelectLog_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/SelectLogResponse" message="tns:ITDAService_SelectLog_OutputMessage" />
-    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_ITDAService" type="tns:ITDAService">
     <wsp:PolicyReference URI="#BasicHttpBinding_ITDAService_policy" />
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="InsertLog">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/InsertLog" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectLog">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/SelectLog" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="SelectConfiguracion">
       <soap:operation soapAction="http://tempuri.org/ITDAService/SelectConfiguracion" style="document" />
       <wsdl:input>
@@ -1453,6 +1502,33 @@
     </wsdl:operation>
     <wsdl:operation name="BuscarEstadoID">
       <soap:operation soapAction="http://tempuri.org/ITDAService/BuscarEstadoID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectCiudadCliente">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/SelectCiudadCliente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectCiudadEmpleado">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/SelectCiudadEmpleado" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectCiudadProveedor">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/SelectCiudadProveedor" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -2407,24 +2483,6 @@
     </wsdl:operation>
     <wsdl:operation name="SelectVentaDia">
       <soap:operation soapAction="http://tempuri.org/ITDAService/SelectVentaDia" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="InsertLog">
-      <soap:operation soapAction="http://tempuri.org/ITDAService/InsertLog" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="SelectLog">
-      <soap:operation soapAction="http://tempuri.org/ITDAService/SelectLog" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

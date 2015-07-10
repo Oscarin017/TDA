@@ -11,6 +11,7 @@ namespace TDA.Service
     class TDAService : ITDAService
     {
         private DataLayer.DataAccess _dataBaseTool = new DataLayer.DataAccess();
+
         #region Tabla Configuraciones
         public List<Configuraciones> SelectConfiguracion()
         {
@@ -118,6 +119,23 @@ namespace TDA.Service
         public List<Estados> BuscarEstadoID(long ID)
         {
             return _dataBaseTool.BuscarEstadoID(ID);
+        }
+        #endregion
+
+        #region Tabla Ciudad        
+        public List<string> SelectCiudadCliente(long lPais, long lEstado)
+        {
+            return _dataBaseTool.SelectCiudadCliente(lPais, lEstado);
+        }
+
+        public List<string> SelectCiudadEmpleado(long lPais, long lEstado)
+        {
+            return _dataBaseTool.SelectCiudadEmpleado(lPais, lEstado);
+        }
+
+        public List<string> SelectCiudadProveedor(long lPais, long lEstado)
+        {
+            return _dataBaseTool.SelectCiudadProveedor(lPais, lEstado);
         }
         #endregion
 
@@ -234,10 +252,6 @@ namespace TDA.Service
         {
             return _dataBaseTool.BuscarEmpleadoID(ID);
         }
-        public List<string> SelectCiudadEmpleado(long? ID)
-        {
-            return _dataBaseTool.SelectCiudadEmpleado(ID);
-        }
         #endregion
 
         #region Tabla  Vehiculo
@@ -279,10 +293,6 @@ namespace TDA.Service
         public List<Proveedores> BuscarProveedorID(long? ID)
         {
             return _dataBaseTool.BuscarProveedorID(ID);
-        }
-        public List<string> SelectCiudadProveedor(long? ID)
-        {
-            return _dataBaseTool.SelectCiudadProveedor(ID);
         }
         #endregion
 
@@ -387,10 +397,6 @@ namespace TDA.Service
         public List<Clientes> BuscarClienteID(long? ID)
         {
             return _dataBaseTool.BuscarClienteID(ID);
-        }
-        public List<string> SelectCiudadCliente(long? ID)
-        {
-            return _dataBaseTool.SelectCiudadCliente(ID);
         }
         #endregion
 

@@ -91,7 +91,7 @@ namespace TDAWPF.Popups
                         cbEmpleado.SelectedIndex = Convert.ToInt32(r.Empleado);
                         rbEmpleado.IsChecked = true;
                     }
-                    else if (r.Empleado == null) ;
+                    else if (r.Empleado == null)
                     {
                         txtEmail.Text = r.Email;
                         rbFuera.IsChecked = true;

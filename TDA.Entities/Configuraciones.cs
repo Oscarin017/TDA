@@ -15,8 +15,6 @@ namespace TDA.Entities
         [DataMember]
         public string Nombre { get; set; }
         [DataMember]
-        public decimal? Valor { get; set; }
-        [DataMember]
         public bool? Activo { get; set; }
     }
 }

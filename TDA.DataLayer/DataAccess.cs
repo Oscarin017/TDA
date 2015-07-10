@@ -685,6 +685,141 @@ namespace TDA.DataLayer
 
         #endregion
 
+        #region Ciudad
+        public List<string> SelectCiudadCliente(long lPais, long lEstado)
+        {            
+            if (lPais == null)
+            { 
+                lPais = 0;
+            }
+            if(lEstado == null)
+            {
+                lEstado = 0;            
+            }
+            var ciudades = (from a in _context.Pais
+                            join b in _context.Estado on a.ID equals b.Pais
+                            join c in _context.Cliente on b.ID equals c.Estado
+                            orderby c.Ciudad
+                            select c.Ciudad).ToList();
+            if (lPais > 0 && lEstado > 0)
+            {
+                ciudades = (from a in _context.Pais
+                            join b in _context.Estado on a.ID equals b.Pais
+                            join c in _context.Cliente on b.ID equals c.Estado
+                            orderby c.Ciudad
+                            where a.ID == lPais && c.Estado == lEstado
+                            select c.Ciudad).ToList();
+            }
+            else if (lPais > 0 && lEstado == 0)
+            {
+                ciudades = (from a in _context.Pais
+                            join b in _context.Estado on a.ID equals b.Pais
+                            join c in _context.Cliente on b.ID equals c.Estado
+                            orderby c.Ciudad
+                            where a.ID == lPais
+                            select c.Ciudad).ToList();
+            }
+            else if (lPais == 0 && lEstado > 0)
+            {
+                ciudades = (from a in _context.Pais
+                            join b in _context.Estado on a.ID equals b.Pais
+                            join c in _context.Cliente on b.ID equals c.Estado
+                            orderby c.Ciudad
+                            where c.Estado == lEstado
+                            select c.Ciudad).ToList();
+            }
+            return ciudades;
+        }
+        public List<string> SelectCiudadEmpleado(long lPais, long lEstado)
+        {
+            if (lPais == null)
+            {
+                lPais = 0;
+            }
+            if (lEstado == null)
+            {
+                lEstado = 0;
+            }
+            var ciudades = (from a in _context.Pais
+                            join b in _context.Estado on a.ID equals b.Pais
+                            join c in _context.Empleado on b.ID equals c.Estado
+                            orderby c.Ciudad
+                            select c.Ciudad).ToList();
+            if (lPais > 0 && lEstado > 0)
+            {
+                ciudades = (from a in _context.Pais
+                            join b in _context.Estado on a.ID equals b.Pais
+                            join c in _context.Empleado on b.ID equals c.Estado
+                            orderby c.Ciudad
+                            where a.ID == lPais && c.Estado == lEstado
+                            select c.Ciudad).ToList();
+            }
+            else if (lPais > 0 && lEstado == 0)
+            {
+                ciudades = (from a in _context.Pais
+                            join b in _context.Estado on a.ID equals b.Pais
+                            join c in _context.Empleado on b.ID equals c.Estado
+                            orderby c.Ciudad
+                            where a.ID == lPais
+                            select c.Ciudad).ToList();
+            }
+            else if (lPais == 0 && lEstado > 0)
+            {
+                ciudades = (from a in _context.Pais
+                            join b in _context.Estado on a.ID equals b.Pais
+                            join c in _context.Empleado on b.ID equals c.Estado
+                            orderby c.Ciudad
+                            where c.Estado == lEstado
+                            select c.Ciudad).ToList();
+            }
+            return ciudades;
+        }
+        public List<string> SelectCiudadProveedor(long lPais, long lEstado)
+        {
+            if (lPais == null)
+            {
+                lPais = 0;
+            }
+            if (lEstado == null)
+            {
+                lEstado = 0;
+            }
+            var ciudades = (from a in _context.Pais
+                            join b in _context.Estado on a.ID equals b.Pais
+                            join c in _context.Proveedor on b.ID equals c.Estado
+                            orderby c.Ciudad
+                            select c.Ciudad).ToList();
+            if (lPais > 0 && lEstado > 0)
+            {
+                ciudades = (from a in _context.Pais
+                            join b in _context.Estado on a.ID equals b.Pais
+                            join c in _context.Proveedor on b.ID equals c.Estado
+                            orderby c.Ciudad
+                            where a.ID == lPais && c.Estado == lEstado
+                            select c.Ciudad).ToList();
+            }
+            else if (lPais > 0 && lEstado == 0)
+            {
+                ciudades = (from a in _context.Pais
+                            join b in _context.Estado on a.ID equals b.Pais
+                            join c in _context.Proveedor on b.ID equals c.Estado
+                            orderby c.Ciudad
+                            where a.ID == lPais
+                            select c.Ciudad).ToList();
+            }
+            else if (lPais == 0 && lEstado > 0)
+            {
+                ciudades = (from a in _context.Pais
+                            join b in _context.Estado on a.ID equals b.Pais
+                            join c in _context.Proveedor on b.ID equals c.Estado
+                            orderby c.Ciudad
+                            where c.Estado == lEstado
+                            select c.Ciudad).ToList();
+            }
+            return ciudades;
+        }
+        #endregion
+
         #region Tabla Marca
         public Resultado InsertMarca(Marcas mar)
         {
@@ -1510,7 +1645,7 @@ namespace TDA.DataLayer
                                  Apellido2 = a.Apellido2,
                                  Calle = a.Calle,
                                  NumeroInterior = a.NumeroInterior,
-                                 NumeroExterior = a.NumeroInterior,
+                                 NumeroExterior = a.NumeroExterior,
                                  Colonia = a.Colonia,
                                  CP = a.CP,
                                  Localidad = a.Localidad,
@@ -1534,18 +1669,8 @@ namespace TDA.DataLayer
             empleados = empleados.Where(p => emp.Pais < 0 || p.Pais == emp.Pais).ToList();
             empleados = empleados.Where(p => emp.Estado < 0 || p.Estado == emp.Estado).ToList();
             empleados = empleados.Where(p => string.IsNullOrWhiteSpace(emp.Ciudad) || p.Ciudad.Contains(emp.Ciudad)).ToList();
-            return empleados;
-            
-            
-        }
-        public List<string> SelectCiudadEmpleado(long? est)
-        {
-            var ciudades = (from a in _context.Empleado
-                            where a.Estado == est
-                            select a.Ciudad
-                            ).ToList();
-            return ciudades;
-        }
+            return empleados;          
+        }      
         public List<Empleados> BuscarEmpleadoID(long? ID)
         {
             var empleados = (from a in _context.Empleado
@@ -1560,7 +1685,7 @@ namespace TDA.DataLayer
                                  Apellido2 = a.Apellido2,
                                  Calle = a.Calle,
                                  NumeroInterior = a.NumeroInterior,
-                                 NumeroExterior = a.NumeroInterior,
+                                 NumeroExterior = a.NumeroExterior,
                                  Colonia = a.Colonia,
                                  CP = a.CP,
                                  Localidad = a.Localidad,
@@ -1579,8 +1704,7 @@ namespace TDA.DataLayer
                                  Pais = b.Pais
                              }).ToList();
             return empleados;
-        }
-        
+        }    
         #endregion
         
         #region Tabla Vehiculo 
@@ -1897,14 +2021,6 @@ namespace TDA.DataLayer
             proveedores = proveedores.Where(p => String.IsNullOrEmpty(pro.Ciudad) || p.Ciudad.Contains(pro.Ciudad)).ToList();
             return proveedores;
         }
-        public List<string> SelectCiudadProveedor(long? est)
-        {
-            var ciudades = (from a in _context.Proveedor
-                            where a.Estado == est
-                            select a.Ciudad
-                            ).ToList();
-            return ciudades;
-        }
         public List<Proveedores> BuscarProveedorID(long? ID)
         {
             var proveedores = (from a in _context.Proveedor
@@ -2068,8 +2184,9 @@ namespace TDA.DataLayer
         public List<Productos> SelectProducto(Productos pro)
         {
             var productos = (from a in _context.Producto
-                             join b in _context.Proveedor on a.Proveedor equals b.ID
+                             join b in _context.Proveedor on a.Proveedor equals b.ID into JoinProveedor
                              join c in _context.TipoProducto on a.TipoProducto equals c.ID
+                             from b in JoinProveedor.DefaultIfEmpty()
                                select new Productos
                                {
                                    ID = a.ID,
@@ -2078,12 +2195,14 @@ namespace TDA.DataLayer
                                    PrecioVenta = a.PrecioVenta,
                                    PrecioCompra = a.PrecioCompra,
                                    Observaciones = a.Observaciones,
-                                   IVA = a.IVA,
-                                   Servicio = a.Servicio,
                                    IVAExcento = a.IVAExcencto,
                                    TipoProducto = a.TipoProducto,
                                    Proveedor = a.Proveedor,
-                                   ProveedorNombre = b.Nombre + " " + b.Apellido + " " + b.Apellido2,
+                                   ProveedorNombre = b.Nombre,
+                                   IVA = a.IVA,
+                                   Servicio = a.Servicio,
+                                   ProveedorApellido = b.Apellido,
+                                   ProveedorApellido2 = b.Apellido2,
                                    TipoProductoNombre = c.Nombre,
                                    UsuarioAlta = a.UsuarioAlta,
                                    UsuarioMod = a.UsuarioMod,
@@ -2099,8 +2218,9 @@ namespace TDA.DataLayer
         public List<Productos> BuscarProductoID(long? ID)
         {
             var productos = (from a in _context.Producto
-                             join b in _context.Proveedor on a.Proveedor equals b.ID
+                             join b in _context.Proveedor on a.Proveedor equals b.ID into JoinProveedor
                              join c in _context.TipoProducto on a.TipoProducto equals c.ID
+                             from b in JoinProveedor.DefaultIfEmpty()
                              where a.ID == ID
                              select new Productos
                              {
@@ -2115,6 +2235,7 @@ namespace TDA.DataLayer
                                  IVAExcento = a.IVAExcencto,
                                  TipoProducto = a.TipoProducto,
                                  Proveedor = a.Proveedor,
+                                 ProveedorNombre = b.Nombre + " " + b.Apellido + " " + b.Apellido2,
                                  UsuarioAlta = a.UsuarioAlta,
                                  UsuarioMod = a.UsuarioMod,
                                  FechaAlta = a.FechaAlta,
@@ -2690,14 +2811,6 @@ namespace TDA.DataLayer
             clientes = clientes.Where(p => cli.Estado < 0 || p.Estado == cli.Estado).ToList();
             clientes = clientes.Where(p => string.IsNullOrWhiteSpace(cli.Ciudad) || p.Ciudad.Contains(cli.Ciudad)).ToList();
             return clientes;
-        }
-        public List<string> SelectCiudadCliente(long? est)
-        {
-            var ciudades = (from a in _context.Cliente
-                            where a.Estado == est
-                            select a.Ciudad
-                            ).ToList();
-            return ciudades;
         }
         public List<Clientes> BuscarClienteID(long? ID)
         {

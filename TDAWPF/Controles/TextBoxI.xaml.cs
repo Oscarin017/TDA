@@ -41,6 +41,12 @@ namespace TDAWPF.Controles
             set { bPlaceHolder = value; }
         }
 
+        public bool IsReadOnly
+        {
+            get { return tb.IsReadOnly; }
+            set { tb.IsReadOnly = value; }
+        }
+
         private void tb_GotFocus(object sender, RoutedEventArgs e)
         {
             if(sPlaceHolcer == tb.Text)

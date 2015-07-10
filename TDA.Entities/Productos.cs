@@ -43,6 +43,10 @@ namespace TDA.Entities
         [DataMember]
         public string ProveedorNombre { get; set; }
         [DataMember]
+        public string ProveedorApellido { get; set; }
+        [DataMember]
+        public string ProveedorApellido2 { get; set; }
+        [DataMember]
         public long? Proveedor { get; set; }
         [DataMember]
         public long? UsuarioAlta { get; set; }

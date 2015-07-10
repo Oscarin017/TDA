@@ -50,7 +50,7 @@
                 <RowDefinition Height="65"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Button x:Name="btnSearch" Grid.Column="0" Grid.Row="0">
+            <Button x:Name="btnSearch" Grid.Column="0" Grid.Row="0" Click="btnSearch_Click">
                 <Button.Background>
                     <ImageBrush ImageSource="../Imagenes/0135-search.png"/>
                 </Button.Background>
@@ -66,8 +66,9 @@
                 <DataGridTextColumn Header="ID" Binding="{Binding ID}" Visibility="Collapsed" />
                 <DataGridTextColumn Header="Codigo" Binding="{Binding Codigo}" Width="*" FontWeight="Normal" />
                 <DataGridTextColumn Header="Descripcion" Binding="{Binding Descripcion}" Width="3*" FontWeight="Normal" />
+                <DataGridTextColumn Header="Tipo" Binding="{Binding TipoProductoNombre}" Width="2*" FontWeight="Normal" />
                 <DataGridTextColumn Header="Proveedor" Binding="{Binding ProveedorNombre}" Width="2*" FontWeight="Normal" />
-                <DataGridTextColumn Header="Precio" Binding="{Binding Precio}" Width="*" FontWeight="Normal" />
+                <DataGridTextColumn Header="Precio" Binding="{Binding PrecioVenta}" Width="*" FontWeight="Normal" />
                 <DataGridTemplateColumn MinWidth="30">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>

@@ -54,7 +54,6 @@ namespace TDAWPF.Layouts
         private void dg_Loaded(object sender, RoutedEventArgs e)
         {
             Llenado.cargarCBPais(new Paises(), cbPais);
-            Llenado.cargarCBEstado(new Estados(), cbEstado);
             cargarGrid(new Empleados());
             Llenado.seleccionarDefaultPais(cbPais);
         }
@@ -120,7 +119,22 @@ namespace TDAWPF.Layouts
             if (this.IsLoaded)
             {
                 Llenado.cargarCBEstado(es, cbEstado);
-            }                                            
-        }    
+                Llenado.cargarCBCiudadEmpleado(Convert.ToInt64(es.Pais), 0, cbCiudad);
+            }
+        }
+
+        private void cbEstado_SelectionChanged(object sender, EventArgs e)
+        {
+            Estados es = new Estados();
+            ComboBoxItem cbi = (ComboBoxItem)cbEstado.SelectedItem;
+            if (cbEstado.SelectedIndex > 0)
+            {
+                es.ID = Convert.ToInt64(cbi.Uid);
+            }
+            if (this.IsLoaded)
+            {
+                Llenado.cargarCBCiudadEmpleado(Convert.ToInt64(es.Pais), Convert.ToInt64(es.ID), cbCiudad);
+            }
+        }
     }
 }

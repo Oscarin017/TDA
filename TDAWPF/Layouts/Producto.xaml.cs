@@ -37,13 +37,15 @@ namespace TDAWPF.Layouts
             var ordenado = resultado.OrderBy(Productos => Productos.Codigo);
             lstProducto.Clear();
             foreach (var r in ordenado)
-            {                
+            {
+                string sNombre = r.ProveedorNombre + " " + r.ProveedorApellido + " " + r.ProveedorApellido2;
                 lstProducto.Add(new Productos()
                 {
                     ID = r.ID,
                     Codigo = r.Codigo,
                     Descripcion = r.Descripcion,
-                    ProveedorNombre = r.ProveedorNombre,
+                    TipoProductoNombre = r.TipoProductoNombre,
+                    ProveedorNombre = sNombre,
                     PrecioVenta = r.PrecioVenta
                 });
             }

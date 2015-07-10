@@ -39,7 +39,7 @@ namespace TDAWPF.Funcionalidad
                 cbi.Content = r.Nombre;
                 cb.Items.Add(cbi);
             }
-        }
+        }        
 
         public static void cargarCBMarca(Marcas m, Controles.ComboBoxI cb)
         {
@@ -210,6 +210,48 @@ namespace TDAWPF.Funcionalidad
                 ComboBoxItem cbi = new ComboBoxItem();
                 cbi.Uid = r.ID.ToString();
                 cbi.Content = r.Nombre;
+                cb.Items.Add(cbi);
+            }
+        }
+
+        public static void cargarCBCiudadCliente(long lPais, long lEstado, Controles.ComboBoxS cb)
+        {
+            cb.Clear();
+            TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
+            var resultado = tda.SelectCiudadCliente(lPais, lEstado);
+            tda.Close();
+            foreach (var r in resultado)
+            {
+                ComboBoxItem cbi = new ComboBoxItem();
+                cbi.Content = r;
+                cb.Items.Add(cbi);
+            }
+        }
+
+        public static void cargarCBCiudadEmpleado(long lPais, long lEstado, Controles.ComboBoxS cb)
+        {
+            cb.Clear();
+            TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
+            var resultado = tda.SelectCiudadEmpleado(lPais, lEstado);
+            tda.Close();
+            foreach (var r in resultado)
+            {
+                ComboBoxItem cbi = new ComboBoxItem();
+                cbi.Content = r;
+                cb.Items.Add(cbi);
+            }
+        }
+
+        public static void cargarCBCiudadProveedor(long lPais, long lEstado, Controles.ComboBoxS cb)
+        {
+            cb.Clear();
+            TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
+            var resultado = tda.SelectCiudadProveedor(lPais, lEstado);
+            tda.Close();
+            foreach (var r in resultado)
+            {
+                ComboBoxItem cbi = new ComboBoxItem();
+                cbi.Content = r;
                 cb.Items.Add(cbi);
             }
         }

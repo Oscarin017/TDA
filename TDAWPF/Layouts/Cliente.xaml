@@ -34,12 +34,12 @@
                 <ComboBoxItem IsSelected="True" Content="Selecciona GrupoCliente"/>
             </Controles:ComboBoxS.Items>
         </Controles:ComboBoxS>
-        <Controles:ComboBoxS x:Name="cbPais" Grid.Column="1" Grid.Row="3">
+        <Controles:ComboBoxS x:Name="cbPais" Grid.Column="1" Grid.Row="3" SelectionChanged="cbPais_SelectionChanged">
             <Controles:ComboBoxS.Items>
                 <ComboBoxItem IsSelected="True" Content="Selecciona Pais"/>
             </Controles:ComboBoxS.Items>
         </Controles:ComboBoxS>
-        <Controles:ComboBoxS x:Name="cbEstado" Grid.Column="3" Grid.Row="3">
+        <Controles:ComboBoxS x:Name="cbEstado" Grid.Column="3" Grid.Row="3" SelectionChanged="cbEstado_SelectionChanged">
             <Controles:ComboBoxS.Items>
                 <ComboBoxItem IsSelected="True" Content="Selecciona Estado"/>
             </Controles:ComboBoxS.Items>

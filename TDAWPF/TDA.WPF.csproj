@@ -424,6 +424,9 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <None Include="Service References\TDAService\Arrays.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\TDAService\service.wsdl" />
     <None Include="Service References\TDAService\service.xsd">
       <SubType>Designer</SubType>

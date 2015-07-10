@@ -30,7 +30,11 @@ namespace TDA.Entities
         [DataMember]
         public int? Tipo { get; set; }
         [DataMember]
+        public string TipoNombre { get; set; }
+        [DataMember]
         public decimal? Valor { get; set; }
+        [DataMember]
+        public string ValorNombre { get; set; }
         [DataMember]
         public int? Comprar { get; set; }
         [DataMember]

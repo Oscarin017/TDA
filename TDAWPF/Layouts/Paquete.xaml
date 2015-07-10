@@ -67,7 +67,7 @@
                 <DataGridTextColumn Header="Descripcion" Binding="{Binding Descripcion}" Width="2*" FontWeight="Normal" />
                 <DataGridTextColumn Header="Precio" Binding="{Binding Precio}" Width="*" FontWeight="Normal" />
                 <DataGridTextColumn Header="Grupo Cliente" Binding="{Binding ParaGrupoClienteNombre}" Width="*" FontWeight="Normal" />
-                <DataGridTextColumn Header="Grupo Cliente" Binding="{Binding ActivoNombre}" Width="*" FontWeight="Normal" />
+                <DataGridTextColumn Header="Activo" Binding="{Binding ActivoNombre}" Width="*" FontWeight="Normal" />
                 <DataGridTemplateColumn MinWidth="30">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>

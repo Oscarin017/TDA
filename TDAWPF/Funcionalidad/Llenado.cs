@@ -161,6 +161,26 @@ namespace TDAWPF.Funcionalidad
             }
         }
 
+        public static void cargarCBTipoPromocion(Controles.ComboBoxI cb)
+        {
+            ComboBoxItem cbi = new ComboBoxItem();
+            cbi.Uid = "1";
+            cbi.Uid = "Precio Fijo";
+            ComboBoxItem cbi1 = new ComboBoxItem();
+            cbi.Uid = "2";
+            cbi.Uid = "Porcentaje";
+            ComboBoxItem cbi2 = new ComboBoxItem();
+            cbi.Uid = "3";
+            cbi.Uid = "Cantidad";
+            ComboBoxItem cbi3 = new ComboBoxItem();
+            cbi.Uid = "4";
+            cbi.Uid = "Pagas X Llevas";
+            cb.Items.Add(cbi);
+            cb.Items.Add(cbi1);
+            cb.Items.Add(cbi2);
+            cb.Items.Add(cbi3);
+        }
+
         public static void seleccionarDefaultPais(Controles.ComboBoxI cb)
         {
             foreach (ComboBoxItem cbi in cb.Items)
@@ -362,6 +382,26 @@ namespace TDAWPF.Funcionalidad
             }
         }
 
+        public static void cargarCBTipoPromocion(Controles.ComboBoxS cb)
+        {
+            ComboBoxItem cbi = new ComboBoxItem();
+            cbi.Uid = "1";
+            cbi.Uid = "Precio Fijo";
+            ComboBoxItem cbi1 = new ComboBoxItem();
+            cbi.Uid = "2";
+            cbi.Uid = "Porcentaje";
+            ComboBoxItem cbi2 = new ComboBoxItem();
+            cbi.Uid = "3";
+            cbi.Uid = "Cantidad";
+            ComboBoxItem cbi3 = new ComboBoxItem();
+            cbi.Uid = "4";
+            cbi.Uid = "Pagas X Llevas";
+            cb.Items.Add(cbi);
+            cb.Items.Add(cbi1);
+            cb.Items.Add(cbi2);
+            cb.Items.Add(cbi3);
+        }
+
         public static void seleccionarDefaultPais(Controles.ComboBoxS cb)
         {
             foreach (ComboBoxItem cbi in cb.Items)
@@ -373,5 +413,33 @@ namespace TDAWPF.Funcionalidad
             }
         }
         
+        public static string tipoPromocion(int iPromocion)
+        {
+            string sTipo = "";
+            switch(iPromocion)
+            {
+                case 1:
+                    {
+                        sTipo = "Precio Fijo";
+                        break;
+                    }
+                case 2:
+                    {
+                        sTipo = "Porcentaje";
+                        break;
+                    }
+                case 3:
+                    {
+                        sTipo = "Cantidad";
+                        break;
+                    }
+                case 4:
+                    {
+                        sTipo = "Pagas X Llevas";
+                        break;
+                    }
+            }
+            return sTipo;
+        }
     }
 }

@@ -464,6 +464,7 @@
   <xs:complexType name="Paquetes">
     <xs:sequence>
       <xs:element minOccurs="0" name="Activo" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ActivoNombre" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="FechaAlta" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="FechaFin" nillable="true" type="xs:dateTime" />
@@ -472,6 +473,7 @@
       <xs:element minOccurs="0" name="ID" type="xs:long" />
       <xs:element minOccurs="0" name="Nombre" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ParaGrupoCliente" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ParaGrupoClienteNombre" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Precio" nillable="true" type="xs:decimal" />
       <xs:element minOccurs="0" name="UsuarioAlta" nillable="true" type="xs:long" />
       <xs:element minOccurs="0" name="UsuarioMod" nillable="true" type="xs:long" />
@@ -533,6 +535,7 @@
   <xs:complexType name="Promociones">
     <xs:sequence>
       <xs:element minOccurs="0" name="Activo" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ActivoNombre" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Comprar" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="FechaAlta" nillable="true" type="xs:dateTime" />
@@ -543,13 +546,19 @@
       <xs:element minOccurs="0" name="Nombre" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Pagar" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="ParaGrupoCliente" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ParaGrupoClienteNombre" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ParaPaquete" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ParaPaqueteNombre" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ParaProducto" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ParaProductoNombre" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ParaTipoProducto" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ParaTipoProductoNombre" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Tipo" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="TipoNombre" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="UsuarioAlta" nillable="true" type="xs:long" />
       <xs:element minOccurs="0" name="UsuarioMod" nillable="true" type="xs:long" />
       <xs:element minOccurs="0" name="Valor" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="ValorNombre" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Promociones" nillable="true" type="tns:Promociones" />

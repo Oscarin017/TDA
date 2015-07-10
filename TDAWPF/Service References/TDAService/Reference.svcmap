@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="bc7a334a-b9c1-495d-b682-7cee43161d58" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="b1a517c6-4fa2-4797-8ba3-dd762316aae1" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -22,11 +22,11 @@
     <MetadataSource Address="http://localhost:9000/TDAServicio/mex" Protocol="mex" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="6c26d90d-976b-43d6-962a-62119d6a89a8" SourceId="1" SourceUrl="http://localhost:9000/TDAServicio/mex" />
-    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="50647272-e187-40c1-9c74-ce3af7cfc575" SourceId="1" SourceUrl="http://localhost:9000/TDAServicio/mex" />
-    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="2431f5c5-5a57-450f-b8c0-2772f251d887" SourceId="1" SourceUrl="http://localhost:9000/TDAServicio/mex" />
-    <MetadataFile FileName="TDA.Entities.xsd" MetadataType="Schema" ID="7bddf0dd-454c-4dd6-b430-f22442c79019" SourceId="1" SourceUrl="http://localhost:9000/TDAServicio/mex" />
-    <MetadataFile FileName="Arrays.xsd" MetadataType="Schema" ID="a47f299e-f293-4034-b822-41cebcda5176" SourceId="1" SourceUrl="http://localhost:9000/TDAServicio/mex" />
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="21a1a5c8-3157-4c7f-955d-5d669418eee8" SourceId="1" SourceUrl="http://localhost:9000/TDAServicio/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="8977a415-a2f3-4b33-8ca2-0b0a5a9db2f6" SourceId="1" SourceUrl="http://localhost:9000/TDAServicio/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="eae05367-fa5f-40ca-ac54-3c1388b1406c" SourceId="1" SourceUrl="http://localhost:9000/TDAServicio/mex" />
+    <MetadataFile FileName="TDA.Entities.xsd" MetadataType="Schema" ID="2029fcf9-6c32-4393-a47e-3f4075b95d14" SourceId="1" SourceUrl="http://localhost:9000/TDAServicio/mex" />
+    <MetadataFile FileName="Arrays.xsd" MetadataType="Schema" ID="2e3b9d6d-8ffe-4d7b-b2cf-e42c04791043" SourceId="1" SourceUrl="http://localhost:9000/TDAServicio/mex" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

@@ -44,7 +44,7 @@ namespace TDAWPF.Layouts
                     sPara = "SI";
                 }
                 string sActivo = "NO";
-                if(r.Activo == true || (r.FechaInicio <= DateTime.Now && r.FechaFin >= DateTime.Now))
+                if(r.Activo == true && r.FechaInicio <= DateTime.Now && r.FechaFin >= DateTime.Now)
                 {
                     sActivo = "SI";                
                 }

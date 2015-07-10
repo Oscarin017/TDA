@@ -73,6 +73,42 @@
                 </Button.Background>
             </Button>
         </Grid>
-        <DataGrid x:Name="dg" Width="960" VerticalAlignment="Top" HorizontalAlignment="Center" Grid.ColumnSpan="7" Grid.Column="1" Grid.Row="5"/>
+        <DataGrid x:Name="dg" Width="960" VerticalAlignment="Top" HorizontalAlignment="Center" Grid.ColumnSpan="7" Grid.Column="1" Grid.Row="5
+                  " AutoGenerateColumns="False" FontFamily="Arial" FontSize="14" FontWeight="Bold" IsReadOnly="True" Loaded="dg_Loaded" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding ID}" Visibility="Collapsed" />
+                <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}" Width="*" FontWeight="Normal" />
+                <DataGridTextColumn Header="Descripcion" Binding="{Binding Descripcion}" Width="2*" FontWeight="Normal" />
+                <DataGridTextColumn Header="Tipo" Binding="{Binding TipoNombre}" Width="*" FontWeight="Normal" />
+                <DataGridTextColumn Header="Valor" Binding="{Binding ValorNombre}" Width="*" FontWeight="Normal" />
+                <DataGridTextColumn Header="Paquete" Binding="{Binding ParaPaqueteNombre}" Width="*" FontWeight="Normal" />
+                <DataGridTextColumn Header="Tipo Producto" Binding="{Binding ParaTipoProductoNombre}" Width="1.5*" FontWeight="Normal" />
+                <DataGridTextColumn Header="Producto" Binding="{Binding ParaProductoNombre}" Width="*" FontWeight="Normal" />
+                <DataGridTextColumn Header="Grupo Cliente" Binding="{Binding ParaGrupoClienteNombre}" Width="1.5*" FontWeight="Normal" />
+                <DataGridTextColumn Header="Activa" Binding="{Binding ActivoNombre}" Width="*" FontWeight="Normal" />
+                <DataGridTemplateColumn MinWidth="30">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="btnModificar" Width="20" Height="20" Click="btnModificar_Click">
+                                <Button.Background>
+                                    <ImageBrush ImageSource="../Imagenes/Pencil-mini.png"/>
+                                </Button.Background>
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn MinWidth="30">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="btnEliminar" Width="20" Height="20" Click="btnEliminar_Click">
+                                <Button.Background>
+                                    <ImageBrush ImageSource="../Imagenes/0173-bin.png"/>
+                                </Button.Background>
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Page>

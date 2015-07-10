@@ -2950,7 +2950,13 @@ namespace TDA.DataLayer
                                 FechaAlta = a.FechaAlta,
                                 FechaMod = a.FechaMod
                             }).ToList();
-            
+            foreach(Paquetes p in paquetes)
+            {
+                if (p.FechaFin != null && p.FechaFin < DateTime.Now)
+                {
+                    p.Activo = false;
+                }
+            }
             paquetes = paquetes.Where(p => string.IsNullOrWhiteSpace(paq.Nombre) || p.Nombre.Contains(paq.Nombre)|| p.Descripcion.Contains(paq.Nombre) ).ToList();
             paquetes = paquetes.Where(p => paq.Activo == null || p.Activo == paq.Activo).ToList();
             paquetes = paquetes.Where(p => paq.ParaGrupoCliente == null || p.ParaGrupoCliente == paq.ParaGrupoCliente).ToList();
@@ -3341,6 +3347,13 @@ namespace TDA.DataLayer
                                 FechaAlta = a.FechaAlta,
                                 FechaMod = a.FechaMod
                             }).ToList();
+            foreach (Promociones p in promociones)
+            {
+                if (p.FechaFin != null && p.FechaFin < DateTime.Now)
+                {
+                    p.Activo = false;
+                }
+            }
             promociones = promociones.Where(p => pro.Tipo < 0 || p.Tipo == pro.Tipo ).ToList();
             promociones = promociones.Where(p => string.IsNullOrWhiteSpace(pro.Nombre) || p.Tipo == pro.Tipo).ToList();
             promociones = promociones.Where(p => pro.Activo == null || p.Activo == pro.Activo).ToList();

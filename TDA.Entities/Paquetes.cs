@@ -28,7 +28,11 @@ namespace TDA.Entities
         [DataMember]
         public bool? ParaGrupoCliente { get; set; }
         [DataMember]
+        public string ParaGrupoClienteNombre { get; set; }
+        [DataMember]
         public bool? Activo { get; set; }
+        [DataMember]
+        public string ActivoNombre { get; set; }
         [DataMember]
         public DateTime? FechaInicio { get; set; }
         [DataMember]

@@ -38,6 +38,8 @@ namespace TDA.Entities
         [DataMember]
         public bool? Activo { get; set; }
         [DataMember]
+        public string ActivoNombre { get; set; }
+        [DataMember]
         public DateTime? FechaInicio { get; set; }
         [DataMember]
         public DateTime? FechaFin { get; set; }
@@ -49,6 +51,14 @@ namespace TDA.Entities
         public bool? ParaProducto { get; set; }
         [DataMember]
         public bool? ParaGrupoCliente { get; set; }
+        [DataMember]
+        public string ParaPaqueteNombre { get; set; }
+        [DataMember]
+        public string ParaTipoProductoNombre { get; set; }
+        [DataMember]
+        public string ParaProductoNombre { get; set; }
+        [DataMember]
+        public string ParaGrupoClienteNombre { get; set; }
         [DataMember]
         public long? UsuarioAlta { get; set; }
         [DataMember]

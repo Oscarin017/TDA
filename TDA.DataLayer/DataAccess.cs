@@ -254,7 +254,7 @@ namespace TDA.DataLayer
         {
             var usuarios = (from a in _context.Usuario
                             join b in _context.Rol on a.Rol equals b.ID
-                            where a.Alias.Contains(Alias)
+                            where a.Alias.ToUpper().Contains(Alias.ToUpper())
                             select new Usuarios
                             {
                                 ID = a.ID,
@@ -296,7 +296,7 @@ namespace TDA.DataLayer
         {
             var usuarios = (from a in _context.Usuario
                             join b in _context.Rol on a.Rol equals b.ID
-                            where a.Alias.Contains(Alias) && a.Rol == Rol
+                            where a.Alias.ToUpper().Contains(Alias.ToUpper()) && a.Rol == Rol
                             select new Usuarios
                             {
                                 ID = a.ID,
@@ -477,7 +477,7 @@ namespace TDA.DataLayer
         public List<Paises> BuscarPais(String Nombre)
         {
             var paises = (from a in _context.Pais
-                          where a.Nombre.Contains(Nombre)
+                          where a.Nombre.ToUpper().Contains(Nombre.ToUpper())
                           select new Paises
                           {
                               ID = a.ID,
@@ -632,7 +632,7 @@ namespace TDA.DataLayer
         {
             var estados = (from a in _context.Estado
                            join b in _context.Pais on a.Pais equals b.ID
-                           where a.Nombre.Contains(Nombre)
+                           where a.Nombre.ToUpper().Contains(Nombre.ToUpper())
                            select new Estados
                            {
                                ID = a.ID,
@@ -668,7 +668,7 @@ namespace TDA.DataLayer
         {
             var estados = (from a in _context.Estado
                            join b in _context.Pais on a.Pais equals b.ID
-                           where a.Nombre.Contains(Nombre) && a.Pais == Pais
+                           where a.Nombre.ToUpper().Contains(Nombre.ToUpper()) && a.Pais == Pais
                            select new Estados
                            {
                                ID = a.ID,
@@ -968,7 +968,7 @@ namespace TDA.DataLayer
         public List<Marcas> BuscarMarca(String Nombre)
         {
             var marcas = (from a in _context.Marca
-                          where a.Nombre.Contains(Nombre)
+                          where a.Nombre.ToUpper().Contains(Nombre.ToUpper())
                           select new Marcas
                           {
                               ID = a.ID,
@@ -1140,7 +1140,7 @@ namespace TDA.DataLayer
         {
             var modelos = (from a in _context.Modelo
                            join b in _context.Marca on a.Marca equals b.ID
-                           where a.Nombre.Contains(Nombre)
+                           where a.Nombre.ToUpper().Contains(Nombre.ToUpper())
                            select new Modelos
                            {
                                ID = a.ID,
@@ -1178,7 +1178,7 @@ namespace TDA.DataLayer
         {
             var modelos = (from a in _context.Modelo
                            join b in _context.Marca on a.Marca equals b.ID
-                           where a.Nombre.Contains(Nombre) && a.Marca == Marca
+                           where a.Nombre.ToUpper().Contains(Nombre.ToUpper()) && a.Marca == Marca
                            select new Modelos
                            {
                                ID = a.ID,
@@ -1317,7 +1317,7 @@ namespace TDA.DataLayer
         public List<Colores> BuscarColor(String Nombre)
         {
             var colores = (from a in _context.Color
-                           where a.Nombre.Contains(Nombre)
+                           where a.Nombre.ToUpper().Contains(Nombre.ToUpper())
                            select new Colores
                            {
                                ID = a.ID,
@@ -1488,7 +1488,7 @@ namespace TDA.DataLayer
         public List<TipoProductos> BuscarTipoProducto(String Nombre)
         {
             var tipos = (from a in _context.TipoProducto
-                         where a.Nombre.Contains(Nombre)
+                         where a.Nombre.ToUpper().Contains(Nombre.ToUpper())
                          select new TipoProductos
                          {
                              ID = a.ID,
@@ -1663,12 +1663,13 @@ namespace TDA.DataLayer
                                  FechaMod = a.FechaMod,
                                  Pais = b.Pais
                              }).ToList();
-            empleados = empleados.Where(p => string.IsNullOrWhiteSpace(emp.Nombre) || p.Nombre.Contains(emp.Nombre)).ToList();
-            empleados = empleados.Where(p => string.IsNullOrWhiteSpace(emp.Apellido) || (p.Apellido.Contains(emp.Apellido) || p.Apellido2.Contains(emp.Apellido))).ToList();
-            empleados = empleados.Where(p => string.IsNullOrWhiteSpace(emp.CURP) || p.CURP.Contains(emp.CURP)).ToList();
+            empleados = empleados.Where(p => string.IsNullOrWhiteSpace(emp.Nombre) || p.Nombre.ToUpper().Contains(emp.Nombre.ToUpper())).ToList();
+            empleados = empleados.Where(p => string.IsNullOrWhiteSpace(emp.Apellido) || (p.Apellido.ToUpper().Contains(emp.Apellido.ToUpper()) 
+                || p.Apellido2.ToUpper().Contains(emp.Apellido.ToUpper()))).ToList();
+            empleados = empleados.Where(p => string.IsNullOrWhiteSpace(emp.CURP) || p.CURP.ToUpper().Contains(emp.CURP.ToUpper())).ToList();
             empleados = empleados.Where(p => emp.Pais < 0 || p.Pais == emp.Pais).ToList();
             empleados = empleados.Where(p => emp.Estado < 0 || p.Estado == emp.Estado).ToList();
-            empleados = empleados.Where(p => string.IsNullOrWhiteSpace(emp.Ciudad) || p.Ciudad.Contains(emp.Ciudad)).ToList();
+            empleados = empleados.Where(p => string.IsNullOrWhiteSpace(emp.Ciudad) || p.Ciudad.ToUpper().Contains(emp.Ciudad.ToUpper())).ToList();
             return empleados;          
         }      
         public List<Empleados> BuscarEmpleadoID(long? ID)
@@ -1815,8 +1816,8 @@ namespace TDA.DataLayer
             vehiculos = vehiculos.Where(p => veh.Marca < 0 || p.Marca == veh.Marca).ToList();
             vehiculos = vehiculos.Where(p => veh.Modelo < 0 || p.Modelo == veh.Modelo).ToList();
             vehiculos = vehiculos.Where(p => veh.Ano < 0 || p.Ano == veh.Ano).ToList();
-            vehiculos = vehiculos.Where(p => string.IsNullOrWhiteSpace(veh.Color) || p.Color.Contains(veh.Color)).ToList();
-            vehiculos = vehiculos.Where(p => string.IsNullOrWhiteSpace(veh.NoSerie) || p.NoSerie.Contains(veh.NoSerie)).ToList();
+            vehiculos = vehiculos.Where(p => string.IsNullOrWhiteSpace(veh.Color) || p.Color.ToUpper().Contains(veh.Color.ToUpper())).ToList();
+            vehiculos = vehiculos.Where(p => string.IsNullOrWhiteSpace(veh.NoSerie) || p.NoSerie.ToUpper().Contains(veh.NoSerie.ToUpper())).ToList();
             return vehiculos;
         }
         
@@ -2014,11 +2015,12 @@ namespace TDA.DataLayer
                              FechaAlta = a.FechaAlta,
                              FechaMod = a.FechaMod
                          }).ToList();
-            proveedores = proveedores.Where(p => String.IsNullOrEmpty(pro.Nombre) || p.Nombre.Contains(pro.Nombre)).ToList();
-            proveedores = proveedores.Where(p => String.IsNullOrEmpty(pro.Apellido) || p.Apellido.Contains(pro.Apellido) || p.Apellido2.Contains(pro.Apellido)).ToList();
+            proveedores = proveedores.Where(p => String.IsNullOrEmpty(pro.Nombre) || p.Nombre.ToUpper().Contains(pro.Nombre.ToUpper())).ToList();
+            proveedores = proveedores.Where(p => String.IsNullOrEmpty(pro.Apellido) || p.Apellido.ToUpper().Contains(pro.Apellido.ToUpper()) 
+                || p.Apellido2.ToUpper().Contains(pro.Apellido.ToUpper())).ToList();
             proveedores = proveedores.Where(p => pro.Pais < 0  || p.Pais == pro.Pais).ToList();
             proveedores = proveedores.Where(p => pro.Estado < 0 || p.Estado == pro.Estado).ToList();
-            proveedores = proveedores.Where(p => String.IsNullOrEmpty(pro.Ciudad) || p.Ciudad.Contains(pro.Ciudad)).ToList();
+            proveedores = proveedores.Where(p => String.IsNullOrEmpty(pro.Ciudad) || p.Ciudad.ToUpper().Contains(pro.Ciudad.ToUpper())).ToList();
             return proveedores;
         }
         public List<Proveedores> BuscarProveedorID(long? ID)
@@ -2211,8 +2213,8 @@ namespace TDA.DataLayer
                                }).ToList();
             productos = productos.Where(p => pro.TipoProducto < 0 || p.TipoProducto == pro.TipoProducto ).ToList();
             productos = productos.Where(p => pro.Proveedor < 0 || p.Proveedor == pro.Proveedor).ToList();
-            productos = productos.Where(p => string.IsNullOrWhiteSpace(pro.Codigo) || p.Codigo.Contains(pro.Codigo)).ToList();
-            productos = productos.Where(p => string.IsNullOrWhiteSpace(pro.Descripcion) || p.Descripcion.Contains(pro.Descripcion)).ToList();
+            productos = productos.Where(p => string.IsNullOrWhiteSpace(pro.Codigo) || p.Codigo.ToUpper().Contains(pro.Codigo.ToUpper())).ToList();
+            productos = productos.Where(p => string.IsNullOrWhiteSpace(pro.Descripcion) || p.Descripcion.ToUpper().Contains(pro.Descripcion.ToUpper())).ToList();
             return productos;
         }
         public List<Productos> BuscarProductoID(long? ID)
@@ -2620,7 +2622,7 @@ namespace TDA.DataLayer
         public List<GrupoClientes> BuscarGrupoCliente(String Nombre)
         {
             var grupos = (from a in _context.GrupoCliente
-                          where a.Nombre.Contains(Nombre)
+                          where a.Nombre.ToUpper().Contains(Nombre.ToUpper())
                           select new GrupoClientes
                           {
                               ID = a.ID,
@@ -2804,12 +2806,12 @@ namespace TDA.DataLayer
                               FechaAlta = a.FechaAlta,
                               FechaMod = a.FechaMod
                           }).ToList();
-            clientes = clientes.Where(p => string.IsNullOrWhiteSpace(cli.Nombre) || p.Nombre.Contains(cli.Nombre) ).ToList();
-            clientes = clientes.Where(p => string.IsNullOrWhiteSpace(cli.RFC) || p.RFC.Contains(cli.RFC)).ToList();
+            clientes = clientes.Where(p => string.IsNullOrWhiteSpace(cli.Nombre) || p.Nombre.ToUpper().Contains(cli.Nombre.ToUpper()) ).ToList();
+            clientes = clientes.Where(p => string.IsNullOrWhiteSpace(cli.RFC) || p.RFC.ToUpper().Contains(cli.RFC.ToUpper())).ToList();
             clientes = clientes.Where(p => cli.GrupoCliente < 0 || p.GrupoCliente == cli.GrupoCliente).ToList();
             clientes = clientes.Where(p => cli.Pais < 0 || p.Pais == cli.Pais).ToList();
             clientes = clientes.Where(p => cli.Estado < 0 || p.Estado == cli.Estado).ToList();
-            clientes = clientes.Where(p => string.IsNullOrWhiteSpace(cli.Ciudad) || p.Ciudad.Contains(cli.Ciudad)).ToList();
+            clientes = clientes.Where(p => string.IsNullOrWhiteSpace(cli.Ciudad) || p.Ciudad.ToUpper().Contains(cli.Ciudad.ToUpper())).ToList();
             return clientes;
         }
         public List<Clientes> BuscarClienteID(long? ID)
@@ -2957,7 +2959,8 @@ namespace TDA.DataLayer
                     p.Activo = false;
                 }
             }
-            paquetes = paquetes.Where(p => string.IsNullOrWhiteSpace(paq.Nombre) || p.Nombre.Contains(paq.Nombre)|| p.Descripcion.Contains(paq.Nombre) ).ToList();
+            paquetes = paquetes.Where(p => string.IsNullOrWhiteSpace(paq.Nombre) || p.Nombre.ToUpper().Contains(paq.Nombre.ToUpper())
+                || p.Descripcion.ToUpper().Contains(paq.Nombre.ToUpper()) ).ToList();
             paquetes = paquetes.Where(p => paq.Activo == null || p.Activo == paq.Activo).ToList();
             paquetes = paquetes.Where(p => paq.ParaGrupoCliente == null || p.ParaGrupoCliente == paq.ParaGrupoCliente).ToList();
 
@@ -3355,7 +3358,8 @@ namespace TDA.DataLayer
                 }
             }
             promociones = promociones.Where(p => pro.Tipo < 0 || p.Tipo == pro.Tipo ).ToList();
-            promociones = promociones.Where(p => string.IsNullOrWhiteSpace(pro.Nombre) || p.Nombre.Contains(pro.Nombre)||p.Descripcion.Contains(pro.Nombre)).ToList();
+            promociones = promociones.Where(p => string.IsNullOrWhiteSpace(pro.Nombre) || p.Nombre.ToUpper().Contains(pro.Nombre.ToUpper())
+                ||p.Descripcion.ToUpper().Contains(pro.Nombre.ToUpper())).ToList();
             promociones = promociones.Where(p => pro.Activo == null || p.Activo == pro.Activo).ToList();
             promociones = promociones.Where(p => pro.ParaGrupoCliente == null || p.ParaGrupoCliente == pro.ParaGrupoCliente).ToList();
             promociones = promociones.Where(p => pro.ParaTipoProducto == null || p.ParaTipoProducto == pro.ParaTipoProducto).ToList();

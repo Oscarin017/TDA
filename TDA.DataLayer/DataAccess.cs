@@ -2952,7 +2952,7 @@ namespace TDA.DataLayer
                             }).ToList();
             foreach(Paquetes p in paquetes)
             {
-                if (p.FechaFin != null && p.FechaFin < DateTime.Now)
+                if ((p.FechaFin != null && p.FechaFin < DateTime.Now) && (p.FechaInicio != null && p.FechaInicio > DateTime.Now))
                 {
                     p.Activo = false;
                 }
@@ -3349,7 +3349,7 @@ namespace TDA.DataLayer
                             }).ToList();
             foreach (Promociones p in promociones)
             {
-                if (p.FechaFin != null && p.FechaFin < DateTime.Now)
+                if ((p.FechaFin != null && p.FechaFin < DateTime.Now)&&(p.FechaInicio != null && p.FechaInicio > DateTime.Now))
                 {
                     p.Activo = false;
                 }

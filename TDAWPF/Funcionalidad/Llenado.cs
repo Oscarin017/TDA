@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 using TDA.Entities;
 
@@ -10,6 +11,7 @@ namespace TDAWPF.Funcionalidad
 {
     class Llenado
     {
+        #region Llenado de ComboBoxI
         public static void cargarCBPais(Paises p, Controles.ComboBoxI cb)
         {
             TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
@@ -165,44 +167,24 @@ namespace TDAWPF.Funcionalidad
         {
             ComboBoxItem cbi = new ComboBoxItem();
             cbi.Uid = "1";
-            cbi.Uid = "Precio Fijo";
+            cbi.Content = "Precio Fijo";
             ComboBoxItem cbi1 = new ComboBoxItem();
-            cbi.Uid = "2";
-            cbi.Uid = "Porcentaje";
+            cbi1.Uid = "2";
+            cbi1.Content = "Porcentaje";
             ComboBoxItem cbi2 = new ComboBoxItem();
-            cbi.Uid = "3";
-            cbi.Uid = "Cantidad";
+            cbi2.Uid = "3";
+            cbi2.Content = "Cantidad";
             ComboBoxItem cbi3 = new ComboBoxItem();
-            cbi.Uid = "4";
-            cbi.Uid = "Pagas X Llevas";
+            cbi3.Uid = "4";
+            cbi3.Content = "Pagas X Llevas";
             cb.Items.Add(cbi);
             cb.Items.Add(cbi1);
             cb.Items.Add(cbi2);
             cb.Items.Add(cbi3);
         }
+        #endregion
 
-        public static void seleccionarDefaultPais(Controles.ComboBoxI cb)
-        {
-            foreach (ComboBoxItem cbi in cb.Items)
-            {
-                if (cbi.Content.ToString() == "Mexico")
-                {
-                    cbi.IsSelected = true;
-                }
-            }
-        }
-
-        public static void seleccionarComboBoxUid(string Uid, Controles.ComboBoxI cb)
-        {
-            foreach (ComboBoxItem cbi in cb.Items)
-            {
-                if (cbi.Uid == Uid)
-                {
-                    cbi.IsSelected = true;
-                }
-            }
-        }
-
+        #region Llenado de ComboBoxS
         public static void cargarCBPais(Paises p, Controles.ComboBoxS cb)
         {
             TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
@@ -386,22 +368,24 @@ namespace TDAWPF.Funcionalidad
         {
             ComboBoxItem cbi = new ComboBoxItem();
             cbi.Uid = "1";
-            cbi.Uid = "Precio Fijo";
+            cbi.Content = "Precio Fijo";
             ComboBoxItem cbi1 = new ComboBoxItem();
-            cbi.Uid = "2";
-            cbi.Uid = "Porcentaje";
+            cbi1.Uid = "2";
+            cbi1.Content = "Porcentaje";
             ComboBoxItem cbi2 = new ComboBoxItem();
-            cbi.Uid = "3";
-            cbi.Uid = "Cantidad";
+            cbi2.Uid = "3";
+            cbi2.Content = "Cantidad";
             ComboBoxItem cbi3 = new ComboBoxItem();
-            cbi.Uid = "4";
-            cbi.Uid = "Pagas X Llevas";
+            cbi3.Uid = "4";
+            cbi3.Content = "Pagas X Llevas";
             cb.Items.Add(cbi);
             cb.Items.Add(cbi1);
             cb.Items.Add(cbi2);
             cb.Items.Add(cbi3);
         }
+        #endregion
 
+        #region Selecciones
         public static void seleccionarDefaultPais(Controles.ComboBoxS cb)
         {
             foreach (ComboBoxItem cbi in cb.Items)
@@ -413,6 +397,30 @@ namespace TDAWPF.Funcionalidad
             }
         }
         
+        public static void seleccionarDefaultPais(Controles.ComboBoxI cb)
+        {
+            foreach (ComboBoxItem cbi in cb.Items)
+            {
+                if (cbi.Content.ToString() == "Mexico")
+                {
+                    cbi.IsSelected = true;
+                }
+            }
+        }
+
+        public static void seleccionarComboBoxUid(string Uid, Controles.ComboBoxI cb)
+        {
+            foreach (ComboBoxItem cbi in cb.Items)
+            {
+                if (cbi.Uid == Uid)
+                {
+                    cbi.IsSelected = true;
+                }
+            }
+        }
+        #endregion
+
+        #region Llenado de DataGrids
         public static string tipoPromocion(int iPromocion)
         {
             string sTipo = "";
@@ -441,5 +449,363 @@ namespace TDAWPF.Funcionalidad
             }
             return sTipo;
         }
+        #endregion
+
+        #region Manejo de Dias
+        public static List<PaqueteDias> guardarDiasSeleccionadosPaquete(long lPaquete, CheckBox cb1, CheckBox cb2, CheckBox cb3, CheckBox cb4, CheckBox cb5, CheckBox cb6, CheckBox cb7)
+        {
+            List<PaqueteDias> lstPD = new List<PaqueteDias>();
+            if (cb1.IsChecked == true)
+            {
+                PaqueteDias pd = new PaqueteDias();
+                pd.Paquete = lPaquete;
+                pd.Dia = 1;
+                lstPD.Add(pd);
+            }
+            if (cb2.IsChecked == true)
+            {
+                PaqueteDias pd = new PaqueteDias();
+                pd.Paquete = lPaquete;
+                pd.Dia = 2;
+                lstPD.Add(pd);
+            }
+            if (cb3.IsChecked == true)
+            {
+                PaqueteDias pd = new PaqueteDias();
+                pd.Paquete = lPaquete;
+                pd.Dia = 3;
+                lstPD.Add(pd);
+            }
+            if (cb4.IsChecked == true)
+            {
+                PaqueteDias pd = new PaqueteDias();
+                pd.Paquete = lPaquete;
+                pd.Dia = 4;
+                lstPD.Add(pd);
+            }
+            if (cb5.IsChecked == true)
+            {
+                PaqueteDias pd = new PaqueteDias();
+                pd.Paquete = lPaquete;
+                pd.Dia = 5;
+                lstPD.Add(pd);
+            }
+            if (cb6.IsChecked == true)
+            {
+                PaqueteDias pd = new PaqueteDias();
+                pd.Paquete = lPaquete;
+                pd.Dia = 6;
+                lstPD.Add(pd);
+            }
+            if (cb7.IsChecked == true)
+            {
+                PaqueteDias pd = new PaqueteDias();
+                pd.Paquete = lPaquete;
+                pd.Dia = 7;
+                lstPD.Add(pd);
+            }
+            return lstPD;
+        }
+
+        public static List<PromocionDias> guardarDiasSeleccionadosPromocion(long lPromocion, CheckBox cb1, CheckBox cb2, CheckBox cb3, CheckBox cb4, CheckBox cb5, CheckBox cb6, CheckBox cb7)
+        {
+            List<PromocionDias> lstPD = new List<PromocionDias>();
+            if (cb1.IsChecked == true)
+            {
+                PromocionDias pd = new PromocionDias();
+                pd.Promocion = lPromocion;
+                pd.Dia = 1;
+                lstPD.Add(pd);
+            }
+            if (cb2.IsChecked == true)
+            {
+                PromocionDias pd = new PromocionDias();
+                pd.Promocion = lPromocion;
+                pd.Dia = 2;
+                lstPD.Add(pd);
+            }
+            if (cb3.IsChecked == true)
+            {
+                PromocionDias pd = new PromocionDias();
+                pd.Promocion = lPromocion;
+                pd.Dia = 3;
+                lstPD.Add(pd);
+            }
+            if (cb4.IsChecked == true)
+            {
+                PromocionDias pd = new PromocionDias();
+                pd.Promocion = lPromocion;
+                pd.Dia = 4;
+                lstPD.Add(pd);
+            }
+            if (cb5.IsChecked == true)
+            {
+                PromocionDias pd = new PromocionDias();
+                pd.Promocion = lPromocion;
+                pd.Dia = 5;
+                lstPD.Add(pd);
+            }
+            if (cb6.IsChecked == true)
+            {
+                PromocionDias pd = new PromocionDias();
+                pd.Promocion = lPromocion;
+                pd.Dia = 6;
+                lstPD.Add(pd);
+            }
+            if (cb7.IsChecked == true)
+            {
+                PromocionDias pd = new PromocionDias();
+                pd.Promocion = lPromocion;
+                pd.Dia = 7;
+                lstPD.Add(pd);
+            }
+            return lstPD;
+        }
+
+        public static void mostrarDiasSeleccionados(List<PaqueteDias> lstPD, CheckBox cb1, CheckBox cb2, CheckBox cb3, CheckBox cb4, CheckBox cb5, CheckBox cb6, CheckBox cb7)
+        {
+            cb1.IsChecked = false;
+            cb2.IsChecked = false;
+            cb3.IsChecked = false;
+            cb4.IsChecked = false;
+            cb5.IsChecked = false;
+            cb6.IsChecked = false;
+            cb7 .IsChecked = false;
+            foreach (PaqueteDias pd in lstPD)
+            {
+                switch (pd.Dia)
+                {
+                    case 1:
+                        {
+                            cb1.IsChecked = true;
+                            break;
+                        }
+                    case 2:
+                        {
+                            cb2.IsChecked = true;
+                            break;
+                        }
+                    case 3:
+                        {
+                            cb3.IsChecked = true;
+                            break;
+                        }
+                    case 4:
+                        {
+                            cb4.IsChecked = true;
+                            break;
+                        }
+                    case 5:
+                        {
+                            cb5.IsChecked = true;
+                            break;
+                        }
+                    case 6:
+                        {
+                            cb6.IsChecked = true;
+                            break;
+                        }
+                    case 7:
+                        {
+                            cb7.IsChecked = true;
+                            break;
+                        }
+                }
+            }
+        }
+
+        public static void mostrarDiasSeleccionados(List<PromocionDias> lstPD, CheckBox cb1, CheckBox cb2, CheckBox cb3, CheckBox cb4, CheckBox cb5, CheckBox cb6, CheckBox cb7)
+        {
+            cb1.IsChecked = false;
+            cb2.IsChecked = false;
+            cb3.IsChecked = false;
+            cb4.IsChecked = false;
+            cb5.IsChecked = false;
+            cb6.IsChecked = false;
+            cb7.IsChecked = false;
+            foreach (PromocionDias pd in lstPD)
+            {
+                switch (pd.Dia)
+                {
+                    case 1:
+                        {
+                            cb1.IsChecked = true;
+                            break;
+                        }
+                    case 2:
+                        {
+                            cb2.IsChecked = true;
+                            break;
+                        }
+                    case 3:
+                        {
+                            cb3.IsChecked = true;
+                            break;
+                        }
+                    case 4:
+                        {
+                            cb4.IsChecked = true;
+                            break;
+                        }
+                    case 5:
+                        {
+                            cb5.IsChecked = true;
+                            break;
+                        }
+                    case 6:
+                        {
+                            cb6.IsChecked = true;
+                            break;
+                        }
+                    case 7:
+                        {
+                            cb7.IsChecked = true;
+                            break;
+                        }
+                }
+            }
+        }
+        #endregion
+
+        #region Comparacion de tablas
+        public static List<Productos> compararTabla(List<Productos> lstCompleta, List<Productos> lstTabla)
+        {
+            List<Productos> lstOrdenada = lstCompleta.ToList();
+            foreach (Productos pT in lstTabla)
+            {
+                foreach (Productos pC in lstCompleta)
+                {
+                    if (pC.ID == pT.ID)
+                    {
+                        lstOrdenada.Remove(pC);
+                    }
+                }
+            }
+            return lstOrdenada;
+        }
+
+        public static List<Paquetes> compararTabla(List<Paquetes> lstCompleta, List<Paquetes> lstTabla)
+        {
+            List<Paquetes> lstOrdenada = lstCompleta.ToList();
+            foreach (Paquetes pT in lstTabla)
+            {
+                foreach (Paquetes pC in lstCompleta)
+                {
+                    if (pC.ID == pT.ID)
+                    {
+                        lstOrdenada.Remove(pC);
+                    }
+                }
+            }
+            return lstOrdenada;
+        }
+
+        public static List<TipoProductos> compararTabla(List<TipoProductos> lstCompleta, List<TipoProductos> lstTabla)
+        {
+            List<TipoProductos> lstOrdenada = lstCompleta.ToList();
+            foreach (TipoProductos tpT in lstTabla)
+            {
+                foreach (TipoProductos tpC in lstCompleta)
+                {
+                    if (tpC.ID == tpT.ID)
+                    {
+                        lstOrdenada.Remove(tpC);
+                    }
+                }
+            }
+            return lstOrdenada;
+        }
+
+        public static List<GrupoClientes> compararTabla(List<GrupoClientes> lstCompleta, List<GrupoClientes> lstTabla)
+        {
+            List<GrupoClientes> lstOrdenada = lstCompleta.ToList();
+            foreach (GrupoClientes gcT in lstTabla)
+            {
+                foreach (GrupoClientes gcC in lstCompleta)
+                {
+                    if (gcC.ID == gcT.ID)
+                    {
+                        lstOrdenada.Remove(gcC);
+                    }
+                }
+            }
+            return lstOrdenada;
+        }
+        #endregion
+
+        #region Ordenamiento de tablas
+        public static List<Productos> ordenarTabla(List<Productos> lstP)
+        {
+            List<Productos> lst = lstP.OrderBy(Productos => Productos.Descripcion).ToList();
+            return lst;
+        }
+
+        public static List<Paquetes> ordenarTabla(List<Paquetes> lstP)
+        {
+            List<Paquetes> lst = lstP.OrderBy(Paquetes => Paquetes.Nombre).ToList();
+            return lst;
+        }
+
+        public static List<TipoProductos> ordenarTabla(List<TipoProductos> lstTP)
+        {
+            List<TipoProductos> lst = lstTP.OrderBy(TipoProductos => TipoProductos.Nombre).ToList();
+            return lst;
+        }
+
+        public static List<GrupoClientes> ordenarTabla(List<GrupoClientes> lstGC)
+        {
+            List<GrupoClientes> lst = lstGC.OrderBy(GrupoClientes => GrupoClientes.Nombre).ToList();
+            return lst;
+        }
+        #endregion
+
+        #region Validacion de Popups
+
+        public static bool validacionRFC(string sText, bool Tipo)
+        {
+            bool bValidacion = false;
+            try
+            {
+                if (!Tipo)
+                {
+                    string sNombre = sText.Substring(0, 4);
+                    int iNacimiento = Convert.ToInt32(sText.Substring(4, 6));
+                    if (sText.Length == 13)
+                    {
+                        bValidacion = true;
+                    }
+                }
+                else
+                {
+                    string sNombre = sText.Substring(0, 3);
+                    int iNacimiento = Convert.ToInt32(sText.Substring(3, 6));
+                    if (sText.Length == 12)
+                    {
+                        bValidacion = true;
+                    }
+                }
+            }
+            catch
+            {
+                MessageBox.Show("El RFC es incorrecto. Favor de verificar.");
+            }
+            return bValidacion;
+        }
+
+        public static bool validacionCP(string sCP)
+        {
+            bool bValidacion = false;
+            try
+            {
+                int iCP = Convert.ToInt32(sCP);
+                bValidacion = true;
+            }
+            catch
+            {
+                MessageBox.Show("El CP es incorrecto. Favor de verificar.");
+            }
+            return bValidacion;
+        }
+        #endregion
     }
 }

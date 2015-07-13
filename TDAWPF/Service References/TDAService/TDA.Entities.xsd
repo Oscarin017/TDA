@@ -347,6 +347,7 @@
       <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="FechaAlta" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="FechaMod" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="GridBit" type="xs:boolean" />
       <xs:element minOccurs="0" name="ID" type="xs:long" />
       <xs:element minOccurs="0" name="IVA" nillable="true" type="xs:decimal" />
       <xs:element minOccurs="0" name="IVAExcento" nillable="true" type="xs:boolean" />

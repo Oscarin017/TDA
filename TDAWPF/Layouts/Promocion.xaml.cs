@@ -69,7 +69,7 @@ namespace TDAWPF.Layouts
                     sParaGC = "SI";
                 }
                 string sActivo = "NO";
-                if(r.Activo == true && r.FechaInicio <= DateTime.Now && r.FechaFin >= DateTime.Now)
+                if(r.Activo == true && ((r.FechaInicio <= DateTime.Now && r.FechaFin >= DateTime.Now) || (r.FechaInicio == null && r.FechaFin == null)))
                 {
                     sActivo = "SI";                
                 }
@@ -141,17 +141,17 @@ namespace TDAWPF.Layouts
 
         private void btnModificar_Click(object sender, RoutedEventArgs e)
         {
-            //Promociones r = ((Button)sender).DataContext as Promociones;
-            //long lID = r.ID;
-            //Popups.Promocion w = new Popups.Promocion(lID);
-            //w.ShowDialog();
-            //cargarGrid(new Promociones());
+            Promociones r = ((Button)sender).DataContext as Promociones;
+            long lID = r.ID;
+            Popups.Promocion w = new Popups.Promocion(lID);
+            w.ShowDialog();
+            cargarGrid(new Promociones());
         }
 
         private void btnEliminar_Click(object sender, RoutedEventArgs e)
         {
 
-        }        
+        }      
     }
 }
 

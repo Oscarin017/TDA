@@ -2,7 +2,7 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Promocion" Height="650" Width="800"
-        xmlns:Controles="clr-namespace:TDAWPF.Controles" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize"
+        xmlns:Controles="clr-namespace:TDAWPF.Controles" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" Loaded="Window_Loaded"
         >
     <Grid>
         <Grid.RowDefinitions>
@@ -30,11 +30,12 @@
             <ColumnDefinition Width="75" />
         </Grid.ColumnDefinitions>
         <Controles:TextBoxI x:Name="txtNombre" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Escribe Nombre" Grid.Column="1" Grid.Row="1"/>
-        <Controles:TextBoxI x:Name="txtPrecio" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Escribe Precio" Grid.Column="3" Grid.Row="1"/>
         <Controles:TextBoxD x:Name="txtDescripcion" VerticalAlignment="Bottom" HorizontalAlignment="Center" Text="Escribe Descripcion" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="3"></Controles:TextBoxD>
         <GroupBox Header="Dias de Venta" FontFamily="Arial" FontSize="18" FontWeight="Bold" BorderThickness="3" BorderBrush="Gray" Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="3">
             <Grid>
                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="auto" />
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="auto" />
                     <ColumnDefinition Width="*" />
@@ -80,17 +81,13 @@
                 <Controles:ComboBoxI x:Name="cbTipo" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1" Grid.Row="0" SelectionChanged="cbTipo_SelectionChanged" >
                     <Controles:ComboBoxI.Items>
                         <ComboBoxItem IsSelected="True" Content="Selecciona Tipo"/>
-                        <ComboBoxItem Content="Porcentaje"/>
-                        <ComboBoxItem Content="Cantidad"/>
-                        <ComboBoxItem Content="Precio Fijo"/>
-                        <ComboBoxItem Content="Paga X Lleva"/>
                     </Controles:ComboBoxI.Items>
                 </Controles:ComboBoxI>
                 <Controles:TextBoxI x:Name="txtPorcentaje" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Escribe Porcentaje" Grid.Column="3" Grid.Row="0" Visibility="Collapsed"/>
                 <Controles:TextBoxI x:Name="txtCantidad" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Escribe Cantidad" Grid.Column="3" Grid.Row="0" Visibility="Collapsed"/>
                 <Controles:TextBoxI x:Name="txtPrecioFijo" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Escribe Precio Fijo" Grid.Column="3" Grid.Row="0" Visibility="Collapsed"/>
-                <Controles:TextBoxI x:Name="txtPaga" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Escribe Paga" Grid.Column="1" Grid.Row="2" Visibility="Collapsed"/>
-                <Controles:TextBoxI x:Name="txtLleva" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Escribe Lleva" Grid.Column="3" Grid.Row="2" Visibility="Collapsed"/>
+                <Controles:TextBoxI x:Name="txtCompra" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Escribe Compra" Grid.Column="1" Grid.Row="2" Visibility="Collapsed"/>
+                <Controles:TextBoxI x:Name="txtPaga" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Escribe Paga" Grid.Column="3" Grid.Row="2" Visibility="Collapsed"/>
             </Grid>
         </GroupBox>
         <GroupBox Header="Vigencia" FontFamily="Arial" FontSize="18" FontWeight="Bold" BorderThickness="3" BorderBrush="Gray" Grid.Column="1" Grid.Row="9" Grid.ColumnSpan="3">
@@ -163,7 +160,12 @@
                         <ColumnDefinition Width="275" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <DataGrid Grid.Column="1" Grid.Row="1">
+                    <DataGrid x:Name="dgPA" Grid.Column="1" Grid.Row="1" AutoGenerateColumns="False" FontFamily="Arial" FontSize="14" FontWeight="Bold" IsReadOnly="True">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Binding="{Binding ID}" Visibility="Collapsed" />
+                            <DataGridTextColumn Header="Codigo" Binding="{Binding Codigo}" Width="*" FontWeight="Normal" />
+                            <DataGridTextColumn Header="Descripcion" Binding="{Binding Descripcion}" Width="2*" FontWeight="Normal" />
+                        </DataGrid.Columns>
                     </DataGrid>
                     <Grid Grid.Column="2" Grid.Row="1">
                         <Grid.ColumnDefinitions>
@@ -178,18 +180,23 @@
                             <RowDefinition Height="50" />
                             <RowDefinition Height="2*" />
                         </Grid.RowDefinitions>
-                        <Button x:Name="btnProAdd" Grid.Column="1" Grid.Row="1">
+                        <Button x:Name="btnPAdd" Grid.Column="1" Grid.Row="1" Click="btnPAdd_Click" Visibility="Hidden">
                             <Button.Background>
                                 <ImageBrush ImageSource="../Imagenes/0288-backward2.png"/>
                             </Button.Background>
                         </Button>
-                        <Button x:Name="btnProRemove" Grid.Column="1" Grid.Row="3">
+                        <Button x:Name="btnPRemove" Grid.Column="1" Grid.Row="3" Click="btnPRemove_Click" Visibility="Hidden">
                             <Button.Background>
                                 <ImageBrush ImageSource="../Imagenes/0289-forward3.png"/>
                             </Button.Background>
                         </Button>
                     </Grid>
-                    <DataGrid Grid.Column="3" Grid.Row="1">
+                    <DataGrid x:Name="dgPT" Grid.Column="3" Grid.Row="1" AutoGenerateColumns="False" FontFamily="Arial" FontSize="14" FontWeight="Bold" IsReadOnly="True">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Binding="{Binding ID}" Visibility="Collapsed" />
+                            <DataGridTextColumn Header="Codigo" Binding="{Binding Codigo}" Width="*" FontWeight="Normal" />
+                            <DataGridTextColumn Header="Descripcion" Binding="{Binding Descripcion}" Width="2*" FontWeight="Normal" />
+                        </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
             </TabItem>
@@ -210,7 +217,11 @@
                         <ColumnDefinition Width="275" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <DataGrid Grid.Column="1" Grid.Row="1">
+                    <DataGrid x:Name="dgPaqA" Grid.Column="1" Grid.Row="1" AutoGenerateColumns="False" FontFamily="Arial" FontSize="14" FontWeight="Bold" IsReadOnly="True">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Binding="{Binding ID}" Visibility="Collapsed" />
+                            <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}" Width="*" FontWeight="Normal" />
+                        </DataGrid.Columns>
                     </DataGrid>
                     <Grid Grid.Column="2" Grid.Row="1">
                         <Grid.ColumnDefinitions>
@@ -225,18 +236,22 @@
                             <RowDefinition Height="50" />
                             <RowDefinition Height="2*" />
                         </Grid.RowDefinitions>
-                        <Button x:Name="btnPaqAdd" Grid.Column="1" Grid.Row="1">
+                        <Button x:Name="btnPaqAdd" Grid.Column="1" Grid.Row="1" Click="btnPaqAdd_Click" Visibility="Hidden">
                             <Button.Background>
                                 <ImageBrush ImageSource="../Imagenes/0288-backward2.png"/>
                             </Button.Background>
                         </Button>
-                        <Button x:Name="btnPaqRemove" Grid.Column="1" Grid.Row="3">
+                        <Button x:Name="btnPaqRemove" Grid.Column="1" Grid.Row="3" Click="btnPaqRemove_Click" Visibility="Hidden">
                             <Button.Background>
                                 <ImageBrush ImageSource="../Imagenes/0289-forward3.png"/>
                             </Button.Background>
                         </Button>
                     </Grid>
-                    <DataGrid Grid.Column="3" Grid.Row="1">
+                    <DataGrid x:Name="dgPaqT" Grid.Column="3" Grid.Row="1" AutoGenerateColumns="False" FontFamily="Arial" FontSize="14" FontWeight="Bold" IsReadOnly="True">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Binding="{Binding ID}" Visibility="Collapsed" />
+                            <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}" Width="*" FontWeight="Normal" />
+                        </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
             </TabItem>
@@ -257,7 +272,11 @@
                         <ColumnDefinition Width="275" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <DataGrid Grid.Column="1" Grid.Row="1">
+                    <DataGrid x:Name="dgTPA" Grid.Column="1" Grid.Row="1" AutoGenerateColumns="False" FontFamily="Arial" FontSize="14" FontWeight="Bold" IsReadOnly="True">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Binding="{Binding ID}" Visibility="Collapsed" />
+                            <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}" Width="*" FontWeight="Normal" />
+                        </DataGrid.Columns>
                     </DataGrid>
                     <Grid Grid.Column="2" Grid.Row="1">
                         <Grid.ColumnDefinitions>
@@ -272,18 +291,22 @@
                             <RowDefinition Height="50" />
                             <RowDefinition Height="2*" />
                         </Grid.RowDefinitions>
-                        <Button x:Name="btnTPAdd" Grid.Column="1" Grid.Row="1">
+                        <Button x:Name="btnTPAdd" Grid.Column="1" Grid.Row="1" Click="btnTPAdd_Click" Visibility="Hidden">
                             <Button.Background>
                                 <ImageBrush ImageSource="../Imagenes/0288-backward2.png"/>
                             </Button.Background>
                         </Button>
-                        <Button x:Name="btnTPRemove" Grid.Column="1" Grid.Row="3">
+                        <Button x:Name="btnTPRemove" Grid.Column="1" Grid.Row="3" Click="btnTPRemove_Click" Visibility="Hidden">
                             <Button.Background>
                                 <ImageBrush ImageSource="../Imagenes/0289-forward3.png"/>
                             </Button.Background>
                         </Button>
                     </Grid>
-                    <DataGrid Grid.Column="3" Grid.Row="1">
+                    <DataGrid x:Name="dgTPT" Grid.Column="3" Grid.Row="1" AutoGenerateColumns="False" FontFamily="Arial" FontSize="14" FontWeight="Bold" IsReadOnly="True">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Binding="{Binding ID}" Visibility="Collapsed" />
+                            <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}" Width="*" FontWeight="Normal" />
+                        </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
             </TabItem>
@@ -304,7 +327,11 @@
                         <ColumnDefinition Width="275" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <DataGrid Grid.Column="1" Grid.Row="1">
+                    <DataGrid x:Name="dgGCA" Grid.Column="1" Grid.Row="1" AutoGenerateColumns="False" FontFamily="Arial" FontSize="14" FontWeight="Bold" IsReadOnly="True">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Binding="{Binding ID}" Visibility="Collapsed" />
+                            <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}" Width="*" FontWeight="Normal" />
+                        </DataGrid.Columns>
                     </DataGrid>
                     <Grid Grid.Column="2" Grid.Row="1">
                         <Grid.ColumnDefinitions>
@@ -319,18 +346,22 @@
                             <RowDefinition Height="50" />
                             <RowDefinition Height="2*" />
                         </Grid.RowDefinitions>
-                        <Button x:Name="btnGCAdd" Grid.Column="1" Grid.Row="1">
+                        <Button x:Name="btnGCAdd" Grid.Column="1" Grid.Row="1" Click="btnGCAdd_Click" Visibility="Hidden">
                             <Button.Background>
                                 <ImageBrush ImageSource="../Imagenes/0288-backward2.png"/>
                             </Button.Background>
                         </Button>
-                        <Button x:Name="btnGCRemove" Grid.Column="1" Grid.Row="3">
+                        <Button x:Name="btnGCRemove" Grid.Column="1" Grid.Row="3" Click="btnGCRemove_Click" Visibility="Hidden">
                             <Button.Background>
                                 <ImageBrush ImageSource="../Imagenes/0289-forward3.png"/>
                             </Button.Background>
                         </Button>
                     </Grid>
-                    <DataGrid Grid.Column="3" Grid.Row="1">
+                    <DataGrid x:Name="dgGCT" Grid.Column="3" Grid.Row="1" AutoGenerateColumns="False" FontFamily="Arial" FontSize="14" FontWeight="Bold" IsReadOnly="True">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Binding="{Binding ID}" Visibility="Collapsed" />
+                            <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}" Width="*" FontWeight="Normal" />
+                        </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
             </TabItem>
@@ -343,8 +374,8 @@
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <Button x:Name="btnModificar" BorderThickness="3" BorderBrush="DarkBlue" Background="Blue" Height="50" Width="150" Foreground="White" FontFamily="Arial" FontWeight="ExtraBlack" FontSize="20" Content="Modificar" Grid.Column="1" Visibility="Hidden" />
-            <Button x:Name="btnRegistrar" BorderThickness="3" BorderBrush="DarkGreen" Background="Green" Height="50" Width="150" Foreground="White" FontFamily="Arial" FontWeight="ExtraBlack" FontSize="20" Content="Registrar" Grid.Column="1" Visibility="Hidden" />
+            <Button x:Name="btnModificar" BorderThickness="3" BorderBrush="DarkBlue" Background="Blue" Height="50" Width="150" Foreground="White" FontFamily="Arial" FontWeight="ExtraBlack" FontSize="20" Content="Modificar" Grid.Column="1" Visibility="Hidden" Click="btnModificar_Click" />
+            <Button x:Name="btnRegistrar" BorderThickness="3" BorderBrush="DarkGreen" Background="Green" Height="50" Width="150" Foreground="White" FontFamily="Arial" FontWeight="ExtraBlack" FontSize="20" Content="Registrar" Grid.Column="1" Visibility="Hidden" Click="btnRegistrar_Click" />
             <Button x:Name="btnCancelar" BorderThickness="3" BorderBrush="DarkRed" Background="Red" Height="50" Width="150" Foreground="White" FontFamily="Arial" FontWeight="ExtraBlack" FontSize="20" Content="Cancelar" Grid.Column="3" Click="btnCancelar_Click" />
         </Grid>
     </Grid>

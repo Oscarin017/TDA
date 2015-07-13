@@ -1,0 +1,48 @@
+Todos
+	Nada case sentive en la busquedas
+	En busqueda realizar de nuevo la busqueda al modificar o ingresar
+
+Cliente
+	RFC no obligatario pero si no tiene por defaul el de hacienda
+	Eliminar eliminacion
+	CP 5 digitos numericos
+	Telefono 10 digitos numericos
+	Correo valdidado @ .algo longitud mayor a 5
+Color 
+	Si se elimina
+Empleado 
+	CURP no obligatiorio
+	Si se elimina
+Estado
+	Si se elimina
+Grupo Cliente 
+	No se elimina
+Marca 
+	Si se elimina
+Modelo	
+	Si se elimina
+	Borramos Año
+Pais 
+	Si se elimina 
+Paquete
+	Modificar consulta dfe vigenvcia
+	Cambiar vista al error de grupo cliente
+	Select Paquete errror
+	Si se elimina paquete	
+	Checar error de activo en busqueda
+Producto
+	Precio Compra Obligatorio
+	Si se elimina
+Promocion
+	Si se elimina
+	Error al cargar el Combo de Tipo
+Proveedor 
+	Si se elimina
+	RFC hacienda por default si no lo agregar
+Usuario
+	Si se eliminan
+	Contraseña no se muestra boton para verla
+Vehiculo
+	Modelo ComboBox filtre
+	No se elimiana
+	Seleccion de modelo que modifique marca

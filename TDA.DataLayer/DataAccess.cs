@@ -2882,7 +2882,7 @@ namespace TDA.DataLayer
             }
             try
             {
-                _context.SaveChanges();
+                resultado.IdGuardado = _context.SaveChanges();
             }
             catch (Exception ex)
             {
@@ -3355,7 +3355,7 @@ namespace TDA.DataLayer
                 }
             }
             promociones = promociones.Where(p => pro.Tipo < 0 || p.Tipo == pro.Tipo ).ToList();
-            promociones = promociones.Where(p => string.IsNullOrWhiteSpace(pro.Nombre) || p.Tipo == pro.Tipo).ToList();
+            promociones = promociones.Where(p => string.IsNullOrWhiteSpace(pro.Nombre) || p.Nombre.Contains(pro.Nombre)||p.Descripcion.Contains(pro.Nombre)).ToList();
             promociones = promociones.Where(p => pro.Activo == null || p.Activo == pro.Activo).ToList();
             promociones = promociones.Where(p => pro.ParaGrupoCliente == null || p.ParaGrupoCliente == pro.ParaGrupoCliente).ToList();
             promociones = promociones.Where(p => pro.ParaTipoProducto == null || p.ParaTipoProducto == pro.ParaTipoProducto).ToList();

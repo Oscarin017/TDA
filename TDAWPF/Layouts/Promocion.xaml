@@ -62,7 +62,7 @@
                 <RowDefinition Height="65"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Button x:Name="btnSearch" Grid.Column="0" Grid.Row="0">
+            <Button x:Name="btnSearch" Grid.Column="0" Grid.Row="0" Click="btnSearch_Click">
                 <Button.Background>
                     <ImageBrush ImageSource="../Imagenes/0135-search.png"/>
                 </Button.Background>
@@ -80,12 +80,12 @@
                 <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}" Width="*" FontWeight="Normal" />
                 <DataGridTextColumn Header="Descripcion" Binding="{Binding Descripcion}" Width="2*" FontWeight="Normal" />
                 <DataGridTextColumn Header="Tipo" Binding="{Binding TipoNombre}" Width="*" FontWeight="Normal" />
-                <DataGridTextColumn Header="Valor" Binding="{Binding ValorNombre}" Width="*" FontWeight="Normal" />
-                <DataGridTextColumn Header="Paquete" Binding="{Binding ParaPaqueteNombre}" Width="*" FontWeight="Normal" />
-                <DataGridTextColumn Header="Tipo Producto" Binding="{Binding ParaTipoProductoNombre}" Width="1.5*" FontWeight="Normal" />
-                <DataGridTextColumn Header="Producto" Binding="{Binding ParaProductoNombre}" Width="*" FontWeight="Normal" />
-                <DataGridTextColumn Header="Grupo Cliente" Binding="{Binding ParaGrupoClienteNombre}" Width="1.5*" FontWeight="Normal" />
-                <DataGridTextColumn Header="Activa" Binding="{Binding ActivoNombre}" Width="*" FontWeight="Normal" />
+                <DataGridTextColumn Header="Valor" Binding="{Binding ValorNombre}" Width=".6*" FontWeight="Normal" />
+                <DataGridTextColumn Header="Paquete" Binding="{Binding ParaPaqueteNombre}" Width=".7*" FontWeight="Normal" />
+                <DataGridTextColumn Header="Tipo Producto" Binding="{Binding ParaTipoProductoNombre}" Width="1.1*" FontWeight="Normal" />
+                <DataGridTextColumn Header="Producto" Binding="{Binding ParaProductoNombre}" Width=".7*" FontWeight="Normal" />
+                <DataGridTextColumn Header="Grupo Cliente" Binding="{Binding ParaGrupoClienteNombre}" Width="*" FontWeight="Normal" />
+                <DataGridTextColumn Header="Activa" Binding="{Binding ActivoNombre}" Width=".6*" FontWeight="Normal" />
                 <DataGridTemplateColumn MinWidth="30">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>

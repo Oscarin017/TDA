@@ -3790,8 +3790,9 @@ namespace TDA.DataLayer
         #endregion
 
         #region Tabla Venta
-        public Resultado InsertVenta(Ventas ven)
+        public Resultado InsertVenta(Ventas ven, List<VentaDetalles> venDet)
         {
+            long? IDVenta;
             Resultado resultado = new Resultado();
 
             Venta venNew = new Venta()
@@ -3805,6 +3806,23 @@ namespace TDA.DataLayer
             try
             {
                 _context.SaveChanges();
+                IDVenta = venNew.ID;
+                foreach (VentaDetalles vd in venDet)
+                {
+                    VentaDetalle vedNew = new VentaDetalle()
+                    {
+                        Subtotal = vd.Subtotal,
+                        Descripcion = vd.Descripcion,
+                        Color = vd.Color,
+                        Venta = IDVenta,
+                        Producto = vd.Producto,
+                        Vehiculo = vd.Vehiculo,
+                        Paquete = vd.Paquete,
+                        Promocion = vd.Promocion
+                    };
+                    _context.VentaDetalle.Add(vedNew);
+                }
+
             }
             catch (Exception ex)
             {
@@ -3916,9 +3934,10 @@ namespace TDA.DataLayer
             resultado.Referencia = false;
             return resultado;
         }
-        public List<VentaDetalles> SelectVentaDetalle()
+        public List<VentaDetalles> SelectVentaDetalle(long? ID)
         {
             var venta = (from a in _context.VentaDetalle
+                         where a.Venta == ID
                           select new VentaDetalles
                           {
                               ID = a.ID,

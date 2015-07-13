@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TDA.Entities;
 
 namespace TDAWPF.Layouts
 {
@@ -20,6 +21,7 @@ namespace TDAWPF.Layouts
     /// </summary>
     public partial class OVentas : Page
     {
+        private List<Productos> lstProductos;
         public OVentas()
         {
             InitializeComponent();
@@ -27,8 +29,20 @@ namespace TDAWPF.Layouts
 
         private void btnPagar_Click(object sender, RoutedEventArgs e)
         {
-            Popups.Cobro w = new Popups.Cobro();
-            w.ShowDialog();
+            Popups.Cobro popup = new Popups.Cobro();
+            popup.Closed += new EventHandler(popupCobro_Closed);
+            TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
+            popup.lstProductos = lstProductos;
+            popup.ShowDialog();
         }
+
+        private void popupCobro_Closed(object sender, EventArgs e)
+        {
+            Popups.Cobro popup = sender as Popups.Cobro;
+            if (popup.Vendido)
+            { 
+                
+            }
+        }            
     }
 }

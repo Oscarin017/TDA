@@ -592,9 +592,9 @@ namespace TDA.Service
         #endregion
 
         #region Tabla Venta 
-        public Resultado InsertVenta(Ventas ven)
+        public Resultado InsertVenta(Ventas ven, List<VentaDetalles> venDet)
         {
-            return _dataBaseTool.InsertVenta(ven);
+            return _dataBaseTool.InsertVenta(ven,venDet);
         }
         public Resultado DeleteVenta(Ventas ven)
         {
@@ -615,9 +615,9 @@ namespace TDA.Service
         {
             return _dataBaseTool.DeleteVentaDetalle(ved);
         }
-        public List<VentaDetalles> SelectVentaDetalle()
+        public List<VentaDetalles> SelectVentaDetalle(long? ID)
         {
-            return _dataBaseTool.SelectVentaDetalle();
+            return _dataBaseTool.SelectVentaDetalle(ID);
         }
         #endregion
 

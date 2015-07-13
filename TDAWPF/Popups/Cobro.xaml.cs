@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using TDA.Entities;
 
 namespace TDAWPF.Popups
 {
@@ -19,6 +20,9 @@ namespace TDAWPF.Popups
     /// </summary>
     public partial class Cobro : Window
     {
+        public bool Vendido = false;
+        public List<Productos> lstProductos;
+
         public Cobro()
         {
             InitializeComponent();
@@ -41,6 +45,18 @@ namespace TDAWPF.Popups
             //            break;
             //        }
             //}
+        }
+
+        private void btnImprimirRecibo_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void InsertVenta()
+        {
+            DateTime fechaventa = DateTime.Now;
+            int totalProductos = lstProductos.Count();
+
         }
     }
 }

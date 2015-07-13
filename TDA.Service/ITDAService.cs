@@ -353,7 +353,7 @@ namespace TDA.Service
 
         #region Tabla Venta
         [OperationContract]
-        Resultado InsertVenta(Ventas ven);
+        Resultado InsertVenta(Ventas ven, List<VentaDetalles> venDet);
         [OperationContract]
         Resultado DeleteVenta(Ventas ven);
         [OperationContract]
@@ -366,7 +366,7 @@ namespace TDA.Service
         [OperationContract]
         Resultado DeleteVentaDetalle(VentaDetalles ved);
         [OperationContract]
-        List<VentaDetalles> SelectVentaDetalle();
+        List<VentaDetalles> SelectVentaDetalle(long? ID);
         #endregion
 
         #region Tabla Venta Dia

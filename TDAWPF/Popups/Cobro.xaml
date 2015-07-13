@@ -116,7 +116,7 @@
             <TextBox x:Name="txtEfectivo" FontFamily="Arial" FontSize="14" FontWeight="ExtraBlack" VerticalAlignment="Center" HorizontalAlignment="Stretch" Grid.Column="1" Grid.Row="3" />
             <Label Content="Cambio" FontFamily="Arial" FontSize="12" FontWeight="ExtraBlack" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="0" Grid.Row="5" />
             <TextBox x:Name="txtCambio" IsReadOnly="True" FontFamily="Arial" FontSize="14" FontWeight="ExtraBlack" VerticalAlignment="Center" HorizontalAlignment="Stretch" Grid.Column="1" Grid.Row="5" />
-            <Button x:Name="btnImprimirRecibo" BorderThickness="3" BorderBrush="DarkGreen" Background="Green" Height="80" Width="175" Foreground="White" FontFamily="Arial" FontWeight="ExtraBlack" FontSize="18" Content="Imprimir Recibo" Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="7" />
+            <Button x:Name="btnImprimirRecibo" BorderThickness="3" BorderBrush="DarkGreen" Background="Green" Height="80" Width="175" Foreground="White" FontFamily="Arial" FontWeight="ExtraBlack" FontSize="18" Content="Imprimir Recibo" Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="7" Click="btnImprimirRecibo_Click" />
             <Button x:Name="btnCancelar" BorderThickness="3" BorderBrush="DarkRed" Background="Red" Height="60" Width="175" Foreground="White" FontFamily="Arial" FontWeight="ExtraBlack" FontSize="18" Content="Cancelar" Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="9" Click="btnCancelar_Click" />
         </Grid>
     </Grid>

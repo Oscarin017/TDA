@@ -38,7 +38,7 @@ GO
 CREATE TABLE Configuracion
 (
 	ID		BIGINT IDENTITY(1,1) PRIMARY KEY,
-	Nombre	VARCHAR(50) UNIQUE,
+	Nombre	NVARCHAR(50) UNIQUE,
 	Activo	BIT,
 )
 GO
@@ -52,7 +52,7 @@ GO
 CREATE TABLE Rol
 (
 	ID		BIGINT IDENTITY(1,1) PRIMARY KEY,
-	Nombre	VARCHAR(50) UNIQUE
+	Nombre	NVARCHAR(50) UNIQUE
 )
 GO
 RAISERROR('Se ha creado la tabla Rol',  0, 1) 
@@ -68,10 +68,62 @@ GO
 CREATE TABLE Pagina
 (
 	ID		BIGINT IDENTITY(1,1) PRIMARY KEY,
-	Nombre	VARCHAR(50) UNIQUE
+	Nombre	NVARCHAR(50) UNIQUE
 )
 GO
 RAISERROR('Se ha creado la tabla Pagina',  0, 1) 
+GO
+/*Insercion a Pagina*/
+INSERT INTO Pagina
+	VALUES('Cliente');
+GO
+INSERT INTO Pagina
+	VALUES('Color');
+GO
+INSERT INTO Pagina
+	VALUES('Empleado');
+GO
+INSERT INTO Pagina
+	VALUES('Estado');
+GO
+INSERT INTO Pagina
+	VALUES('GrupoCliente');
+GO
+INSERT INTO Pagina
+	VALUES('Main');
+GO
+INSERT INTO Pagina
+	VALUES('Marca');
+GO
+INSERT INTO Pagina
+	VALUES('Modelo');
+GO
+INSERT INTO Pagina
+	VALUES('OVentas');
+GO
+INSERT INTO Pagina
+	VALUES('Pais');
+GO
+INSERT INTO Pagina
+	VALUES('Paquete');
+GO
+INSERT INTO Pagina
+	VALUES('Producto');
+GO
+INSERT INTO Pagina
+	VALUES('Promocion');
+GO
+INSERT INTO Pagina
+	VALUES('Proveedor');
+GO
+INSERT INTO Pagina
+	VALUES('Usuario');
+GO
+INSERT INTO Pagina
+	VALUES('Vehiculo');
+GO
+INSERT INTO Pagina
+	VALUES('Venta');
 GO
 /*Creacion de la Tabla RolPagina*/
 CREATE TABLE RolPagina
@@ -83,11 +135,69 @@ CREATE TABLE RolPagina
 GO
 RAISERROR('Se ha creado la tabla RolPagina',  0, 1) 
 GO
+/*Insercion a RolPagina*/
+INSERT INTO RolPagina
+	VALUES(1, 1);
+GO
+INSERT INTO RolPagina
+	VALUES(1, 2);
+GO
+INSERT INTO RolPagina
+	VALUES(1, 3);
+GO
+INSERT INTO RolPagina
+	VALUES(1, 4);
+GO
+INSERT INTO RolPagina
+	VALUES(1, 5);
+GO
+INSERT INTO RolPagina
+	VALUES(1, 6);
+GO
+INSERT INTO RolPagina
+	VALUES(1, 7);
+GO
+INSERT INTO RolPagina
+	VALUES(1, 8);
+GO
+INSERT INTO RolPagina
+	VALUES(1, 9);
+GO
+INSERT INTO RolPagina
+	VALUES(1, 10);
+GO
+INSERT INTO RolPagina
+	VALUES(1, 11);
+GO
+INSERT INTO RolPagina
+	VALUES(1, 12);
+GO
+INSERT INTO RolPagina
+	VALUES(1, 13);
+GO
+INSERT INTO RolPagina
+	VALUES(1, 14);
+GO
+INSERT INTO RolPagina
+	VALUES(1, 15);
+GO
+INSERT INTO RolPagina
+	VALUES(1, 16);
+GO
+INSERT INTO RolPagina
+	VALUES(1, 17);
+GO
+INSERT INTO RolPagina
+	VALUES(2, 6);
+GO
+INSERT INTO RolPagina
+	VALUES(2, 9);
+GO
 /*Creacion de la Tabla BaseSalario*/
 CREATE TABLE BaseSalario
 (
 	ID		BIGINT IDENTITY(1,1) PRIMARY KEY,
-	Nombre	VARCHAR(50) UNIQUE
+	Nombre	NVARCHAR(50) UNIQUE
 )
 GO
 RAISERROR('Se ha creado la tabla BaseSalario', 0, 1)
@@ -109,13 +219,13 @@ INSERT INTO dbo.BaseSalario
 	VALUES('Mes')
 GO
 INSERT INTO dbo.BaseSalario
-	VALUES('Ano')
+	VALUES('Año')
 GO
 /*Creacion de la Tabla Dia*/
 CREATE TABLE Dia
 (
 	ID		BIGINT IDENTITY(1,1) PRIMARY KEY,
-	Nombre	VARCHAR(50) UNIQUE
+	Nombre	NVARCHAR(50) UNIQUE
 )
 GO
 RAISERROR('Se ha creado la tabla Dia', 0, 1)
@@ -146,7 +256,7 @@ GO
 CREATE TABLE TipoIdentificacion
 (
 	ID		BIGINT IDENTITY(1,1) PRIMARY KEY,
-	Nombre	VARCHAR(50) UNIQUE
+	Nombre	NVARCHAR(50) UNIQUE
 )
 GO
 RAISERROR('Se ha creado la tabla TipoIdentificacion', 0, 1)
@@ -165,9 +275,9 @@ GO
 CREATE TABLE Usuario
 (
 	ID			BIGINT IDENTITY(1,1) PRIMARY KEY,
-	Alias		VARCHAR(50) UNIQUE,
-	Contrasena	VARCHAR(50),
-	Email		VARCHAR(100),
+	Alias		NVARCHAR(50) UNIQUE,
+	Contrasena	NVARCHAR(50),
+	Email		NVARCHAR(100),
 	Rol			BIGINT FOREIGN KEY REFERENCES Rol(ID),
 	--Empleado	BIGINT FOREIGN KEY REFERENCES Empleado(ID),
 	UsuarioAlta	BIGINT FOREIGN KEY REFERENCES Usuario(ID),
@@ -186,7 +296,7 @@ GO
 CREATE TABLE Pais
 (
 	ID			BIGINT IDENTITY(1,1) PRIMARY KEY,
-	Nombre		VARCHAR(50) UNIQUE,
+	Nombre		NVARCHAR(50) UNIQUE,
 	UsuarioAlta	BIGINT FOREIGN KEY REFERENCES Usuario(ID),
 	FechaAlta	DATETIME,
 	UsuarioMod	BIGINT FOREIGN KEY REFERENCES Usuario(ID),
@@ -196,14 +306,14 @@ GO
 RAISERROR('Se ha creado la tabla Pais', 0, 1)
 GO
 /*Insercion a Pais*/
-INSERT INTO dbo.Pais(Nombre)
-	VALUES('Mexico');
+INSERT INTO dbo.Pais(Nombre, UsuarioAlta, FechaAlta)
+	VALUES('Mexico', 1, GETDATE());
 GO
 /*Creacion de la Tabla Estado*/
 CREATE TABLE Estado
 (
 	ID			BIGINT IDENTITY(1,1) PRIMARY KEY,
-	Nombre		VARCHAR(50) UNIQUE,
+	Nombre		NVARCHAR(50) UNIQUE,
 	Pais		BIGINT FOREIGN KEY REFERENCES Pais(ID),
 	UsuarioAlta	BIGINT FOREIGN KEY REFERENCES Usuario(ID),
 	FechaAlta	DATETIME,
@@ -213,11 +323,15 @@ CREATE TABLE Estado
 GO
 RAISERROR('Se ha creado la tabla Estado', 0, 1)
 GO
+/*Insercion a Pais*/
+INSERT INTO dbo.Estado(Nombre, Pais,UsuarioAlta, FechaAlta)
+	VALUES('Coahuila', 1, 1, GETDATE());
+GO
 /*Creacion de la Tabla Marca*/
 CREATE TABLE Marca
 (
 	ID			BIGINT IDENTITY(1,1) PRIMARY KEY,
-	Nombre		VARCHAR(50) UNIQUE,
+	Nombre		NVARCHAR(50) UNIQUE,
 	UsuarioAlta	BIGINT FOREIGN KEY REFERENCES Usuario(ID),
 	FechaAlta	DATETIME,
 	UsuarioMod	BIGINT FOREIGN KEY REFERENCES Usuario(ID),
@@ -230,8 +344,7 @@ GO
 CREATE TABLE Modelo
 (
 	ID			BIGINT IDENTITY(1,1) PRIMARY KEY,
-	Nombre		VARCHAR(50),
-	Ano			INT,
+	Nombre		NVARCHAR(50),
 	Marca		BIGINT FOREIGN KEY REFERENCES Marca(ID),
 	UsuarioAlta	BIGINT FOREIGN KEY REFERENCES Usuario(ID),
 	FechaAlta	DATETIME,
@@ -245,7 +358,7 @@ GO
 CREATE TABLE Color
 (
 	ID			BIGINT IDENTITY(1,1) PRIMARY KEY,
-	Nombre		VARCHAR(50) UNIQUE,
+	Nombre		NVARCHAR(50) UNIQUE,
 	UsuarioAlta	BIGINT FOREIGN KEY REFERENCES Usuario(ID),
 	FechaAlta	DATETIME,
 	UsuarioMod	BIGINT FOREIGN KEY REFERENCES Usuario(ID),
@@ -258,7 +371,7 @@ GO
 CREATE TABLE TipoProducto
 (
 	ID			BIGINT IDENTITY(1,1) PRIMARY KEY,
-	Nombre		VARCHAR(100) UNIQUE,	
+	Nombre		NVARCHAR(100) UNIQUE,	
 	UsuarioAlta	BIGINT FOREIGN KEY REFERENCES Usuario(ID),
 	FechaAlta	DATETIME,
 	UsuarioMod	BIGINT FOREIGN KEY REFERENCES Usuario(ID),
@@ -271,21 +384,21 @@ GO
 CREATE TABLE Empleado
 (
 	ID				BIGINT IDENTITY(1,1) PRIMARY KEY,
-	RFC				CHAR(13),
-	Nombre			VARCHAR(100),
-	Apellido		VARCHAR(100),
-	Apellido2		VARCHAR(100),
-	Calle			VARCHAR(100),
-	NumeroInterior	VARCHAR(50),
-	NumeroExterior	VARCHAR(50),
-	Colonia			VARCHAR(100),
-	CP				INT,
-	Localidad		VARCHAR(100),
-	Ciudad			VARCHAR(100),
-	Telefono		VARCHAR(15),
-	Email			VARCHAR(100),
-	CURP			CHAR(18) UNIQUE,
-	NSS				CHAR(11),
+	RFC				NVARCHAR(13),
+	Nombre			NVARCHAR(100),
+	Apellido		NVARCHAR(100),
+	Apellido2		NVARCHAR(100),
+	Calle			NVARCHAR(100),
+	NumeroInterior	NVARCHAR(50),
+	NumeroExterior	NVARCHAR(50),
+	Colonia			NVARCHAR(100),
+	CP				NVARCHAR(5),
+	Localidad		NVARCHAR(100),
+	Ciudad			NVARCHAR(100),
+	Telefono		NVARCHAR(15),
+	Email			NVARCHAR(100),
+	CURP			NVARCHAR(18) UNIQUE,
+	NSS				NVARCHAR(11),
 	Salario			DECIMAL,
 	Estado			BIGINT FOREIGN KEY REFERENCES Estado(ID),
 	BaseSalario		BIGINT FOREIGN KEY REFERENCES BaseSalario(ID),
@@ -307,12 +420,12 @@ GO
 CREATE TABLE Vehiculo
 (
 	ID						BIGINT IDENTITY(1,1) PRIMARY KEY,
-	NoSerie					VARCHAR(17) UNIQUE,
+	NoSerie					NVARCHAR(17) UNIQUE,
 	Modelo					BIGINT FOREIGN KEY REFERENCES Modelo(ID),
-	Color					VARCHAR(100),
+	Color					NVARCHAR(100),
 	Ano						INT,
-	Resposable				VARCHAR(200),
-	NumeroIdentificacion	VARCHAR(15),
+	Resposable				NVARCHAR(200),
+	NumeroIdentificacion	NVARCHAR(15),
 	TipoIdentificacion		BIGINT FOREIGN KEY REFERENCES TipoIdentificacion(ID),
 	UsuarioAlta				BIGINT FOREIGN KEY REFERENCES Usuario(ID),
 	FechaAlta				DATETIME,
@@ -327,19 +440,19 @@ CREATE TABLE Proveedor
 (
 	ID				BIGINT IDENTITY(1,1) PRIMARY KEY,
 	Tipo			BIT,
-	Nombre			VARCHAR(200),
-	Apellido		VARCHAR(100),
-	Apellido2		VARCHAR(100),
-	RFC				VARCHAR(13) UNIQUE,
-	Calle			VARCHAR(100),
-	NumeroInterior	VARCHAR(50),
-	NumeroExterior	VARCHAR(50),
-	Colonia			VARCHAR(100),
-	CP				INT,
-	Localidad		VARCHAR(100),
-	Ciudad			VARCHAR(100),
-	Telefono		VARCHAR(15),
-	Email			VARCHAR(100),
+	Nombre			NVARCHAR(200),
+	Apellido		NVARCHAR(100),
+	Apellido2		NVARCHAR(100),
+	RFC				NVARCHAR(13),
+	Calle			NVARCHAR(100),
+	NumeroInterior	NVARCHAR(50),
+	NumeroExterior	NVARCHAR(50),
+	Colonia			NVARCHAR(100),
+	CP				NVARCHAR(5),
+	Localidad		NVARCHAR(100),
+	Ciudad			NVARCHAR(100),
+	Telefono		NVARCHAR(15),
+	Email			NVARCHAR(100),
 	Estado			BIGINT FOREIGN KEY REFERENCES Estado(ID),
 	UsuarioAlta		BIGINT FOREIGN KEY REFERENCES Usuario(ID),
 	FechaAlta		DATETIME,
@@ -353,12 +466,12 @@ GO
 CREATE TABLE Producto
 (
 	ID				BIGINT IDENTITY(1,1) PRIMARY KEY,
-	Codigo			VARCHAR(50) UNIQUE,	
-	Descripcion		VARCHAR(200),
+	Codigo			NVARCHAR(50) UNIQUE,	
+	Descripcion		NVARCHAR(200),
 	PrecioVenta		MONEY,
 	PrecioCompra	MONEY,
 	IVA				DECIMAL,
-	Observaciones	VARCHAR(200),
+	Observaciones	NVARCHAR(200),
 	Servicio		BIT,	
 	IVAExcencto		BIT,
 	TipoProducto	BIGINT FOREIGN KEY REFERENCES TipoProducto(ID),
@@ -375,7 +488,7 @@ GO
 CREATE TABLE TipoMovimiento
 (
 	ID			BIGINT IDENTITY(1,1) PRIMARY KEY,
-	Nombre		VARCHAR(50) UNIQUE,	
+	Nombre		NVARCHAR(50) UNIQUE,	
 	Tipo		BIT,
 	UsuarioAlta	BIGINT FOREIGN KEY REFERENCES Usuario(ID),
 	FechaAlta	DATETIME,
@@ -406,7 +519,7 @@ GO
 CREATE TABLE GrupoCliente
 (
 	ID			BIGINT IDENTITY(1,1) PRIMARY KEY,
-	Nombre		VARCHAR(100) UNIQUE,
+	Nombre		NVARCHAR(100) UNIQUE,
 	UsuarioAlta	BIGINT FOREIGN KEY REFERENCES Usuario(ID),
 	FechaAlta	DATETIME,
 	UsuarioMod	BIGINT FOREIGN KEY REFERENCES Usuario(ID),
@@ -420,19 +533,19 @@ CREATE TABLE Cliente
 (
 	ID				BIGINT IDENTITY(1,1) PRIMARY KEY,
 	Tipo			BIT,
-	Nombre			VARCHAR(200),
-	Apellido		VARCHAR(100),
-	Apellido2		VARCHAR(100),
-	RFC				VARCHAR(13) UNIQUE,
-	Calle			VARCHAR(100),
-	NumeroInterior	VARCHAR(50),
-	NumeroExterior	VARCHAR(50),
-	Colonia			VARCHAR(100),
-	CP				INT,
-	Localidad		VARCHAR(100),
-	Ciudad			VARCHAR(100),
-	Telefono		VARCHAR(15),
-	Email			VARCHAR(100),
+	Nombre			NVARCHAR(200),
+	Apellido		NVARCHAR(100),
+	Apellido2		NVARCHAR(100),
+	RFC				NVARCHAR(13),
+	Calle			NVARCHAR(100),
+	NumeroInterior	NVARCHAR(50),
+	NumeroExterior	NVARCHAR(50),
+	Colonia			NVARCHAR(100),
+	CP				NVARCHAR(5),
+	Localidad		NVARCHAR(100),
+	Ciudad			NVARCHAR(100),
+	Telefono		NVARCHAR(15),
+	Email			NVARCHAR(100),
 	Estado			BIGINT FOREIGN KEY REFERENCES Estado(ID),
 	GrupoCliente	BIGINT FOREIGN KEY REFERENCES GrupoCliente(ID),
 	UsuarioAlta		BIGINT FOREIGN KEY REFERENCES Usuario(ID),
@@ -443,12 +556,16 @@ CREATE TABLE Cliente
 GO
 RAISERROR('Se ha creado la tabla Cliente', 0, 1)
 GO
+/*Insercion a Cliente*/
+INSERT INTO Cliente(Tipo, Nombre, RFC, Calle, CP, Ciudad, Telefono, Email, Estado, UsuarioAlta, FechaAlta)
+	VALUES(0, 'Publico en general', 'XAXX010101000', 'BLVD. Raul Lopez Sanchez KM 4.4', '27000', 'Torreon', '1497407', 'contacto@tianguisdelauto.mx', 1, 1, GETDATE())
+GO
 /*Creacion de la Tabla Paquete*/
 CREATE TABLE Paquete
 (
 	ID					BIGINT IDENTITY(1,1) PRIMARY KEY,
-	Nombre				VARCHAR(100) UNIQUE,
-	Descripcion			VARCHAR(200),
+	Nombre				NVARCHAR(100) UNIQUE,
+	Descripcion			NVARCHAR(200),
 	Precio				MONEY,
 	ParaGrupoCliente	BIT,
 	Activo				BIT,
@@ -500,8 +617,8 @@ GO
 CREATE TABLE Promocion
 (
 	ID					BIGINT IDENTITY(1,1) PRIMARY KEY,
-	Nombre				VARCHAR(100) UNIQUE,
-	Descripcion			VARCHAR(200),
+	Nombre				NVARCHAR(100) UNIQUE,
+	Descripcion			NVARCHAR(200),
 	Tipo				INT,
 	Valor				DECIMAL,
 	Comprar				INT,
@@ -592,8 +709,8 @@ CREATE TABLE VentaDetalle
 (
 	ID			BIGINT IDENTITY(1,1) PRIMARY KEY,
 	Subtotal	MONEY,
-	Descripcion	VARCHAR(200),
-	Color		VARCHAR(50),
+	Descripcion	NVARCHAR(200),
+	Color		NVARCHAR(50),
 	Venta		BIGINT FOREIGN KEY REFERENCES Venta(ID),
 	Producto	BIGINT FOREIGN KEY REFERENCES Producto(ID),
 	Vehiculo	BIGINT FOREIGN KEY REFERENCES Vehiculo(ID),
@@ -618,7 +735,7 @@ CREATE TABLE Logs
 (
 	ID			BIGINT IDENTITY(1,1) PRIMARY KEY,
 	Fecha		DATETIME,
-	Descripcion	VARCHAR(200),
+	Descripcion	NVARCHAR(200),
 	Usuario		BIGINT FOREIGN KEY REFERENCES Usuario(ID)
 )
 GO

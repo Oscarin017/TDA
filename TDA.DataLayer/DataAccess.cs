@@ -993,7 +993,6 @@ namespace TDA.DataLayer
             {
                 Nombre = mod.Nombre,
                 Marca = mod.Marca,
-                Ano = mod.Ano,
                 UsuarioAlta = mod.UsuarioAlta,
                 FechaAlta = DateTime.Now
             };
@@ -1022,7 +1021,6 @@ namespace TDA.DataLayer
                          select a).FirstOrDefault();
 
             moddb.Nombre = mod.Nombre;
-            moddb.Ano = mod.Ano;
             moddb.Marca = mod.Marca;
             moddb.UsuarioMod = mod.UsuarioMod;
             moddb.FechaMod = DateTime.Now;
@@ -1109,7 +1107,6 @@ namespace TDA.DataLayer
                                ID = a.ID,
                                Nombre = a.Nombre,
                                Marca = a.Marca,
-                               Ano = a.Ano,
                                UsuarioAlta = a.UsuarioAlta,
                                UsuarioMod = a.UsuarioMod,
                                FechaAlta = a.FechaAlta,
@@ -1127,7 +1124,6 @@ namespace TDA.DataLayer
                                ID = a.ID,
                                Nombre = a.Nombre,
                                Marca = a.Marca,
-                               Ano = a.Ano,
                                MarcaNombre = b.Nombre,
                                UsuarioAlta = a.UsuarioAlta,
                                UsuarioMod = a.UsuarioMod,
@@ -1146,7 +1142,6 @@ namespace TDA.DataLayer
                                ID = a.ID,
                                Nombre = a.Nombre,
                                Marca = a.Marca,
-                               Ano = a.Ano,
                                MarcaNombre = b.Nombre,
                                UsuarioAlta = a.UsuarioAlta,
                                UsuarioMod = a.UsuarioMod,
@@ -1165,7 +1160,6 @@ namespace TDA.DataLayer
                                ID = a.ID,
                                Nombre = a.Nombre,
                                Marca = a.Marca,
-                               Ano = a.Ano,
                                MarcaNombre = b.Nombre,
                                UsuarioAlta = a.UsuarioAlta,
                                UsuarioMod = a.UsuarioMod,
@@ -1184,7 +1178,6 @@ namespace TDA.DataLayer
                                ID = a.ID,
                                Nombre = a.Nombre,
                                Marca = a.Marca,
-                               Ano = a.Ano,
                                MarcaNombre = b.Nombre,
                                UsuarioAlta = a.UsuarioAlta,
                                UsuarioMod = a.UsuarioMod,

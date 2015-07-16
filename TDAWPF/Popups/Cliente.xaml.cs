@@ -167,7 +167,7 @@ namespace TDAWPF.Popups
                 {
                     c.Colonia = txtColonia.Text;
                 }
-                c.CP = Convert.ToInt32(txtCP.Text);
+                c.CP = txtCP.Text;
                 c.Telefono = txtTelefono.Text;
                 if (txtEmail.PlaceHolder)
                 {
@@ -264,7 +264,7 @@ namespace TDAWPF.Popups
                 {
                     c.Colonia = txtColonia.Text;
                 }
-                c.CP = Convert.ToInt32(txtCP.Text);
+                c.CP = txtCP.Text;
                 c.Telefono = txtTelefono.Text;
                 if (txtEmail.PlaceHolder)
                 {

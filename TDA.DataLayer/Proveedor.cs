@@ -29,7 +29,7 @@ namespace TDA.DataLayer
         public string NumeroInterior { get; set; }
         public string NumeroExterior { get; set; }
         public string Colonia { get; set; }
-        public Nullable<int> CP { get; set; }
+        public string CP { get; set; }
         public string Localidad { get; set; }
         public string Ciudad { get; set; }
         public string Telefono { get; set; }

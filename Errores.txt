@@ -4,7 +4,7 @@ Todos
 
 Cliente
 	RFC no obligatario pero si no tiene por defaul el de hacienda
-	Eliminar eliminacion
+	Eliminar eliminacion (hecho)
 	CP 5 digitos numericos
 	Telefono 10 digitos numericos
 	Correo valdidado @ .algo longitud mayor a 5

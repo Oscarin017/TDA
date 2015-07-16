@@ -43,7 +43,7 @@ namespace TDA.Entities
         [DataMember]
         public string Colonia { get; set; }
         [DataMember]
-        public int?  CP { get; set; }
+        public string  CP { get; set; }
         [DataMember]
         public string Localidad { get; set; }
         [DataMember]

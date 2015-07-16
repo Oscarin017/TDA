@@ -760,7 +760,6 @@ namespace TDAWPF.Funcionalidad
         #endregion
 
         #region Validacion de Popups
-
         public static bool validacionRFC(string sText, bool Tipo)
         {
             bool bValidacion = false;

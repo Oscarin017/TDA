@@ -29,47 +29,8 @@ namespace TDAWPF.Layouts
             InitializeComponent();
         }
 
-        private void cargarGrid(Clientes c)
+        private void realizarBusqueda(Clientes c)
         {
-            TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
-            var resultado = tda.SelectCliente(c);
-            tda.Close();
-            var ordenado = resultado.OrderBy(Clientes => Clientes.RFC);
-            lstCliente.Clear();
-            foreach (var r in ordenado)
-            {
-                string sNombre = "";
-                if (r.Tipo == true)
-                {
-                    sNombre = r.Nombre;
-                }
-                else
-                {
-                    sNombre = r.Apellido + " " + r.Apellido2 + " " + r.Nombre;
-                }
-                lstCliente.Add(new Clientes()
-                {
-                    ID = r.ID,
-                    Nombre = sNombre,
-                    RFC = r.RFC,
-                    GrupoClienteNombre = r.GrupoClienteNombre
-                });
-            }
-            dg.ItemsSource = null;
-            dg.ItemsSource = lstCliente;
-        }
-
-        private void dg_Loaded(object sender, RoutedEventArgs e)
-        {
-            Llenado.cargarCBPais(new Paises(), cbPais);
-            Llenado.cargarCBGrupoCliente(new GrupoClientes(), cbGrupoCliente);
-            cargarGrid(new Clientes());
-            Llenado.seleccionarDefaultPais(cbPais);
-        }
-
-        private void btnSearch_Click(object sender, RoutedEventArgs e)
-        {
-            Clientes c = new Clientes();
             ComboBoxItem cbi = (ComboBoxItem)cbPais.SelectedItem;
             if (cbPais.SelectedIndex != 0)
             {
@@ -96,16 +57,59 @@ namespace TDAWPF.Layouts
             ComboBoxItem cbi3 = (ComboBoxItem)cbGrupoCliente.SelectedItem;
             if (cbGrupoCliente.SelectedIndex != 0)
             {
-                c.GrupoCliente = Convert.ToInt64(cbi3.Uid);  
+                c.GrupoCliente = Convert.ToInt64(cbi3.Uid);
             }
             cargarGrid(c);
+        }
+
+        private void cargarGrid(Clientes c)
+        {
+            TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
+            List<Clientes> lstC = tda.SelectCliente(c).ToList();
+            tda.Close();
+            lstC = lstC.OrderBy(Clientes => Clientes.RFC).ToList();
+            lstCliente.Clear();
+            foreach (Clientes ca in lstC)
+            {
+                string sNombre = "";
+                if (ca.Tipo == true)
+                {
+                    sNombre = ca.Nombre;
+                }
+                else
+                {
+                    sNombre = ca.Nombre + " " + ca.Apellido + " " + ca.Apellido2;
+                }
+                lstCliente.Add(new Clientes()
+                {
+                    ID = ca.ID,
+                    Nombre = sNombre,
+                    RFC = ca.RFC,
+                    GrupoClienteNombre = ca.GrupoClienteNombre
+                });
+            }
+            dg.ItemsSource = null;
+            dg.ItemsSource = lstCliente;
+        }
+
+        private void dg_Loaded(object sender, RoutedEventArgs e)
+        {
+            Llenado.cargarCBPais(new Paises(), cbPais);
+            Llenado.cargarCBGrupoCliente(new GrupoClientes(), cbGrupoCliente);
+            cargarGrid(new Clientes());
+            Llenado.seleccionarDefaultPais(cbPais);
+        }
+
+        private void btnSearch_Click(object sender, RoutedEventArgs e)
+        {            
+            realizarBusqueda(new Clientes());
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
             Popups.Cliente w = new Popups.Cliente();
             w.ShowDialog();
-            cargarGrid(new Clientes());
+            realizarBusqueda(new Clientes());
         }
 
         private void btnModificar_Click(object sender, RoutedEventArgs e)
@@ -114,12 +118,7 @@ namespace TDAWPF.Layouts
             long lID = r.ID;
             Popups.Cliente w = new Popups.Cliente(lID);
             w.ShowDialog();
-            cargarGrid(new Clientes());
-        }
-
-        private void btnEliminar_Click(object sender, RoutedEventArgs e)
-        {
-
+            realizarBusqueda(new Clientes());
         }
 
         private void cbPais_SelectionChanged(object sender, EventArgs e)

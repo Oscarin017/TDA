@@ -2846,12 +2846,13 @@ namespace TDA.DataLayer
         public Resultado InsertPaquete(Paquetes paq)
         {
             Resultado resultado = new Resultado();
+            Paquete paqNew;
             string paqdb = (from a in _context.Paquete
                             where a.Nombre.ToUpper() == paq.Nombre.ToUpper()
                             select a.Nombre).FirstOrDefault();
             if (string.IsNullOrEmpty(paqdb))
             {
-                Paquete paqNew = new Paquete()
+                paqNew = new Paquete()
                 {
                     Nombre = paq.Nombre,
                     Descripcion = paq.Descripcion,
@@ -2887,6 +2888,7 @@ namespace TDA.DataLayer
             resultado.Realizado = true;
             resultado.ErrorDB = false;
             resultado.YaExiste = false;
+            resultado.IdGuardado = paqNew.ID;
             return resultado;
         }
         public Resultado UpdatePaquete(Paquetes paq)
@@ -3226,12 +3228,13 @@ namespace TDA.DataLayer
         public Resultado InsertPromocion(Promociones pro)
         {
             Resultado resultado = new Resultado();
+            Promocion proNew;
             string prodb = (from a in _context.Promocion
                             where a.Nombre.ToUpper() == pro.Nombre.ToUpper()
                             select a.Nombre).FirstOrDefault();
             if (string.IsNullOrEmpty(prodb))
             {
-                Promocion proNew = new Promocion()
+                proNew = new Promocion()
                 {
                     Nombre = pro.Nombre,
                     Descripcion = pro.Descripcion,
@@ -3273,6 +3276,7 @@ namespace TDA.DataLayer
             resultado.Realizado = true;
             resultado.ErrorDB = false;
             resultado.YaExiste = false;
+            resultado.IdGuardado = proNew.ID;
             return resultado;
         }
         public Resultado UpdatePromocion(Promociones pro)

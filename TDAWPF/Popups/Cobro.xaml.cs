@@ -23,6 +23,8 @@ namespace TDAWPF.Popups
     {
         public bool Vendido = false;
         public List<Productos> lstProductos;
+        private decimal Total;
+        private long? cliente;
 
         public Cobro()
         {
@@ -60,7 +62,12 @@ namespace TDAWPF.Popups
             int totalProductos = lstProductos.Count();
             TDAService.TDAServiceClient client = new TDAService.TDAServiceClient();
             
-
+            Venta newVenta = new Venta()
+            {
+                Fecha = fechaventa,
+                Total = Total,
+                Cliente = Cliente,
+            }
         }
     }
 }

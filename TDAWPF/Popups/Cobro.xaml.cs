@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using TDA.Entities;
+using TDA.DataLayer;
 
 namespace TDAWPF.Popups
 {
@@ -54,8 +55,11 @@ namespace TDAWPF.Popups
 
         private void InsertVenta()
         {
+            
             DateTime fechaventa = DateTime.Now;
             int totalProductos = lstProductos.Count();
+            TDAService.TDAServiceClient client = new TDAService.TDAServiceClient();
+            
 
         }
     }

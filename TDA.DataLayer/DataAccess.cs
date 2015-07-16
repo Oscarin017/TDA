@@ -1849,7 +1849,6 @@ namespace TDA.DataLayer
             Resultado resultado = new Resultado();
             string prodb = (from a in _context.Proveedor
                             where a.Nombre.ToUpper() == pro.Nombre.ToUpper()
-                            || a.RFC.ToUpper() == pro.RFC.ToUpper()
                             select a.Nombre).FirstOrDefault();
             if (string.IsNullOrEmpty(prodb))
             {
@@ -2635,7 +2634,6 @@ namespace TDA.DataLayer
             Resultado resultado = new Resultado();
             string clidb = (from a in _context.Cliente
                             where a.Nombre.ToUpper() == cli.Nombre.ToUpper()
-                            || a.RFC.ToUpper() == cli.RFC.ToUpper() 
                             select a.Nombre).FirstOrDefault();
             if (string.IsNullOrEmpty(clidb))
             {

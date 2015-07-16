@@ -728,6 +728,7 @@ namespace TDA.DataLayer
                             where c.Estado == lEstado
                             select c.Ciudad).ToList();
             }
+            ciudades = ciudades.GroupBy(c => c).Select(g => g.First()).ToList();
             return ciudades;
         }
         public List<string> SelectCiudadEmpleado(long lPais, long lEstado)
@@ -772,6 +773,7 @@ namespace TDA.DataLayer
                             where c.Estado == lEstado
                             select c.Ciudad).ToList();
             }
+            ciudades = ciudades.GroupBy(c => c).Select(g => g.First()).ToList();
             return ciudades;
         }
         public List<string> SelectCiudadProveedor(long lPais, long lEstado)
@@ -816,6 +818,7 @@ namespace TDA.DataLayer
                             where c.Estado == lEstado
                             select c.Ciudad).ToList();
             }
+            ciudades = ciudades.GroupBy(c => c).Select(g => g.First()).ToList();
             return ciudades;
         }
         #endregion

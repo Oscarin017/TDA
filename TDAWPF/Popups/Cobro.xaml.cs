@@ -61,13 +61,15 @@ namespace TDAWPF.Popups
             DateTime fechaventa = DateTime.Now;
             int totalProductos = lstProductos.Count();
             TDAService.TDAServiceClient client = new TDAService.TDAServiceClient();
-            
+            long Cliente = 1;
+
             Venta newVenta = new Venta()
             {
                 Fecha = fechaventa,
                 Total = Total,
-                Cliente = Cliente,
-            }
+                Cliente = Cliente
+            };
+            VentaDetalle[] newVentaDet =  new VentaDetalle[]();
         }
     }
 }

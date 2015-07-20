@@ -71,9 +71,11 @@ namespace TDAWPF.Popups
             VentaDetalle[] newVentaDet =  new VentaDetalle[totalProductos];
             foreach (Productos prod in lstProductos)
             {
-                VentaDetalle vd = new VentaDetalle()
+                TDA.DataLayer.VentaDetalle vd = new TDA.DataLayer.VentaDetalle()
                 {
-
+                    Subtotal = prod.PrecioVenta,
+                    Descripcion = prod.Descripcion,
+                    venta
                 };
             }
         }

@@ -575,6 +575,42 @@ namespace TDA.DataLayer
             resultado.YaExiste = false;
             return resultado;
         }
+        public Resultado DeleteEstado(Estados est)
+        {
+            Resultado resultado = new Resultado();
+            string estName = (from a in _context.Estado
+                              join b in _context.Cliente on a.ID equals b.Estado
+                              join c in _context.Proveedor on a.ID equals c.Estado
+                              join d in _context.Empleado on a.ID equals d.Estado
+                              where a.ID == est.ID
+                              select a.Nombre).FirstOrDefault();
+            if (string.IsNullOrEmpty(estName))
+            {
+                
+            }
+            else
+            {
+                resultado.Realizado = false;
+                resultado.ErrorDB = false;
+                resultado.YaExiste = true;
+                return resultado;
+            }
+            try
+            {
+                _context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                resultado.Realizado = false;
+                resultado.ErrorDB = true;
+                resultado.YaExiste = false;
+                return resultado;
+            }
+            resultado.Realizado = true;
+            resultado.ErrorDB = false;
+            resultado.YaExiste = false;
+            return resultado;
+        }
         public List<Estados> SelectEstado(Estados est)
         {
             if (!String.IsNullOrWhiteSpace(est.Nombre))

@@ -22,7 +22,8 @@ namespace TDAWPF.Popups
     public partial class Cobro : Window
     {
         public bool Vendido = false;
-        public List<Productos> lstProductos;
+        public List<VentaDetalles> detalleVentas;
+        public Ventas venta;
         private decimal Total;
         private long? cliente;
         private int Cantidad = 0;
@@ -58,26 +59,7 @@ namespace TDAWPF.Popups
 
         private void InsertVenta()
         {
-            DateTime fechaventa = DateTime.Now;
-            int totalProductos = lstProductos.Count();
-            TDAService.TDAServiceClient client = new TDAService.TDAServiceClient();
-            long Cliente = 1;
-            Venta newVenta = new Venta()
-            {
-                Fecha = fechaventa,
-                Total = Total,
-                Cliente = Cliente
-            };
-            VentaDetalle[] newVentaDet =  new VentaDetalle[totalProductos];
-            foreach (Productos prod in lstProductos)
-            {
-                TDA.DataLayer.VentaDetalle vd = new TDA.DataLayer.VentaDetalle()
-                {
-                    Subtotal = prod.PrecioVenta,
-                    Descripcion = prod.Descripcion,
-                    
-                };
-            }
+            
         }
     }
 }

@@ -32,7 +32,6 @@ namespace TDAWPF.Layouts
             Popups.Cobro popup = new Popups.Cobro();
             popup.Closed += new EventHandler(popupCobro_Closed);
             TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
-            popup.lstProductos = lstProductos;
             popup.ShowDialog();
         }
 

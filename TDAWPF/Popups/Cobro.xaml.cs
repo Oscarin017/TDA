@@ -73,9 +73,7 @@ namespace TDAWPF.Popups
             {
                 TDA.DataLayer.VentaDetalle vd = new TDA.DataLayer.VentaDetalle()
                 {
-                    Subtotal = prod.PrecioVenta,
-                    Descripcion = prod.Descripcion,
-                    //venta
+                    Subtotal = prod.PrecioVenta, 
                 };
             }
         }

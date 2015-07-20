@@ -108,6 +108,10 @@ namespace TDA.Service
         {
             return _dataBaseTool.InsertEstado(est);
         }
+        public Resultado DeleteEstado(Estados est)
+        {
+            return _dataBaseTool.DeleteEstado(est);
+        }
         public Resultado UpdateEstado(Estados est)
         {
             return _dataBaseTool.UpdateEstado(est);

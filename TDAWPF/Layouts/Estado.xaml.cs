@@ -100,11 +100,11 @@ namespace TDAWPF.Layouts
             {
                 TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
                 es = tda.BuscarEstadoID(es.ID).First();
-                //Resultado r = tda.DeleteEstado(es);
-                //if(r.ErrorDB)
-                //{
-                //    MessageBox.Show("No se pudo eliminar el estado " + es.Nombre + ".");
-                //}
+                Resultado r = tda.DeleteEstado(es);
+                if (r.ErrorDB)
+                {
+                    MessageBox.Show("No se pudo eliminar el estado " + es.Nombre + ".");
+                }
                 realizarBusqueda(new Estados());
             }
         }    

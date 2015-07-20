@@ -14,16 +14,16 @@ Empleado
 	CURP no obligatiorio(hecho)
 	Si se elimina(hecho)
 Estado
-	Si se elimina
+	Si se elimina(hecho)
 Grupo Cliente 
-	No se elimina
+	No se elimina(hecho)
 Marca 
-	Si se elimina
+	Si se elimina(hecho)
 Modelo	
-	Si se elimina
-	Borramos Año
+	Si se elimina(hecho)
+	Borramos Año(hecho)
 Pais 
-	Si se elimina 
+	Si se elimina(hecho) 
 Paquete
 	Modificar consulta dfe vigenvcia
 	Cambiar vista al error de grupo cliente

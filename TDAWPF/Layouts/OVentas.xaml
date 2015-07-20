@@ -99,18 +99,6 @@
             <TextBox x:Name="txtPase" FontFamily="Arial" FontSize="18" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Stretch" Grid.Column="1" Grid.Row="5" />
             <Label Content="Tarjeta Especial" FontSize="14" FontFamily="Arial" FontWeight="Black" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="7" />
             <TextBox x:Name="txtTarjeta" FontFamily="Arial" FontSize="18" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Stretch" Grid.Column="1" Grid.Row="8" />
-            <Label Content="Paquete" FontSize="14" FontFamily="Arial" FontWeight="Black" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="10" />
-            <Controles:ComboBoxSC x:Name="cbPaquete" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1" Grid.Row="11">
-                <Controles:ComboBoxSC.Items>
-                    <ComboBoxItem IsSelected="True" Content="Selecciona"/>
-                </Controles:ComboBoxSC.Items>
-            </Controles:ComboBoxSC>
-            <Label Content="Promocion" FontSize="14" FontFamily="Arial" FontWeight="Black" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="13" />
-            <Controles:ComboBoxSC x:Name="cbPromocion" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1" Grid.Row="14">
-                <Controles:ComboBoxSC.Items>
-                    <ComboBoxItem IsSelected="True" Content="Selecciona"/>
-                </Controles:ComboBoxSC.Items>
-            </Controles:ComboBoxSC>
             <Border BorderThickness="4" BorderBrush="DarkGreen" CornerRadius="2" Width="155" Height="150" Grid.Column="1" Grid.Row="17">
                 <Button x:Name="btnPagar" BorderBrush="{x:Null}"  FontFamily="Arial" FontWeight="ExtraBlack" Grid.IsSharedSizeScope="True" FontSize="30" BorderThickness="0" Background="Green" AllowDrop="True" Foreground="White" Content="Pagar" Grid.Column="1" Grid.Row="17" Click="btnPagar_Click"/>
             </Border>

@@ -125,7 +125,7 @@ namespace TDAWPF.Layouts
                 Resultado r = tda.DeleteEmpleado(em);
                 if (r.ErrorDB)
                 {
-                    MessageBox.Show("No se pudo eliminar el estado " + es.Nombre + ".");
+                    MessageBox.Show("No se pudo eliminar el estado " + em.Nombre + ".");
                 }
                 realizarBusqueda(new Empleados());
             }

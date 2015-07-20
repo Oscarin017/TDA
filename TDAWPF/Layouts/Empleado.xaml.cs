@@ -43,6 +43,11 @@ namespace TDAWPF.Layouts
             {
                 e.Estado = Convert.ToInt64(cbi1.Uid);
             }
+            ComboBoxItem cbi2 = (ComboBoxItem)cbCiudad.SelectedItem;
+            if (cbCiudad.SelectedIndex != 0)
+            {
+                e.Ciudad = cbi2.Content.ToString();
+            }
             if (!txtNombre.PlaceHolder)
             {
                 e.Nombre = txtNombre.Text;
@@ -118,6 +123,10 @@ namespace TDAWPF.Layouts
                 TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
                 em = tda.BuscarEmpleadoID(em.ID).First();
                 Resultado r = tda.DeleteEmpleado(em);
+                if (r.ErrorDB)
+                {
+                    MessageBox.Show("No se pudo eliminar el estado " + es.Nombre + ".");
+                }
                 realizarBusqueda(new Empleados());
             }
         }
@@ -150,7 +159,7 @@ namespace TDAWPF.Layouts
                         Llenado.seleccionarComboBoxUid(lEstado.ToString(), cbEstado);
                     }                    
                 }
-                Llenado.cargarCBCiudadCliente(Convert.ToInt64(es.ID), cbCiudad);                
+                Llenado.cargarCBCiudadEmpleado(Convert.ToInt64(es.ID), cbCiudad);                
             }
         }
     }

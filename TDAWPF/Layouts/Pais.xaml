@@ -53,10 +53,10 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding ID}" Visibility="Collapsed" />
                 <DataGridTextColumn Header="Pais" Binding="{Binding Nombre}" Width="*" FontWeight="Normal" />
-                <DataGridTemplateColumn MinWidth="30">
+                <DataGridTemplateColumn Width="30">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button x:Name="btnModificar" Width="20" Height="20" Click="btnModificar_Click">
+                            <Button x:Name="btnModificar" Width="25" Height="25" Click="btnModificar_Click">
                                 <Button.Background>
                                     <ImageBrush ImageSource="../Imagenes/Pencil-mini.png"/>
                                 </Button.Background>
@@ -64,10 +64,10 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTemplateColumn MinWidth="30">
+                <DataGridTemplateColumn Width="30">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button x:Name="btnEliminar" Width="20" Height="20" Click="btnEliminar_Click">
+                            <Button x:Name="btnEliminar" Width="25" Height="25" Click="btnEliminar_Click">
                                 <Button.Background>
                                     <ImageBrush ImageSource="../Imagenes/0173-bin.png"/>
                                 </Button.Background>

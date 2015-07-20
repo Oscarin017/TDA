@@ -91,6 +91,10 @@ namespace TDAWPF.Layouts
                 TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
                 c = tda.BuscarColorID(c.ID).First();
                 Resultado r = tda.DeleteColor(c);
+                if (r.ErrorDB)
+                {
+                    MessageBox.Show("No se pudo eliminar el estado " + es.Nombre + ".");
+                }
                 realizarBusqueda(new Colores());
             }
         }    

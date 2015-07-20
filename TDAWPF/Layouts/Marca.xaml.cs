@@ -28,6 +28,15 @@ namespace TDAWPF.Layouts
             InitializeComponent();
         }
 
+        private void realizarBusqueda(Marcas m)
+        {
+            if (!txtNombre.PlaceHolder)
+            {
+                m.Nombre = txtNombre.Text;
+            }
+            cargarGrid(m);
+        }
+
         private void cargarGrid(Marcas m)
         {
             TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
@@ -54,19 +63,14 @@ namespace TDAWPF.Layouts
 
         private void btnSearch_Click(object sender, RoutedEventArgs e)
         {
-            Marcas m = new Marcas();
-            if (!txtNombre.PlaceHolder)
-            {
-                m.Nombre = txtNombre.Text;
-            }
-            cargarGrid(m);
+            realizarBusqueda(new Marcas());
         }    
         
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
             Popups.Marca w = new Popups.Marca();
             w.ShowDialog();
-            cargarGrid(new Marcas());
+            realizarBusqueda(new Marcas());
         }
 
         private void btnModificar_Click(object sender, RoutedEventArgs e)
@@ -75,12 +79,24 @@ namespace TDAWPF.Layouts
             long lID = r.ID;
             Popups.Marca w = new Popups.Marca(lID);
             w.ShowDialog();
-            cargarGrid(new Marcas());
+            realizarBusqueda(new Marcas());
         }
 
         private void btnEliminar_Click(object sender, RoutedEventArgs e)
         {
-
+            Marcas m = ((Button)sender).DataContext as Marcas;
+            MessageBoxResult result = MessageBox.Show("Estas seguro que quieres eliminar la marca " + m.Nombre + ".", "Eliminar", MessageBoxButton.OKCancel, MessageBoxImage.Question);
+            if (result == MessageBoxResult.OK)
+            {
+                TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
+                m = tda.BuscarMarcaID(m.ID).First();
+                Resultado r = tda.DeleteMarca(m);
+                if (r.ErrorDB)
+                {
+                    MessageBox.Show("No se pudo eliminar la marca" + m.Nombre + ".");
+                }
+                realizarBusqueda(new Marcas());
+            }
         }    
     }
 }

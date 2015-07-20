@@ -11,8 +11,8 @@ Cliente
 Color 
 	Si se elimina(hecho)
 Empleado 
-	CURP no obligatiorio
-	Si se elimina
+	CURP no obligatiorio(hecho)
+	Si se elimina(hecho)
 Estado
 	Si se elimina
 Grupo Cliente 

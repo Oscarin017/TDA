@@ -56,19 +56,17 @@ namespace TDAWPF.Popups
                 {
                     cbMarca.SelectedIndex = Convert.ToInt32(r.Marca);
                     txtNombre.Text = r.Nombre;
-                    txtAno.Text = r.Ano.ToString();
                 }
             }
         }
 
         private void btnRegistrar_Click(object sender, RoutedEventArgs e)
         {
-            if (!txtNombre.PlaceHolder && !txtAno.PlaceHolder && cbMarca.SelectedIndex != 0)
+            if (!txtNombre.PlaceHolder && cbMarca.SelectedIndex != 0)
             {
                 TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
                 Modelos es = new Modelos();
                 es.Nombre = txtNombre.Text;
-                es.Ano = Convert.ToInt32(txtAno.Text);
                 ComboBoxItem cbi = (ComboBoxItem)cbMarca.Items[cbMarca.SelectedIndex];
                 es.Marca = Convert.ToInt64(cbi.Uid);
                 tda.InsertModelo(es);
@@ -83,13 +81,12 @@ namespace TDAWPF.Popups
 
         private void btnModificar_Click(object sender, RoutedEventArgs e)
         {
-            if (!txtNombre.PlaceHolder && !txtAno.PlaceHolder && cbMarca.SelectedIndex != 0)
+            if (!txtNombre.PlaceHolder && cbMarca.SelectedIndex != 0)
             {
                 TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
                 Modelos es = new Modelos();
                 es.ID = lID;
                 es.Nombre = txtNombre.Text;
-                es.Ano = Convert.ToInt32(txtAno.Text);
                 ComboBoxItem cbi = (ComboBoxItem)cbMarca.Items[cbMarca.SelectedIndex];
                 es.Marca = Convert.ToInt64(cbi.Uid);
                 tda.UpdateModelo(es);

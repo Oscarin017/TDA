@@ -106,11 +106,11 @@ namespace TDAWPF.Popups
                 }
                 if (cbEspecial.IsChecked == true)
                 {
-                    p.Servicio = true;
+                    p.Especial = true;
                 }
                 else
                 {
-                    p.Servicio = false;
+                    p.Especial = false;
                 }
                 if (cbExento.IsChecked == true)
                 {
@@ -171,11 +171,11 @@ namespace TDAWPF.Popups
                 }
                 if (cbEspecial.IsChecked == true)
                 {
-                    p.Servicio = true;
+                    p.Especial = true;
                 }
                 else
                 {
-                    p.Servicio = false;
+                    p.Especial = false;
                 }
                 if (cbExento.IsChecked == true)
                 {

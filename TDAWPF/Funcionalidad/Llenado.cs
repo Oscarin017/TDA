@@ -772,74 +772,58 @@ namespace TDAWPF.Funcionalidad
         #endregion
 
         #region Validacion de Popups
-        public static bool validacionRFC(string sText, bool Tipo)
+        public static bool validacionRFC(string sRFC, bool Tipo)
         {
             bool bValidacion = false;
-            bool bMensaje = false;
-            try
+           if (!Tipo)
             {
-                if (!Tipo)
-                {
-                    string sNombre = sText.Substring(0, 4);
-                    int iNacimiento = Convert.ToInt32(sText.Substring(4, 6));
-                    if (sText.Length == 13)
-                    {
-                        bValidacion = true;
-                    }
-                }
-                else
-                {
-                    string sNombre = sText.Substring(0, 3);
-                    int iNacimiento = Convert.ToInt32(sText.Substring(3, 6));
-                    if (sText.Length == 12)
-                    {
-                        bValidacion = true;
-                    }
-                }
-            }
-            catch
-            {
-                MessageBox.Show("El RFC es incorrecto. Favor de verificar.");
-                bMensaje = true;
-            }
-            finally
-            {
-                if(!bMensaje && !bValidacion)
-                {
-                    MessageBox.Show("El RFC es incorrecto. Favor de verificar.");
-                }
-            }
-            return bValidacion;
-        }
-
-        public static bool validacionCURP(string sText)
-        {
-            bool bValidacion = false;
-            bool bMensaje = false;
-            
-            try
-            {
-
-                string sNombre = sText.Substring(0, 4);
-                int iNacimiento = Convert.ToInt32(sText.Substring(4, 6));
-                string sSexo = sText.Substring(11, 1);
-                
-                if (sText.Length == 13)
+                Regex r = new Regex("^[a-zA-Z]{4}[0-9]{6}[a-zA-Z0-9]{3}$");
+                if(r.IsMatch(sRFC))
                 {
                     bValidacion = true;
                 }
             }
-            catch
+            else
             {
-                MessageBox.Show("El RFC es incorrecto. Favor de verificar.");
-                bMensaje = true;
-            }
-            finally
-            {
-                if (!bMensaje && !bValidacion)
+               Regex r = new Regex("^[a-zA-Z]{3}[0-9]{6}[a-zA-Z0-9]{3}$");
+                if(r.IsMatch(sRFC))
                 {
-                    MessageBox.Show("El RFC es incorrecto. Favor de verificar.");
-                }
+                    bValidacion = true;
+                }     
+            }
+            if(!bValidacion)
+            {
+                MessageBox.Show("RFC no valido. Favor de verificar.");
+            }
+            return bValidacion;
+        }
+
+        public static bool validacionCURP(string sCURP)
+        {
+            bool bValidacion = false;
+            Regex r = new Regex("^[a-zA-Z]{4}[0-9]{6}[hHmM][a-zA-Z]{5}[0-9]{2}$");
+            if (r.IsMatch(sCURP))
+            {
+                bValidacion = true;
+            }
+            else
+            { 
+                MessageBox.Show("CURP no valida. Favor de verificar.");
+            }
+            return bValidacion;
+        }
+
+        public static bool validacionNSS(string sNSS)
+        {
+            bool bValidacion = false;
+            Regex r = new Regex("^[0-9]{10}$");
+            if (r.IsMatch(sNSS))
+            {
+                bValidacion = true;
+            }
+            else
+            {
+                MessageBox.Show("NSS no valido. Favor de verificar.");
             }
             return bValidacion;
         }
@@ -877,14 +861,14 @@ namespace TDAWPF.Funcionalidad
         public static bool validacionEMail(string sEmail)
         {
             bool bValidacion = false;
-            Regex r = new Regex("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+" + '/' + " +.[a-zA-Z0-9-.]+$");
+            Regex r = new Regex("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+[.][a-zA-Z0-9-.]+$");
            if (r.IsMatch(sEmail))
             {
                 bValidacion = true;
             }
             else
             {
-                MessageBox.Show("EMail no valido. Favor de verificar.");
+                MessageBox.Show("Email no valido. Favor de verificar.");
             }
             return bValidacion;
         }

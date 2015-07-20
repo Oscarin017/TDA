@@ -141,7 +141,7 @@ namespace TDAWPF.Layouts
                         Llenado.seleccionarComboBoxUid(lEstado.ToString(), cbEstado);
                     }
                 }
-                Llenado.cargarCBCiudadCliente(Convert.ToInt64(es.ID), cbCiudad);
+                Llenado.cargarCBCiudadProveedor(Convert.ToInt64(es.ID), cbCiudad);
             }
         }
     }

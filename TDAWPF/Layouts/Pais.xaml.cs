@@ -28,6 +28,15 @@ namespace TDAWPF.Layouts
             InitializeComponent();
         }
 
+        private void realizarBusqueda(Paises p)
+        {
+            if (!txtNombre.PlaceHolder)
+            {
+                p.Nombre = txtNombre.Text;
+            }
+            cargarGrid(p);
+        }
+
         private void cargarGrid(Paises p)
         {
             TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
@@ -54,19 +63,14 @@ namespace TDAWPF.Layouts
 
         private void btnSearch_Click(object sender, RoutedEventArgs e)
         {
-            Paises p = new Paises();
-            if (!txtNombre.PlaceHolder)
-            {
-                p.Nombre = txtNombre.Text;
-            }
-            cargarGrid(p);
+            realizarBusqueda(new Paises());
         }    
         
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
             Popups.Pais w = new Popups.Pais();
             w.ShowDialog();
-            cargarGrid(new Paises());
+            realizarBusqueda(new Paises());
         }
 
         private void btnModificar_Click(object sender, RoutedEventArgs e)
@@ -75,12 +79,24 @@ namespace TDAWPF.Layouts
             long lID = r.ID;
             Popups.Pais w = new Popups.Pais(lID);
             w.ShowDialog();
-            cargarGrid(new Paises());
+            realizarBusqueda(new Paises());
         }
 
         private void btnEliminar_Click(object sender, RoutedEventArgs e)
         {
-
+            Paises p = ((Button)sender).DataContext as Paises;
+            MessageBoxResult result = MessageBox.Show("Estas seguro que quieres eliminar el pais " + p.Nombre + ".", "Eliminar", MessageBoxButton.OKCancel, MessageBoxImage.Question);
+            if (result == MessageBoxResult.OK)
+            {
+                TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
+                p = tda.BuscarPaisID(p.ID).First();
+                Resultado r = tda.DeletePais(p);
+                if (r.ErrorDB)
+                {
+                    MessageBox.Show("No se pudo eliminar el modelo" + m.Nombre + ".");
+                }
+                realizarBusqueda(new Paises());
+            }
         }    
     }
 }

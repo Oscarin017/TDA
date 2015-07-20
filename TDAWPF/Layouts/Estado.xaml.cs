@@ -29,6 +29,20 @@ namespace TDAWPF.Layouts
             InitializeComponent();
         }
 
+        private void realizarBusqueda(Estados e)
+        {
+            ComboBoxItem cbi = (ComboBoxItem)cbPais.SelectedItem;
+            if (cbPais.SelectedIndex != 0)
+            {
+                e.Pais = Convert.ToInt64(cbi.Uid);
+            }
+            if (!txtNombre.PlaceHolder)
+            {
+                e.Nombre = txtNombre.Text;
+            }
+            cargarGrid(e);
+        }
+
         private void cargarGrid(Estados e)
         {
             TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
@@ -59,24 +73,14 @@ namespace TDAWPF.Layouts
 
         private void btnSearch_Click(object sender, RoutedEventArgs e)
         {
-            Estados es = new Estados();
-            ComboBoxItem cbi = (ComboBoxItem)cbPais.SelectedItem;
-            if (cbPais.SelectedIndex != 0)
-            {
-                es.Pais = Convert.ToInt64(cbi.Uid);
-            }
-            if (!txtNombre.PlaceHolder)
-            {                
-                es.Nombre = txtNombre.Text;
-            }
-            cargarGrid(es);
+            realizarBusqueda(new Estados());
         }    
         
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
             Popups.Estado w = new Popups.Estado();
             w.ShowDialog();
-            cargarGrid(new Estados());
+            realizarBusqueda(new Estados());
         }
 
         private void btnModificar_Click(object sender, RoutedEventArgs e)
@@ -85,12 +89,24 @@ namespace TDAWPF.Layouts
             long lID = r.ID;
             Popups.Estado w = new Popups.Estado(lID);
             w.ShowDialog();
-            cargarGrid(new Estados());
+            realizarBusqueda(new Estados());
         }
 
         private void btnEliminar_Click(object sender, RoutedEventArgs e)
         {
-
+            Estados es = ((Button)sender).DataContext as Estados;
+            MessageBoxResult result = MessageBox.Show("Estas seguro que quieres eliminar el estado " + es.Nombre + ".", "Eliminar", MessageBoxButton.OKCancel, MessageBoxImage.Question);
+            if (result == MessageBoxResult.OK)
+            {
+                TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
+                es = tda.BuscarEstadoID(es.ID).First();
+                Resultado r = tda.DeleteEstado(es);
+                if(r.ErrorDB)
+                {
+                    MessageBox.Show("No se pudo eliminar el estado " + es.Nombre + ".");
+                }
+                realizarBusqueda(new Estados());
+            }
         }    
     }
 }

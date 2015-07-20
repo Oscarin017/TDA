@@ -192,6 +192,30 @@ namespace TDA.DataLayer
             resultado.YaExiste = false;
             return resultado;
         }
+        public Resultado DeleteUsuario(Usuarios usu)
+        {
+            Resultado resultado = new Resultado();
+            var usudb = (from a in _context.Usuario
+                            where a.ID == usu.ID
+                            select a).FirstOrDefault();
+
+            _context.Usuario.Remove(usudb);
+            try
+            {
+                _context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                resultado.Realizado = false;
+                resultado.ErrorDB = true;
+                resultado.YaExiste = false;
+                return resultado;
+            }
+            resultado.Realizado = true;
+            resultado.ErrorDB = false;
+            resultado.YaExiste = false;
+            return resultado;
+        }
         public List<Usuarios> SelectUsuarios(Usuarios usu)
         {
             if(!String.IsNullOrWhiteSpace(usu.Alias))

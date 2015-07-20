@@ -49,6 +49,8 @@ namespace TDA.Service
         [OperationContract]
         Resultado UpdateUsuario(Usuarios usu);
         [OperationContract]
+        Resultado DeleteUsuario(Usuarios usu);
+        [OperationContract]
         List<Usuarios> SelectUsuario(Usuarios usu);
         [OperationContract]
         List<Usuarios> BuscarUsuarioID(long ID);

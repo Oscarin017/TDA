@@ -69,6 +69,10 @@ namespace TDA.Service
         {
             return _dataBaseTool.UpdateUsuario(usu);
         }
+        public Resultado DeleteUsuario(Usuarios usu)
+        {
+            return _dataBaseTool.DeleteUsuario(usu);
+        }
         public List<Usuarios> SelectUsuario(Usuarios usu)
         {
             return _dataBaseTool.SelectUsuarios(usu);

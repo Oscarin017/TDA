@@ -41,7 +41,7 @@
         <Controles:TextBoxI x:Name="txtApellidoMaterno" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Escribe Apellido Materno (Obligatorio)" Grid.Column="3" Grid.Row="1" />
         <Controles:TextBoxI x:Name="txtNombre" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Escribe Nombre (Obligatorio)" Grid.Column="1" Grid.Row="3"/>
         <Controles:TextBoxI x:Name="txtRFC" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Escribe RFC" Grid.Column="3" Grid.Row="3"/>
-        <Controles:TextBoxI x:Name="txtCURP" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Escribe CURP (Obligatorio)" Grid.Column="1" Grid.Row="5"/>
+        <Controles:TextBoxI x:Name="txtCURP" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Escribe CURP" Grid.Column="1" Grid.Row="5"/>
         <Controles:TextBoxI x:Name="txtNSS" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Escribe NSS" Grid.Column="3" Grid.Row="5"/>
         <Controles:ComboBoxI x:Name="cbBaseSalario" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1" Grid.Row="7">
             <Controles:ComboBoxI.Items>
@@ -51,12 +51,12 @@
         <Controles:TextBoxI x:Name="txtSalario" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Escribe Salario (Obligatorio)" Grid.Column="3" Grid.Row="7"/>
         <Controles:ComboBoxI x:Name="cbPais" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1" Grid.Row="9" SelectionChanged="cbPais_SelectionChanged">
             <Controles:ComboBoxI.Items>
-                <ComboBoxItem IsSelected="True" Content="Selecciona Pais (Obligatorio)"/>
+                <ComboBoxItem IsSelected="True" Uid="0" Content="Selecciona Pais (Obligatorio)"/>
             </Controles:ComboBoxI.Items>
         </Controles:ComboBoxI>
-        <Controles:ComboBoxI x:Name="cbEstado" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="3" Grid.Row="9">
+        <Controles:ComboBoxI x:Name="cbEstado" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="3" Grid.Row="9" SelectionChanged="cbEstado_SelectionChanged">
             <Controles:ComboBoxI.Items>
-                <ComboBoxItem IsSelected="True" Content="Selecciona Estado (Obligatorio)"/>
+                <ComboBoxItem IsSelected="True" Uid="0" Content="Selecciona Estado (Obligatorio)"/>
             </Controles:ComboBoxI.Items>
         </Controles:ComboBoxI>
         <Controles:TextBoxI x:Name="txtCiudad" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Escribe Ciudad (Obligatorio)" Grid.Column="1" Grid.Row="11"/>

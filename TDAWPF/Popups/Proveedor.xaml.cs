@@ -22,6 +22,8 @@ namespace TDAWPF.Popups
     public partial class Proveedor : Window
     {
         private long lID = 0;
+        private long lPais = 0;
+        private long lEstado = 0;
 
         public Proveedor()
         {
@@ -274,13 +276,30 @@ namespace TDAWPF.Popups
         {
             Estados es = new Estados();
             ComboBoxItem cbi = (ComboBoxItem)cbPais.SelectedItem;
-            if (cbPais.SelectedIndex != 0)
-            {
-                es.Pais = Convert.ToInt64(cbi.Uid);
-            }
             if (this.IsLoaded)
             {
+                es.Pais = lPais = Convert.ToInt64(cbi.Uid);
                 Llenado.cargarCBEstado(es, cbEstado);
+            }
+        }
+
+        private void cbEstado_SelectionChanged(object sender, EventArgs e)
+        {
+            TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
+            Estados es = new Estados();
+            ComboBoxItem cbi = (ComboBoxItem)cbEstado.SelectedItem;
+            if (this.IsLoaded)
+            {
+                if (cbEstado.SelectedIndex > 0)
+                {
+                    es = tda.BuscarEstadoID(Convert.ToInt64(cbi.Uid)).First();
+                    lEstado = es.ID;
+                    if (lPais == 0)
+                    {
+                        Llenado.seleccionarComboBoxUid(es.Pais.ToString(), cbPais);
+                        Llenado.seleccionarComboBoxUid(lEstado.ToString(), cbEstado);
+                    }
+                }
             }
         }
 

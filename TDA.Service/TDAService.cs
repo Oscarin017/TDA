@@ -123,19 +123,19 @@ namespace TDA.Service
         #endregion
 
         #region Tabla Ciudad        
-        public List<string> SelectCiudadCliente(long lPais, long lEstado)
+        public List<string> SelectCiudadCliente(long lEstado)
         {
-            return _dataBaseTool.SelectCiudadCliente(lPais, lEstado);
+            return _dataBaseTool.SelectCiudadCliente(lEstado);
         }
 
-        public List<string> SelectCiudadEmpleado(long lPais, long lEstado)
+        public List<string> SelectCiudadEmpleado(long lEstado)
         {
-            return _dataBaseTool.SelectCiudadEmpleado(lPais, lEstado);
+            return _dataBaseTool.SelectCiudadEmpleado(lEstado);
         }
 
-        public List<string> SelectCiudadProveedor(long lPais, long lEstado)
+        public List<string> SelectCiudadProveedor( long lEstado)
         {
-            return _dataBaseTool.SelectCiudadProveedor(lPais, lEstado);
+            return _dataBaseTool.SelectCiudadProveedor(lEstado);
         }
         #endregion
 

@@ -31,7 +31,7 @@ namespace TDA.Entities
         [DataMember]
         public string Observaciones { get; set; }
         [DataMember]
-        public bool? Servicio { get; set; }
+        public bool? Especial { get; set; }
         [DataMember]
         public decimal? IVA { get; set; }
         [DataMember]

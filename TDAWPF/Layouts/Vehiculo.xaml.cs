@@ -23,6 +23,8 @@ namespace TDAWPF.Layouts
     public partial class Vehiculo : Page
     {
         List<Vehiculos> lstVehiculo = new List<Vehiculos>();
+        private long lMarca = 0;
+        private long lModelo = 0;
 
         public Vehiculo()
         {
@@ -114,14 +116,31 @@ namespace TDAWPF.Layouts
         {
             Modelos m = new Modelos();
             ComboBoxItem cbi = (ComboBoxItem)cbMarca.SelectedItem;
-            if (cbMarca.SelectedIndex != 0)
-            {
-                m.Marca = Convert.ToInt64(cbi.Uid);
-            }
             if (this.IsLoaded)
             {
+                m.Marca = lMarca = Convert.ToInt64(cbi.Uid);
                 Llenado.cargarCBModelo(m, cbModelo);
             }    
         }
+
+        private void cbModelo_SelectionChanged(object sender, EventArgs e)
+        {
+            TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
+            Modelos m = new Modelos();
+            ComboBoxItem cbi = (ComboBoxItem)cbModelo.SelectedItem;
+            if (this.IsLoaded)
+            {
+                if (cbModelo.SelectedIndex > 0)
+                {
+                    m = tda.BuscarModeloID(Convert.ToInt64(cbi.Uid)).First();
+                    lModelo = m.ID;
+                    if (lMarca == 0)
+                    {
+                        Llenado.seleccionarComboBoxUid(m.Marca.ToString(), cbMarca);
+                        Llenado.seleccionarComboBoxUid(lModelo.ToString(), cbModelo);
+                    }
+                }
+            }
+        }        
     }
 }

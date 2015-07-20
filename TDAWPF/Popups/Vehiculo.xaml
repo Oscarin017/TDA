@@ -33,12 +33,12 @@
         </Grid.ColumnDefinitions>
         <Controles:ComboBoxI x:Name="cbMarca" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1" Grid.Row="1" SelectionChanged="cbMarca_SelectionChanged">
             <Controles:ComboBoxI.Items>
-                <ComboBoxItem IsSelected="True" Content="Selecciona Marca (Obligatorio)"/>
+                <ComboBoxItem IsSelected="True" Uid="0" Content="Selecciona Marca (Obligatorio)"/>
             </Controles:ComboBoxI.Items>
         </Controles:ComboBoxI>
-        <Controles:ComboBoxI x:Name="cbModelo" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1" Grid.Row="3">
+        <Controles:ComboBoxI x:Name="cbModelo" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1" Grid.Row="3" SelectionChanged="cbModelo_SelectionChanged">
             <Controles:ComboBoxI.Items>
-                <ComboBoxItem IsSelected="True" Content="Selecciona Modelo (Obligatorio)"/>
+                <ComboBoxItem IsSelected="True" Uid="0" Content="Selecciona Modelo (Obligatorio)"/>
             </Controles:ComboBoxI.Items>
         </Controles:ComboBoxI>
         <Controles:TextBoxI x:Name="txtAno" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Escribe Año (Obligatorio)" Grid.Column="1" Grid.Row="5"/>

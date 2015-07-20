@@ -33,17 +33,17 @@
         <Controles:TextBoxS x:Name="txtCurp" Text="Escribe CURP" Grid.Column="5" Grid.Row="1"/>
         <Controles:ComboBoxS x:Name="cbPais" Grid.Column="1" Grid.Row="3" SelectionChanged="cbPais_SelectionChanged">
             <Controles:ComboBoxS.Items>
-                <ComboBoxItem IsSelected="True" Content="Selecciona Pais"/>
+                <ComboBoxItem IsSelected="True" Uid="0" Content="Selecciona Pais"/>
             </Controles:ComboBoxS.Items>
         </Controles:ComboBoxS>
         <Controles:ComboBoxS x:Name="cbEstado" Grid.Column="3" Grid.Row="3" SelectionChanged="cbEstado_SelectionChanged">
             <Controles:ComboBoxS.Items>
-                <ComboBoxItem IsSelected="True" Content="Selecciona Estado"/>
+                <ComboBoxItem IsSelected="True" Uid="0" Content="Selecciona Estado"/>
             </Controles:ComboBoxS.Items>
         </Controles:ComboBoxS>
         <Controles:ComboBoxS x:Name="cbCiudad" Grid.Column="5" Grid.Row="3">
             <Controles:ComboBoxS.Items>
-                <ComboBoxItem IsSelected="True" Content="Selecciona Ciudad"/>
+                <ComboBoxItem IsSelected="True" Uid="0" Content="Selecciona Ciudad"/>
             </Controles:ComboBoxS.Items>
         </Controles:ComboBoxS>
         <Grid Grid.Column="7" Grid.Row="1" Grid.RowSpan="4">
@@ -74,10 +74,10 @@
                 <DataGridTextColumn Header="Apellido Materno" Binding="{Binding Apellido2}" Width="*" FontWeight="Normal" />
                 <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}" Width="2*" FontWeight="Normal" />
                 <DataGridTextColumn Header="CURP" Binding="{Binding CURP}" Width="3*" FontWeight="Normal" />
-                <DataGridTemplateColumn MinWidth="30">
+                <DataGridTemplateColumn Width="30">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button x:Name="btnModificar" Width="20" Height="20" Click="btnModificar_Click">
+                            <Button x:Name="btnModificar" Width="25" Height="25" Click="btnModificar_Click">
                                 <Button.Background>
                                     <ImageBrush ImageSource="../Imagenes/Pencil-mini.png"/>
                                 </Button.Background>
@@ -85,10 +85,10 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTemplateColumn MinWidth="30">
+                <DataGridTemplateColumn Width="30">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button x:Name="btnEliminar" Width="20" Height="20" Click="btnEliminar_Click">
+                            <Button x:Name="btnEliminar" Width="25" Height="25" Click="btnEliminar_Click">
                                 <Button.Background>
                                     <ImageBrush ImageSource="../Imagenes/0173-bin.png"/>
                                 </Button.Background>

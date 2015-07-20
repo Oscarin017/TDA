@@ -1,15 +1,15 @@
 Todos
-	Nada case sentive en la busquedas
+	Nada case sentive en la busquedas(hecho)
 	En busqueda realizar de nuevo la busqueda al modificar o ingresar
 
 Cliente
-	RFC no obligatario pero si no tiene por defaul el de hacienda
+	RFC no obligatario pero si no tiene por defaul el de hacienda(hecho)
 	Eliminar eliminacion (hecho)
-	CP 5 digitos numericos
-	Telefono 10 digitos numericos
-	Correo valdidado @ .algo longitud mayor a 5
+	CP 5 digitos numericos (hecho)
+	Telefono 10 digitos numericos(hecho)
+	Correo valdidado @ .algo longitud mayor a 5(hecho)
 Color 
-	Si se elimina
+	Si se elimina(hecho)
 Empleado 
 	CURP no obligatiorio
 	Si se elimina
@@ -43,6 +43,6 @@ Usuario
 	Si se eliminan
 	Contraseña no se muestra boton para verla
 Vehiculo
-	Modelo ComboBox filtre
+	Modelo ComboBox filtre (hecho)
 	No se elimiana
 	Seleccion de modelo que modifique marca

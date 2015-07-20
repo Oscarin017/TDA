@@ -240,7 +240,7 @@
       <xs:element minOccurs="0" name="Apellido" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Apellido2" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="BaseSalario" nillable="true" type="xs:long" />
-      <xs:element minOccurs="0" name="CP" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="CP" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="CURP" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Calle" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Ciudad" nillable="true" type="xs:string" />
@@ -300,7 +300,7 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="Apellido" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Apellido2" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="CP" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="CP" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Calle" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Ciudad" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Colonia" nillable="true" type="xs:string" />
@@ -345,6 +345,7 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="Codigo" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Especial" nillable="true" type="xs:boolean" />
       <xs:element minOccurs="0" name="FechaAlta" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="FechaMod" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="GridBit" type="xs:boolean" />
@@ -358,7 +359,6 @@
       <xs:element minOccurs="0" name="ProveedorApellido" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ProveedorApellido2" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ProveedorNombre" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Servicio" nillable="true" type="xs:boolean" />
       <xs:element minOccurs="0" name="TipoProducto" nillable="true" type="xs:long" />
       <xs:element minOccurs="0" name="TipoProductoNombre" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="UsuarioAlta" nillable="true" type="xs:long" />
@@ -432,7 +432,7 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="Apellido" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Apellido2" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="CP" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="CP" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Calle" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Ciudad" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Colonia" nillable="true" type="xs:string" />
@@ -653,12 +653,12 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Ventas" nillable="true" type="tns:Ventas" />
-  <xs:complexType name="ArrayOfVentas">
+  <xs:complexType name="ArrayOfVentaDetalles">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Ventas" nillable="true" type="tns:Ventas" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VentaDetalles" nillable="true" type="tns:VentaDetalles" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ArrayOfVentas" nillable="true" type="tns:ArrayOfVentas" />
+  <xs:element name="ArrayOfVentaDetalles" nillable="true" type="tns:ArrayOfVentaDetalles" />
   <xs:complexType name="VentaDetalles">
     <xs:sequence>
       <xs:element minOccurs="0" name="Color" nillable="true" type="xs:string" />
@@ -673,12 +673,12 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="VentaDetalles" nillable="true" type="tns:VentaDetalles" />
-  <xs:complexType name="ArrayOfVentaDetalles">
+  <xs:complexType name="ArrayOfVentas">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="VentaDetalles" nillable="true" type="tns:VentaDetalles" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Ventas" nillable="true" type="tns:Ventas" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ArrayOfVentaDetalles" nillable="true" type="tns:ArrayOfVentaDetalles" />
+  <xs:element name="ArrayOfVentas" nillable="true" type="tns:ArrayOfVentas" />
   <xs:complexType name="VentaDias">
     <xs:sequence>
       <xs:element minOccurs="0" name="Fecha" nillable="true" type="xs:dateTime" />

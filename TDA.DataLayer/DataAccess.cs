@@ -686,138 +686,37 @@ namespace TDA.DataLayer
         #endregion
 
         #region Ciudad
-        public List<string> SelectCiudadCliente(long lPais, long lEstado)
-        {            
-            if (lPais == null)
-            { 
-                lPais = 0;
-            }
-            if(lEstado == null)
-            {
-                lEstado = 0;            
-            }
+        public List<string> SelectCiudadCliente(long lEstado)
+        {  
             var ciudades = (from a in _context.Pais
                             join b in _context.Estado on a.ID equals b.Pais
                             join c in _context.Cliente on b.ID equals c.Estado
                             orderby c.Ciudad
-                            select c.Ciudad).ToList();
-            if (lPais > 0 && lEstado > 0)
-            {
-                ciudades = (from a in _context.Pais
-                            join b in _context.Estado on a.ID equals b.Pais
-                            join c in _context.Cliente on b.ID equals c.Estado
-                            orderby c.Ciudad
-                            where a.ID == lPais && c.Estado == lEstado
-                            select c.Ciudad).ToList();
-            }
-            else if (lPais > 0 && lEstado == 0)
-            {
-                ciudades = (from a in _context.Pais
-                            join b in _context.Estado on a.ID equals b.Pais
-                            join c in _context.Cliente on b.ID equals c.Estado
-                            orderby c.Ciudad
-                            where a.ID == lPais
-                            select c.Ciudad).ToList();
-            }
-            else if (lPais == 0 && lEstado > 0)
-            {
-                ciudades = (from a in _context.Pais
-                            join b in _context.Estado on a.ID equals b.Pais
-                            join c in _context.Cliente on b.ID equals c.Estado
-                            orderby c.Ciudad
                             where c.Estado == lEstado
-                            select c.Ciudad).ToList();
-            }
+                            select c.Ciudad).ToList();            
             ciudades = ciudades.GroupBy(c => c).Select(g => g.First()).ToList();
             return ciudades;
         }
-        public List<string> SelectCiudadEmpleado(long lPais, long lEstado)
+        public List<string> SelectCiudadEmpleado(long lEstado)
         {
-            if (lPais == null)
-            {
-                lPais = 0;
-            }
-            if (lEstado == null)
-            {
-                lEstado = 0;
-            }
-            var ciudades = (from a in _context.Pais
-                            join b in _context.Estado on a.ID equals b.Pais
-                            join c in _context.Empleado on b.ID equals c.Estado
-                            orderby c.Ciudad
-                            select c.Ciudad).ToList();
-            if (lPais > 0 && lEstado > 0)
-            {
-                ciudades = (from a in _context.Pais
-                            join b in _context.Estado on a.ID equals b.Pais
-                            join c in _context.Empleado on b.ID equals c.Estado
-                            orderby c.Ciudad
-                            where a.ID == lPais && c.Estado == lEstado
-                            select c.Ciudad).ToList();
-            }
-            else if (lPais > 0 && lEstado == 0)
-            {
-                ciudades = (from a in _context.Pais
-                            join b in _context.Estado on a.ID equals b.Pais
-                            join c in _context.Empleado on b.ID equals c.Estado
-                            orderby c.Ciudad
-                            where a.ID == lPais
-                            select c.Ciudad).ToList();
-            }
-            else if (lPais == 0 && lEstado > 0)
-            {
-                ciudades = (from a in _context.Pais
+            var ciudades = (from a in _context.Pais                            
                             join b in _context.Estado on a.ID equals b.Pais
                             join c in _context.Empleado on b.ID equals c.Estado
                             orderby c.Ciudad
                             where c.Estado == lEstado
                             select c.Ciudad).ToList();
-            }
             ciudades = ciudades.GroupBy(c => c).Select(g => g.First()).ToList();
             return ciudades;
         }
-        public List<string> SelectCiudadProveedor(long lPais, long lEstado)
+        public List<string> SelectCiudadProveedor(long lEstado)
         {
-            if (lPais == null)
-            {
-                lPais = 0;
-            }
-            if (lEstado == null)
-            {
-                lEstado = 0;
-            }
+            
             var ciudades = (from a in _context.Pais
-                            join b in _context.Estado on a.ID equals b.Pais
-                            join c in _context.Proveedor on b.ID equals c.Estado
-                            orderby c.Ciudad
-                            select c.Ciudad).ToList();
-            if (lPais > 0 && lEstado > 0)
-            {
-                ciudades = (from a in _context.Pais
-                            join b in _context.Estado on a.ID equals b.Pais
-                            join c in _context.Proveedor on b.ID equals c.Estado
-                            orderby c.Ciudad
-                            where a.ID == lPais && c.Estado == lEstado
-                            select c.Ciudad).ToList();
-            }
-            else if (lPais > 0 && lEstado == 0)
-            {
-                ciudades = (from a in _context.Pais
-                            join b in _context.Estado on a.ID equals b.Pais
-                            join c in _context.Proveedor on b.ID equals c.Estado
-                            orderby c.Ciudad
-                            where a.ID == lPais
-                            select c.Ciudad).ToList();
-            }
-            else if (lPais == 0 && lEstado > 0)
-            {
-                ciudades = (from a in _context.Pais
                             join b in _context.Estado on a.ID equals b.Pais
                             join c in _context.Proveedor on b.ID equals c.Estado
                             orderby c.Ciudad
                             where c.Estado == lEstado
                             select c.Ciudad).ToList();
-            }
             ciudades = ciudades.GroupBy(c => c).Select(g => g.First()).ToList();
             return ciudades;
         }
@@ -2070,7 +1969,7 @@ namespace TDA.DataLayer
                     PrecioCompra = pro.PrecioCompra,
                     Observaciones = pro.Observaciones,
                     IVAExcencto = pro.IVAExcento,
-                    Servicio = pro.Servicio,
+                    Especial = pro.Especial,
                     TipoProducto = pro.TipoProducto,
                     Proveedor = pro.Proveedor,
                     UsuarioAlta = pro.UsuarioAlta,
@@ -2117,7 +2016,7 @@ namespace TDA.DataLayer
             prodb.IVA = pro.IVA;
             prodb.IVAExcencto = pro.IVAExcento;
             prodb.Observaciones = pro.Observaciones;
-            prodb.Servicio = pro.Servicio;
+            prodb.Especial = pro.Especial;
             prodb.TipoProducto = pro.TipoProducto;
             prodb.Proveedor = pro.Proveedor;
             prodb.UsuarioMod = pro.UsuarioMod;
@@ -2197,7 +2096,7 @@ namespace TDA.DataLayer
                                    Proveedor = a.Proveedor,
                                    ProveedorNombre = b.Nombre,
                                    IVA = a.IVA,
-                                   Servicio = a.Servicio,
+                                   Especial = a.Especial,
                                    ProveedorApellido = b.Apellido,
                                    ProveedorApellido2 = b.Apellido2,
                                    TipoProductoNombre = c.Nombre,
@@ -2227,7 +2126,7 @@ namespace TDA.DataLayer
                                  PrecioVenta = a.PrecioVenta,
                                  PrecioCompra = a.PrecioCompra,
                                  Observaciones = a.Observaciones,
-                                 Servicio = a.Servicio,
+                                 Especial = a.Especial,
                                  IVA = a.IVA,
                                  IVAExcento = a.IVAExcencto,
                                  TipoProducto = a.TipoProducto,

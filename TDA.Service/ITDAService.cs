@@ -80,11 +80,11 @@ namespace TDA.Service
 
         #region Tabla Ciudad
         [OperationContract]
-        List<string> SelectCiudadCliente(long lPais, long lEstado);
+        List<string> SelectCiudadCliente(long lEstado);
         [OperationContract]
-        List<string> SelectCiudadEmpleado(long lPais, long lEstado);
+        List<string> SelectCiudadEmpleado(long lEstado);
         [OperationContract]
-        List<string> SelectCiudadProveedor(long lPais, long lEstado);
+        List<string> SelectCiudadProveedor(long lEstado);
 
         #endregion
 

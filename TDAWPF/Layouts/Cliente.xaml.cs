@@ -23,6 +23,8 @@ namespace TDAWPF.Layouts
     public partial class Cliente : Page
     {
         List<Clientes> lstCliente = new List<Clientes>();
+        private long lPais = 0;
+        private long lEstado = 0;
 
         public Cliente()
         {
@@ -124,29 +126,32 @@ namespace TDAWPF.Layouts
         private void cbPais_SelectionChanged(object sender, EventArgs e)
         {
             Estados es = new Estados();
-            ComboBoxItem cbi = (ComboBoxItem)cbPais.SelectedItem;
-            if (cbPais.SelectedIndex != 0)
-            {
-                es.Pais = Convert.ToInt64(cbi.Uid);
-            }
+            ComboBoxItem cbi = (ComboBoxItem)cbPais.SelectedItem;           
             if (this.IsLoaded)
             {
+                es.Pais = lPais = Convert.ToInt64(cbi.Uid);
                 Llenado.cargarCBEstado(es, cbEstado);
-                Llenado.cargarCBCiudadCliente(Convert.ToInt64(es.Pais), 0, cbCiudad);
             }        
         }
 
         private void cbEstado_SelectionChanged(object sender, EventArgs e)
         {
+            TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
             Estados es = new Estados();
             ComboBoxItem cbi = (ComboBoxItem)cbEstado.SelectedItem;
-            if (cbEstado.SelectedIndex > 0)
-            {
-                es.ID = Convert.ToInt64(cbi.Uid);
-            }
             if (this.IsLoaded)
             {
-                Llenado.cargarCBCiudadCliente(Convert.ToInt64(es.Pais), Convert.ToInt64(es.ID), cbCiudad);
+                if (cbEstado.SelectedIndex > 0)
+                {
+                    es = tda.BuscarEstadoID(Convert.ToInt64(cbi.Uid)).First();
+                    lEstado = es.ID;
+                    if (lPais == 0)
+                    {
+                        Llenado.seleccionarComboBoxUid(es.Pais.ToString(), cbPais);
+                        Llenado.seleccionarComboBoxUid(lEstado.ToString(), cbEstado);
+                    }
+                }
+                Llenado.cargarCBCiudadCliente(Convert.ToInt64(es.ID), cbCiudad);
             }
         }
     }

@@ -69,7 +69,7 @@ namespace TDAWPF.Popups
                 Total = Total,
                 Cliente = Cliente
             };
-            VentaDetalle[] newVentaDet =  new VentaDetalle[]();
+            //VentaDetalle[] newVentaDet =  new VentaDetalle[]();
         }
     }
 }

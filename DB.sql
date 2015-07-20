@@ -472,7 +472,7 @@ CREATE TABLE Producto
 	PrecioCompra	MONEY,
 	IVA				DECIMAL,
 	Observaciones	NVARCHAR(200),
-	Servicio		BIT,	
+	Especial		BIT,	
 	IVAExcencto		BIT,
 	TipoProducto	BIGINT FOREIGN KEY REFERENCES TipoProducto(ID),
 	Proveedor		BIGINT FOREIGN KEY REFERENCES Proveedor(ID),

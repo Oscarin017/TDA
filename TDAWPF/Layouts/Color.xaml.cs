@@ -23,6 +23,15 @@ namespace TDAWPF.Layouts
     {
         List<Colores> lstColor = new List<Colores>();
 
+        private void realizarBusqueda(Colores c) 
+        {
+            if (!txtNombre.PlaceHolder)
+            {
+                c.Nombre = txtNombre.Text;
+            }
+            cargarGrid(c);
+        }
+
         public Color()
         {
             InitializeComponent();
@@ -54,19 +63,14 @@ namespace TDAWPF.Layouts
 
         private void btnSearch_Click(object sender, RoutedEventArgs e)
         {
-            Colores c = new Colores();
-            if (!txtNombre.PlaceHolder)
-            {
-                c.Nombre = txtNombre.Text;
-            }
-            cargarGrid(c);
+            realizarBusqueda(new Colores());
         }    
         
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
             Popups.Color w = new Popups.Color();
             w.ShowDialog();
-            cargarGrid(new Colores());
+            realizarBusqueda(new Colores());
         }
 
         private void btnModificar_Click(object sender, RoutedEventArgs e)
@@ -75,12 +79,20 @@ namespace TDAWPF.Layouts
             long lID = r.ID;
             Popups.Color w = new Popups.Color(lID);
             w.ShowDialog();
-            cargarGrid(new Colores());
+            realizarBusqueda(new Colores());
         }
 
         private void btnEliminar_Click(object sender, RoutedEventArgs e)
         {
-
+            Colores c = ((Button)sender).DataContext as Colores;
+            MessageBoxResult result = MessageBox.Show("Estas seguro que quieres eliminar el color " +  c.Nombre + ".","Eliminar", MessageBoxButton.OKCancel, MessageBoxImage.Question);
+            if (result == MessageBoxResult.OK)
+            {
+                TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
+                c = tda.BuscarColorID(c.ID).First();
+                Resultado r = tda.DeleteColor(c);
+                realizarBusqueda(new Colores());
+            }
         }    
     }
 }

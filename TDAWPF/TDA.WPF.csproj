@@ -471,6 +471,12 @@
     <Resource Include="Imagenes\0289-forward3.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\TDA.DataLayer\TDA.DataLayer.csproj">
+      <Project>{f4a663ac-14d3-499d-8ca7-71cb6e0dfaed}</Project>
+      <Name>TDA.DataLayer</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
     <WCFMetadataStorage Include="Service References\TDAService\" />
   </ItemGroup>
   <ItemGroup>
@@ -484,12 +490,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\TDA.DataLayer\TDA.DataLayer.csproj">
-      <Project>{f4a663ac-14d3-499d-8ca7-71cb6e0dfaed}</Project>
-      <Name>TDA.DataLayer</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -23,10 +23,40 @@ namespace TDAWPF.Layouts
     public partial class Empleado : Page
     {
         List<Empleados> lstEmpleado = new List<Empleados>();
+        private long lPais = 0;
+        private long lEstado = 0;
 
         public Empleado()
         {
             InitializeComponent();
+        }
+
+        private void realizarBusqueda(Empleados e)
+        {
+            ComboBoxItem cbi = (ComboBoxItem)cbPais.SelectedItem;
+            if (cbPais.SelectedIndex != 0)
+            {
+                e.Pais = Convert.ToInt64(cbi.Uid);
+            }
+            ComboBoxItem cbi1 = (ComboBoxItem)cbEstado.SelectedItem;
+            if (cbEstado.SelectedIndex != 0)
+            {
+                e.Estado = Convert.ToInt64(cbi1.Uid);
+            }
+            if (!txtNombre.PlaceHolder)
+            {
+                e.Nombre = txtNombre.Text;
+            }
+            if (!txtApellido.PlaceHolder)
+            {
+                e.Apellido = txtApellido.Text;
+                e.Apellido2 = txtApellido.Text;
+            }
+            if (!txtCurp.PlaceHolder)
+            {
+                e.CURP = txtCurp.Text;
+            }
+            cargarGrid(e);
         }
 
         private void cargarGrid(Empleados e)
@@ -60,38 +90,14 @@ namespace TDAWPF.Layouts
 
         private void btnSearch_Click(object sender, RoutedEventArgs e)
         {
-            Empleados em = new Empleados();
-            ComboBoxItem cbi = (ComboBoxItem)cbPais.SelectedItem;
-            if (cbPais.SelectedIndex != 0)
-            {
-                em.Pais = Convert.ToInt64(cbi.Uid);
-            }
-            ComboBoxItem cbi1= (ComboBoxItem)cbEstado.SelectedItem;
-            if (cbEstado.SelectedIndex != 0)
-            {
-                em.Estado = Convert.ToInt64(cbi1.Uid);
-            }
-            if (!txtNombre.PlaceHolder)
-            {                
-                em.Nombre = txtNombre.Text;
-            }
-            if (!txtApellido.PlaceHolder)
-            {
-                em.Apellido = txtApellido.Text;
-                em.Apellido2 = txtApellido.Text;
-            }
-            if (!txtCurp.PlaceHolder)
-            {
-                em.CURP = txtCurp.Text;
-            }
-            cargarGrid(em);
+            realizarBusqueda(new Empleados());
         }    
         
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
             Popups.Empleado w = new Popups.Empleado();
             w.ShowDialog();
-            cargarGrid(new Empleados());
+            realizarBusqueda(new Empleados());
         }
 
         private void btnModificar_Click(object sender, RoutedEventArgs e)
@@ -100,40 +106,51 @@ namespace TDAWPF.Layouts
             long lID = r.ID;
             Popups.Empleado w = new Popups.Empleado(lID);
             w.ShowDialog();
-            cargarGrid(new Empleados());
+            realizarBusqueda(new Empleados());
         }
 
         private void btnEliminar_Click(object sender, RoutedEventArgs e)
         {
-
+            Empleados em = ((Button)sender).DataContext as Empleados;
+            MessageBoxResult result = MessageBox.Show("Estas seguro que quieres eliminar al empleado " + em.Nombre + " "+ em.Apellido + " " + em.Apellido2 + ".", "Eliminar", MessageBoxButton.OKCancel, MessageBoxImage.Question);
+            if (result == MessageBoxResult.OK)
+            {
+                TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
+                em = tda.BuscarEmpleadoID(em.ID).First();
+                Resultado r = tda.DeleteEmpleado(em);
+                realizarBusqueda(new Empleados());
+            }
         }
 
         private void cbPais_SelectionChanged(object sender, EventArgs e)
         {
             Estados es = new Estados();
             ComboBoxItem cbi = (ComboBoxItem)cbPais.SelectedItem;
-            if (cbPais.SelectedIndex != 0)
-            {
-                es.Pais = Convert.ToInt64(cbi.Uid);
-            }
             if (this.IsLoaded)
             {
+                es.Pais = lPais = Convert.ToInt64(cbi.Uid);
                 Llenado.cargarCBEstado(es, cbEstado);
-                Llenado.cargarCBCiudadEmpleado(Convert.ToInt64(es.Pais), 0, cbCiudad);
             }
         }
 
         private void cbEstado_SelectionChanged(object sender, EventArgs e)
         {
+            TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
             Estados es = new Estados();
             ComboBoxItem cbi = (ComboBoxItem)cbEstado.SelectedItem;
-            if (cbEstado.SelectedIndex > 0)
-            {
-                es.ID = Convert.ToInt64(cbi.Uid);
-            }
             if (this.IsLoaded)
             {
-                Llenado.cargarCBCiudadEmpleado(Convert.ToInt64(es.Pais), Convert.ToInt64(es.ID), cbCiudad);
+                if (cbEstado.SelectedIndex > 0)
+                {
+                    es = tda.BuscarEstadoID(Convert.ToInt64(cbi.Uid)).First();
+                    lEstado = es.ID;
+                    if (lPais == 0)
+                    {
+                        Llenado.seleccionarComboBoxUid(es.Pais.ToString(), cbPais);
+                        Llenado.seleccionarComboBoxUid(lEstado.ToString(), cbEstado);
+                    }                    
+                }
+                Llenado.cargarCBCiudadCliente(Convert.ToInt64(es.ID), cbCiudad);                
             }
         }
     }

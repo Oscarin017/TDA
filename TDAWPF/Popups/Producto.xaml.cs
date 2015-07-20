@@ -62,7 +62,7 @@ namespace TDAWPF.Popups
                     Llenado.seleccionarComboBoxUid(r.Proveedor.ToString(), cbProveedor);
                     txtPrecioVenta.Text = r.PrecioVenta.ToString();
                     txtPrecioCompra.Text = r.PrecioCompra.ToString();                    
-                    if (r.Servicio == true)
+                    if (r.Especial == true)
                     {
                         cbEspecial.IsChecked = true;
                     }

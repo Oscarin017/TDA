@@ -22,6 +22,8 @@ namespace TDAWPF.Popups
     public partial class Cliente : Window
     {
         private long lID = 0;
+        private long lPais = 0;
+        private long lEstado = 0;
 
         public Cliente()
         {
@@ -32,6 +34,45 @@ namespace TDAWPF.Popups
         {
             InitializeComponent();
             lID = ID;
+        }
+
+        private bool validacionCampos()
+        {
+            bool bValidacion = true;
+            bool bTipoRFC = false;
+            if(rbMoral.IsChecked == true)
+            {
+                bTipoRFC = true;
+            }
+            if (!txtRFC.PlaceHolder)
+            {
+                if (!Llenado.validacionRFC(txtRFC.Text, bTipoRFC))
+                {
+                    bValidacion = false;
+                }
+            }
+            if(!txtCP.PlaceHolder)
+            {
+                if(!Llenado.validacionCP(txtCP.Text))
+                {
+                    bValidacion = false;
+                }
+            }
+            if (!txtTelefono.PlaceHolder)
+            {
+                if (!Llenado.validacionTelefono(txtTelefono.Text))
+                {
+                    bValidacion = false;
+                }
+            }
+            if (!txtEmail.PlaceHolder)
+            {
+                if (!Llenado.validacionEMail(txtEmail.Text))
+                {
+                    bValidacion = false;
+                }
+            }
+            return bValidacion;
         }
 
         private void btnCancelar_Click(object sender, RoutedEventArgs e)
@@ -106,89 +147,92 @@ namespace TDAWPF.Popups
         {
             if ((!txtNombre.PlaceHolder && cbPais.SelectedIndex != 0 && cbEstado.SelectedIndex != 0 && !txtCiudad.PlaceHolder && !txtCalle.PlaceHolder && !txtCP.PlaceHolder && !txtTelefono.PlaceHolder) && ((rbFisica.IsChecked == true && !txtApellidoPaterno.PlaceHolder && !txtApellidoMaterno.PlaceHolder) || (rbMoral.IsChecked == true)))
             {
-                TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
-                Clientes c = new Clientes();
-                if (rbMoral.IsChecked == true)
+                if (validacionCampos())
                 {
-                    c.Tipo = true;
-                    c.Apellido = null;
-                    c.Apellido2 = null;
+                    TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
+                    Clientes c = new Clientes();
+                    if (rbMoral.IsChecked == true)
+                    {
+                        c.Tipo = true;
+                        c.Apellido = null;
+                        c.Apellido2 = null;
+                    }
+                    else if (rbFisica.IsChecked == true)
+                    {
+                        c.Tipo = false;
+                        c.Apellido = txtApellidoPaterno.Text;
+                        c.Apellido2 = txtApellidoMaterno.Text;
+                    }
+                    c.Nombre = txtNombre.Text;
+                    if (txtRFC.PlaceHolder)
+                    {
+                        c.RFC = "XAXX010101000";
+                    }
+                    else
+                    {
+                        c.RFC = txtRFC.Text;
+                    }
+                    ComboBoxItem cbi = (ComboBoxItem)cbPais.Items[cbPais.SelectedIndex];
+                    c.Pais = Convert.ToInt64(cbi.Uid);
+                    ComboBoxItem cbi1 = (ComboBoxItem)cbEstado.Items[cbEstado.SelectedIndex];
+                    c.Estado = Convert.ToInt64(cbi1.Uid);
+                    c.Ciudad = txtCiudad.Text;
+                    if (txtLocalidad.PlaceHolder)
+                    {
+                        c.Localidad = null;
+                    }
+                    else
+                    {
+                        c.Localidad = txtLocalidad.Text;
+                    }
+                    c.Calle = txtCalle.Text;
+                    if (txtNumeroExterior.PlaceHolder)
+                    {
+                        c.NumeroExterior = null;
+                    }
+                    else
+                    {
+                        c.NumeroExterior = txtNumeroExterior.Text;
+                    }
+                    if (txtNumeroInterior.PlaceHolder)
+                    {
+                        c.NumeroInterior = null;
+                    }
+                    else
+                    {
+                        c.NumeroInterior = txtNumeroInterior.Text;
+                    }
+                    if (txtColonia.PlaceHolder)
+                    {
+                        c.Colonia = null;
+                    }
+                    else
+                    {
+                        c.Colonia = txtColonia.Text;
+                    }
+                    c.CP = txtCP.Text;
+                    c.Telefono = txtTelefono.Text;
+                    if (txtEmail.PlaceHolder)
+                    {
+                        c.Email = null;
+                    }
+                    else
+                    {
+                        c.Email = txtEmail.Text;
+                    }
+                    if (cbGrupoCliente.SelectedIndex == 0)
+                    {
+                        c.GrupoCliente = null;
+                    }
+                    else
+                    {
+                        ComboBoxItem cbi2 = (ComboBoxItem)cbGrupoCliente.Items[cbGrupoCliente.SelectedIndex];
+                        c.GrupoCliente = Convert.ToInt64(cbi.Uid);
+                    }
+                    tda.InsertCliente(c);
+                    tda.Close();
+                    this.Close();
                 }
-                else if (rbFisica.IsChecked == true)
-                {
-                    c.Tipo = false;
-                    c.Apellido = txtApellidoPaterno.Text;
-                    c.Apellido2 = txtApellidoMaterno.Text;
-                }
-                c.Nombre = txtNombre.Text;
-                if (txtRFC.PlaceHolder)
-                {
-                    c.RFC = null;
-                }
-                else
-                {
-                    c.RFC = txtRFC.Text;
-                }
-                ComboBoxItem cbi = (ComboBoxItem)cbPais.Items[cbPais.SelectedIndex];
-                c.Pais = Convert.ToInt64(cbi.Uid);
-                ComboBoxItem cbi1 = (ComboBoxItem)cbEstado.Items[cbEstado.SelectedIndex];
-                c.Estado = Convert.ToInt64(cbi1.Uid);
-                c.Ciudad = txtCiudad.Text;
-                if (txtLocalidad.PlaceHolder)
-                {
-                    c.Localidad = null;
-                }
-                else
-                {
-                    c.Localidad = txtLocalidad.Text;
-                }
-                c.Calle = txtCalle.Text;
-                if (txtNumeroExterior.PlaceHolder)
-                {
-                    c.NumeroExterior = null;
-                }
-                else
-                {
-                    c.NumeroExterior = txtNumeroExterior.Text;
-                }
-                if (txtNumeroInterior.PlaceHolder)
-                {
-                    c.NumeroInterior = null;
-                }
-                else
-                {
-                    c.NumeroInterior = txtNumeroInterior.Text;
-                }
-                if (txtColonia.PlaceHolder)
-                {
-                    c.Colonia = null;
-                }
-                else
-                {
-                    c.Colonia = txtColonia.Text;
-                }
-                c.CP = txtCP.Text;
-                c.Telefono = txtTelefono.Text;
-                if (txtEmail.PlaceHolder)
-                {
-                    c.Email = null;
-                }
-                else
-                {
-                    c.Email = txtEmail.Text;
-                }
-                if (cbGrupoCliente.SelectedIndex == 0)
-                {
-                    c.GrupoCliente = null;
-                }
-                else
-                {
-                    ComboBoxItem cbi2 = (ComboBoxItem)cbGrupoCliente.Items[cbGrupoCliente.SelectedIndex];
-                    c.GrupoCliente = Convert.ToInt64(cbi.Uid);
-                }                 
-                tda.InsertCliente(c);
-                tda.Close();
-                this.Close();
             }
             else
             {
@@ -297,13 +341,30 @@ namespace TDAWPF.Popups
         {
             Estados es = new Estados();
             ComboBoxItem cbi = (ComboBoxItem)cbPais.SelectedItem;
-            if (cbPais.SelectedIndex != 0)
-            {
-                es.Pais = Convert.ToInt64(cbi.Uid);
-            }
             if (this.IsLoaded)
             {
+                es.Pais = lPais = Convert.ToInt64(cbi.Uid);
                 Llenado.cargarCBEstado(es, cbEstado);
+            }
+        }
+
+        private void cbEstado_SelectionChanged(object sender, EventArgs e)
+        {
+            TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
+            Estados es = new Estados();
+            ComboBoxItem cbi = (ComboBoxItem)cbEstado.SelectedItem;
+            if (this.IsLoaded)
+            {
+                if (cbEstado.SelectedIndex > 0)
+                {
+                    es = tda.BuscarEstadoID(Convert.ToInt64(cbi.Uid)).First();
+                    lEstado = es.ID;
+                    if (lPais == 0)
+                    {
+                        Llenado.seleccionarComboBoxUid(es.Pais.ToString(), cbPais);
+                        Llenado.seleccionarComboBoxUid(lEstado.ToString(), cbEstado);
+                    }
+                }
             }
         }
 

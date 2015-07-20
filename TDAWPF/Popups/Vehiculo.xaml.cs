@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using TDA.Entities;
+using TDAWPF.Funcionalidad;
 
 namespace TDAWPF.Popups
 {
@@ -21,6 +22,8 @@ namespace TDAWPF.Popups
     public partial class Vehiculo : Window
     {
         private long lID = 0;
+        private long lMarca = 0;
+        private long lModelo = 0;
 
         public Vehiculo()
         {
@@ -164,12 +167,32 @@ namespace TDAWPF.Popups
 
         private void cbMarca_SelectionChanged(object sender, EventArgs e)
         {
-            if (cbMarca.SelectedIndex != 0)
+            Modelos m = new Modelos();
+            ComboBoxItem cbi = (ComboBoxItem)cbMarca.SelectedItem;
+            if (this.IsLoaded)
             {
-                Modelos m = new Modelos();
-                ComboBoxItem cbi = (ComboBoxItem)cbMarca.SelectedItem;
-                m.Marca = Convert.ToInt64(cbi.Uid);
-                cargarCBModelo(m);
+                m.Marca = lMarca = Convert.ToInt64(cbi.Uid);
+                Llenado.cargarCBModelo(m, cbModelo);
+            }    
+        }
+
+        private void cbModelo_SelectionChanged(object sender, EventArgs e)
+        {
+            TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
+            Modelos m = new Modelos();
+            ComboBoxItem cbi = (ComboBoxItem)cbModelo.SelectedItem;
+            if (this.IsLoaded)
+            {
+                if (cbModelo.SelectedIndex > 0)
+                {
+                    m = tda.BuscarModeloID(Convert.ToInt64(cbi.Uid)).First();
+                    lModelo = m.ID;
+                    if (lMarca == 0)
+                    {
+                        Llenado.seleccionarComboBoxUid(m.Marca.ToString(), cbMarca);
+                        Llenado.seleccionarComboBoxUid(lModelo.ToString(), cbModelo);
+                    }
+                }
             }
         }
     }

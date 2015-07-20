@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using TDA.Entities;
+using System.Text.RegularExpressions;
 
 namespace TDAWPF.Funcionalidad
 {
@@ -216,11 +217,11 @@ namespace TDAWPF.Funcionalidad
             }
         }
 
-        public static void cargarCBCiudadCliente(long lPais, long lEstado, Controles.ComboBoxS cb)
+        public static void cargarCBCiudadCliente(long lEstado, Controles.ComboBoxS cb)
         {
             cb.Clear();
             TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
-            var resultado = tda.SelectCiudadCliente(lPais, lEstado);
+            var resultado = tda.SelectCiudadCliente(lEstado);
             tda.Close();
             foreach (var r in resultado)
             {
@@ -230,11 +231,11 @@ namespace TDAWPF.Funcionalidad
             }
         }
 
-        public static void cargarCBCiudadEmpleado(long lPais, long lEstado, Controles.ComboBoxS cb)
+        public static void cargarCBCiudadEmpleado(long lEstado, Controles.ComboBoxS cb)
         {
             cb.Clear();
             TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
-            var resultado = tda.SelectCiudadEmpleado(lPais, lEstado);
+            var resultado = tda.SelectCiudadEmpleado(lEstado);
             tda.Close();
             foreach (var r in resultado)
             {
@@ -244,11 +245,11 @@ namespace TDAWPF.Funcionalidad
             }
         }
 
-        public static void cargarCBCiudadProveedor(long lPais, long lEstado, Controles.ComboBoxS cb)
+        public static void cargarCBCiudadProveedor(long lEstado, Controles.ComboBoxS cb)
         {
             cb.Clear();
             TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
-            var resultado = tda.SelectCiudadProveedor(lPais, lEstado);
+            var resultado = tda.SelectCiudadProveedor(lEstado);
             tda.Close();
             foreach (var r in resultado)
             {
@@ -409,6 +410,17 @@ namespace TDAWPF.Funcionalidad
         }
 
         public static void seleccionarComboBoxUid(string Uid, Controles.ComboBoxI cb)
+        {
+            foreach (ComboBoxItem cbi in cb.Items)
+            {
+                if (cbi.Uid == Uid)
+                {
+                    cbi.IsSelected = true;
+                }
+            }
+        }
+
+        public static void seleccionarComboBoxUid(string Uid, Controles.ComboBoxS cb)
         {
             foreach (ComboBoxItem cbi in cb.Items)
             {
@@ -763,6 +775,7 @@ namespace TDAWPF.Funcionalidad
         public static bool validacionRFC(string sText, bool Tipo)
         {
             bool bValidacion = false;
+            bool bMensaje = false;
             try
             {
                 if (!Tipo)
@@ -787,6 +800,46 @@ namespace TDAWPF.Funcionalidad
             catch
             {
                 MessageBox.Show("El RFC es incorrecto. Favor de verificar.");
+                bMensaje = true;
+            }
+            finally
+            {
+                if(!bMensaje && !bValidacion)
+                {
+                    MessageBox.Show("El RFC es incorrecto. Favor de verificar.");
+                }
+            }
+            return bValidacion;
+        }
+
+        public static bool validacionCURP(string sText)
+        {
+            bool bValidacion = false;
+            bool bMensaje = false;
+            
+            try
+            {
+
+                string sNombre = sText.Substring(0, 4);
+                int iNacimiento = Convert.ToInt32(sText.Substring(4, 6));
+                string sSexo = sText.Substring(11, 1);
+                
+                if (sText.Length == 13)
+                {
+                    bValidacion = true;
+                }
+            }
+            catch
+            {
+                MessageBox.Show("El RFC es incorrecto. Favor de verificar.");
+                bMensaje = true;
+            }
+            finally
+            {
+                if (!bMensaje && !bValidacion)
+                {
+                    MessageBox.Show("El RFC es incorrecto. Favor de verificar.");
+                }
             }
             return bValidacion;
         }
@@ -794,14 +847,44 @@ namespace TDAWPF.Funcionalidad
         public static bool validacionCP(string sCP)
         {
             bool bValidacion = false;
-            try
+            Regex r = new Regex("^[0-9]{5}$");
+            if (r.IsMatch(sCP))
             {
-                int iCP = Convert.ToInt32(sCP);
                 bValidacion = true;
             }
-            catch
+            else
             {
-                MessageBox.Show("El CP es incorrecto. Favor de verificar.");
+                MessageBox.Show("CP no valido. Favor de verificar.");
+            }
+            return bValidacion;
+        }
+
+        public static bool validacionTelefono(string sTelefono)
+        {
+            bool bValidacion = false;
+            Regex r = new Regex("^[0-9]{7,10}$");
+            if (r.IsMatch(sTelefono))
+            {
+                bValidacion = true;
+            }
+            else
+            {
+                MessageBox.Show("Telefono no valido. Favor de verificar.\nTelefono debe contener solo numeros. Minimo 7 y maximo 10 caracteres.");
+            }  
+            return bValidacion;
+        }
+
+        public static bool validacionEMail(string sEmail)
+        {
+            bool bValidacion = false;
+            Regex r = new Regex("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+" + '/' + " +.[a-zA-Z0-9-.]+$");
+           if (r.IsMatch(sEmail))
+            {
+                bValidacion = true;
+            }
+            else
+            {
+                MessageBox.Show("EMail no valido. Favor de verificar.");
             }
             return bValidacion;
         }

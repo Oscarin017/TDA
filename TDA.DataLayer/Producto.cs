@@ -29,7 +29,7 @@ namespace TDA.DataLayer
         public Nullable<decimal> PrecioCompra { get; set; }
         public Nullable<decimal> IVA { get; set; }
         public string Observaciones { get; set; }
-        public Nullable<bool> Servicio { get; set; }
+        public Nullable<bool> Especial { get; set; }
         public Nullable<bool> IVAExcencto { get; set; }
         public Nullable<long> TipoProducto { get; set; }
         public Nullable<long> Proveedor { get; set; }

@@ -32,17 +32,17 @@
         <Controles:TextBoxS x:Name="txtRFC" Text="Escribe RFC" Grid.Column="3" Grid.Row="1"/>
         <Controles:ComboBoxS x:Name="cbPais" Grid.Column="1" Grid.Row="3" SelectionChanged="cbPais_SelectionChanged">
             <Controles:ComboBoxS.Items>
-                <ComboBoxItem IsSelected="True" Content="Selecciona Pais"/>
+                <ComboBoxItem IsSelected="True" Uid="0" Content="Selecciona Pais"/>
             </Controles:ComboBoxS.Items>
         </Controles:ComboBoxS>
         <Controles:ComboBoxS x:Name="cbEstado" Grid.Column="3" Grid.Row="3" SelectionChanged="cbEstado_SelectionChanged">
             <Controles:ComboBoxS.Items>
-                <ComboBoxItem IsSelected="True" Content="Selecciona Estado"/>
+                <ComboBoxItem IsSelected="True" Uid="0" Content="Selecciona Estado"/>
             </Controles:ComboBoxS.Items>
         </Controles:ComboBoxS>
         <Controles:ComboBoxS x:Name="cbCiudad" Grid.Column="5" Grid.Row="3">
             <Controles:ComboBoxS.Items>
-                <ComboBoxItem IsSelected="True" Content="Selecciona Ciudad"/>
+                <ComboBoxItem IsSelected="True" Uid="0" Content="Selecciona Ciudad"/>
             </Controles:ComboBoxS.Items>
         </Controles:ComboBoxS>
         <Grid Grid.Column="7" Grid.Row="1" Grid.RowSpan="4">

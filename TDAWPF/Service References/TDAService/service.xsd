@@ -285,7 +285,6 @@
   <xs:element name="SelectCiudadCliente">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="lPais" type="xs:long" />
         <xs:element minOccurs="0" name="lEstado" type="xs:long" />
       </xs:sequence>
     </xs:complexType>
@@ -300,7 +299,6 @@
   <xs:element name="SelectCiudadEmpleado">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="lPais" type="xs:long" />
         <xs:element minOccurs="0" name="lEstado" type="xs:long" />
       </xs:sequence>
     </xs:complexType>
@@ -315,7 +313,6 @@
   <xs:element name="SelectCiudadProveedor">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="lPais" type="xs:long" />
         <xs:element minOccurs="0" name="lEstado" type="xs:long" />
       </xs:sequence>
     </xs:complexType>
@@ -1667,27 +1664,28 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q199="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="ven" nillable="true" type="q199:Ventas" />
+        <xs:element xmlns:q200="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="venDet" nillable="true" type="q200:ArrayOfVentaDetalles" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="InsertVentaResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q200="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="InsertVentaResult" nillable="true" type="q200:Resultado" />
+        <xs:element xmlns:q201="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="InsertVentaResult" nillable="true" type="q201:Resultado" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="DeleteVenta">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q201="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="ven" nillable="true" type="q201:Ventas" />
+        <xs:element xmlns:q202="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="ven" nillable="true" type="q202:Ventas" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="DeleteVentaResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q202="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="DeleteVentaResult" nillable="true" type="q202:Resultado" />
+        <xs:element xmlns:q203="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="DeleteVentaResult" nillable="true" type="q203:Resultado" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -1699,75 +1697,77 @@
   <xs:element name="SelectVentaResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q203="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="SelectVentaResult" nillable="true" type="q203:ArrayOfVentas" />
+        <xs:element xmlns:q204="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="SelectVentaResult" nillable="true" type="q204:ArrayOfVentas" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="InsertVentaDetalle">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q204="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="ved" nillable="true" type="q204:VentaDetalles" />
+        <xs:element xmlns:q205="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="ved" nillable="true" type="q205:VentaDetalles" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="InsertVentaDetalleResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q205="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="InsertVentaDetalleResult" nillable="true" type="q205:Resultado" />
+        <xs:element xmlns:q206="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="InsertVentaDetalleResult" nillable="true" type="q206:Resultado" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="DeleteVentaDetalle">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q206="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="ved" nillable="true" type="q206:VentaDetalles" />
+        <xs:element xmlns:q207="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="ved" nillable="true" type="q207:VentaDetalles" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="DeleteVentaDetalleResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q207="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="DeleteVentaDetalleResult" nillable="true" type="q207:Resultado" />
+        <xs:element xmlns:q208="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="DeleteVentaDetalleResult" nillable="true" type="q208:Resultado" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="SelectVentaDetalle">
     <xs:complexType>
-      <xs:sequence />
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ID" nillable="true" type="xs:long" />
+      </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="SelectVentaDetalleResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q208="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="SelectVentaDetalleResult" nillable="true" type="q208:ArrayOfVentaDetalles" />
+        <xs:element xmlns:q209="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="SelectVentaDetalleResult" nillable="true" type="q209:ArrayOfVentaDetalles" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="InsertVentaDia">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q209="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="ved" nillable="true" type="q209:VentaDias" />
+        <xs:element xmlns:q210="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="ved" nillable="true" type="q210:VentaDias" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="InsertVentaDiaResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q210="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="InsertVentaDiaResult" nillable="true" type="q210:Resultado" />
+        <xs:element xmlns:q211="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="InsertVentaDiaResult" nillable="true" type="q211:Resultado" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="DeleteVentaDia">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q211="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="ved" nillable="true" type="q211:VentaDias" />
+        <xs:element xmlns:q212="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="ved" nillable="true" type="q212:VentaDias" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="DeleteVentaDiaResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q212="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="DeleteVentaDiaResult" nillable="true" type="q212:Resultado" />
+        <xs:element xmlns:q213="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="DeleteVentaDiaResult" nillable="true" type="q213:Resultado" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -1779,7 +1779,7 @@
   <xs:element name="SelectVentaDiaResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q213="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="SelectVentaDiaResult" nillable="true" type="q213:ArrayOfVentaDias" />
+        <xs:element xmlns:q214="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="SelectVentaDiaResult" nillable="true" type="q214:ArrayOfVentaDias" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

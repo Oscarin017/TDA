@@ -28,14 +28,14 @@
             <RowDefinition Height="500" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <Controles:ComboBoxS x:Name="cbMarca" Grid.Column="1" Grid.Row="1" SelectionChanged="cbMarca_SelectionChanged">
+        <Controles:ComboBoxS x:Name="cbMarca" Grid.Column="1" Grid.Row="1" SelectionChanged="cbMarca_SelectionChanged" >
             <Controles:ComboBoxS.Items>
-                <ComboBoxItem IsSelected="True" Content="Selecciona Marca"/>
+                <ComboBoxItem IsSelected="True" Uid="0" Content="Selecciona Marca"/>
             </Controles:ComboBoxS.Items>
         </Controles:ComboBoxS>
-        <Controles:ComboBoxS x:Name="cbModelo" Grid.Column="3" Grid.Row="1" >
+        <Controles:ComboBoxS x:Name="cbModelo" Grid.Column="3" Grid.Row="1" SelectionChanged="cbModelo_SelectionChanged" >
             <Controles:ComboBoxS.Items>
-                <ComboBoxItem IsSelected="True" Content="Selecciona Modelo"/>
+                <ComboBoxItem IsSelected="True" Uid="0" Content="Selecciona Modelo"/>
             </Controles:ComboBoxS.Items>
         </Controles:ComboBoxS>
         <Controles:TextBoxS x:Name="txtAno" Text="Escribe Año" Grid.Column="5" Grid.Row="1" />

@@ -75,7 +75,7 @@ namespace TDAWPF.Popups
                 {
                     Subtotal = prod.PrecioVenta,
                     Descripcion = prod.Descripcion,
-                    venta
+                    
                 };
             }
         }

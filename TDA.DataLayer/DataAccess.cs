@@ -586,7 +586,10 @@ namespace TDA.DataLayer
                               select a.Nombre).FirstOrDefault();
             if (string.IsNullOrEmpty(estName))
             {
-                
+                var estDel = (from a in _context.Estado
+                              where a.ID == est.ID
+                              select a).FirstOrDefault();
+                _context.Estado.Remove(estDel);
             }
             else
             {

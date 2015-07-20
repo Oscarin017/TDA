@@ -73,6 +73,8 @@ namespace TDA.Service
         [OperationContract]
         Resultado UpdateEstado(Estados est);
         [OperationContract]
+        Resultado DeleteEstado(Estados est);
+        [OperationContract]
         List<Estados> SelectEstado(Estados est);
         [OperationContract]
         List<Estados> BuscarEstadoID(long ID);

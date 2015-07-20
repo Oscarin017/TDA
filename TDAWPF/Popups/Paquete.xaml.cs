@@ -305,6 +305,7 @@ namespace TDAWPF.Popups
             if (rb.Content.ToString() == "Publico General" && rb.IsLoaded)
             {
                 tiGrupos.Visibility = Visibility.Collapsed;
+                tcMain.SelectedIndex = 0;
             }
             else if (rb.Content.ToString() == "Grupo Cliente")
             {

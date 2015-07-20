@@ -93,7 +93,7 @@ namespace TDAWPF.Layouts
                 Resultado r = tda.DeleteColor(c);
                 if (r.ErrorDB)
                 {
-                    MessageBox.Show("No se pudo eliminar el estado " + es.Nombre + ".");
+                    MessageBox.Show("No se pudo eliminar el estado " + c.Nombre + ".");
                 }
                 realizarBusqueda(new Colores());
             }

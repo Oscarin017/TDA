@@ -93,7 +93,7 @@ namespace TDAWPF.Layouts
                 Resultado r = tda.DeletePais(p);
                 if (r.ErrorDB)
                 {
-                    MessageBox.Show("No se pudo eliminar el modelo" + m.Nombre + ".");
+                    MessageBox.Show("No se pudo eliminar el modelo" + p.Nombre + ".");
                 }
                 realizarBusqueda(new Paises());
             }

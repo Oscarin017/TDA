@@ -25,24 +25,24 @@ Modelo
 Pais 
 	Si se elimina(hecho) 
 Paquete
-	Modificar consulta dfe vigenvcia
-	Cambiar vista al error de grupo cliente
-	Select Paquete errror
-	Si se elimina paquete	
-	Checar error de activo en busqueda
+	Modificar consulta dfe vigenvcia(hecho)
+	Cambiar vista al error de grupo cliente(hecho)
+	Select Paquete errror(hecho)
+	Si se elimina paquete(hecho)	
+	Checar error de activo en busqueda(hecho)
 Producto
-	Precio Compra Obligatorio
-	Si se elimina
+	Precio Compra Obligatorio(hecho)
+	Si se elimina(hecho)
 Promocion
-	Si se elimina
-	Error al cargar el Combo de Tipo
+	Si se elimina(hecho)
+	Error al cargar el Combo de Tipo(hecho)
 Proveedor 
-	Si se elimina
+	Si se elimina (hecho)
 	RFC hacienda por default si no lo agregar
 Usuario
-	Si se eliminan
-	Contraseña no se muestra boton para verla
+	Si se eliminan(hecho)
+	Contraseña no se muestra boton para verla(hecho)
 Vehiculo
 	Modelo ComboBox filtre (hecho)
-	No se elimiana
-	Seleccion de modelo que modifique marca
+	No se elimiana(hecho)
+	Seleccion de modelo que modifique marca(hecho)

@@ -2894,8 +2894,8 @@ namespace TDA.DataLayer
         //Buscar por Nombre/Descripcion activo y grupoCliente
         public List<Paquetes> SelectPaquete(Paquetes paq)
         {
-            var paquetes = (from a in _context.Paquete
-                            select new Paquetes
+            var paquetes = (from a in _context.Paquete where a.Activo == true
+                            select new Paquetes 
                             {
                                 ID = a.ID,
                                 Nombre = a.Nombre,
@@ -3288,7 +3288,7 @@ namespace TDA.DataLayer
         //Buscar por Tipo, Nombre, Activa, GrupoCliente, Tipo Producto,Producto, Paquete
         public List<Promociones> SelectPromocion(Promociones pro)
         {
-            var promociones = (from a in _context.Promocion
+            var promociones = (from a in _context.Promocion where a.Activo == true
                             select new Promociones
                             {
                                 ID = a.ID,

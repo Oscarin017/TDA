@@ -39,6 +39,19 @@ namespace TDAWPF.Popups
             lID = ID;
         }
 
+        private bool validacionCampos()
+        {
+            bool bValidacion = true;
+            if (!txtPrecio.PlaceHolder)
+            {
+                if (!Llenado.validacionPrecio(txtPrecio.Text))
+                {
+                    bValidacion = false;
+                }
+            }           
+            return bValidacion;
+        }
+
         private void cargarGridProductos()
         {
             dgPA.ItemsSource = null;
@@ -160,54 +173,58 @@ namespace TDAWPF.Popups
         {
             if (!txtNombre.PlaceHolder && !txtDescripcion.PlaceHolder && !txtPrecio.PlaceHolder)
             {
-                TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
-                Paquetes p = new Paquetes();
-                p.Nombre = txtNombre.Text;
-                p.Descripcion = txtDescripcion.Text;
-                p.Precio = Convert.ToDecimal(txtPrecio.Text);
-                if (rbGrupoCliente.IsChecked == true)
+                if (validacionCampos())
                 {
-                    p.ParaGrupoCliente = true;
-                }
-                else if (rbPublico.IsChecked == true)
-                {
-                    p.ParaGrupoCliente = false;
-                }
-                if (rbNo.IsChecked == true)
-                { 
-                    p.Activo = true;
-                }
-                else if(rbSi.IsChecked == true)
-                {
-                    p.Activo = true;
-                    p.FechaInicio = Convert.ToDateTime(dpDe.Text);
-                    p.FechaFin = Convert.ToDateTime(dpHasta.Text);
-                }                
-                Resultado r = tda.InsertPaquete(p);
-                if (r.IdGuardado == 1)
-                {
-                    Paquetes pg = tda.SelectPaquete(p).First();
-                    foreach (PaqueteDias pd in Llenado.guardarDiasSeleccionadosPaquete(pg.ID, cbLunes, cbMartes, cbMiercoles, cbJueves, cbViernes, cbSabado, cbDomingo))
+                    TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
+                    Paquetes p = new Paquetes();
+                    p.Nombre = txtNombre.Text;
+                    p.Descripcion = txtDescripcion.Text;
+                    p.Precio = Convert.ToDecimal(txtPrecio.Text);
+                    if (rbGrupoCliente.IsChecked == true)
                     {
-                        tda.InsertPaqueteDia(pd);
-                    }       
-                    foreach (Productos pa in lstProductoA)
-                    {
-                        PaqueteProductos pp = new PaqueteProductos();
-                        pp.Paquete = pg.ID;
-                        pp.Producto = pa.ID;
-                        tda.InsertPaqueteProducto(pp);
+                        p.ParaGrupoCliente = true;
                     }
-                    foreach (GrupoClientes pa in lstGCA)
+                    else if (rbPublico.IsChecked == true)
                     {
-                        PaqueteGrupoClientes pgc = new PaqueteGrupoClientes();
-                        pgc.Paquete = pg.ID;
-                        pgc.GrupoCliente = pa.ID;
-                        tda.InsertPaqueteGrupoCliente(pgc);
+                        p.ParaGrupoCliente = false;
                     }
+                    if (rbNo.IsChecked == true)
+                    {
+                        p.Activo = true;
+                        p.FechaInicio = null;
+                        p.FechaFin = null;
+                    }
+                    else if (rbSi.IsChecked == true)
+                    {
+                        p.Activo = true;
+                        p.FechaInicio = Convert.ToDateTime(dpDe.Text);
+                        p.FechaFin = Convert.ToDateTime(dpHasta.Text);
+                    }
+                    Resultado r = tda.InsertPaquete(p);
+                    if (r.IdGuardado > 0)
+                    {
+                        foreach (PaqueteDias pd in Llenado.guardarDiasSeleccionadosPaquete(r.IdGuardado, cbLunes, cbMartes, cbMiercoles, cbJueves, cbViernes, cbSabado, cbDomingo))
+                        {
+                            tda.InsertPaqueteDia(pd);
+                        }
+                        foreach (Productos pa in lstProductoA)
+                        {
+                            PaqueteProductos pp = new PaqueteProductos();
+                            pp.Paquete = r.IdGuardado;
+                            pp.Producto = pa.ID;
+                            tda.InsertPaqueteProducto(pp);
+                        }
+                        foreach (GrupoClientes pa in lstGCA)
+                        {
+                            PaqueteGrupoClientes pgc = new PaqueteGrupoClientes();
+                            pgc.Paquete = r.IdGuardado;
+                            pgc.GrupoCliente = pa.ID;
+                            tda.InsertPaqueteGrupoCliente(pgc);
+                        }
+                    }
+                    tda.Close();
+                    this.Close();
                 }
-                tda.Close();
-                this.Close();
             }
             else
             {
@@ -219,66 +236,71 @@ namespace TDAWPF.Popups
         {
             if (!txtNombre.PlaceHolder && !txtDescripcion.PlaceHolder && !txtPrecio.PlaceHolder)
             {
-                TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
-                Paquetes p = new Paquetes();
-                p.ID = lID;
-                p.Nombre = txtNombre.Text;
-                p.Descripcion = txtDescripcion.Text;
-                p.Precio = Convert.ToDecimal(txtPrecio.Text);
-                if (rbGrupoCliente.IsChecked == true)
+                if (validacionCampos())
                 {
-                    p.ParaGrupoCliente = true;
-                }
-                else if (rbPublico.IsChecked == true)
-                {
-                    p.ParaGrupoCliente = false;
-                }
-                if (rbNo.IsChecked == true)
-                {
-                    p.Activo = true;
-                }
-                else if (rbSi.IsChecked == true)
-                {
-                    p.Activo = true;
-                    p.FechaInicio = Convert.ToDateTime(dpDe.Text);
-                    p.FechaFin = Convert.ToDateTime(dpHasta.Text);
-                }                  
-                tda.UpdatePaquete(p);
-                foreach (PaqueteDias pd in tda.BuscarPaqueteDiaID(p.ID))
-                {
-                    tda.DeletePaqueteDia(pd);
-                }
-                foreach (PaqueteDias pd in Llenado.guardarDiasSeleccionadosPaquete(p.ID, cbLunes, cbMartes, cbMiercoles, cbJueves, cbViernes, cbSabado, cbDomingo))
-                {
-                    tda.InsertPaqueteDia(pd);
-                }
-                foreach (PaqueteProductos pp in tda.BuscarPaqueteProductoID(p.ID))
-                {
-                    tda.DeletePaqueteProducto(pp);
-                }
-                foreach (Productos pa in lstProductoA)
-                {
-                    PaqueteProductos pp = new PaqueteProductos();
-                    pp.Paquete = p.ID;
-                    pp.Producto = pa.ID;
-                    tda.InsertPaqueteProducto(pp);
-                }
-                foreach (PaqueteGrupoClientes pgc in tda.BuscarPaqueteGrupoClienteID(p.ID))
-                {
-                    tda.DeletePaqueteGrupoCliente(pgc);
-                }
-                if (rbGrupoCliente.IsChecked == true)
-                {
-                    foreach (GrupoClientes pa in lstGCA)
+                    TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
+                    Paquetes p = new Paquetes();
+                    p.ID = lID;
+                    p.Nombre = txtNombre.Text;
+                    p.Descripcion = txtDescripcion.Text;
+                    p.Precio = Convert.ToDecimal(txtPrecio.Text);
+                    if (rbGrupoCliente.IsChecked == true)
                     {
-                        PaqueteGrupoClientes pgc = new PaqueteGrupoClientes();
-                        pgc.Paquete = p.ID;
-                        pgc.GrupoCliente = pa.ID;
-                        tda.InsertPaqueteGrupoCliente(pgc);
+                        p.ParaGrupoCliente = true;
                     }
+                    else if (rbPublico.IsChecked == true)
+                    {
+                        p.ParaGrupoCliente = false;
+                    }
+                    if (rbNo.IsChecked == true)
+                    {
+                        p.Activo = true;
+                        p.FechaInicio = null;
+                        p.FechaFin = null;
+                    }
+                    else if (rbSi.IsChecked == true)
+                    {
+                        p.Activo = true;
+                        p.FechaInicio = Convert.ToDateTime(dpDe.Text);
+                        p.FechaFin = Convert.ToDateTime(dpHasta.Text);
+                    }
+                    tda.UpdatePaquete(p);
+                    foreach (PaqueteDias pd in tda.BuscarPaqueteDiaID(p.ID))
+                    {
+                        tda.DeletePaqueteDia(pd);
+                    }
+                    foreach (PaqueteDias pd in Llenado.guardarDiasSeleccionadosPaquete(p.ID, cbLunes, cbMartes, cbMiercoles, cbJueves, cbViernes, cbSabado, cbDomingo))
+                    {
+                        tda.InsertPaqueteDia(pd);
+                    }
+                    foreach (PaqueteProductos pp in tda.BuscarPaqueteProductoID(p.ID))
+                    {
+                        tda.DeletePaqueteProducto(pp);
+                    }
+                    foreach (Productos pa in lstProductoA)
+                    {
+                        PaqueteProductos pp = new PaqueteProductos();
+                        pp.Paquete = p.ID;
+                        pp.Producto = pa.ID;
+                        tda.InsertPaqueteProducto(pp);
+                    }
+                    foreach (PaqueteGrupoClientes pgc in tda.BuscarPaqueteGrupoClienteID(p.ID))
+                    {
+                        tda.DeletePaqueteGrupoCliente(pgc);
+                    }
+                    if (rbGrupoCliente.IsChecked == true)
+                    {
+                        foreach (GrupoClientes pa in lstGCA)
+                        {
+                            PaqueteGrupoClientes pgc = new PaqueteGrupoClientes();
+                            pgc.Paquete = p.ID;
+                            pgc.GrupoCliente = pa.ID;
+                            tda.InsertPaqueteGrupoCliente(pgc);
+                        }
+                    }
+                    tda.Close();
+                    this.Close();
                 }
-                tda.Close();
-                this.Close();
             }
             else
             {

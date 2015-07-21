@@ -29,6 +29,29 @@ namespace TDAWPF.Layouts
             InitializeComponent();
         }
 
+        private void realizarBusqueda(Productos p)
+        {
+            ComboBoxItem cbi = (ComboBoxItem)cbTipo.SelectedItem;
+            if (cbTipo.SelectedIndex != 0)
+            {
+                p.TipoProducto = Convert.ToInt64(cbi.Uid);
+            }
+            ComboBoxItem cbi1 = (ComboBoxItem)cbProveedor.SelectedItem;
+            if (cbProveedor.SelectedIndex != 0)
+            {
+                p.Proveedor = Convert.ToInt64(cbi1.Uid);
+            }
+            if (!txtCodigo.PlaceHolder)
+            {
+                p.Codigo = txtCodigo.Text;
+            }
+            if (!txtDescripcion.PlaceHolder)
+            {
+                p.Descripcion = txtDescripcion.Text;
+            }
+            cargarGrid(p);
+        }
+
         private void cargarGrid(Productos p)
         {
             TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
@@ -62,33 +85,14 @@ namespace TDAWPF.Layouts
 
         private void btnSearch_Click(object sender, RoutedEventArgs e)
         {
-            Productos p = new Productos();
-            ComboBoxItem cbi = (ComboBoxItem)cbTipo.SelectedItem;
-            if (cbTipo.SelectedIndex != 0)
-            {
-                p.TipoProducto = Convert.ToInt64(cbi.Uid);
-            }
-            ComboBoxItem cbi1 = (ComboBoxItem)cbProveedor.SelectedItem;
-            if (cbProveedor.SelectedIndex != 0)
-            {
-                p.Proveedor = Convert.ToInt64(cbi1.Uid);
-            }
-            if (!txtCodigo.PlaceHolder)
-            {
-                p.Codigo = txtCodigo.Text;
-            }
-            if (!txtDescripcion.PlaceHolder)
-            {
-                p.Descripcion = txtDescripcion.Text;
-            }
-            cargarGrid(p);
+            realizarBusqueda(new Productos());
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
             Popups.Producto w = new Popups.Producto();
             w.ShowDialog();
-            cargarGrid(new Productos());
+            realizarBusqueda(new Productos());
         }
 
         private void btnModificar_Click(object sender, RoutedEventArgs e)
@@ -97,12 +101,23 @@ namespace TDAWPF.Layouts
             long lID = r.ID;
             Popups.Producto w = new Popups.Producto(lID);
             w.ShowDialog();
-            cargarGrid(new Productos());
+            realizarBusqueda(new Productos());
         }
 
         private void btnEliminar_Click(object sender, RoutedEventArgs e)
         {
-
+            Productos p = ((Button)sender).DataContext as Productos;
+            MessageBoxResult result = MessageBox.Show("Estas seguro que quieres eliminar el producto " + p.Codigo + ".", "Eliminar", MessageBoxButton.OKCancel, MessageBoxImage.Question);
+            if (result == MessageBoxResult.OK)
+            {
+                TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
+                Resultado r = tda.DeleteProducto(p);
+                if (r.ErrorDB)
+                {
+                    MessageBox.Show("No se pudo eliminar el producto " + p.Codigo + ".");
+                }
+                realizarBusqueda(new Productos());
+            }
         }
     }
 }

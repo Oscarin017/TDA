@@ -29,6 +29,23 @@ namespace TDAWPF.Layouts
             InitializeComponent();
         }
 
+        private void realizarBusqueda(Paquetes p)
+        {
+            if (!txtNombre.PlaceHolder)
+            {
+                p.Nombre = txtNombre.Text;
+            }
+            if (cbActivo.IsChecked == true)
+            {
+                p.Activo = true;
+            }
+            if (cbGrupoCliente.IsChecked == true)
+            {
+                p.ParaGrupoCliente = true;
+            }
+            cargarGrid(p);
+        }
+
         private void cargarGrid(Paquetes p)
         {
             TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
@@ -69,27 +86,14 @@ namespace TDAWPF.Layouts
 
         private void btnSearch_Click(object sender, RoutedEventArgs e)
         {
-            Paquetes p = new Paquetes();
-            if (!txtNombre.PlaceHolder)
-            {
-                p.Nombre = txtNombre.Text;
-            }
-            if (cbActivo.IsChecked == true)
-            {
-                p.Activo = true;
-            }
-            if (cbGrupoCliente.IsChecked == true)
-            {
-                p.ParaGrupoCliente = true;
-            }
-            cargarGrid(p);
+            realizarBusqueda(new Paquetes());
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
             Popups.Paquete w = new Popups.Paquete();
             w.ShowDialog();
-            cargarGrid(new Paquetes());
+           realizarBusqueda(new Paquetes());
         }
 
         private void btnModificar_Click(object sender, RoutedEventArgs e)
@@ -98,12 +102,21 @@ namespace TDAWPF.Layouts
             long lID = r.ID;
             Popups.Paquete w = new Popups.Paquete(lID);
             w.ShowDialog();
-            cargarGrid(new Paquetes());
+            realizarBusqueda(new Paquetes());
         }
 
         private void btnEliminar_Click(object sender, RoutedEventArgs e)
         {
-
+            Paquetes p = ((Button)sender).DataContext as Paquetes;
+            MessageBoxResult result = MessageBox.Show("Estas seguro que quieres eliminar el paquete " + p.Nombre + ".", "Eliminar", MessageBoxButton.OKCancel, MessageBoxImage.Question);
+            if (result == MessageBoxResult.OK)
+            {
+                TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
+                p = tda.BuscarPaqueteID(p.ID).First();
+                p.Activo = false;
+                Resultado r = tda.UpdatePaquete(p);
+                realizarBusqueda(new Paquetes());
+            }
         }        
     }
 }

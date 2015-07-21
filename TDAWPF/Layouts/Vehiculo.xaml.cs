@@ -31,6 +31,34 @@ namespace TDAWPF.Layouts
             InitializeComponent();
         }
 
+        private void realizarBusqueda(Vehiculos v)
+        {
+            ComboBoxItem cbi = (ComboBoxItem)cbMarca.SelectedItem;
+            if (cbMarca.SelectedIndex != 0)
+            {
+                v.Marca = Convert.ToInt64(cbi.Uid);
+            }
+            ComboBoxItem cbi1 = (ComboBoxItem)cbModelo.SelectedItem;
+            if (cbModelo.SelectedIndex != 0)
+            {
+                v.Modelo = Convert.ToInt64(cbi1.Uid);
+            }
+            if (!txtAno.PlaceHolder)
+            {
+                v.Ano = Convert.ToInt32(txtAno.Text);
+            }
+            ComboBoxItem cbi2 = (ComboBoxItem)cbColor.SelectedItem;
+            if (cbColor.SelectedIndex != 0)
+            {
+                v.Color = cbi2.Content.ToString();
+            }
+            if (!txtNoSerie.PlaceHolder)
+            {
+                v.NoSerie = txtNoSerie.Text;
+            }
+            cargarGrid(v);
+        }
+
         private void cargarGrid(Vehiculos v)
         {
             TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
@@ -64,38 +92,14 @@ namespace TDAWPF.Layouts
 
         private void btnSearch_Click(object sender, RoutedEventArgs e)
         {
-            Vehiculos v = new Vehiculos();
-            ComboBoxItem cbi = (ComboBoxItem)cbMarca.SelectedItem;
-            if (cbMarca.SelectedIndex != 0)
-            {
-                v.Marca = Convert.ToInt64(cbi.Uid);
-            }
-            ComboBoxItem cbi1 = (ComboBoxItem)cbModelo.SelectedItem;
-            if (cbModelo.SelectedIndex != 0)
-            {
-                v.Modelo = Convert.ToInt64(cbi1.Uid);
-            }
-            if (!txtAno.PlaceHolder)
-            {
-                v.Ano = Convert.ToInt32(txtAno.Text);
-            }
-            ComboBoxItem cbi2 = (ComboBoxItem)cbColor.SelectedItem;
-            if (cbColor.SelectedIndex != 0)
-            {
-                v.Color = cbi2.Content.ToString();
-            }
-            if (!txtNoSerie.PlaceHolder)
-            {                
-                v.NoSerie = txtNoSerie.Text;
-            }
-            cargarGrid(v);
+            realizarBusqueda(new Vehiculos());
         }    
         
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
             Popups.Vehiculo w = new Popups.Vehiculo();
             w.ShowDialog();
-            cargarGrid(new Vehiculos());
+            realizarBusqueda(new Vehiculos());
         }
 
         private void btnModificar_Click(object sender, RoutedEventArgs e)
@@ -104,12 +108,7 @@ namespace TDAWPF.Layouts
             long lID = r.ID;
             Popups.Vehiculo w = new Popups.Vehiculo(lID);
             w.ShowDialog();
-            cargarGrid(new Vehiculos());
-        }
-
-        private void btnEliminar_Click(object sender, RoutedEventArgs e)
-        {
-
+            realizarBusqueda(new Vehiculos());
         }
 
         private void cbMarca_SelectionChanged(object sender, EventArgs e)

@@ -47,7 +47,7 @@
         </Controles:ComboBoxI>
         <Controles:TextBoxI x:Name="txtEmail" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Escribe Email (Obligatorio)" Grid.Column="1" Grid.Row="5" Visibility="Collapsed"/>
         <Controles:TextBoxI x:Name="txtAlias" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Escribe Alias (Obligatorio)" Grid.Column="1" Grid.Row="7"/>
-        <Controles:TextBoxI x:Name="txtContraseña" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Escribe Contraseña (Obligatorio)" Grid.Column="1" Grid.Row="9"/>
+        <Controles:TextBoxP x:Name="txtContraseña" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Escribe Contraseña (Obligatorio)" Grid.Column="1" Grid.Row="9"/>
         <Grid Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />

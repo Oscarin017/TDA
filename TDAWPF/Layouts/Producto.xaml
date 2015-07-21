@@ -69,10 +69,10 @@
                 <DataGridTextColumn Header="Tipo" Binding="{Binding TipoProductoNombre}" Width="2*" FontWeight="Normal" />
                 <DataGridTextColumn Header="Proveedor" Binding="{Binding ProveedorNombre}" Width="2*" FontWeight="Normal" />
                 <DataGridTextColumn Header="Precio" Binding="{Binding PrecioVenta}" Width="*" FontWeight="Normal" />
-                <DataGridTemplateColumn MinWidth="30">
+                <DataGridTemplateColumn Width="30">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button x:Name="btnModificar" Width="20" Height="20" Click="btnModificar_Click">
+                            <Button x:Name="btnModificar" Width="25" Height="25" Click="btnModificar_Click">
                                 <Button.Background>
                                     <ImageBrush ImageSource="../Imagenes/Pencil-mini.png"/>
                                 </Button.Background>
@@ -80,10 +80,10 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTemplateColumn MinWidth="30">
+                <DataGridTemplateColumn Width="30">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button x:Name="btnEliminar" Width="20" Height="20" Click="btnEliminar_Click">
+                            <Button x:Name="btnEliminar" Width="25" Height="25" Click="btnEliminar_Click">
                                 <Button.Background>
                                     <ImageBrush ImageSource="../Imagenes/0173-bin.png"/>
                                 </Button.Background>

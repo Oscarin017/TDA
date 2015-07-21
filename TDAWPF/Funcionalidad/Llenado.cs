@@ -168,13 +168,13 @@ namespace TDAWPF.Funcionalidad
         {
             ComboBoxItem cbi = new ComboBoxItem();
             cbi.Uid = "1";
-            cbi.Content = "Precio Fijo";
+            cbi.Content = "Porcentaje";
             ComboBoxItem cbi1 = new ComboBoxItem();
             cbi1.Uid = "2";
-            cbi1.Content = "Porcentaje";
+            cbi1.Content = "Cantidad";
             ComboBoxItem cbi2 = new ComboBoxItem();
             cbi2.Uid = "3";
-            cbi2.Content = "Cantidad";
+            cbi2.Content = "Precio Fijo";
             ComboBoxItem cbi3 = new ComboBoxItem();
             cbi3.Uid = "4";
             cbi3.Content = "Pagas X Llevas";
@@ -369,13 +369,13 @@ namespace TDAWPF.Funcionalidad
         {
             ComboBoxItem cbi = new ComboBoxItem();
             cbi.Uid = "1";
-            cbi.Content = "Precio Fijo";
+            cbi.Content = "Procentaje";
             ComboBoxItem cbi1 = new ComboBoxItem();
             cbi1.Uid = "2";
-            cbi1.Content = "Porcentaje";
+            cbi1.Content = "Cantidad";
             ComboBoxItem cbi2 = new ComboBoxItem();
             cbi2.Uid = "3";
-            cbi2.Content = "Cantidad";
+            cbi2.Content = "Precio Fijo";
             ComboBoxItem cbi3 = new ComboBoxItem();
             cbi3.Uid = "4";
             cbi3.Content = "Pagas X Llevas";
@@ -869,6 +869,132 @@ namespace TDAWPF.Funcionalidad
             else
             {
                 MessageBox.Show("Email no valido. Favor de verificar.");
+            }
+            return bValidacion;
+        }
+
+        public static bool validacionPrecio(string sPrecio)
+        {
+            bool bValidacion = false;
+            try
+            {
+                decimal dPrecio = Convert.ToDecimal(sPrecio);
+            }
+            catch
+            {
+                MessageBox.Show("Precio no valido. Favor de verificar.");
+            }
+            return bValidacion;
+        }
+
+        public static bool validacionPorcentaje(string sPorcenaje)
+        {
+            bool bValidacion = false;
+            try
+            {
+                decimal dPrecio = Convert.ToDecimal(sPorcenaje);
+            }
+            catch
+            {
+                MessageBox.Show("Porcentaje de promocion no valido. Favor de verificar.");
+            }
+            return bValidacion;
+        }
+
+        public static bool validacionCantidad(string sCantidad)
+        {
+            bool bValidacion = false;
+            try
+            {
+                decimal dPrecio = Convert.ToDecimal(sCantidad);
+            }
+            catch
+            {
+                MessageBox.Show("Cantidad de promocion no valida. Favor de verificar.");
+            }
+            return bValidacion;
+        }
+
+        public static bool validacionFijo(string sFijo)
+        {
+            bool bValidacion = false;
+            try
+            {
+                decimal dPrecio = Convert.ToDecimal(sFijo);
+            }
+            catch
+            {
+                MessageBox.Show("Precio fijo no valido. Favor de verificar.");
+            }
+            return bValidacion;
+        }
+
+        public static bool validacionCompra(string sCompra)
+        {
+            bool bValidacion = false;
+            try
+            {
+                int dPrecio = Convert.ToInt32(sCompra);
+            }
+            catch
+            {
+                MessageBox.Show("Cantidad de compra no valida. Favor de verificar.");
+            }
+            return bValidacion;
+        }
+
+        public static bool validacionPaga(string sCompra)
+        {
+            bool bValidacion = false;
+            try
+            {
+                int dPrecio = Convert.ToInt32(sCompra);
+            }
+            catch
+            {
+                MessageBox.Show("Cantidad de paga no valida. Favor de verificar.");
+            }
+            return bValidacion;
+        }
+
+        public static bool validacionPrecioVenta(string sPrecio)
+        {
+            bool bValidacion = false;
+            try
+            {
+                decimal dPrecio = Convert.ToDecimal(sPrecio);
+            }
+            catch
+            {
+                MessageBox.Show("Precio de venta no valido. Favor de verificar.");
+            }
+            return bValidacion;
+        }
+
+        public static bool validacionPrecioCompra(string sPrecio)
+        {
+            bool bValidacion = false;
+            try
+            {
+                decimal dPrecio = Convert.ToDecimal(sPrecio);
+            }
+            catch
+            {
+                MessageBox.Show("Precio de compra no valido. Favor de verificar.");
+            }
+            return bValidacion;
+        }
+
+        public static bool validacionIVA(string sIVA)
+        {
+            bool bValidacion = false;
+            try
+            {
+                decimal dPrecio = Convert.ToDecimal(sIVA);
+            }
+            catch
+            {
+                MessageBox.Show("IVA no valido. Favor de verificar.");
             }
             return bValidacion;
         }

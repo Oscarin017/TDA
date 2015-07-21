@@ -380,6 +380,13 @@ CREATE TABLE TipoProducto
 GO
 RAISERROR('Se ha creado la tabla TipoProducto', 0, 1)
 GO
+/*Insercion TipoProducto*/
+INSERT INTO TipoProducto(Nombre, UsuarioAlta, FechaAlta)
+	VALUES('Tipo 1', 1, GETDATE())
+GO
+INSERT INTO TipoProducto(Nombre, UsuarioAlta, FechaAlta)
+	VALUES('Tipo 2', 1, GETDATE())
+GO
 /*Creacion de la Tabla Empleado*/
 CREATE TABLE Empleado
 (

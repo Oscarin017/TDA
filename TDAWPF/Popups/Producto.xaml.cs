@@ -34,6 +34,33 @@ namespace TDAWPF.Popups
             lID = ID;
         }
 
+        private bool validacionCampos()
+        {
+            bool bValidacion = true;
+            if (!txtPrecioCompra.PlaceHolder)
+            {
+                if (!Llenado.validacionPrecioCompra(txtPrecioCompra.Text))
+                {
+                    bValidacion = false;
+                }
+            }
+            if (!txtPrecioVenta.PlaceHolder)
+            {
+                if (!Llenado.validacionPrecioVenta(txtPrecioVenta.Text))
+                {
+                    bValidacion = false;
+                }
+            }
+            if (!txtIVA.PlaceHolder)
+            {
+                if (!Llenado.validacionIVA(txtIVA.Text))
+                {
+                    bValidacion = false;
+                }
+            }
+            return bValidacion;
+        }
+
         private void btnCancelar_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
@@ -78,61 +105,64 @@ namespace TDAWPF.Popups
 
         private void btnRegistrar_Click(object sender, RoutedEventArgs e)
         {
-            if ((cbTipoProducto.SelectedIndex != 0 && !txtCodigo.PlaceHolder && !txtDescripcion.PlaceHolder && !txtPrecioVenta.PlaceHolder) && ((cbExento.IsChecked == false && !txtIVA.PlaceHolder)) || (cbExento.IsChecked == true))
+            if ((cbTipoProducto.SelectedIndex != 0 && !txtCodigo.PlaceHolder && !txtDescripcion.PlaceHolder && !txtPrecioVenta.PlaceHolder && !txtPrecioCompra.PlaceHolder) && ((cbExento.IsChecked == false && !txtIVA.PlaceHolder)) || (cbExento.IsChecked == true))
             {
-                TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
-                Productos p = new Productos();
-                p.Codigo = txtCodigo.Text;
-                p.Descripcion = txtDescripcion.Text;
-                ComboBoxItem cbi = (ComboBoxItem)cbTipoProducto.Items[cbTipoProducto.SelectedIndex];
-                p.TipoProducto = Convert.ToInt64(cbi.Uid);
-                if (cbProveedor.SelectedIndex == 0)
+                if (validacionCampos())
                 {
-                    p.Proveedor = null;
+                    TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
+                    Productos p = new Productos();
+                    p.Codigo = txtCodigo.Text;
+                    p.Descripcion = txtDescripcion.Text;
+                    ComboBoxItem cbi = (ComboBoxItem)cbTipoProducto.Items[cbTipoProducto.SelectedIndex];
+                    p.TipoProducto = Convert.ToInt64(cbi.Uid);
+                    if (cbProveedor.SelectedIndex == 0)
+                    {
+                        p.Proveedor = null;
+                    }
+                    else
+                    {
+                        ComboBoxItem cbi2 = (ComboBoxItem)cbProveedor.Items[cbProveedor.SelectedIndex];
+                        p.Proveedor = Convert.ToInt64(cbi.Uid);
+                    }
+                    p.PrecioVenta = Convert.ToDecimal(txtPrecioVenta.Text);
+                    if (txtPrecioCompra.PlaceHolder)
+                    {
+                        p.PrecioCompra = null;
+                    }
+                    else
+                    {
+                        p.PrecioCompra = Convert.ToDecimal(txtPrecioCompra.Text);
+                    }
+                    if (cbEspecial.IsChecked == true)
+                    {
+                        p.Especial = true;
+                    }
+                    else
+                    {
+                        p.Especial = false;
+                    }
+                    if (cbExento.IsChecked == true)
+                    {
+                        p.IVAExcento = true;
+                        p.IVA = null;
+                    }
+                    else
+                    {
+                        p.IVAExcento = false;
+                        p.IVA = Convert.ToDecimal(txtIVA.Text);
+                    }
+                    if (txtObservacion.PlaceHolder)
+                    {
+                        p.Observaciones = null;
+                    }
+                    else
+                    {
+                        p.Observaciones = txtObservacion.Text;
+                    }
+                    tda.InsertProducto(p);
+                    tda.Close();
+                    this.Close();
                 }
-                else
-                {
-                    ComboBoxItem cbi2 = (ComboBoxItem)cbProveedor.Items[cbProveedor.SelectedIndex];
-                    p.Proveedor = Convert.ToInt64(cbi.Uid);
-                }
-                p.PrecioVenta = Convert.ToDecimal(txtPrecioVenta.Text);
-                if (txtPrecioCompra.PlaceHolder)
-                {
-                    p.PrecioCompra = null;
-                }
-                else
-                {
-                    p.PrecioCompra = Convert.ToDecimal(txtPrecioCompra.Text);
-                }
-                if (cbEspecial.IsChecked == true)
-                {
-                    p.Especial = true;
-                }
-                else
-                {
-                    p.Especial = false;
-                }
-                if (cbExento.IsChecked == true)
-                {
-                    p.IVAExcento = true;
-                    p.IVA = null;
-                }
-                else
-                {
-                    p.IVAExcento = false;
-                    p.IVA = Convert.ToDecimal(txtIVA.Text);
-                }               
-                if (txtObservacion.PlaceHolder)
-                {
-                    p.Observaciones = null;
-                }
-                else
-                {
-                    p.Observaciones = txtObservacion.Text;
-                }                
-                tda.InsertProducto(p);
-                tda.Close();
-                this.Close();
             }
             else
             {
@@ -142,62 +172,65 @@ namespace TDAWPF.Popups
 
         private void btnModificar_Click(object sender, RoutedEventArgs e)
         {
-            if ((cbTipoProducto.SelectedIndex != 0 && !txtCodigo.PlaceHolder && !txtDescripcion.PlaceHolder && !txtPrecioVenta.PlaceHolder) && ((cbExento.IsChecked == false && !txtIVA.PlaceHolder)) || (cbExento.IsChecked == true))
+            if ((cbTipoProducto.SelectedIndex != 0 && !txtCodigo.PlaceHolder && !txtDescripcion.PlaceHolder && !txtPrecioVenta.PlaceHolder && !txtPrecioCompra.PlaceHolder) && ((cbExento.IsChecked == false && !txtIVA.PlaceHolder)) || (cbExento.IsChecked == true))
             {
-                TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
-                Productos p = new Productos();                
-                p.ID = lID;
-                p.Codigo = txtCodigo.Text;
-                p.Descripcion = txtDescripcion.Text;
-                ComboBoxItem cbi = (ComboBoxItem)cbTipoProducto.Items[cbTipoProducto.SelectedIndex];
-                p.TipoProducto = Convert.ToInt64(cbi.Uid);
-                if (cbProveedor.SelectedIndex == 0)
+                if (validacionCampos())
                 {
-                    p.Proveedor = null;
+                    TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
+                    Productos p = new Productos();
+                    p.ID = lID;
+                    p.Codigo = txtCodigo.Text;
+                    p.Descripcion = txtDescripcion.Text;
+                    ComboBoxItem cbi = (ComboBoxItem)cbTipoProducto.Items[cbTipoProducto.SelectedIndex];
+                    p.TipoProducto = Convert.ToInt64(cbi.Uid);
+                    if (cbProveedor.SelectedIndex == 0)
+                    {
+                        p.Proveedor = null;
+                    }
+                    else
+                    {
+                        ComboBoxItem cbi2 = (ComboBoxItem)cbProveedor.Items[cbProveedor.SelectedIndex];
+                        p.Proveedor = Convert.ToInt64(cbi.Uid);
+                    }
+                    p.PrecioVenta = Convert.ToDecimal(txtPrecioVenta.Text);
+                    if (txtPrecioCompra.PlaceHolder)
+                    {
+                        p.PrecioCompra = null;
+                    }
+                    else
+                    {
+                        p.PrecioCompra = Convert.ToDecimal(txtPrecioCompra.Text);
+                    }
+                    if (cbEspecial.IsChecked == true)
+                    {
+                        p.Especial = true;
+                    }
+                    else
+                    {
+                        p.Especial = false;
+                    }
+                    if (cbExento.IsChecked == true)
+                    {
+                        p.IVAExcento = true;
+                        p.IVA = null;
+                    }
+                    else
+                    {
+                        p.IVAExcento = false;
+                        p.IVA = Convert.ToDecimal(txtIVA.Text);
+                    }
+                    if (txtObservacion.PlaceHolder)
+                    {
+                        p.Observaciones = null;
+                    }
+                    else
+                    {
+                        p.Observaciones = txtObservacion.Text;
+                    }
+                    tda.UpdateProducto(p);
+                    tda.Close();
+                    this.Close();
                 }
-                else
-                {
-                    ComboBoxItem cbi2 = (ComboBoxItem)cbProveedor.Items[cbProveedor.SelectedIndex];
-                    p.Proveedor = Convert.ToInt64(cbi.Uid);
-                }
-                p.PrecioVenta = Convert.ToDecimal(txtPrecioVenta.Text);
-                if (txtPrecioCompra.PlaceHolder)
-                {
-                    p.PrecioCompra = null;
-                }
-                else
-                {
-                    p.PrecioCompra = Convert.ToDecimal(txtPrecioCompra.Text);
-                }
-                if (cbEspecial.IsChecked == true)
-                {
-                    p.Especial = true;
-                }
-                else
-                {
-                    p.Especial = false;
-                }
-                if (cbExento.IsChecked == true)
-                {
-                    p.IVAExcento = true;
-                    p.IVA = null;
-                }
-                else
-                {
-                    p.IVAExcento = false;
-                    p.IVA = Convert.ToDecimal(txtIVA.Text);
-                }
-                if (txtObservacion.PlaceHolder)
-                {
-                    p.Observaciones = null;
-                }
-                else
-                {
-                    p.Observaciones = txtObservacion.Text;
-                }   
-                tda.UpdateProducto(p);
-                tda.Close();
-                this.Close();
             }
             else
             {

@@ -43,6 +43,47 @@ namespace TDAWPF.Popups
             lID = ID;
         }
 
+        private bool validacionCampos()
+        {
+            bool bValidacion = true;
+            if (!txtPorcentaje.PlaceHolder)
+            {
+                if (!Llenado.validacionPorcentaje(txtPorcentaje.Text))
+                {
+                    bValidacion = false;
+                }
+            }
+            if (!txtCantidad.PlaceHolder)
+            {
+                if (!Llenado.validacionCantidad(txtCantidad.Text))
+                {
+                    bValidacion = false;
+                }
+            }
+            if (!txtPrecioFijo.PlaceHolder)
+            {
+                if (!Llenado.validacionFijo(txtPrecioFijo.Text))
+                {
+                    bValidacion = false;
+                }
+            }
+            if (!txtCompra.PlaceHolder)
+            {
+                if (!Llenado.validacionCompra(txtCompra.Text))
+                {
+                    bValidacion = false;
+                }
+            }
+            if (!txtPaga.PlaceHolder)
+            {
+                if (!Llenado.validacionPaga(txtPaga.Text))
+                {
+                    bValidacion = false;
+                }
+            }
+            return bValidacion;
+        }
+
         private void cargarGridProductos()
         {
             dgPA.ItemsSource = null;
@@ -255,117 +296,121 @@ namespace TDAWPF.Popups
         {
             if (!txtNombre.PlaceHolder && !txtDescripcion.PlaceHolder && cbTipo.SelectedIndex != 0 && (!txtPorcentaje.PlaceHolder || !txtCantidad.PlaceHolder || !txtPrecioFijo.PlaceHolder || (!txtPaga.PlaceHolder && !txtCompra.PlaceHolder)))
             {
-                TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
-                Promociones p = new Promociones();
-                p.Nombre = txtNombre.Text;
-                p.Descripcion = txtDescripcion.Text;
-                ComboBoxItem cbi = (ComboBoxItem)cbTipo.Items[cbTipo.SelectedIndex];
-                p.Tipo = Convert.ToInt32(cbi.Uid);
-                switch (p.Tipo)
+                if (validacionCampos())
                 {
-                    case 1:
-                        {
-                            p.Valor = Convert.ToDecimal(txtPorcentaje.Text);
-                            break;
-                        }
-                    case 2:
-                        {
-                            p.Valor = Convert.ToDecimal(txtCantidad.Text);
-                            break;
-                        }
-                    case 3:
-                        {
-                            p.Valor = Convert.ToDecimal(txtPrecioFijo.Text);
-                            break;
-                        }
-                    case 4:
-                        {
-                            p.Comprar = Convert.ToInt32(txtCompra.Text);
-                            p.Pagar = Convert.ToInt32(txtPaga.Text);
-                            break;
-                        }
-                }
-                if (rbNo.IsChecked == true)
-                { 
-                    p.Activo = true;
-                }
-                else if(rbSi.IsChecked == true)
-                {
-                    p.Activo = true;
-                    p.FechaInicio = Convert.ToDateTime(dpDe.Text);
-                    p.FechaFin = Convert.ToDateTime(dpHasta.Text);
-                }
-                if (lstProductoA.Count > 0)
-                {
-                    p.ParaProducto = true;
-                }
-                else 
-                {
-                    p.ParaProducto = false;
-                }
-                if (lstPaqueteA.Count > 0)
-                {
-                    p.ParaPaquete = true;
-                }
-                else
-                {
-                    p.ParaPaquete = false;
-                }
-                if (lstTPA.Count > 0)
-                {
-                    p.ParaTipoProducto = true;
-                }
-                else
-                {
-                    p.ParaTipoProducto = false;
-                }
-                if (lstGCA.Count > 0)
-                {
-                    p.ParaGrupoCliente = true;
-                }
-                else
-                {
-                    p.ParaGrupoCliente = false;
-                }
-                Resultado r = tda.InsertPromocion(p);               
-                if (r.IdGuardado == 1)
-                {
-                    Promociones pg = tda.SelectPromocion(p).First();
-                    foreach (PromocionDias pd in Llenado.guardarDiasSeleccionadosPromocion(pg.ID, cbLunes, cbMartes, cbMiercoles, cbJueves, cbViernes, cbSabado, cbDomingo))
+                    TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
+                    Promociones p = new Promociones();
+                    p.Nombre = txtNombre.Text;
+                    p.Descripcion = txtDescripcion.Text;
+                    ComboBoxItem cbi = (ComboBoxItem)cbTipo.Items[cbTipo.SelectedIndex];
+                    p.Tipo = Convert.ToInt32(cbi.Uid);
+                    switch (p.Tipo)
                     {
-                        tda.InsertPromocionDia(pd);
-                    }       
-                    foreach (Productos pa in lstProductoA)
-                    {
-                        PromocionProductos pp = new PromocionProductos();
-                        pp.Promocion = pg.ID;
-                        pp.Producto = pa.ID;
-                        tda.InsertPromocionProducto(pp);
+                        case 1:
+                            {
+                                p.Valor = Convert.ToDecimal(txtPorcentaje.Text);
+                                break;
+                            }
+                        case 2:
+                            {
+                                p.Valor = Convert.ToDecimal(txtCantidad.Text);
+                                break;
+                            }
+                        case 3:
+                            {
+                                p.Valor = Convert.ToDecimal(txtPrecioFijo.Text);
+                                break;
+                            }
+                        case 4:
+                            {
+                                p.Comprar = Convert.ToInt32(txtCompra.Text);
+                                p.Pagar = Convert.ToInt32(txtPaga.Text);
+                                break;
+                            }
                     }
-                    foreach (Paquetes pa in lstPaqueteA)
+                    if (rbNo.IsChecked == true)
                     {
-                        PromocionPaquetes pp = new PromocionPaquetes();
-                        pp.Promocion = pg.ID;
-                        pp.Paquete = pa.ID;
-                        tda.InsertPromocionPaquete(pp);
+                        p.Activo = true;
+                        p.FechaInicio = null;
+                        p.FechaFin = null;
                     }
-                    foreach (TipoProductos tp in lstTPA)
+                    else if (rbSi.IsChecked == true)
                     {
-                        PromocionTipoProductos ptp = new PromocionTipoProductos();
-                        ptp.Promocion = pg.ID;
-                        ptp.TipoProducto = tp.ID;
-                        tda.InsertPromocionTipoProducto(ptp);
+                        p.Activo = true;
+                        p.FechaInicio = Convert.ToDateTime(dpDe.Text);
+                        p.FechaFin = Convert.ToDateTime(dpHasta.Text);
                     }
-                    foreach (GrupoClientes gc in lstGCA)
+                    if (lstProductoA.Count > 0)
                     {
-                        PromocionGrupoClientes pgc = new PromocionGrupoClientes();
-                        pgc.Promocion = pg.ID;
-                        pgc.GrupoCliente =gc.ID;
-                        tda.InsertPromocionGrupoCliente(pgc);
+                        p.ParaProducto = true;
                     }
+                    else
+                    {
+                        p.ParaProducto = false;
+                    }
+                    if (lstPaqueteA.Count > 0)
+                    {
+                        p.ParaPaquete = true;
+                    }
+                    else
+                    {
+                        p.ParaPaquete = false;
+                    }
+                    if (lstTPA.Count > 0)
+                    {
+                        p.ParaTipoProducto = true;
+                    }
+                    else
+                    {
+                        p.ParaTipoProducto = false;
+                    }
+                    if (lstGCA.Count > 0)
+                    {
+                        p.ParaGrupoCliente = true;
+                    }
+                    else
+                    {
+                        p.ParaGrupoCliente = false;
+                    }
+                    Resultado r = tda.InsertPromocion(p);
+                    if (r.IdGuardado > 0)
+                    {
+                        foreach (PromocionDias pd in Llenado.guardarDiasSeleccionadosPromocion(r.IdGuardado, cbLunes, cbMartes, cbMiercoles, cbJueves, cbViernes, cbSabado, cbDomingo))
+                        {
+                            tda.InsertPromocionDia(pd);
+                        }
+                        foreach (Productos pa in lstProductoA)
+                        {
+                            PromocionProductos pp = new PromocionProductos();
+                            pp.Promocion = r.IdGuardado;
+                            pp.Producto = pa.ID;
+                            tda.InsertPromocionProducto(pp);
+                        }
+                        foreach (Paquetes pa in lstPaqueteA)
+                        {
+                            PromocionPaquetes pp = new PromocionPaquetes();
+                            pp.Promocion = r.IdGuardado;
+                            pp.Paquete = pa.ID;
+                            tda.InsertPromocionPaquete(pp);
+                        }
+                        foreach (TipoProductos tp in lstTPA)
+                        {
+                            PromocionTipoProductos ptp = new PromocionTipoProductos();
+                            ptp.Promocion = r.IdGuardado;
+                            ptp.TipoProducto = tp.ID;
+                            tda.InsertPromocionTipoProducto(ptp);
+                        }
+                        foreach (GrupoClientes gc in lstGCA)
+                        {
+                            PromocionGrupoClientes pgc = new PromocionGrupoClientes();
+                            pgc.Promocion = r.IdGuardado;
+                            pgc.GrupoCliente = gc.ID;
+                            tda.InsertPromocionGrupoCliente(pgc);
+                        }
+                    }
+                    tda.Close();
+                    this.Close();
                 }
-                tda.Close();
-                this.Close();
             }
             else
             {
@@ -373,138 +418,143 @@ namespace TDAWPF.Popups
             }
         }
 
-        private void btnModificar_Click(object sender, RoutedEventArgs e)
+        private void btnModificar_Click(object sender, RoutedEventArgs e) 
         {
             if (!txtNombre.PlaceHolder && !txtDescripcion.PlaceHolder && cbTipo.SelectedIndex != 0 && (!txtPorcentaje.PlaceHolder || !txtCantidad.PlaceHolder || !txtPrecioFijo.PlaceHolder || (!txtPaga.PlaceHolder && !txtCompra.PlaceHolder)))
             {
-                TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
-                Promociones p = new Promociones();
-                p.ID = lID;
-                p.Nombre = txtNombre.Text;
-                p.Descripcion = txtDescripcion.Text;
-                ComboBoxItem cbi = (ComboBoxItem)cbTipo.Items[cbTipo.SelectedIndex];
-                p.Tipo = Convert.ToInt32(cbi.Uid);
-                switch (p.Tipo)
+                if (validacionCampos())
                 {
-                    case 1:
-                        {
-                            p.Valor = Convert.ToDecimal(txtPorcentaje.Text);
-                            break;
-                        }
-                    case 2:
-                        {
-                            p.Valor = Convert.ToDecimal(txtCantidad.Text);
-                            break;
-                        }
-                    case 3:
-                        {
-                            p.Valor = Convert.ToDecimal(txtPrecioFijo.Text);
-                            break;
-                        }
-                    case 4:
-                        {
-                            p.Comprar = Convert.ToInt32(txtCompra.Text);
-                            p.Pagar = Convert.ToInt32(txtPaga.Text);
-                            break;
-                        }
+                    TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
+                    Promociones p = new Promociones();
+                    p.ID = lID;
+                    p.Nombre = txtNombre.Text;
+                    p.Descripcion = txtDescripcion.Text;
+                    ComboBoxItem cbi = (ComboBoxItem)cbTipo.Items[cbTipo.SelectedIndex];
+                    p.Tipo = Convert.ToInt32(cbi.Uid);
+                    switch (p.Tipo)
+                    {
+                        case 1:
+                            {
+                                p.Valor = Convert.ToDecimal(txtPorcentaje.Text);
+                                break;
+                            }
+                        case 2:
+                            {
+                                p.Valor = Convert.ToDecimal(txtCantidad.Text);
+                                break;
+                            }
+                        case 3:
+                            {
+                                p.Valor = Convert.ToDecimal(txtPrecioFijo.Text);
+                                break;
+                            }
+                        case 4:
+                            {
+                                p.Comprar = Convert.ToInt32(txtCompra.Text);
+                                p.Pagar = Convert.ToInt32(txtPaga.Text);
+                                break;
+                            }
+                    }
+                    if (rbNo.IsChecked == true)
+                    {
+                        p.Activo = true;
+                        p.FechaInicio = null;
+                        p.FechaFin = null;
+                    }
+                    else if (rbSi.IsChecked == true)
+                    {
+                        p.Activo = true;
+                        p.FechaInicio = Convert.ToDateTime(dpDe.Text);
+                        p.FechaFin = Convert.ToDateTime(dpHasta.Text);
+                    }
+                    if (lstProductoA.Count > 0)
+                    {
+                        p.ParaProducto = true;
+                    }
+                    else
+                    {
+                        p.ParaProducto = false;
+                    }
+                    if (lstPaqueteA.Count > 0)
+                    {
+                        p.ParaPaquete = true;
+                    }
+                    else
+                    {
+                        p.ParaPaquete = false;
+                    }
+                    if (lstTPA.Count > 0)
+                    {
+                        p.ParaTipoProducto = true;
+                    }
+                    else
+                    {
+                        p.ParaTipoProducto = false;
+                    }
+                    if (lstGCA.Count > 0)
+                    {
+                        p.ParaGrupoCliente = true;
+                    }
+                    else
+                    {
+                        p.ParaGrupoCliente = false;
+                    }
+                    tda.UpdatePromocion(p);
+                    foreach (PromocionDias pd in tda.BuscarPromocionDiaID(p.ID))
+                    {
+                        tda.DeletePromocionDia(pd);
+                    }
+                    foreach (PromocionDias pd in Llenado.guardarDiasSeleccionadosPromocion(p.ID, cbLunes, cbMartes, cbMiercoles, cbJueves, cbViernes, cbSabado, cbDomingo))
+                    {
+                        tda.InsertPromocionDia(pd);
+                    }
+                    foreach (PromocionProductos pp in tda.BuscarPromocionProductoID(p.ID))
+                    {
+                        tda.DeletePromocionProducto(pp);
+                    }
+                    foreach (Productos pa in lstProductoA)
+                    {
+                        PromocionProductos pp = new PromocionProductos();
+                        pp.Promocion = p.ID;
+                        pp.Producto = pa.ID;
+                        tda.InsertPromocionProducto(pp);
+                    }
+                    foreach (PromocionPaquetes pp in tda.BuscarPromocionPaqueteID(p.ID))
+                    {
+                        tda.DeletePromocionPaquete(pp);
+                    }
+                    foreach (Paquetes pa in lstPaqueteA)
+                    {
+                        PromocionPaquetes pp = new PromocionPaquetes();
+                        pp.Promocion = p.ID;
+                        pp.Paquete = pa.ID;
+                        tda.InsertPromocionPaquete(pp);
+                    }
+                    foreach (PromocionTipoProductos tp in tda.BuscarPromocionTipoProductoID(p.ID))
+                    {
+                        tda.DeletePromocionTipoProducto(tp);
+                    }
+                    foreach (TipoProductos tp in lstTPA)
+                    {
+                        PromocionTipoProductos ptp = new PromocionTipoProductos();
+                        ptp.Promocion = p.ID;
+                        ptp.TipoProducto = tp.ID;
+                        tda.InsertPromocionTipoProducto(ptp);
+                    }
+                    foreach (PromocionGrupoClientes pgc in tda.BuscarPromocionGrupoClienteID(p.ID))
+                    {
+                        tda.DeletePromocionGrupoCliente(pgc);
+                    }
+                    foreach (GrupoClientes pa in lstGCA)
+                    {
+                        PromocionGrupoClientes pgc = new PromocionGrupoClientes();
+                        pgc.Promocion = p.ID;
+                        pgc.GrupoCliente = pa.ID;
+                        tda.InsertPromocionGrupoCliente(pgc);
+                    }
+                    tda.Close();
+                    this.Close();
                 }
-                if (rbNo.IsChecked == true)
-                {
-                    p.Activo = true;
-                }
-                else if (rbSi.IsChecked == true)
-                {
-                    p.Activo = true;
-                    p.FechaInicio = Convert.ToDateTime(dpDe.Text);
-                    p.FechaFin = Convert.ToDateTime(dpHasta.Text);
-                }
-                if (lstProductoA.Count > 0)
-                {
-                    p.ParaProducto = true;
-                }
-                else
-                {
-                    p.ParaProducto = false;
-                }
-                if (lstPaqueteA.Count > 0)
-                {
-                    p.ParaPaquete = true;
-                }
-                else
-                {
-                    p.ParaPaquete = false;
-                }
-                if (lstTPA.Count > 0)
-                {
-                    p.ParaTipoProducto = true;
-                }
-                else
-                {
-                    p.ParaTipoProducto = false;
-                }
-                if (lstGCA.Count > 0)
-                {
-                    p.ParaGrupoCliente = true;
-                }
-                else
-                {
-                    p.ParaGrupoCliente = false;
-                }             
-                tda.UpdatePromocion(p);
-                foreach (PromocionDias pd in tda.BuscarPromocionDiaID(p.ID))
-                {
-                    tda.DeletePromocionDia(pd);
-                }
-                foreach (PromocionDias pd in Llenado.guardarDiasSeleccionadosPromocion(p.ID, cbLunes, cbMartes, cbMiercoles, cbJueves, cbViernes, cbSabado, cbDomingo))
-                {
-                    tda.InsertPromocionDia(pd);
-                }
-                foreach (PromocionProductos pp in tda.BuscarPromocionProductoID(p.ID))
-                {
-                    tda.DeletePromocionProducto(pp);
-                }
-                foreach (Productos pa in lstProductoA)
-                {
-                    PromocionProductos pp = new PromocionProductos();
-                    pp.Promocion = p.ID;
-                    pp.Producto = pa.ID;
-                    tda.InsertPromocionProducto(pp);
-                }
-                foreach (PromocionPaquetes pp in tda.BuscarPromocionPaqueteID(p.ID))
-                {
-                    tda.DeletePromocionPaquete(pp);
-                }
-                foreach (Paquetes pa in lstPaqueteA)
-                {
-                    PromocionPaquetes pp = new PromocionPaquetes();
-                    pp.Promocion = p.ID;
-                    pp.Paquete = pa.ID;
-                    tda.InsertPromocionPaquete(pp);
-                }
-                foreach (PromocionTipoProductos tp in tda.BuscarPromocionTipoProductoID(p.ID))
-                {
-                    tda.DeletePromocionTipoProducto(tp);
-                }
-                foreach (TipoProductos tp in lstTPA)
-                {
-                    PromocionTipoProductos ptp = new PromocionTipoProductos();
-                    ptp.Promocion = p.ID;
-                    ptp.TipoProducto = tp.ID;
-                    tda.InsertPromocionTipoProducto(ptp);
-                }
-                foreach (PromocionGrupoClientes pgc in tda.BuscarPromocionGrupoClienteID(p.ID))
-                {
-                    tda.DeletePromocionGrupoCliente(pgc);
-                }
-                foreach (GrupoClientes pa in lstGCA)
-                {
-                    PromocionGrupoClientes pgc = new PromocionGrupoClientes();
-                    pgc.Promocion = p.ID;
-                    pgc.GrupoCliente = pa.ID;
-                    tda.InsertPromocionGrupoCliente(pgc);
-                }                
-                tda.Close();
-                this.Close();
             }
             else
             {

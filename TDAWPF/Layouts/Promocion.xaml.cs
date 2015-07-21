@@ -29,6 +29,40 @@ namespace TDAWPF.Layouts
             InitializeComponent();
         }
 
+        private void realizarBusqueda(Promociones p)
+        {
+            ComboBoxItem cbi = (ComboBoxItem)cbTipo.SelectedItem;
+            if (cbTipo.SelectedIndex != 0)
+            {
+                p.Tipo = Convert.ToInt32(cbi.Uid);
+            }
+            if (!txtNombre.PlaceHolder)
+            {
+                p.Nombre = txtNombre.Text;
+            }
+            if (cbActivo.IsChecked == true)
+            {
+                p.Activo = true;
+            }
+            if (cbPaquete.IsChecked == true)
+            {
+                p.ParaPaquete = true;
+            }
+            if (cbTipoProducto.IsChecked == true)
+            {
+                p.ParaTipoProducto = true;
+            }
+            if (cbProducto.IsChecked == true)
+            {
+                p.ParaProducto = true;
+            }
+            if (cbGrupoCliente.IsChecked == true)
+            {
+                p.ParaGrupoCliente = true;
+            }
+            cargarGrid(p);
+        }
+
         private void cargarGrid(Promociones p)
         {
             TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
@@ -99,44 +133,14 @@ namespace TDAWPF.Layouts
 
         private void btnSearch_Click(object sender, RoutedEventArgs e)
         {
-            Promociones p = new Promociones();
-            ComboBoxItem cbi = (ComboBoxItem)cbTipo.SelectedItem;
-            if(cbTipo.SelectedIndex != 0)
-            {
-                p.Tipo = Convert.ToInt32(cbi.Uid);
-            }
-            if (!txtNombre.PlaceHolder)
-            {
-                p.Nombre = txtNombre.Text;
-            }
-            if (cbActivo.IsChecked == true)
-            {
-                p.Activo = true;
-            }
-            if (cbPaquete.IsChecked == true)
-            {
-                p.ParaPaquete = true;
-            }
-            if (cbTipoProducto.IsChecked == true)
-            {
-                p.ParaTipoProducto = true;
-            }
-            if (cbProducto.IsChecked == true)
-            {
-                p.ParaProducto = true;
-            }
-            if (cbGrupoCliente.IsChecked == true)
-            {
-                p.ParaGrupoCliente = true;
-            }
-            cargarGrid(p);
+            realizarBusqueda(new Promociones());
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
             Popups.Promocion w = new Popups.Promocion();
             w.ShowDialog();
-            cargarGrid(new Promociones());
+            realizarBusqueda(new Promociones());
         }
 
         private void btnModificar_Click(object sender, RoutedEventArgs e)
@@ -145,12 +149,21 @@ namespace TDAWPF.Layouts
             long lID = r.ID;
             Popups.Promocion w = new Popups.Promocion(lID);
             w.ShowDialog();
-            cargarGrid(new Promociones());
+            realizarBusqueda(new Promociones());
         }
 
         private void btnEliminar_Click(object sender, RoutedEventArgs e)
         {
-
+            Promociones p = ((Button)sender).DataContext as Promociones;
+            MessageBoxResult result = MessageBox.Show("Estas seguro que quieres eliminar la promocion " + p.Nombre + ".", "Eliminar", MessageBoxButton.OKCancel, MessageBoxImage.Question);
+            if (result == MessageBoxResult.OK)
+            {
+                TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
+                p = tda.BuscarPromocionID(p.ID).First();
+                p.Activo = false;
+                Resultado r = tda.UpdatePromocion(p);
+                realizarBusqueda(new Promociones());
+            }
         }      
     }
 }

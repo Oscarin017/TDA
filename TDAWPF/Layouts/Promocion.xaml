@@ -34,7 +34,7 @@
             </Controles:ComboBoxS.Items>
         </Controles:ComboBoxS>
         <Controles:TextBoxS x:Name="txtNombre" Text="Escribe Promocion" Grid.Column="3" Grid.Row="1"/>
-        <CheckBox x:Name="cbActivo" Content="Activa" FontFamily="Arial" FontSize="20" FontWeight="ExtraBlack" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="5" Grid.Row="1"/>
+        <CheckBox x:Name="cbActivo" Content="Vigente" FontFamily="Arial" FontSize="20" FontWeight="ExtraBlack" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="5" Grid.Row="1"/>
         <Grid Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="5">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
@@ -85,11 +85,11 @@
                 <DataGridTextColumn Header="Tipo Producto" Binding="{Binding ParaTipoProductoNombre}" Width="1.1*" FontWeight="Normal" />
                 <DataGridTextColumn Header="Producto" Binding="{Binding ParaProductoNombre}" Width=".7*" FontWeight="Normal" />
                 <DataGridTextColumn Header="Grupo Cliente" Binding="{Binding ParaGrupoClienteNombre}" Width="*" FontWeight="Normal" />
-                <DataGridTextColumn Header="Activa" Binding="{Binding ActivoNombre}" Width=".6*" FontWeight="Normal" />
-                <DataGridTemplateColumn MinWidth="30">
+                <DataGridTextColumn Header="Vigente" Binding="{Binding ActivoNombre}" Width=".6*" FontWeight="Normal" />
+                <DataGridTemplateColumn Width="30">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button x:Name="btnModificar" Width="20" Height="20" Click="btnModificar_Click">
+                            <Button x:Name="btnModificar" Width="25" Height="25" Click="btnModificar_Click">
                                 <Button.Background>
                                     <ImageBrush ImageSource="../Imagenes/Pencil-mini.png"/>
                                 </Button.Background>
@@ -97,10 +97,10 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTemplateColumn MinWidth="30">
+                <DataGridTemplateColumn Width="30">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button x:Name="btnEliminar" Width="20" Height="20" Click="btnEliminar_Click">
+                            <Button x:Name="btnEliminar" Width="25" Height="25" Click="btnEliminar_Click">
                                 <Button.Background>
                                     <ImageBrush ImageSource="../Imagenes/0173-bin.png"/>
                                 </Button.Background>

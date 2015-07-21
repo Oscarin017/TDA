@@ -36,7 +36,7 @@
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <CheckBox x:Name="cbActivo" Content="Activo" FontFamily="Arial" FontSize="20" FontWeight="ExtraBlack" VerticalAlignment="Center" Grid.Column="1"/>
+            <CheckBox x:Name="cbActivo" Content="Vigente" FontFamily="Arial" FontSize="20" FontWeight="ExtraBlack" VerticalAlignment="Center" Grid.Column="1"/>
             <CheckBox x:Name="cbGrupoCliente" Content="Grupo Cliente" FontFamily="Arial" FontSize="20" FontWeight="ExtraBlack" VerticalAlignment="Center" Grid.Column="3"/>
         </Grid>
         <Grid Grid.Column="7" Grid.Row="1" Grid.RowSpan="4">
@@ -67,7 +67,7 @@
                 <DataGridTextColumn Header="Descripcion" Binding="{Binding Descripcion}" Width="2*" FontWeight="Normal" />
                 <DataGridTextColumn Header="Precio" Binding="{Binding Precio}" Width="*" FontWeight="Normal" />
                 <DataGridTextColumn Header="Grupo Cliente" Binding="{Binding ParaGrupoClienteNombre}" Width="*" FontWeight="Normal" />
-                <DataGridTextColumn Header="Activo" Binding="{Binding ActivoNombre}" Width="*" FontWeight="Normal" />
+                <DataGridTextColumn Header="Vigente" Binding="{Binding ActivoNombre}" Width="*" FontWeight="Normal" />
                 <DataGridTemplateColumn Width="30">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>

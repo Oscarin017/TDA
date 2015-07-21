@@ -31,6 +31,29 @@ namespace TDAWPF.Layouts
             InitializeComponent();
         }
 
+        private void realizarBusqueda(Proveedores p)
+        {
+            ComboBoxItem cbi = (ComboBoxItem)cbPais.SelectedItem;
+            if (cbPais.SelectedIndex != 0)
+            {
+                p.Pais = Convert.ToInt64(cbi.Uid);
+            }
+            ComboBoxItem cbi1 = (ComboBoxItem)cbEstado.SelectedItem;
+            if (cbEstado.SelectedIndex != 0)
+            {
+                p.Estado = Convert.ToInt64(cbi1.Uid);
+            }
+            if (!txtNombre.PlaceHolder)
+            {
+                p.Nombre = txtNombre.Text;
+            }
+            if (!txtRFC.PlaceHolder)
+            {
+                p.RFC = txtRFC.Text;
+            }
+            cargarGrid(p);
+        }
+
         private void cargarGrid(Proveedores p)
         {
             TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
@@ -70,33 +93,14 @@ namespace TDAWPF.Layouts
 
         private void btnSearch_Click(object sender, RoutedEventArgs e)
         {
-            Proveedores p = new Proveedores();
-            ComboBoxItem cbi = (ComboBoxItem)cbPais.SelectedItem;
-            if (cbPais.SelectedIndex != 0)
-            {
-                p.Pais = Convert.ToInt64(cbi.Uid);
-            }
-            ComboBoxItem cbi1 = (ComboBoxItem)cbEstado.SelectedItem;
-            if (cbEstado.SelectedIndex != 0)
-            {
-                p.Estado = Convert.ToInt64(cbi1.Uid);
-            }
-            if (!txtNombre.PlaceHolder)
-            {
-                p.Nombre = txtNombre.Text;
-            }
-            if (!txtRFC.PlaceHolder)
-            {
-                p.RFC = txtRFC.Text;
-            }
-            cargarGrid(p);
+            realizarBusqueda(new Proveedores());
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
             Popups.Proveedor w = new Popups.Proveedor();
             w.ShowDialog();
-            cargarGrid(new Proveedores());
+            realizarBusqueda(new Proveedores());
         }
 
         private void btnModificar_Click(object sender, RoutedEventArgs e)
@@ -105,12 +109,24 @@ namespace TDAWPF.Layouts
             long lID = r.ID;
             Popups.Proveedor w = new Popups.Proveedor(lID);
             w.ShowDialog();
-            cargarGrid(new Proveedores());
+            realizarBusqueda(new Proveedores());
         }
 
         private void btnEliminar_Click(object sender, RoutedEventArgs e)
         {
-
+            Proveedores p = ((Button)sender).DataContext as Proveedores;
+            string sNombre = p.Nombre;
+            MessageBoxResult result = MessageBox.Show("Estas seguro que quieres eliminar el proveedor " + sNombre + ".", "Eliminar", MessageBoxButton.OKCancel, MessageBoxImage.Question);
+            if (result == MessageBoxResult.OK)
+            {
+                TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
+                Resultado r = tda.DeleteProveedor(p);
+                if (r.ErrorDB)
+                {
+                    MessageBox.Show("No se pudo eliminar el producto " + sNombre + ".");
+                }
+                realizarBusqueda(new Proveedores());
+            }
         }
 
         private void cbPais_SelectionChanged(object sender, EventArgs e)

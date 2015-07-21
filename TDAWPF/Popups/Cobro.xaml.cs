@@ -27,8 +27,11 @@ namespace TDAWPF.Popups
         public decimal Total, Efectivo, Cambio;
         public bool Billete = false;
 
-        public Cobro()
+        public Cobro(Ventas ven, List<VentaDetalles> detVen)
         {
+            Total = (decimal)ven.Total;
+            venta = ven;
+            detalleVentas = detVen;
             InitializeComponent();
         }
 
@@ -110,9 +113,9 @@ namespace TDAWPF.Popups
 
         private void CalcularCambio()
         {
-            txtEfectivo.Text = "Efectivo " + Efectivo.ToString("C");
+            txtEfectivo.Text =  Efectivo.ToString("C");
             Cambio = Efectivo - Total;
-            txtCambio.Text = "Cambio " + Cambio.ToString("C");
+            txtCambio.Text = Cambio.ToString("C");
 
             if (Efectivo >= Total)
                 btnImprimirRecibo.IsEnabled = true;

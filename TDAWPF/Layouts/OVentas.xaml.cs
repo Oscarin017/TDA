@@ -32,7 +32,7 @@ namespace TDAWPF.Layouts
             Ventas venta = new Ventas();
             venta.Total = 450;
             List<VentaDetalles> venDet= new List<VentaDetalles>();
-            Popups.Cobro popup = new Popups.Cobro();
+            Popups.Cobro popup = new Popups.Cobro(venta, venDet);
             popup.Closed += new EventHandler(popupCobro_Closed);
             
             popup.Total = 450;

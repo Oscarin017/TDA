@@ -1405,8 +1405,6 @@ namespace TDA.DataLayer
             Resultado resultado = new Resultado();
             string empdb = (from a in _context.Empleado
                             where a.Email.ToUpper() == emp.Email.ToUpper()
-                            ||  a.NSS.ToUpper() == emp.NSS.ToUpper()
-                            || a.CURP.ToUpper() == emp.CURP.ToUpper()
                             select a.Nombre).FirstOrDefault();
             if (string.IsNullOrEmpty(empdb))
             {

@@ -29,10 +29,12 @@ namespace TDAWPF.Layouts
 
         private void btnPagar_Click(object sender, RoutedEventArgs e)
         {
+            Ventas venta = new Ventas();
+            venta.Total = 450;
+            List<VentaDetalles> venDet= new List<VentaDetalles>();
             Popups.Cobro popup = new Popups.Cobro();
             popup.Closed += new EventHandler(popupCobro_Closed);
-            popup.venta = new Ventas();
-            popup.detalleVentas = new List<VentaDetalles>();
+            
             popup.Total = 450;
             popup.ShowDialog();
         }

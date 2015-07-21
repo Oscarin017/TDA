@@ -33,6 +33,7 @@ namespace TDAWPF.Popups
             venta = ven;
             detalleVentas = detVen;
             InitializeComponent();
+            txtTotal.Text = Total.ToString("C");
         }
 
         private void btnCancelar_Click(object sender, RoutedEventArgs e)

@@ -52,13 +52,18 @@ namespace TDAWPF.Popups
 
         private void btnImprimirRecibo_Click(object sender, RoutedEventArgs e)
         {
-
+            TDAService.TDAServiceClient client = new TDAService.TDAServiceClient();
+            Resultado res = client.InsertVenta(venta, detalleVentas);
+            if (res.Realizado)
+            {
+                Vendido = true;
+                this.Close();
+            }
         }
 
         private void InsertVenta()
         {
-            TDAService.TDAServiceClient client = new TDAService.TDAServiceClient();
-            client.InsertVenta(venta, detalleVentas);
+            
         }
 
         private void btn1000_Click(object sender, RoutedEventArgs e)

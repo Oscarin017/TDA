@@ -54,6 +54,8 @@ namespace TDA.Service
         List<Usuarios> SelectUsuario(Usuarios usu);
         [OperationContract]
         List<Usuarios> BuscarUsuarioID(long ID);
+        [OperationContract]
+        Usuarios BuscarUsuarioAlias(String alias);
         #endregion
 
         #region Tabla Pais

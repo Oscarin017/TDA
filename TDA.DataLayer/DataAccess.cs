@@ -218,21 +218,23 @@ namespace TDA.DataLayer
         }
         public List<Usuarios> SelectUsuarios(Usuarios usu)
         {
-            if(!String.IsNullOrWhiteSpace(usu.Alias))
-            {
-                if (usu.Rol > 0)
-                {
-                    return BuscarUsuarios(usu.Alias,usu.Rol);
-                }
-                return BuscarUsuarios(usu.Alias);
-            }
-            else if (usu.Rol > 0)
-            {
-                return BuscarUsuarios(usu.Rol);
-            }
-            else {
-                return BuscarUsuarios();
-            }
+            var usuarios = (from a in _context.Usuario
+                            select new Usuarios
+                            {
+                                ID = a.ID,
+                                Alias = a.Alias,
+                                Contraseña = a.Contrasena,
+                                Email = a.Email,
+                                Empleado = a.Empleado,
+                                Rol = a.Rol,
+                                UsuarioAlta = a.UsuarioAlta,
+                                UsuarioMod = a.UsuarioMod,
+                                FechaAlta = a.FechaAlta,
+                                FechaMod = a.FechaMod
+                            }).ToList();
+            usuarios = usuarios.Where(p => String.IsNullOrEmpty(usu.Alias) || p.Alias.Contains(usu.Alias)).ToList();
+            usuarios = usuarios.Where(p => usu.Rol < 0 || p.Rol == usu.Rol ).ToList();
+            return usuarios;
         }
         public List<Usuarios> BuscarUsuariosID(long ID)
         {
@@ -253,11 +255,10 @@ namespace TDA.DataLayer
                             }).ToList();
             return usuarios;
         }
-        //Buscar Alias y Rol
-        private List<Usuarios> BuscarUsuarios()
+        public Usuarios BuscarUsuarioAlias(String Alias)
         {
             var usuarios = (from a in _context.Usuario
-                            join b in _context.Rol on a.Rol equals b.ID
+                            where a.Alias == Alias
                             select new Usuarios
                             {
                                 ID = a.ID,
@@ -266,77 +267,14 @@ namespace TDA.DataLayer
                                 Email = a.Email,
                                 Empleado = a.Empleado,
                                 Rol = a.Rol,
-                                RolNombre = b.Nombre,
                                 UsuarioAlta = a.UsuarioAlta,
                                 UsuarioMod = a.UsuarioMod,
                                 FechaAlta = a.FechaAlta,
                                 FechaMod = a.FechaMod
-                            }).ToList();
+                            }).FirstOrDefault();
             return usuarios;
         }
-        private List<Usuarios> BuscarUsuarios(String Alias)
-        {
-            var usuarios = (from a in _context.Usuario
-                            join b in _context.Rol on a.Rol equals b.ID
-                            where a.Alias.ToUpper().Contains(Alias.ToUpper())
-                            select new Usuarios
-                            {
-                                ID = a.ID,
-                                Alias = a.Alias,
-                                Contraseña = a.Contrasena,
-                                Email = a.Email,
-                                Empleado = a.Empleado,
-                                Rol = a.Rol,
-                                RolNombre = b.Nombre,
-                                UsuarioAlta = a.UsuarioAlta,
-                                UsuarioMod = a.UsuarioMod,
-                                FechaAlta = a.FechaAlta,
-                                FechaMod = a.FechaMod
-                            }).ToList();
-            return usuarios;
-        }
-        private List<Usuarios> BuscarUsuarios(long? Rol)
-        {
-            var usuarios = (from a in _context.Usuario
-                            join b in _context.Rol on a.Rol equals b.ID
-                            where a.Rol == Rol
-                            select new Usuarios
-                            {
-                                ID = a.ID,
-                                Alias = a.Alias,
-                                Contraseña = a.Contrasena,
-                                Email = a.Email,
-                                Empleado = a.Empleado,
-                                Rol = a.Rol,
-                                RolNombre = b.Nombre,
-                                UsuarioAlta = a.UsuarioAlta,
-                                UsuarioMod = a.UsuarioMod,
-                                FechaAlta = a.FechaAlta,
-                                FechaMod = a.FechaMod
-                            }).ToList();
-            return usuarios;
-        }
-        private List<Usuarios> BuscarUsuarios(String Alias, long? Rol)
-        {
-            var usuarios = (from a in _context.Usuario
-                            join b in _context.Rol on a.Rol equals b.ID
-                            where a.Alias.ToUpper().Contains(Alias.ToUpper()) && a.Rol == Rol
-                            select new Usuarios
-                            {
-                                ID = a.ID,
-                                Alias = a.Alias,
-                                Contraseña = a.Contrasena,
-                                Email = a.Email,
-                                Empleado = a.Empleado,
-                                Rol = a.Rol,
-                                RolNombre = b.Nombre,
-                                UsuarioAlta = a.UsuarioAlta,
-                                UsuarioMod = a.UsuarioMod,
-                                FechaAlta = a.FechaAlta,
-                                FechaMod = a.FechaMod
-                            }).ToList();
-            return usuarios;
-        }
+       
         #endregion
 
         #region Tabla Pais

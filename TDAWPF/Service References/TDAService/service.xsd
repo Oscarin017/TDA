@@ -2,6 +2,20 @@
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import namespace="http://schemas.datacontract.org/2004/07/TDA.Entities" />
   <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:element name="DeleteVentaDia">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="ved" nillable="true" type="q1:VentaDias" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteVentaDiaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="DeleteVentaDiaResult" nillable="true" type="q2:Resultado" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="SelectVentaDia">
     <xs:complexType>
       <xs:sequence />
@@ -10,21 +24,21 @@
   <xs:element name="SelectVentaDiaResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="SelectVentaDiaResult" nillable="true" type="q1:ArrayOfVentaDias" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="SelectVentaDiaResult" nillable="true" type="q3:ArrayOfVentaDias" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="InsertLog">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="log" nillable="true" type="q2:Log" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="log" nillable="true" type="q4:Log" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="InsertLogResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="InsertLogResult" nillable="true" type="q3:Resultado" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="InsertLogResult" nillable="true" type="q5:Resultado" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -36,7 +50,7 @@
   <xs:element name="SelectLogResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="SelectLogResult" nillable="true" type="q4:ArrayOfLog" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="SelectLogResult" nillable="true" type="q6:ArrayOfLog" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -48,7 +62,7 @@
   <xs:element name="SelectConfiguracionResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="SelectConfiguracionResult" nillable="true" type="q5:ArrayOfConfiguraciones" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="SelectConfiguracionResult" nillable="true" type="q7:ArrayOfConfiguraciones" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -60,7 +74,7 @@
   <xs:element name="SelectRolResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="SelectRolResult" nillable="true" type="q6:ArrayOfRoles" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="SelectRolResult" nillable="true" type="q8:ArrayOfRoles" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -72,7 +86,7 @@
   <xs:element name="SelectPaginaResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="SelectPaginaResult" nillable="true" type="q7:ArrayOfPaginas" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="SelectPaginaResult" nillable="true" type="q9:ArrayOfPaginas" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -84,7 +98,7 @@
   <xs:element name="SelectRolPaginaResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="SelectRolPaginaResult" nillable="true" type="q8:ArrayOfRolPaginas" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="SelectRolPaginaResult" nillable="true" type="q10:ArrayOfRolPaginas" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -96,7 +110,7 @@
   <xs:element name="SelectBaseSalarioResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="SelectBaseSalarioResult" nillable="true" type="q9:ArrayOfBaseSalarios" />
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="SelectBaseSalarioResult" nillable="true" type="q11:ArrayOfBaseSalarios" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -108,49 +122,63 @@
   <xs:element name="SelectTipoIdentificacionResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="SelectTipoIdentificacionResult" nillable="true" type="q10:ArrayOfTipoIdentificaciones" />
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="SelectTipoIdentificacionResult" nillable="true" type="q12:ArrayOfTipoIdentificaciones" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="InsertUsuario">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="usu" nillable="true" type="q11:Usuarios" />
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="usu" nillable="true" type="q13:Usuarios" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="InsertUsuarioResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="InsertUsuarioResult" nillable="true" type="q12:Resultado" />
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="InsertUsuarioResult" nillable="true" type="q14:Resultado" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdateUsuario">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="usu" nillable="true" type="q13:Usuarios" />
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="usu" nillable="true" type="q15:Usuarios" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdateUsuarioResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="UpdateUsuarioResult" nillable="true" type="q14:Resultado" />
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="UpdateUsuarioResult" nillable="true" type="q16:Resultado" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteUsuario">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="usu" nillable="true" type="q17:Usuarios" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteUsuarioResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="DeleteUsuarioResult" nillable="true" type="q18:Resultado" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="SelectUsuario">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="usu" nillable="true" type="q15:Usuarios" />
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="usu" nillable="true" type="q19:Usuarios" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="SelectUsuarioResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="SelectUsuarioResult" nillable="true" type="q16:ArrayOfUsuarios" />
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="SelectUsuarioResult" nillable="true" type="q20:ArrayOfUsuarios" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -164,63 +192,63 @@
   <xs:element name="BuscarUsuarioIDResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="BuscarUsuarioIDResult" nillable="true" type="q17:ArrayOfUsuarios" />
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="BuscarUsuarioIDResult" nillable="true" type="q21:ArrayOfUsuarios" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="InsertPais">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="pai" nillable="true" type="q18:Paises" />
+        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="pai" nillable="true" type="q22:Paises" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="InsertPaisResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="InsertPaisResult" nillable="true" type="q19:Resultado" />
+        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="InsertPaisResult" nillable="true" type="q23:Resultado" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdatePais">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="pai" nillable="true" type="q20:Paises" />
+        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="pai" nillable="true" type="q24:Paises" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdatePaisResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="UpdatePaisResult" nillable="true" type="q21:Resultado" />
+        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="UpdatePaisResult" nillable="true" type="q25:Resultado" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="DeletePais">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="pai" nillable="true" type="q22:Paises" />
+        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="pai" nillable="true" type="q26:Paises" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="DeletePaisResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="DeletePaisResult" nillable="true" type="q23:Resultado" />
+        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="DeletePaisResult" nillable="true" type="q27:Resultado" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="SelectPais">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="pai" nillable="true" type="q24:Paises" />
+        <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="pai" nillable="true" type="q28:Paises" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="SelectPaisResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="SelectPaisResult" nillable="true" type="q25:ArrayOfPaises" />
+        <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="SelectPaisResult" nillable="true" type="q29:ArrayOfPaises" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -234,63 +262,63 @@
   <xs:element name="BuscarPaisIDResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="BuscarPaisIDResult" nillable="true" type="q26:ArrayOfPaises" />
+        <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="BuscarPaisIDResult" nillable="true" type="q30:ArrayOfPaises" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="InsertEstado">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="est" nillable="true" type="q27:Estados" />
+        <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="est" nillable="true" type="q31:Estados" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="InsertEstadoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="InsertEstadoResult" nillable="true" type="q28:Resultado" />
+        <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="InsertEstadoResult" nillable="true" type="q32:Resultado" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdateEstado">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="est" nillable="true" type="q29:Estados" />
+        <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="est" nillable="true" type="q33:Estados" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdateEstadoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="UpdateEstadoResult" nillable="true" type="q30:Resultado" />
+        <xs:element xmlns:q34="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="UpdateEstadoResult" nillable="true" type="q34:Resultado" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="DeleteEstado">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="est" nillable="true" type="q31:Estados" />
+        <xs:element xmlns:q35="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="est" nillable="true" type="q35:Estados" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="DeleteEstadoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="DeleteEstadoResult" nillable="true" type="q32:Resultado" />
+        <xs:element xmlns:q36="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="DeleteEstadoResult" nillable="true" type="q36:Resultado" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="SelectEstado">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="est" nillable="true" type="q33:Estados" />
+        <xs:element xmlns:q37="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="est" nillable="true" type="q37:Estados" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="SelectEstadoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q34="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="SelectEstadoResult" nillable="true" type="q34:ArrayOfEstados" />
+        <xs:element xmlns:q38="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="SelectEstadoResult" nillable="true" type="q38:ArrayOfEstados" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -304,7 +332,7 @@
   <xs:element name="BuscarEstadoIDResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q35="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="BuscarEstadoIDResult" nillable="true" type="q35:ArrayOfEstados" />
+        <xs:element xmlns:q39="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="BuscarEstadoIDResult" nillable="true" type="q39:ArrayOfEstados" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -318,7 +346,7 @@
   <xs:element name="SelectCiudadClienteResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q36="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="SelectCiudadClienteResult" nillable="true" type="q36:ArrayOfstring" />
+        <xs:element xmlns:q40="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="SelectCiudadClienteResult" nillable="true" type="q40:ArrayOfstring" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -332,7 +360,7 @@
   <xs:element name="SelectCiudadEmpleadoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q37="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="SelectCiudadEmpleadoResult" nillable="true" type="q37:ArrayOfstring" />
+        <xs:element xmlns:q41="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="SelectCiudadEmpleadoResult" nillable="true" type="q41:ArrayOfstring" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -346,63 +374,63 @@
   <xs:element name="SelectCiudadProveedorResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q38="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="SelectCiudadProveedorResult" nillable="true" type="q38:ArrayOfstring" />
+        <xs:element xmlns:q42="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="SelectCiudadProveedorResult" nillable="true" type="q42:ArrayOfstring" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="InsertMarca">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q39="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="mar" nillable="true" type="q39:Marcas" />
+        <xs:element xmlns:q43="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="mar" nillable="true" type="q43:Marcas" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="InsertMarcaResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q40="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="InsertMarcaResult" nillable="true" type="q40:Resultado" />
+        <xs:element xmlns:q44="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="InsertMarcaResult" nillable="true" type="q44:Resultado" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdateMarca">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q41="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="mar" nillable="true" type="q41:Marcas" />
+        <xs:element xmlns:q45="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="mar" nillable="true" type="q45:Marcas" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdateMarcaResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q42="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="UpdateMarcaResult" nillable="true" type="q42:Resultado" />
+        <xs:element xmlns:q46="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="UpdateMarcaResult" nillable="true" type="q46:Resultado" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="DeleteMarca">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q43="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="mar" nillable="true" type="q43:Marcas" />
+        <xs:element xmlns:q47="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="mar" nillable="true" type="q47:Marcas" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="DeleteMarcaResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q44="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="DeleteMarcaResult" nillable="true" type="q44:Resultado" />
+        <xs:element xmlns:q48="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="DeleteMarcaResult" nillable="true" type="q48:Resultado" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="SelectMarca">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q45="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="mar" nillable="true" type="q45:Marcas" />
+        <xs:element xmlns:q49="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="mar" nillable="true" type="q49:Marcas" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="SelectMarcaResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q46="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="SelectMarcaResult" nillable="true" type="q46:ArrayOfMarcas" />
+        <xs:element xmlns:q50="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="SelectMarcaResult" nillable="true" type="q50:ArrayOfMarcas" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -416,63 +444,63 @@
   <xs:element name="BuscarMarcaIDResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q47="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="BuscarMarcaIDResult" nillable="true" type="q47:ArrayOfMarcas" />
+        <xs:element xmlns:q51="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="BuscarMarcaIDResult" nillable="true" type="q51:ArrayOfMarcas" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="InsertModelo">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q48="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="mod" nillable="true" type="q48:Modelos" />
+        <xs:element xmlns:q52="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="mod" nillable="true" type="q52:Modelos" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="InsertModeloResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q49="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="InsertModeloResult" nillable="true" type="q49:Resultado" />
+        <xs:element xmlns:q53="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="InsertModeloResult" nillable="true" type="q53:Resultado" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdateModelo">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q50="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="mod" nillable="true" type="q50:Modelos" />
+        <xs:element xmlns:q54="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="mod" nillable="true" type="q54:Modelos" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdateModeloResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q51="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="UpdateModeloResult" nillable="true" type="q51:Resultado" />
+        <xs:element xmlns:q55="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="UpdateModeloResult" nillable="true" type="q55:Resultado" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="DeleteModelo">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q52="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="mod" nillable="true" type="q52:Modelos" />
+        <xs:element xmlns:q56="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="mod" nillable="true" type="q56:Modelos" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="DeleteModeloResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q53="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="DeleteModeloResult" nillable="true" type="q53:Resultado" />
+        <xs:element xmlns:q57="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="DeleteModeloResult" nillable="true" type="q57:Resultado" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="SelectModelo">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q54="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="mod" nillable="true" type="q54:Modelos" />
+        <xs:element xmlns:q58="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="mod" nillable="true" type="q58:Modelos" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="SelectModeloResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q55="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="SelectModeloResult" nillable="true" type="q55:ArrayOfModelos" />
+        <xs:element xmlns:q59="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="SelectModeloResult" nillable="true" type="q59:ArrayOfModelos" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -486,63 +514,63 @@
   <xs:element name="BuscarModeloIDResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q56="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="BuscarModeloIDResult" nillable="true" type="q56:ArrayOfModelos" />
+        <xs:element xmlns:q60="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="BuscarModeloIDResult" nillable="true" type="q60:ArrayOfModelos" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="InsertColor">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q57="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="col" nillable="true" type="q57:Colores" />
+        <xs:element xmlns:q61="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="col" nillable="true" type="q61:Colores" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="InsertColorResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q58="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="InsertColorResult" nillable="true" type="q58:Resultado" />
+        <xs:element xmlns:q62="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="InsertColorResult" nillable="true" type="q62:Resultado" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdateColor">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q59="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="col" nillable="true" type="q59:Colores" />
+        <xs:element xmlns:q63="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="col" nillable="true" type="q63:Colores" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdateColorResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q60="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="UpdateColorResult" nillable="true" type="q60:Resultado" />
+        <xs:element xmlns:q64="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="UpdateColorResult" nillable="true" type="q64:Resultado" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="DeleteColor">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q61="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="col" nillable="true" type="q61:Colores" />
+        <xs:element xmlns:q65="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="col" nillable="true" type="q65:Colores" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="DeleteColorResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q62="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="DeleteColorResult" nillable="true" type="q62:Resultado" />
+        <xs:element xmlns:q66="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="DeleteColorResult" nillable="true" type="q66:Resultado" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="SelectColor">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q63="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="col" nillable="true" type="q63:Colores" />
+        <xs:element xmlns:q67="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="col" nillable="true" type="q67:Colores" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="SelectColorResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q64="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="SelectColorResult" nillable="true" type="q64:ArrayOfColores" />
+        <xs:element xmlns:q68="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="SelectColorResult" nillable="true" type="q68:ArrayOfColores" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -556,63 +584,63 @@
   <xs:element name="BuscarColorIDResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q65="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="BuscarColorIDResult" nillable="true" type="q65:ArrayOfColores" />
+        <xs:element xmlns:q69="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="BuscarColorIDResult" nillable="true" type="q69:ArrayOfColores" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="InsertTipoProducto">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q66="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="tip" nillable="true" type="q66:TipoProductos" />
+        <xs:element xmlns:q70="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="tip" nillable="true" type="q70:TipoProductos" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="InsertTipoProductoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q67="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="InsertTipoProductoResult" nillable="true" type="q67:Resultado" />
+        <xs:element xmlns:q71="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="InsertTipoProductoResult" nillable="true" type="q71:Resultado" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdateTipoProducto">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q68="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="tip" nillable="true" type="q68:TipoProductos" />
+        <xs:element xmlns:q72="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="tip" nillable="true" type="q72:TipoProductos" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdateTipoProductoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q69="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="UpdateTipoProductoResult" nillable="true" type="q69:Resultado" />
+        <xs:element xmlns:q73="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="UpdateTipoProductoResult" nillable="true" type="q73:Resultado" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="DeleteTipoProducto">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q70="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="tip" nillable="true" type="q70:TipoProductos" />
+        <xs:element xmlns:q74="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="tip" nillable="true" type="q74:TipoProductos" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="DeleteTipoProductoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q71="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="DeleteTipoProductoResult" nillable="true" type="q71:Resultado" />
+        <xs:element xmlns:q75="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="DeleteTipoProductoResult" nillable="true" type="q75:Resultado" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="SelectTipoProducto">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q72="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="tip" nillable="true" type="q72:TipoProductos" />
+        <xs:element xmlns:q76="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="tip" nillable="true" type="q76:TipoProductos" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="SelectTipoProductoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q73="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="SelectTipoProductoResult" nillable="true" type="q73:ArrayOfTipoProductos" />
+        <xs:element xmlns:q77="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="SelectTipoProductoResult" nillable="true" type="q77:ArrayOfTipoProductos" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -626,63 +654,63 @@
   <xs:element name="BuscarTipoProductoIDResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q74="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="BuscarTipoProductoIDResult" nillable="true" type="q74:ArrayOfTipoProductos" />
+        <xs:element xmlns:q78="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="BuscarTipoProductoIDResult" nillable="true" type="q78:ArrayOfTipoProductos" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="InsertEmpleado">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q75="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="emp" nillable="true" type="q75:Empleados" />
+        <xs:element xmlns:q79="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="emp" nillable="true" type="q79:Empleados" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="InsertEmpleadoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q76="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="InsertEmpleadoResult" nillable="true" type="q76:Resultado" />
+        <xs:element xmlns:q80="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="InsertEmpleadoResult" nillable="true" type="q80:Resultado" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdateEmpleado">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q77="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="emp" nillable="true" type="q77:Empleados" />
+        <xs:element xmlns:q81="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="emp" nillable="true" type="q81:Empleados" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdateEmpleadoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q78="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="UpdateEmpleadoResult" nillable="true" type="q78:Resultado" />
+        <xs:element xmlns:q82="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="UpdateEmpleadoResult" nillable="true" type="q82:Resultado" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="DeleteEmpleado">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q79="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="emp" nillable="true" type="q79:Empleados" />
+        <xs:element xmlns:q83="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="emp" nillable="true" type="q83:Empleados" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="DeleteEmpleadoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q80="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="DeleteEmpleadoResult" nillable="true" type="q80:Resultado" />
+        <xs:element xmlns:q84="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="DeleteEmpleadoResult" nillable="true" type="q84:Resultado" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="SelectEmpleado">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q81="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="emp" nillable="true" type="q81:Empleados" />
+        <xs:element xmlns:q85="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="emp" nillable="true" type="q85:Empleados" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="SelectEmpleadoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q82="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="SelectEmpleadoResult" nillable="true" type="q82:ArrayOfEmpleados" />
+        <xs:element xmlns:q86="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="SelectEmpleadoResult" nillable="true" type="q86:ArrayOfEmpleados" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -696,49 +724,49 @@
   <xs:element name="BuscarEmpleadoIDResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q83="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="BuscarEmpleadoIDResult" nillable="true" type="q83:ArrayOfEmpleados" />
+        <xs:element xmlns:q87="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="BuscarEmpleadoIDResult" nillable="true" type="q87:ArrayOfEmpleados" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="InsertVehiculo">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q84="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="veh" nillable="true" type="q84:Vehiculos" />
+        <xs:element xmlns:q88="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="veh" nillable="true" type="q88:Vehiculos" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="InsertVehiculoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q85="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="InsertVehiculoResult" nillable="true" type="q85:Resultado" />
+        <xs:element xmlns:q89="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="InsertVehiculoResult" nillable="true" type="q89:Resultado" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdateVehiculo">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q86="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="veh" nillable="true" type="q86:Vehiculos" />
+        <xs:element xmlns:q90="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="veh" nillable="true" type="q90:Vehiculos" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdateVehiculoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q87="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="UpdateVehiculoResult" nillable="true" type="q87:Resultado" />
+        <xs:element xmlns:q91="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="UpdateVehiculoResult" nillable="true" type="q91:Resultado" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="SelectVehiculo">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q88="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="veh" nillable="true" type="q88:Vehiculos" />
+        <xs:element xmlns:q92="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="veh" nillable="true" type="q92:Vehiculos" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="SelectVehiculoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q89="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="SelectVehiculoResult" nillable="true" type="q89:ArrayOfVehiculos" />
+        <xs:element xmlns:q93="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="SelectVehiculoResult" nillable="true" type="q93:ArrayOfVehiculos" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -752,63 +780,63 @@
   <xs:element name="BuscarVehiculoIDResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q90="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="BuscarVehiculoIDResult" nillable="true" type="q90:ArrayOfVehiculos" />
+        <xs:element xmlns:q94="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="BuscarVehiculoIDResult" nillable="true" type="q94:ArrayOfVehiculos" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="InsertProveedor">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q91="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="pro" nillable="true" type="q91:Proveedores" />
+        <xs:element xmlns:q95="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="pro" nillable="true" type="q95:Proveedores" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="InsertProveedorResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q92="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="InsertProveedorResult" nillable="true" type="q92:Resultado" />
+        <xs:element xmlns:q96="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="InsertProveedorResult" nillable="true" type="q96:Resultado" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdateProveedor">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q93="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="pro" nillable="true" type="q93:Proveedores" />
+        <xs:element xmlns:q97="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="pro" nillable="true" type="q97:Proveedores" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdateProveedorResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q94="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="UpdateProveedorResult" nillable="true" type="q94:Resultado" />
+        <xs:element xmlns:q98="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="UpdateProveedorResult" nillable="true" type="q98:Resultado" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="DeleteProveedor">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q95="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="pro" nillable="true" type="q95:Proveedores" />
+        <xs:element xmlns:q99="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="pro" nillable="true" type="q99:Proveedores" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="DeleteProveedorResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q96="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="DeleteProveedorResult" nillable="true" type="q96:Resultado" />
+        <xs:element xmlns:q100="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="DeleteProveedorResult" nillable="true" type="q100:Resultado" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="SelectProveedor">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q97="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="pro" nillable="true" type="q97:Proveedores" />
+        <xs:element xmlns:q101="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="pro" nillable="true" type="q101:Proveedores" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="SelectProveedorResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q98="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="SelectProveedorResult" nillable="true" type="q98:ArrayOfProveedores" />
+        <xs:element xmlns:q102="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="SelectProveedorResult" nillable="true" type="q102:ArrayOfProveedores" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -822,7 +850,7 @@
   <xs:element name="BuscarProveedorIDResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q99="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="BuscarProveedorIDResult" nillable="true" type="q99:ArrayOfProveedores" />
+        <xs:element xmlns:q103="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="BuscarProveedorIDResult" nillable="true" type="q103:ArrayOfProveedores" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -834,63 +862,63 @@
   <xs:element name="SelectDiaResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q100="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="SelectDiaResult" nillable="true" type="q100:ArrayOfDias" />
+        <xs:element xmlns:q104="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="SelectDiaResult" nillable="true" type="q104:ArrayOfDias" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="InsertProducto">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q101="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="pro" nillable="true" type="q101:Productos" />
+        <xs:element xmlns:q105="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="pro" nillable="true" type="q105:Productos" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="InsertProductoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q102="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="InsertProductoResult" nillable="true" type="q102:Resultado" />
+        <xs:element xmlns:q106="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="InsertProductoResult" nillable="true" type="q106:Resultado" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdateProducto">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q103="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="pro" nillable="true" type="q103:Productos" />
+        <xs:element xmlns:q107="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="pro" nillable="true" type="q107:Productos" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdateProductoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q104="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="UpdateProductoResult" nillable="true" type="q104:Resultado" />
+        <xs:element xmlns:q108="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="UpdateProductoResult" nillable="true" type="q108:Resultado" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="DeleteProducto">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q105="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="pro" nillable="true" type="q105:Productos" />
+        <xs:element xmlns:q109="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="pro" nillable="true" type="q109:Productos" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="DeleteProductoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q106="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="DeleteProductoResult" nillable="true" type="q106:Resultado" />
+        <xs:element xmlns:q110="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="DeleteProductoResult" nillable="true" type="q110:Resultado" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="SelectProducto">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q107="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="pro" nillable="true" type="q107:Productos" />
+        <xs:element xmlns:q111="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="pro" nillable="true" type="q111:Productos" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="SelectProductoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q108="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="SelectProductoResult" nillable="true" type="q108:ArrayOfProductos" />
+        <xs:element xmlns:q112="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="SelectProductoResult" nillable="true" type="q112:ArrayOfProductos" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -904,49 +932,49 @@
   <xs:element name="BuscarProductoIDResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q109="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="BuscarProductoIDResult" nillable="true" type="q109:ArrayOfProductos" />
+        <xs:element xmlns:q113="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="BuscarProductoIDResult" nillable="true" type="q113:ArrayOfProductos" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="InsertTipoMovimiento">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q110="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="tim" nillable="true" type="q110:TipoMovimientos" />
+        <xs:element xmlns:q114="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="tim" nillable="true" type="q114:TipoMovimientos" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="InsertTipoMovimientoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q111="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="InsertTipoMovimientoResult" nillable="true" type="q111:Resultado" />
+        <xs:element xmlns:q115="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="InsertTipoMovimientoResult" nillable="true" type="q115:Resultado" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdateTipoMovimiento">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q112="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="tim" nillable="true" type="q112:TipoMovimientos" />
+        <xs:element xmlns:q116="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="tim" nillable="true" type="q116:TipoMovimientos" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdateTipoMovimientoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q113="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="UpdateTipoMovimientoResult" nillable="true" type="q113:Resultado" />
+        <xs:element xmlns:q117="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="UpdateTipoMovimientoResult" nillable="true" type="q117:Resultado" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="DeleteTipoMovimiento">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q114="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="tim" nillable="true" type="q114:TipoMovimientos" />
+        <xs:element xmlns:q118="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="tim" nillable="true" type="q118:TipoMovimientos" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="DeleteTipoMovimientoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q115="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="DeleteTipoMovimientoResult" nillable="true" type="q115:Resultado" />
+        <xs:element xmlns:q119="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="DeleteTipoMovimientoResult" nillable="true" type="q119:Resultado" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -958,35 +986,35 @@
   <xs:element name="SelectTipoMovimientoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q116="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="SelectTipoMovimientoResult" nillable="true" type="q116:ArrayOfTipoMovimientos" />
+        <xs:element xmlns:q120="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="SelectTipoMovimientoResult" nillable="true" type="q120:ArrayOfTipoMovimientos" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="InsertMovimiento">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q117="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="mov" nillable="true" type="q117:Movimientos" />
+        <xs:element xmlns:q121="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="mov" nillable="true" type="q121:Movimientos" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="InsertMovimientoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q118="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="InsertMovimientoResult" nillable="true" type="q118:Resultado" />
+        <xs:element xmlns:q122="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="InsertMovimientoResult" nillable="true" type="q122:Resultado" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="DeleteMovimiento">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q119="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="mov" nillable="true" type="q119:Movimientos" />
+        <xs:element xmlns:q123="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="mov" nillable="true" type="q123:Movimientos" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="DeleteMovimientoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q120="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="DeleteMovimientoResult" nillable="true" type="q120:Resultado" />
+        <xs:element xmlns:q124="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="DeleteMovimientoResult" nillable="true" type="q124:Resultado" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -998,63 +1026,63 @@
   <xs:element name="SelectMovimientoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q121="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="SelectMovimientoResult" nillable="true" type="q121:ArrayOfMovimientos" />
+        <xs:element xmlns:q125="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="SelectMovimientoResult" nillable="true" type="q125:ArrayOfMovimientos" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="InsertGrupoCliente">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q122="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="gcl" nillable="true" type="q122:GrupoClientes" />
+        <xs:element xmlns:q126="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="gcl" nillable="true" type="q126:GrupoClientes" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="InsertGrupoClienteResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q123="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="InsertGrupoClienteResult" nillable="true" type="q123:Resultado" />
+        <xs:element xmlns:q127="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="InsertGrupoClienteResult" nillable="true" type="q127:Resultado" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdateGrupoCliente">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q124="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="gcl" nillable="true" type="q124:GrupoClientes" />
+        <xs:element xmlns:q128="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="gcl" nillable="true" type="q128:GrupoClientes" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdateGrupoClienteResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q125="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="UpdateGrupoClienteResult" nillable="true" type="q125:Resultado" />
+        <xs:element xmlns:q129="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="UpdateGrupoClienteResult" nillable="true" type="q129:Resultado" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="DeleteGrupoCliente">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q126="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="gcl" nillable="true" type="q126:GrupoClientes" />
+        <xs:element xmlns:q130="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="gcl" nillable="true" type="q130:GrupoClientes" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="DeleteGrupoClienteResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q127="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="DeleteGrupoClienteResult" nillable="true" type="q127:Resultado" />
+        <xs:element xmlns:q131="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="DeleteGrupoClienteResult" nillable="true" type="q131:Resultado" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="SelectGrupoCliente">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q128="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="gcl" nillable="true" type="q128:GrupoClientes" />
+        <xs:element xmlns:q132="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="gcl" nillable="true" type="q132:GrupoClientes" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="SelectGrupoClienteResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q129="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="SelectGrupoClienteResult" nillable="true" type="q129:ArrayOfGrupoClientes" />
+        <xs:element xmlns:q133="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="SelectGrupoClienteResult" nillable="true" type="q133:ArrayOfGrupoClientes" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -1068,63 +1096,63 @@
   <xs:element name="BuscarGrupoClienteIDResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q130="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="BuscarGrupoClienteIDResult" nillable="true" type="q130:ArrayOfGrupoClientes" />
+        <xs:element xmlns:q134="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="BuscarGrupoClienteIDResult" nillable="true" type="q134:ArrayOfGrupoClientes" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="InsertCliente">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q131="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="cli" nillable="true" type="q131:Clientes" />
+        <xs:element xmlns:q135="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="cli" nillable="true" type="q135:Clientes" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="InsertClienteResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q132="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="InsertClienteResult" nillable="true" type="q132:Resultado" />
+        <xs:element xmlns:q136="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="InsertClienteResult" nillable="true" type="q136:Resultado" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdateCliente">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q133="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="cli" nillable="true" type="q133:Clientes" />
+        <xs:element xmlns:q137="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="cli" nillable="true" type="q137:Clientes" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdateClienteResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q134="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="UpdateClienteResult" nillable="true" type="q134:Resultado" />
+        <xs:element xmlns:q138="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="UpdateClienteResult" nillable="true" type="q138:Resultado" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="DeleteCliente">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q135="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="cli" nillable="true" type="q135:Clientes" />
+        <xs:element xmlns:q139="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="cli" nillable="true" type="q139:Clientes" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="DeleteClienteResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q136="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="DeleteClienteResult" nillable="true" type="q136:Resultado" />
+        <xs:element xmlns:q140="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="DeleteClienteResult" nillable="true" type="q140:Resultado" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="SelectCliente">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q137="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="cli" nillable="true" type="q137:Clientes" />
+        <xs:element xmlns:q141="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="cli" nillable="true" type="q141:Clientes" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="SelectClienteResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q138="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="SelectClienteResult" nillable="true" type="q138:ArrayOfClientes" />
+        <xs:element xmlns:q142="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="SelectClienteResult" nillable="true" type="q142:ArrayOfClientes" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -1138,49 +1166,49 @@
   <xs:element name="BuscarClienteIDResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q139="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="BuscarClienteIDResult" nillable="true" type="q139:ArrayOfClientes" />
+        <xs:element xmlns:q143="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="BuscarClienteIDResult" nillable="true" type="q143:ArrayOfClientes" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="InsertPaquete">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q140="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="paq" nillable="true" type="q140:Paquetes" />
+        <xs:element xmlns:q144="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="paq" nillable="true" type="q144:Paquetes" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="InsertPaqueteResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q141="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="InsertPaqueteResult" nillable="true" type="q141:Resultado" />
+        <xs:element xmlns:q145="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="InsertPaqueteResult" nillable="true" type="q145:Resultado" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdatePaquete">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q142="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="paq" nillable="true" type="q142:Paquetes" />
+        <xs:element xmlns:q146="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="paq" nillable="true" type="q146:Paquetes" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdatePaqueteResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q143="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="UpdatePaqueteResult" nillable="true" type="q143:Resultado" />
+        <xs:element xmlns:q147="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="UpdatePaqueteResult" nillable="true" type="q147:Resultado" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="SelectPaquete">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q144="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="paq" nillable="true" type="q144:Paquetes" />
+        <xs:element xmlns:q148="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="paq" nillable="true" type="q148:Paquetes" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="SelectPaqueteResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q145="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="SelectPaqueteResult" nillable="true" type="q145:ArrayOfPaquetes" />
+        <xs:element xmlns:q149="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="SelectPaqueteResult" nillable="true" type="q149:ArrayOfPaquetes" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -1194,35 +1222,35 @@
   <xs:element name="BuscarPaqueteIDResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q146="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="BuscarPaqueteIDResult" nillable="true" type="q146:ArrayOfPaquetes" />
+        <xs:element xmlns:q150="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="BuscarPaqueteIDResult" nillable="true" type="q150:ArrayOfPaquetes" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="InsertPaqueteDia">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q147="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="pqd" nillable="true" type="q147:PaqueteDias" />
+        <xs:element xmlns:q151="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="pqd" nillable="true" type="q151:PaqueteDias" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="InsertPaqueteDiaResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q148="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="InsertPaqueteDiaResult" nillable="true" type="q148:Resultado" />
+        <xs:element xmlns:q152="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="InsertPaqueteDiaResult" nillable="true" type="q152:Resultado" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="DeletePaqueteDia">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q149="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="pqd" nillable="true" type="q149:PaqueteDias" />
+        <xs:element xmlns:q153="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="pqd" nillable="true" type="q153:PaqueteDias" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="DeletePaqueteDiaResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q150="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="DeletePaqueteDiaResult" nillable="true" type="q150:Resultado" />
+        <xs:element xmlns:q154="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="DeletePaqueteDiaResult" nillable="true" type="q154:Resultado" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -1234,7 +1262,7 @@
   <xs:element name="SelectPaqueteDiaResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q151="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="SelectPaqueteDiaResult" nillable="true" type="q151:ArrayOfPaqueteDias" />
+        <xs:element xmlns:q155="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="SelectPaqueteDiaResult" nillable="true" type="q155:ArrayOfPaqueteDias" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -1248,35 +1276,35 @@
   <xs:element name="BuscarPaqueteDiaIDResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q152="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="BuscarPaqueteDiaIDResult" nillable="true" type="q152:ArrayOfPaqueteDias" />
+        <xs:element xmlns:q156="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="BuscarPaqueteDiaIDResult" nillable="true" type="q156:ArrayOfPaqueteDias" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="InsertPaqueteGrupoCliente">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q153="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="pgc" nillable="true" type="q153:PaqueteGrupoClientes" />
+        <xs:element xmlns:q157="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="pgc" nillable="true" type="q157:PaqueteGrupoClientes" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="InsertPaqueteGrupoClienteResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q154="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="InsertPaqueteGrupoClienteResult" nillable="true" type="q154:Resultado" />
+        <xs:element xmlns:q158="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="InsertPaqueteGrupoClienteResult" nillable="true" type="q158:Resultado" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="DeletePaqueteGrupoCliente">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q155="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="pgc" nillable="true" type="q155:PaqueteGrupoClientes" />
+        <xs:element xmlns:q159="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="pgc" nillable="true" type="q159:PaqueteGrupoClientes" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="DeletePaqueteGrupoClienteResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q156="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="DeletePaqueteGrupoClienteResult" nillable="true" type="q156:Resultado" />
+        <xs:element xmlns:q160="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="DeletePaqueteGrupoClienteResult" nillable="true" type="q160:Resultado" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -1288,7 +1316,7 @@
   <xs:element name="SelectPaqueteGrupoClienteResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q157="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="SelectPaqueteGrupoClienteResult" nillable="true" type="q157:ArrayOfPaqueteGrupoClientes" />
+        <xs:element xmlns:q161="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="SelectPaqueteGrupoClienteResult" nillable="true" type="q161:ArrayOfPaqueteGrupoClientes" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -1302,35 +1330,35 @@
   <xs:element name="BuscarPaqueteGrupoClienteIDResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q158="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="BuscarPaqueteGrupoClienteIDResult" nillable="true" type="q158:ArrayOfPaqueteGrupoClientes" />
+        <xs:element xmlns:q162="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="BuscarPaqueteGrupoClienteIDResult" nillable="true" type="q162:ArrayOfPaqueteGrupoClientes" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="InsertPaqueteProducto">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q159="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="ppr" nillable="true" type="q159:PaqueteProductos" />
+        <xs:element xmlns:q163="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="ppr" nillable="true" type="q163:PaqueteProductos" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="InsertPaqueteProductoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q160="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="InsertPaqueteProductoResult" nillable="true" type="q160:Resultado" />
+        <xs:element xmlns:q164="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="InsertPaqueteProductoResult" nillable="true" type="q164:Resultado" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="DeletePaqueteProducto">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q161="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="ppr" nillable="true" type="q161:PaqueteProductos" />
+        <xs:element xmlns:q165="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="ppr" nillable="true" type="q165:PaqueteProductos" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="DeletePaqueteProductoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q162="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="DeletePaqueteProductoResult" nillable="true" type="q162:Resultado" />
+        <xs:element xmlns:q166="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="DeletePaqueteProductoResult" nillable="true" type="q166:Resultado" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -1342,7 +1370,7 @@
   <xs:element name="SelectPaqueteProductoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q163="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="SelectPaqueteProductoResult" nillable="true" type="q163:ArrayOfPaqueteProductos" />
+        <xs:element xmlns:q167="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="SelectPaqueteProductoResult" nillable="true" type="q167:ArrayOfPaqueteProductos" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -1356,49 +1384,49 @@
   <xs:element name="BuscarPaqueteProductoIDResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q164="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="BuscarPaqueteProductoIDResult" nillable="true" type="q164:ArrayOfPaqueteProductos" />
+        <xs:element xmlns:q168="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="BuscarPaqueteProductoIDResult" nillable="true" type="q168:ArrayOfPaqueteProductos" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="InsertPromocion">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q165="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="pro" nillable="true" type="q165:Promociones" />
+        <xs:element xmlns:q169="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="pro" nillable="true" type="q169:Promociones" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="InsertPromocionResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q166="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="InsertPromocionResult" nillable="true" type="q166:Resultado" />
+        <xs:element xmlns:q170="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="InsertPromocionResult" nillable="true" type="q170:Resultado" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdatePromocion">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q167="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="pro" nillable="true" type="q167:Promociones" />
+        <xs:element xmlns:q171="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="pro" nillable="true" type="q171:Promociones" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdatePromocionResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q168="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="UpdatePromocionResult" nillable="true" type="q168:Resultado" />
+        <xs:element xmlns:q172="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="UpdatePromocionResult" nillable="true" type="q172:Resultado" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="SelectPromocion">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q169="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="pro" nillable="true" type="q169:Promociones" />
+        <xs:element xmlns:q173="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="pro" nillable="true" type="q173:Promociones" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="SelectPromocionResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q170="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="SelectPromocionResult" nillable="true" type="q170:ArrayOfPromociones" />
+        <xs:element xmlns:q174="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="SelectPromocionResult" nillable="true" type="q174:ArrayOfPromociones" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -1412,35 +1440,35 @@
   <xs:element name="BuscarPromocionIDResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q171="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="BuscarPromocionIDResult" nillable="true" type="q171:ArrayOfPromociones" />
+        <xs:element xmlns:q175="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="BuscarPromocionIDResult" nillable="true" type="q175:ArrayOfPromociones" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="InsertPromocionDia">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q172="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="prd" nillable="true" type="q172:PromocionDias" />
+        <xs:element xmlns:q176="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="prd" nillable="true" type="q176:PromocionDias" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="InsertPromocionDiaResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q173="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="InsertPromocionDiaResult" nillable="true" type="q173:Resultado" />
+        <xs:element xmlns:q177="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="InsertPromocionDiaResult" nillable="true" type="q177:Resultado" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="DeletePromocionDia">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q174="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="prd" nillable="true" type="q174:PromocionDias" />
+        <xs:element xmlns:q178="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="prd" nillable="true" type="q178:PromocionDias" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="DeletePromocionDiaResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q175="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="DeletePromocionDiaResult" nillable="true" type="q175:Resultado" />
+        <xs:element xmlns:q179="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="DeletePromocionDiaResult" nillable="true" type="q179:Resultado" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -1452,7 +1480,7 @@
   <xs:element name="SelectPromocionDiaResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q176="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="SelectPromocionDiaResult" nillable="true" type="q176:ArrayOfPromocionDias" />
+        <xs:element xmlns:q180="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="SelectPromocionDiaResult" nillable="true" type="q180:ArrayOfPromocionDias" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -1466,35 +1494,35 @@
   <xs:element name="BuscarPromocionDiaIDResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q177="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="BuscarPromocionDiaIDResult" nillable="true" type="q177:ArrayOfPromocionDias" />
+        <xs:element xmlns:q181="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="BuscarPromocionDiaIDResult" nillable="true" type="q181:ArrayOfPromocionDias" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="InsertPromocionPaquete">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q178="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="prp" nillable="true" type="q178:PromocionPaquetes" />
+        <xs:element xmlns:q182="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="prp" nillable="true" type="q182:PromocionPaquetes" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="InsertPromocionPaqueteResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q179="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="InsertPromocionPaqueteResult" nillable="true" type="q179:Resultado" />
+        <xs:element xmlns:q183="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="InsertPromocionPaqueteResult" nillable="true" type="q183:Resultado" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="DeletePromocionPaquete">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q180="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="prp" nillable="true" type="q180:PromocionPaquetes" />
+        <xs:element xmlns:q184="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="prp" nillable="true" type="q184:PromocionPaquetes" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="DeletePromocionPaqueteResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q181="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="DeletePromocionPaqueteResult" nillable="true" type="q181:Resultado" />
+        <xs:element xmlns:q185="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="DeletePromocionPaqueteResult" nillable="true" type="q185:Resultado" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -1506,7 +1534,7 @@
   <xs:element name="SelectPromocionPaqueteResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q182="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="SelectPromocionPaqueteResult" nillable="true" type="q182:ArrayOfPromocionPaquetes" />
+        <xs:element xmlns:q186="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="SelectPromocionPaqueteResult" nillable="true" type="q186:ArrayOfPromocionPaquetes" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -1520,35 +1548,35 @@
   <xs:element name="BuscarPromocionPaqueteIDResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q183="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="BuscarPromocionPaqueteIDResult" nillable="true" type="q183:ArrayOfPromocionPaquetes" />
+        <xs:element xmlns:q187="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="BuscarPromocionPaqueteIDResult" nillable="true" type="q187:ArrayOfPromocionPaquetes" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="InsertPromocionTipoProducto">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q184="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="ptp" nillable="true" type="q184:PromocionTipoProductos" />
+        <xs:element xmlns:q188="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="ptp" nillable="true" type="q188:PromocionTipoProductos" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="InsertPromocionTipoProductoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q185="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="InsertPromocionTipoProductoResult" nillable="true" type="q185:Resultado" />
+        <xs:element xmlns:q189="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="InsertPromocionTipoProductoResult" nillable="true" type="q189:Resultado" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="DeletePromocionTipoProducto">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q186="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="ptp" nillable="true" type="q186:PromocionTipoProductos" />
+        <xs:element xmlns:q190="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="ptp" nillable="true" type="q190:PromocionTipoProductos" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="DeletePromocionTipoProductoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q187="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="DeletePromocionTipoProductoResult" nillable="true" type="q187:Resultado" />
+        <xs:element xmlns:q191="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="DeletePromocionTipoProductoResult" nillable="true" type="q191:Resultado" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -1560,7 +1588,7 @@
   <xs:element name="SelectPromocionTipoProductoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q188="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="SelectPromocionTipoProductoResult" nillable="true" type="q188:ArrayOfPromocionTipoProductos" />
+        <xs:element xmlns:q192="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="SelectPromocionTipoProductoResult" nillable="true" type="q192:ArrayOfPromocionTipoProductos" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -1574,35 +1602,35 @@
   <xs:element name="BuscarPromocionTipoProductoIDResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q189="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="BuscarPromocionTipoProductoIDResult" nillable="true" type="q189:ArrayOfPromocionTipoProductos" />
+        <xs:element xmlns:q193="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="BuscarPromocionTipoProductoIDResult" nillable="true" type="q193:ArrayOfPromocionTipoProductos" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="InsertPromocionProducto">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q190="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="ppr" nillable="true" type="q190:PromocionProductos" />
+        <xs:element xmlns:q194="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="ppr" nillable="true" type="q194:PromocionProductos" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="InsertPromocionProductoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q191="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="InsertPromocionProductoResult" nillable="true" type="q191:Resultado" />
+        <xs:element xmlns:q195="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="InsertPromocionProductoResult" nillable="true" type="q195:Resultado" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="DeletePromocionProducto">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q192="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="ppr" nillable="true" type="q192:PromocionProductos" />
+        <xs:element xmlns:q196="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="ppr" nillable="true" type="q196:PromocionProductos" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="DeletePromocionProductoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q193="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="DeletePromocionProductoResult" nillable="true" type="q193:Resultado" />
+        <xs:element xmlns:q197="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="DeletePromocionProductoResult" nillable="true" type="q197:Resultado" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -1614,7 +1642,7 @@
   <xs:element name="SelectPromocionProductoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q194="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="SelectPromocionProductoResult" nillable="true" type="q194:ArrayOfPromocionProductos" />
+        <xs:element xmlns:q198="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="SelectPromocionProductoResult" nillable="true" type="q198:ArrayOfPromocionProductos" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -1628,35 +1656,35 @@
   <xs:element name="BuscarPromocionProductoIDResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q195="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="BuscarPromocionProductoIDResult" nillable="true" type="q195:ArrayOfPromocionProductos" />
+        <xs:element xmlns:q199="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="BuscarPromocionProductoIDResult" nillable="true" type="q199:ArrayOfPromocionProductos" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="InsertPromocionGrupoCliente">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q196="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="ppr" nillable="true" type="q196:PromocionGrupoClientes" />
+        <xs:element xmlns:q200="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="ppr" nillable="true" type="q200:PromocionGrupoClientes" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="InsertPromocionGrupoClienteResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q197="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="InsertPromocionGrupoClienteResult" nillable="true" type="q197:Resultado" />
+        <xs:element xmlns:q201="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="InsertPromocionGrupoClienteResult" nillable="true" type="q201:Resultado" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="DeletePromocionGrupoCliente">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q198="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="ppr" nillable="true" type="q198:PromocionGrupoClientes" />
+        <xs:element xmlns:q202="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="ppr" nillable="true" type="q202:PromocionGrupoClientes" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="DeletePromocionGrupoClienteResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q199="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="DeletePromocionGrupoClienteResult" nillable="true" type="q199:Resultado" />
+        <xs:element xmlns:q203="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="DeletePromocionGrupoClienteResult" nillable="true" type="q203:Resultado" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -1668,7 +1696,7 @@
   <xs:element name="SelectPromocionGrupoClienteResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q200="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="SelectPromocionGrupoClienteResult" nillable="true" type="q200:ArrayOfPromocionGrupoClientes" />
+        <xs:element xmlns:q204="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="SelectPromocionGrupoClienteResult" nillable="true" type="q204:ArrayOfPromocionGrupoClientes" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -1682,36 +1710,36 @@
   <xs:element name="BuscarPromocionGrupoClienteIDResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q201="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="BuscarPromocionGrupoClienteIDResult" nillable="true" type="q201:ArrayOfPromocionGrupoClientes" />
+        <xs:element xmlns:q205="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="BuscarPromocionGrupoClienteIDResult" nillable="true" type="q205:ArrayOfPromocionGrupoClientes" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="InsertVenta">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q202="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="ven" nillable="true" type="q202:Ventas" />
-        <xs:element xmlns:q203="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="venDet" nillable="true" type="q203:ArrayOfVentaDetalles" />
+        <xs:element xmlns:q206="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="ven" nillable="true" type="q206:Ventas" />
+        <xs:element xmlns:q207="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="venDet" nillable="true" type="q207:ArrayOfVentaDetalles" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="InsertVentaResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q204="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="InsertVentaResult" nillable="true" type="q204:Resultado" />
+        <xs:element xmlns:q208="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="InsertVentaResult" nillable="true" type="q208:Resultado" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="DeleteVenta">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q205="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="ven" nillable="true" type="q205:Ventas" />
+        <xs:element xmlns:q209="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="ven" nillable="true" type="q209:Ventas" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="DeleteVentaResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q206="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="DeleteVentaResult" nillable="true" type="q206:Resultado" />
+        <xs:element xmlns:q210="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="DeleteVentaResult" nillable="true" type="q210:Resultado" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -1723,35 +1751,35 @@
   <xs:element name="SelectVentaResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q207="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="SelectVentaResult" nillable="true" type="q207:ArrayOfVentas" />
+        <xs:element xmlns:q211="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="SelectVentaResult" nillable="true" type="q211:ArrayOfVentas" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="InsertVentaDetalle">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q208="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="ved" nillable="true" type="q208:VentaDetalles" />
+        <xs:element xmlns:q212="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="ved" nillable="true" type="q212:VentaDetalles" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="InsertVentaDetalleResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q209="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="InsertVentaDetalleResult" nillable="true" type="q209:Resultado" />
+        <xs:element xmlns:q213="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="InsertVentaDetalleResult" nillable="true" type="q213:Resultado" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="DeleteVentaDetalle">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q210="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="ved" nillable="true" type="q210:VentaDetalles" />
+        <xs:element xmlns:q214="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="ved" nillable="true" type="q214:VentaDetalles" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="DeleteVentaDetalleResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q211="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="DeleteVentaDetalleResult" nillable="true" type="q211:Resultado" />
+        <xs:element xmlns:q215="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="DeleteVentaDetalleResult" nillable="true" type="q215:Resultado" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -1765,35 +1793,21 @@
   <xs:element name="SelectVentaDetalleResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q212="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="SelectVentaDetalleResult" nillable="true" type="q212:ArrayOfVentaDetalles" />
+        <xs:element xmlns:q216="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="SelectVentaDetalleResult" nillable="true" type="q216:ArrayOfVentaDetalles" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="InsertVentaDia">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q213="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="ved" nillable="true" type="q213:VentaDias" />
+        <xs:element xmlns:q217="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="ved" nillable="true" type="q217:VentaDias" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="InsertVentaDiaResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q214="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="InsertVentaDiaResult" nillable="true" type="q214:Resultado" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="DeleteVentaDia">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q215="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="ved" nillable="true" type="q215:VentaDias" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="DeleteVentaDiaResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q216="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="DeleteVentaDiaResult" nillable="true" type="q216:Resultado" />
+        <xs:element xmlns:q218="http://schemas.datacontract.org/2004/07/TDA.Entities" minOccurs="0" name="InsertVentaDiaResult" nillable="true" type="q218:Resultado" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

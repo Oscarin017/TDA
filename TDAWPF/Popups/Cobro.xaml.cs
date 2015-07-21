@@ -24,6 +24,8 @@ namespace TDAWPF.Popups
         public bool Vendido = false;
         public List<VentaDetalles> detalleVentas;
         public Ventas venta;
+        public decimal Total, Efectivo, Cambio;
+        public bool Billete = false;
 
         public Cobro()
         {
@@ -37,16 +39,15 @@ namespace TDAWPF.Popups
 
         private void btn_Click(object sender, RoutedEventArgs e)
         {
-            //Button btn = (Button)sender;
-            //if(btn.Content.ToString())
-            //switch(btn.Content.ToString())
-            //{
-            //    case "1":
-            //        {
-            //            txtEfectivo.Text = txtEfectivo + btn.Content.ToString();
-            //            break;
-            //        }
-            //}
+            if (Billete)
+            {
+                Efectivo = 0;
+                Billete = false;
+            }
+            Button btn = (Button)sender;
+            string num = btn.Content.ToString();
+            Efectivo = Convert.ToDecimal(Efectivo.ToString() + num);
+            CalcularCambio();
         }
 
         private void btnImprimirRecibo_Click(object sender, RoutedEventArgs e)
@@ -56,13 +57,74 @@ namespace TDAWPF.Popups
 
         private void InsertVenta()
         {
-            DateTime fechaventa = DateTime.Now;
-            int totalProductos = detalleVentas.Count();
             TDAService.TDAServiceClient client = new TDAService.TDAServiceClient();
-            long Cliente = 1;
-            TDA.DataLayer.VentaDetalle[] newVentaDet =  new TDA.DataLayer.VentaDetalle[totalProductos];
-            
             client.InsertVenta(venta, detalleVentas);
+        }
+
+        private void btn1000_Click(object sender, RoutedEventArgs e)
+        {
+            Billete = true;
+            Efectivo = 1000;
+            CalcularCambio();
+        }
+
+        private void btn20_Click(object sender, RoutedEventArgs e)
+        {
+            Billete = true;
+            Efectivo = 20;
+            CalcularCambio();
+        }
+
+        private void btn50_Click(object sender, RoutedEventArgs e)
+        {
+            Billete = true;
+            Efectivo = 50;
+            CalcularCambio();
+        }
+
+        private void btn100_Click(object sender, RoutedEventArgs e)
+        {
+            Billete = true;
+            Efectivo = 100;
+            CalcularCambio();
+        }
+
+        private void btn200_Click(object sender, RoutedEventArgs e)
+        {
+            Billete = true;
+            Efectivo = 200;
+            CalcularCambio();
+        }
+
+        private void btn500_Click(object sender, RoutedEventArgs e)
+        {
+            Billete = true;
+            Efectivo = 500;
+            CalcularCambio();
+        }
+
+        private void CalcularCambio()
+        {
+            txtEfectivo.Text = "Efectivo " + Efectivo.ToString("C");
+            Cambio = Efectivo - Total;
+            txtCambio.Text = "Cambio " + Cambio.ToString("C");
+
+            if (Efectivo >= Total)
+                btnImprimirRecibo.IsEnabled = true;
+            else
+                btnImprimirRecibo.IsEnabled = false;
+        }
+
+        private void btnExacto_Click(object sender, RoutedEventArgs e)
+        {
+            Efectivo = Total;
+            CalcularCambio();
+        }
+
+        private void btnC_Click(object sender, RoutedEventArgs e)
+        {
+            Efectivo = 0;
+            CalcularCambio();
         }
     }
 }

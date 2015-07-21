@@ -25,32 +25,32 @@
             <RowDefinition Height="250" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <Button x:Name="btn20" Grid.Column="1" Grid.Row="1">
+        <Button x:Name="btn20" Grid.Column="1" Grid.Row="1" Click="btn20_Click">
             <Button.Background>
                 <ImageBrush ImageSource="../Imagenes/Billete20.jpg"/>
             </Button.Background>
         </Button>
-        <Button x:Name="btn50" Grid.Column="3" Grid.Row="1">
+        <Button x:Name="btn50" Grid.Column="3" Grid.Row="1" Click="btn50_Click">
             <Button.Background>
                 <ImageBrush ImageSource="../Imagenes/Billete50.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="btn100" Grid.Column="5" Grid.Row="1">
+        <Button x:Name="btn100" Grid.Column="5" Grid.Row="1" Click="btn100_Click">
             <Button.Background>
                 <ImageBrush ImageSource="../Imagenes/Billete100.jpg"/>
             </Button.Background>
         </Button>
-        <Button x:Name="btn200" Grid.Column="1" Grid.Row="3">
+        <Button x:Name="btn200" Grid.Column="1" Grid.Row="3" Click="btn200_Click">
             <Button.Background>
                 <ImageBrush ImageSource="../Imagenes/Billete200.jpg"/>
             </Button.Background>
         </Button>
-        <Button x:Name="btn500" Grid.Column="3" Grid.Row="3">
+        <Button x:Name="btn500" Grid.Column="3" Grid.Row="3" Click="btn500_Click">
             <Button.Background>
                 <ImageBrush ImageSource="../Imagenes/Billete500.jpg"/>
             </Button.Background>
         </Button>
-        <Button x:Name="btn1000" Grid.Column="5" Grid.Row="3">
+        <Button x:Name="btn1000" Grid.Column="5" Grid.Row="3" Click="btn1000_Click">
             <Button.Background>
                 <ImageBrush ImageSource="../Imagenes/Billete1000.jpg"/>
             </Button.Background>

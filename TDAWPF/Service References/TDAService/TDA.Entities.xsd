@@ -1,11 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/TDA.Entities" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/TDA.Entities" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:complexType name="ArrayOfVentaDias">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="VentaDias" nillable="true" type="tns:VentaDias" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfVentaDias" nillable="true" type="tns:ArrayOfVentaDias" />
   <xs:complexType name="VentaDias">
     <xs:sequence>
       <xs:element minOccurs="0" name="Fecha" nillable="true" type="xs:dateTime" />
@@ -14,15 +8,6 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="VentaDias" nillable="true" type="tns:VentaDias" />
-  <xs:complexType name="Log">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Fecha" nillable="true" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="ID" type="xs:long" />
-      <xs:element minOccurs="0" name="Usuario" nillable="true" type="xs:long" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="Log" nillable="true" type="tns:Log" />
   <xs:complexType name="Resultado">
     <xs:sequence>
       <xs:element minOccurs="0" name="ErrorDB" type="xs:boolean" />
@@ -34,6 +19,21 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Resultado" nillable="true" type="tns:Resultado" />
+  <xs:complexType name="ArrayOfVentaDias">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VentaDias" nillable="true" type="tns:VentaDias" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfVentaDias" nillable="true" type="tns:ArrayOfVentaDias" />
+  <xs:complexType name="Log">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Fecha" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="Usuario" nillable="true" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Log" nillable="true" type="tns:Log" />
   <xs:complexType name="ArrayOfLog">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="Log" nillable="true" type="tns:Log" />

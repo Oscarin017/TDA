@@ -38,6 +38,9 @@ namespace TDAWPF.Layouts
         private void popupCobro_Closed(object sender, EventArgs e)
         {
             Popups.Cobro popup = sender as Popups.Cobro;
+            popup.venta = new Ventas();
+            popup.detalleVentas = new List<VentaDetalles>();
+            popup.Total = 450;
             if (popup.Vendido)
             { 
                 

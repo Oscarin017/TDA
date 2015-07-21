@@ -84,8 +84,7 @@ namespace TDA.Service
         public Usuarios BuscarUsuarioAlias(string Alias)
         {
             return _dataBaseTool.BuscarUsuarioAlias(Alias);
-        }
-
+        }      
         #endregion
 
         #region Tabla  Pais

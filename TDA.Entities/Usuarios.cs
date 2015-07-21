@@ -11,6 +11,12 @@ namespace TDA.Entities
     [DataContract]
     public class Usuarios
     {
+        public Usuarios()
+        {
+            Rol = DefaultValues.deflong;
+            Alias = DefaultValues.defString;
+        }
+
         [DataMember]
         public long ID { get; set; }
         [DataMember]

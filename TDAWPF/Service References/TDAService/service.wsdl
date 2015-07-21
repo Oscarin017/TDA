@@ -15,6 +15,12 @@
       <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
+  <wsdl:message name="ITDAService_InsertVentaDia_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertVentaDia" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_InsertVentaDia_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertVentaDiaResponse" />
+  </wsdl:message>
   <wsdl:message name="ITDAService_DeleteVentaDia_InputMessage">
     <wsdl:part name="parameters" element="tns:DeleteVentaDia" />
   </wsdl:message>
@@ -104,6 +110,12 @@
   </wsdl:message>
   <wsdl:message name="ITDAService_BuscarUsuarioID_OutputMessage">
     <wsdl:part name="parameters" element="tns:BuscarUsuarioIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_BuscarUsuarioAlias_InputMessage">
+    <wsdl:part name="parameters" element="tns:BuscarUsuarioAlias" />
+  </wsdl:message>
+  <wsdl:message name="ITDAService_BuscarUsuarioAlias_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BuscarUsuarioAliasResponse" />
   </wsdl:message>
   <wsdl:message name="ITDAService_InsertPais_InputMessage">
     <wsdl:part name="parameters" element="tns:InsertPais" />
@@ -801,13 +813,11 @@
   <wsdl:message name="ITDAService_SelectVentaDetalle_OutputMessage">
     <wsdl:part name="parameters" element="tns:SelectVentaDetalleResponse" />
   </wsdl:message>
-  <wsdl:message name="ITDAService_InsertVentaDia_InputMessage">
-    <wsdl:part name="parameters" element="tns:InsertVentaDia" />
-  </wsdl:message>
-  <wsdl:message name="ITDAService_InsertVentaDia_OutputMessage">
-    <wsdl:part name="parameters" element="tns:InsertVentaDiaResponse" />
-  </wsdl:message>
   <wsdl:portType name="ITDAService">
+    <wsdl:operation name="InsertVentaDia">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/InsertVentaDia" message="tns:ITDAService_InsertVentaDia_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/InsertVentaDiaResponse" message="tns:ITDAService_InsertVentaDia_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="DeleteVentaDia">
       <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/DeleteVentaDia" message="tns:ITDAService_DeleteVentaDia_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/DeleteVentaDiaResponse" message="tns:ITDAService_DeleteVentaDia_OutputMessage" />
@@ -867,6 +877,10 @@
     <wsdl:operation name="BuscarUsuarioID">
       <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/BuscarUsuarioID" message="tns:ITDAService_BuscarUsuarioID_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/BuscarUsuarioIDResponse" message="tns:ITDAService_BuscarUsuarioID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BuscarUsuarioAlias">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/BuscarUsuarioAlias" message="tns:ITDAService_BuscarUsuarioAlias_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/BuscarUsuarioAliasResponse" message="tns:ITDAService_BuscarUsuarioAlias_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="InsertPais">
       <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/InsertPais" message="tns:ITDAService_InsertPais_InputMessage" />
@@ -1332,14 +1346,19 @@
       <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/SelectVentaDetalle" message="tns:ITDAService_SelectVentaDetalle_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/SelectVentaDetalleResponse" message="tns:ITDAService_SelectVentaDetalle_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="InsertVentaDia">
-      <wsdl:input wsaw:Action="http://tempuri.org/ITDAService/InsertVentaDia" message="tns:ITDAService_InsertVentaDia_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/ITDAService/InsertVentaDiaResponse" message="tns:ITDAService_InsertVentaDia_OutputMessage" />
-    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_ITDAService" type="tns:ITDAService">
     <wsp:PolicyReference URI="#BasicHttpBinding_ITDAService_policy" />
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="InsertVentaDia">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/InsertVentaDia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="DeleteVentaDia">
       <soap:operation soapAction="http://tempuri.org/ITDAService/DeleteVentaDia" style="document" />
       <wsdl:input>
@@ -1468,6 +1487,15 @@
     </wsdl:operation>
     <wsdl:operation name="BuscarUsuarioID">
       <soap:operation soapAction="http://tempuri.org/ITDAService/BuscarUsuarioID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuscarUsuarioAlias">
+      <soap:operation soapAction="http://tempuri.org/ITDAService/BuscarUsuarioAlias" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -2512,15 +2540,6 @@
     </wsdl:operation>
     <wsdl:operation name="SelectVentaDetalle">
       <soap:operation soapAction="http://tempuri.org/ITDAService/SelectVentaDetalle" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="InsertVentaDia">
-      <soap:operation soapAction="http://tempuri.org/ITDAService/InsertVentaDia" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

@@ -36,6 +36,45 @@ namespace TDAWPF.Popups
             lID = ID;
         }
 
+        private bool validacionCampos()
+        {
+            bool bValidacion = true;
+            bool bTipoRFC = false;
+            if (rbMoral.IsChecked == true)
+            {
+                bTipoRFC = true;
+            }
+            if (!txtRFC.PlaceHolder)
+            {
+                if (!Llenado.validacionRFC(txtRFC.Text, bTipoRFC))
+                {
+                    bValidacion = false;
+                }
+            }
+            if (!txtCP.PlaceHolder)
+            {
+                if (!Llenado.validacionCP(txtCP.Text))
+                {
+                    bValidacion = false;
+                }
+            }
+            if (!txtTelefono.PlaceHolder)
+            {
+                if (!Llenado.validacionTelefono(txtTelefono.Text))
+                {
+                    bValidacion = false;
+                }
+            }
+            if (!txtEmail.PlaceHolder)
+            {
+                if (!Llenado.validacionEMail(txtEmail.Text))
+                {
+                    bValidacion = false;
+                }
+            }
+            return bValidacion;
+        }
+
         private void btnCancelar_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
@@ -103,80 +142,83 @@ namespace TDAWPF.Popups
         {
             if ((!txtNombre.PlaceHolder && cbPais.SelectedIndex != 0 && cbEstado.SelectedIndex != 0 && !txtCiudad.PlaceHolder && !txtCalle.PlaceHolder && !txtCP.PlaceHolder && !txtTelefono.PlaceHolder) && ((rbFisica.IsChecked == true && !txtApellidoPaterno.PlaceHolder && !txtApellidoMaterno.PlaceHolder) || (rbMoral.IsChecked == true)))
             {
-                TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
-                Proveedores p = new Proveedores();
-                if (rbMoral.IsChecked == true)
+                if (validacionCampos)
                 {
-                    p.Tipo = true;
-                    p.Apellido = null;
-                    p.Apellido2 = null;
+                    TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
+                    Proveedores p = new Proveedores();
+                    if (rbMoral.IsChecked == true)
+                    {
+                        p.Tipo = true;
+                        p.Apellido = null;
+                        p.Apellido2 = null;
+                    }
+                    else if (rbFisica.IsChecked == true)
+                    {
+                        p.Tipo = false;
+                        p.Apellido = txtApellidoPaterno.Text;
+                        p.Apellido2 = txtApellidoMaterno.Text;
+                    }
+                    p.Nombre = txtNombre.Text;
+                    if (txtRFC.PlaceHolder)
+                    {
+                        p.RFC = null;
+                    }
+                    else
+                    {
+                        p.RFC = txtRFC.Text;
+                    }
+                    ComboBoxItem cbi = (ComboBoxItem)cbPais.Items[cbPais.SelectedIndex];
+                    p.Pais = Convert.ToInt64(cbi.Uid);
+                    ComboBoxItem cbi1 = (ComboBoxItem)cbEstado.Items[cbEstado.SelectedIndex];
+                    p.Estado = Convert.ToInt64(cbi1.Uid);
+                    p.Ciudad = txtCiudad.Text;
+                    if (txtLocalidad.PlaceHolder)
+                    {
+                        p.Localidad = null;
+                    }
+                    else
+                    {
+                        p.Localidad = txtLocalidad.Text;
+                    }
+                    p.Calle = txtCalle.Text;
+                    if (txtNumeroExterior.PlaceHolder)
+                    {
+                        p.NumeroExterior = null;
+                    }
+                    else
+                    {
+                        p.NumeroExterior = txtNumeroExterior.Text;
+                    }
+                    if (txtNumeroInterior.PlaceHolder)
+                    {
+                        p.NumeroInterior = null;
+                    }
+                    else
+                    {
+                        p.NumeroInterior = txtNumeroInterior.Text;
+                    }
+                    if (txtColonia.PlaceHolder)
+                    {
+                        p.Colonia = null;
+                    }
+                    else
+                    {
+                        p.Colonia = txtColonia.Text;
+                    }
+                    p.CP = txtCP.Text;
+                    p.Telefono = txtTelefono.Text;
+                    if (txtEmail.PlaceHolder)
+                    {
+                        p.Email = null;
+                    }
+                    else
+                    {
+                        p.Email = txtEmail.Text;
+                    }
+                    tda.InsertProveedor(p);
+                    tda.Close();
+                    this.Close();
                 }
-                else if (rbFisica.IsChecked == true)
-                {
-                    p.Tipo = false;
-                    p.Apellido = txtApellidoPaterno.Text;
-                    p.Apellido2 = txtApellidoMaterno.Text;
-                }
-                p.Nombre = txtNombre.Text;
-                if (txtRFC.PlaceHolder)
-                {
-                    p.RFC = null;
-                }
-                else
-                {
-                    p.RFC = txtRFC.Text;
-                }
-                ComboBoxItem cbi = (ComboBoxItem)cbPais.Items[cbPais.SelectedIndex];
-                p.Pais = Convert.ToInt64(cbi.Uid);
-                ComboBoxItem cbi1 = (ComboBoxItem)cbEstado.Items[cbEstado.SelectedIndex];
-                p.Estado = Convert.ToInt64(cbi1.Uid);
-                p.Ciudad = txtCiudad.Text;
-                if (txtLocalidad.PlaceHolder)
-                {
-                    p.Localidad = null;
-                }
-                else
-                {
-                    p.Localidad = txtLocalidad.Text;
-                }
-                p.Calle = txtCalle.Text;
-                if (txtNumeroExterior.PlaceHolder)
-                {
-                    p.NumeroExterior = null;
-                }
-                else
-                {
-                    p.NumeroExterior = txtNumeroExterior.Text;
-                }
-                if (txtNumeroInterior.PlaceHolder)
-                {
-                    p.NumeroInterior = null;
-                }
-                else
-                {
-                    p.NumeroInterior = txtNumeroInterior.Text;
-                }
-                if (txtColonia.PlaceHolder)
-                {
-                    p.Colonia = null;
-                }
-                else
-                {
-                    p.Colonia = txtColonia.Text;
-                }
-                p.CP = txtCP.Text;
-                p.Telefono = txtTelefono.Text;
-                if (txtEmail.PlaceHolder)
-                {
-                    p.Email = null;
-                }
-                else
-                {
-                    p.Email = txtEmail.Text;
-                }                                 
-                tda.InsertProveedor(p);
-                tda.Close();
-                this.Close();
             }
             else
             {
@@ -188,83 +230,86 @@ namespace TDAWPF.Popups
         {
             if ((!txtNombre.PlaceHolder && cbPais.SelectedIndex != 0 && cbEstado.SelectedIndex != 0 && !txtCiudad.PlaceHolder && !txtCalle.PlaceHolder && !txtCP.PlaceHolder && !txtTelefono.PlaceHolder) && ((rbFisica.IsChecked == true && !txtApellidoPaterno.PlaceHolder && !txtApellidoMaterno.PlaceHolder) || (rbMoral.IsChecked == true)))
             {
-                TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
-                Proveedores p = new Proveedores();
-                if (rbMoral.IsChecked == true)
+                if (validacionCampos)
                 {
-                    p.Tipo = true;
-                    p.Apellido = null;
-                    p.Apellido2 = null;
-                }
-                else if (rbFisica.IsChecked == true)
-                {
-                    p.Tipo = false;
+                    TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
+                    Proveedores p = new Proveedores();
+                    if (rbMoral.IsChecked == true)
+                    {
+                        p.Tipo = true;
+                        p.Apellido = null;
+                        p.Apellido2 = null;
+                    }
+                    else if (rbFisica.IsChecked == true)
+                    {
+                        p.Tipo = false;
+                        p.Apellido = txtApellidoPaterno.Text;
+                        p.Apellido2 = txtApellidoMaterno.Text;
+                    }
+                    p.ID = lID;
                     p.Apellido = txtApellidoPaterno.Text;
                     p.Apellido2 = txtApellidoMaterno.Text;
+                    p.Nombre = txtNombre.Text;
+                    if (txtRFC.PlaceHolder)
+                    {
+                        p.RFC = null;
+                    }
+                    else
+                    {
+                        p.RFC = txtRFC.Text;
+                    }
+                    ComboBoxItem cbi = (ComboBoxItem)cbPais.Items[cbPais.SelectedIndex];
+                    p.Pais = Convert.ToInt64(cbi.Uid);
+                    ComboBoxItem cbi1 = (ComboBoxItem)cbEstado.Items[cbEstado.SelectedIndex];
+                    p.Estado = Convert.ToInt64(cbi1.Uid);
+                    p.Ciudad = txtCiudad.Text;
+                    if (txtLocalidad.PlaceHolder)
+                    {
+                        p.Localidad = null;
+                    }
+                    else
+                    {
+                        p.Localidad = txtLocalidad.Text;
+                    }
+                    p.Calle = txtCalle.Text;
+                    if (txtNumeroExterior.PlaceHolder)
+                    {
+                        p.NumeroExterior = null;
+                    }
+                    else
+                    {
+                        p.NumeroExterior = txtNumeroExterior.Text;
+                    }
+                    if (txtNumeroInterior.PlaceHolder)
+                    {
+                        p.NumeroInterior = null;
+                    }
+                    else
+                    {
+                        p.NumeroInterior = txtNumeroInterior.Text;
+                    }
+                    if (txtColonia.PlaceHolder)
+                    {
+                        p.Colonia = null;
+                    }
+                    else
+                    {
+                        p.Colonia = txtColonia.Text;
+                    }
+                    p.CP = txtCP.Text;
+                    p.Telefono = txtTelefono.Text;
+                    if (txtEmail.PlaceHolder)
+                    {
+                        p.Email = null;
+                    }
+                    else
+                    {
+                        p.Email = txtEmail.Text;
+                    }
+                    tda.UpdateProveedor(p);
+                    tda.Close();
+                    this.Close();
                 }
-                p.ID = lID;
-                p.Apellido = txtApellidoPaterno.Text;
-                p.Apellido2 = txtApellidoMaterno.Text;
-                p.Nombre = txtNombre.Text;
-                if (txtRFC.PlaceHolder)
-                {
-                    p.RFC = null;
-                }
-                else
-                {
-                    p.RFC = txtRFC.Text;
-                }
-                ComboBoxItem cbi = (ComboBoxItem)cbPais.Items[cbPais.SelectedIndex];
-                p.Pais = Convert.ToInt64(cbi.Uid);
-                ComboBoxItem cbi1 = (ComboBoxItem)cbEstado.Items[cbEstado.SelectedIndex];
-                p.Estado = Convert.ToInt64(cbi1.Uid);
-                p.Ciudad = txtCiudad.Text;
-                if (txtLocalidad.PlaceHolder)
-                {
-                    p.Localidad = null;
-                }
-                else
-                {
-                    p.Localidad = txtLocalidad.Text;
-                }
-                p.Calle = txtCalle.Text;
-                if (txtNumeroExterior.PlaceHolder)
-                {
-                    p.NumeroExterior = null;
-                }
-                else
-                {
-                    p.NumeroExterior = txtNumeroExterior.Text;
-                }
-                if (txtNumeroInterior.PlaceHolder)
-                {
-                    p.NumeroInterior = null;
-                }
-                else
-                {
-                    p.NumeroInterior = txtNumeroInterior.Text;
-                }
-                if (txtColonia.PlaceHolder)
-                {
-                    p.Colonia = null;
-                }
-                else
-                {
-                    p.Colonia = txtColonia.Text;
-                }
-                p.CP = txtCP.Text;
-                p.Telefono = txtTelefono.Text;
-                if (txtEmail.PlaceHolder)
-                {
-                    p.Email = null;
-                }
-                else
-                {
-                    p.Email = txtEmail.Text;
-                }                         
-                tda.UpdateProveedor(p);
-                tda.Close();
-                this.Close();
             }
             else
             {

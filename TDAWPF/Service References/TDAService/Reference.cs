@@ -15,6 +15,12 @@ namespace TDAWPF.TDAService {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="TDAService.ITDAService")]
     public interface ITDAService {
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/InsertVentaDia", ReplyAction="http://tempuri.org/ITDAService/InsertVentaDiaResponse")]
+        TDA.Entities.Resultado InsertVentaDia(TDA.Entities.VentaDias ved);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/InsertVentaDia", ReplyAction="http://tempuri.org/ITDAService/InsertVentaDiaResponse")]
+        System.Threading.Tasks.Task<TDA.Entities.Resultado> InsertVentaDiaAsync(TDA.Entities.VentaDias ved);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/DeleteVentaDia", ReplyAction="http://tempuri.org/ITDAService/DeleteVentaDiaResponse")]
         TDA.Entities.Resultado DeleteVentaDia(TDA.Entities.VentaDias ved);
         
@@ -104,6 +110,12 @@ namespace TDAWPF.TDAService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/BuscarUsuarioID", ReplyAction="http://tempuri.org/ITDAService/BuscarUsuarioIDResponse")]
         System.Threading.Tasks.Task<System.Collections.Generic.List<TDA.Entities.Usuarios>> BuscarUsuarioIDAsync(long ID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/BuscarUsuarioAlias", ReplyAction="http://tempuri.org/ITDAService/BuscarUsuarioAliasResponse")]
+        TDA.Entities.Usuarios BuscarUsuarioAlias(string Alias);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/BuscarUsuarioAlias", ReplyAction="http://tempuri.org/ITDAService/BuscarUsuarioAliasResponse")]
+        System.Threading.Tasks.Task<TDA.Entities.Usuarios> BuscarUsuarioAliasAsync(string Alias);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/InsertPais", ReplyAction="http://tempuri.org/ITDAService/InsertPaisResponse")]
         TDA.Entities.Resultado InsertPais(TDA.Entities.Paises pai);
@@ -800,12 +812,6 @@ namespace TDAWPF.TDAService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/SelectVentaDetalle", ReplyAction="http://tempuri.org/ITDAService/SelectVentaDetalleResponse")]
         System.Threading.Tasks.Task<System.Collections.Generic.List<TDA.Entities.VentaDetalles>> SelectVentaDetalleAsync(System.Nullable<long> ID);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/InsertVentaDia", ReplyAction="http://tempuri.org/ITDAService/InsertVentaDiaResponse")]
-        TDA.Entities.Resultado InsertVentaDia(TDA.Entities.VentaDias ved);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITDAService/InsertVentaDia", ReplyAction="http://tempuri.org/ITDAService/InsertVentaDiaResponse")]
-        System.Threading.Tasks.Task<TDA.Entities.Resultado> InsertVentaDiaAsync(TDA.Entities.VentaDias ved);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -833,6 +839,14 @@ namespace TDAWPF.TDAService {
         
         public TDAServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
+        }
+        
+        public TDA.Entities.Resultado InsertVentaDia(TDA.Entities.VentaDias ved) {
+            return base.Channel.InsertVentaDia(ved);
+        }
+        
+        public System.Threading.Tasks.Task<TDA.Entities.Resultado> InsertVentaDiaAsync(TDA.Entities.VentaDias ved) {
+            return base.Channel.InsertVentaDiaAsync(ved);
         }
         
         public TDA.Entities.Resultado DeleteVentaDia(TDA.Entities.VentaDias ved) {
@@ -953,6 +967,14 @@ namespace TDAWPF.TDAService {
         
         public System.Threading.Tasks.Task<System.Collections.Generic.List<TDA.Entities.Usuarios>> BuscarUsuarioIDAsync(long ID) {
             return base.Channel.BuscarUsuarioIDAsync(ID);
+        }
+        
+        public TDA.Entities.Usuarios BuscarUsuarioAlias(string Alias) {
+            return base.Channel.BuscarUsuarioAlias(Alias);
+        }
+        
+        public System.Threading.Tasks.Task<TDA.Entities.Usuarios> BuscarUsuarioAliasAsync(string Alias) {
+            return base.Channel.BuscarUsuarioAliasAsync(Alias);
         }
         
         public TDA.Entities.Resultado InsertPais(TDA.Entities.Paises pai) {
@@ -1881,14 +1903,6 @@ namespace TDAWPF.TDAService {
         
         public System.Threading.Tasks.Task<System.Collections.Generic.List<TDA.Entities.VentaDetalles>> SelectVentaDetalleAsync(System.Nullable<long> ID) {
             return base.Channel.SelectVentaDetalleAsync(ID);
-        }
-        
-        public TDA.Entities.Resultado InsertVentaDia(TDA.Entities.VentaDias ved) {
-            return base.Channel.InsertVentaDia(ved);
-        }
-        
-        public System.Threading.Tasks.Task<TDA.Entities.Resultado> InsertVentaDiaAsync(TDA.Entities.VentaDias ved) {
-            return base.Channel.InsertVentaDiaAsync(ved);
         }
     }
 }

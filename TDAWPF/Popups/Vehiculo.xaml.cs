@@ -36,6 +36,19 @@ namespace TDAWPF.Popups
             lID = ID;
         }
 
+        private bool validacionCampos()
+        {
+            bool bValidacion = true;            
+            if (!txtAno.PlaceHolder)
+            {
+                if (!Llenado.validacionAno(txtAno.Text))
+                {
+                    bValidacion = false;
+                }
+            }
+            return bValidacion;
+        }
+
         private void cargarCBMarca(Marcas m)
         {
             TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();

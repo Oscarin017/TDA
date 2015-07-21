@@ -76,6 +76,11 @@ namespace TDAWPF.Controles
                 i.Visibility = Visibility.Visible;
                 pb.Visibility = Visibility.Hidden;
                 btn.Visibility = Visibility.Hidden;
+                bPlaceHolder = true;
+            }
+            else
+            {
+                bPlaceHolder = false;
             }
         } 
         

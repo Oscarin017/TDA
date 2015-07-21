@@ -6,15 +6,15 @@
         >
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="*" />
             <ColumnDefinition Width="125" />
-            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="*" />
             <ColumnDefinition Width="125" />
-            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="*" />
             <ColumnDefinition Width="125" />
-            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="*" />
             <ColumnDefinition Width="175" />
-            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />

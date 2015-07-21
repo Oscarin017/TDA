@@ -862,7 +862,7 @@ namespace TDAWPF.Funcionalidad
         {
             bool bValidacion = false;
             Regex r = new Regex("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+[.][a-zA-Z0-9-.]+$");
-           if (r.IsMatch(sEmail))
+            if (r.IsMatch(sEmail))
             {
                 bValidacion = true;
             }
@@ -879,6 +879,7 @@ namespace TDAWPF.Funcionalidad
             try
             {
                 decimal dPrecio = Convert.ToDecimal(sPrecio);
+                bValidacion = true;
             }
             catch
             {
@@ -893,6 +894,7 @@ namespace TDAWPF.Funcionalidad
             try
             {
                 decimal dPrecio = Convert.ToDecimal(sPorcenaje);
+                bValidacion = true;
             }
             catch
             {
@@ -907,6 +909,7 @@ namespace TDAWPF.Funcionalidad
             try
             {
                 decimal dPrecio = Convert.ToDecimal(sCantidad);
+                bValidacion = true;
             }
             catch
             {
@@ -921,6 +924,7 @@ namespace TDAWPF.Funcionalidad
             try
             {
                 decimal dPrecio = Convert.ToDecimal(sFijo);
+                bValidacion = true;
             }
             catch
             {
@@ -935,6 +939,7 @@ namespace TDAWPF.Funcionalidad
             try
             {
                 int dPrecio = Convert.ToInt32(sCompra);
+                bValidacion = true;
             }
             catch
             {
@@ -949,6 +954,7 @@ namespace TDAWPF.Funcionalidad
             try
             {
                 int dPrecio = Convert.ToInt32(sCompra);
+                bValidacion = true;
             }
             catch
             {
@@ -963,6 +969,7 @@ namespace TDAWPF.Funcionalidad
             try
             {
                 decimal dPrecio = Convert.ToDecimal(sPrecio);
+                bValidacion = true;
             }
             catch
             {
@@ -977,6 +984,7 @@ namespace TDAWPF.Funcionalidad
             try
             {
                 decimal dPrecio = Convert.ToDecimal(sPrecio);
+                bValidacion = true;
             }
             catch
             {
@@ -991,10 +999,26 @@ namespace TDAWPF.Funcionalidad
             try
             {
                 decimal dPrecio = Convert.ToDecimal(sIVA);
+                bValidacion = true;
             }
             catch
             {
                 MessageBox.Show("IVA no valido. Favor de verificar.");
+            }
+            return bValidacion;
+        }
+
+        public static bool validacionAno(string sAno)
+        {
+            bool bValidacion = false;
+            try
+            {
+                int dPrecio = Convert.ToInt32(sAno);
+                bValidacion = true;
+            }
+            catch
+            {
+                MessageBox.Show("Año no valido. Favor de verificar.");
             }
             return bValidacion;
         }

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using TDA.Entities;
+using TDAWPF.Funcionalidad;
 
 namespace TDAWPF.Popups
 {
@@ -31,6 +32,19 @@ namespace TDAWPF.Popups
         {
             InitializeComponent();
             lID = ID;
+        }
+
+        private bool validacionCampos()
+        {
+            bool bValidacion = true;
+            if (!txtEmail.PlaceHolder)
+            {
+                if (!Llenado.validacionEMail(txtEmail.Text))
+                {
+                    bValidacion = false;
+                }
+            }
+            return bValidacion;
         }
 
         private void cargarCBRol()
@@ -104,26 +118,29 @@ namespace TDAWPF.Popups
         {
             if ((!txtAlias.PlaceHolder && cbRol.SelectedIndex != 0 && !txtContraseña.PlaceHolder) && ((rbEmpleado.IsChecked == true && cbEmpleado.Visibility == Visibility.Visible && cbEmpleado.SelectedIndex != 0) || (rbFuera.IsChecked == true && txtEmail.Visibility == Visibility.Visible && !txtEmail.PlaceHolder)))
             {
-                TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
-                Usuarios u = new Usuarios();
-                u.Alias = txtAlias.Text;
-                u.Contraseña = txtContraseña.Text;
-                ComboBoxItem cbi = (ComboBoxItem)cbRol.Items[cbRol.SelectedIndex];
-                u.Rol = Convert.ToInt64(cbi.Uid);
-                if (rbEmpleado.IsChecked == true)
+                if (validacionCampos())
                 {
-                    ComboBoxItem cbi1 = (ComboBoxItem)cbEmpleado.Items[cbRol.SelectedIndex];
-                    u.Empleado = Convert.ToInt64(cbi.Uid);
-                    u.Email = null;
+                    TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
+                    Usuarios u = new Usuarios();
+                    u.Alias = txtAlias.Text;
+                    u.Contraseña = txtContraseña.Text;
+                    ComboBoxItem cbi = (ComboBoxItem)cbRol.Items[cbRol.SelectedIndex];
+                    u.Rol = Convert.ToInt64(cbi.Uid);
+                    if (rbEmpleado.IsChecked == true)
+                    {
+                        ComboBoxItem cbi1 = (ComboBoxItem)cbEmpleado.Items[cbRol.SelectedIndex];
+                        u.Empleado = Convert.ToInt64(cbi.Uid);
+                        u.Email = null;
+                    }
+                    else if (rbFuera.IsChecked == true)
+                    {
+                        u.Email = txtEmail.Text;
+                        u.Empleado = null;
+                    }
+                    tda.InsertUsuario(u);
+                    tda.Close();
+                    this.Close();
                 }
-                else if (rbFuera.IsChecked == true)
-                {
-                    u.Email = txtEmail.Text;
-                    u.Empleado = null;
-                }
-                tda.InsertUsuario(u);
-                tda.Close();
-                this.Close();
             }
             else
             {
@@ -135,26 +152,29 @@ namespace TDAWPF.Popups
         {
             if ((!txtAlias.PlaceHolder && cbRol.SelectedIndex != 0 && !txtContraseña.PlaceHolder) && ((rbEmpleado.IsChecked == true && cbEmpleado.Visibility == Visibility.Visible && cbEmpleado.SelectedIndex != 0) || (rbFuera.IsChecked == true && txtEmail.Visibility == Visibility.Visible && !txtEmail.PlaceHolder)))
             {
-                TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
-                Usuarios u = new Usuarios();
-                u.ID = lID;
-                u.Alias = txtAlias.Text;
-                ComboBoxItem cbi = (ComboBoxItem)cbRol.Items[cbRol.SelectedIndex];
-                u.Rol = Convert.ToInt64(cbi.Uid);
-                if (rbEmpleado.IsChecked == true)
+                if (validacionCampos())
                 {
-                    ComboBoxItem cbi1 = (ComboBoxItem)cbEmpleado.Items[cbRol.SelectedIndex];
-                    u.Empleado = Convert.ToInt64(cbi.Uid);
-                    u.Email = null;
+                    TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
+                    Usuarios u = new Usuarios();
+                    u.ID = lID;
+                    u.Alias = txtAlias.Text;
+                    ComboBoxItem cbi = (ComboBoxItem)cbRol.Items[cbRol.SelectedIndex];
+                    u.Rol = Convert.ToInt64(cbi.Uid);
+                    if (rbEmpleado.IsChecked == true)
+                    {
+                        ComboBoxItem cbi1 = (ComboBoxItem)cbEmpleado.Items[cbRol.SelectedIndex];
+                        u.Empleado = Convert.ToInt64(cbi.Uid);
+                        u.Email = null;
+                    }
+                    else if (rbFuera.IsChecked == true)
+                    {
+                        u.Email = txtEmail.Text;
+                        u.Empleado = null;
+                    }
+                    tda.UpdateUsuario(u);
+                    tda.Close();
+                    this.Close();
                 }
-                else if (rbFuera.IsChecked == true)
-                {
-                    u.Email = txtEmail.Text;
-                    u.Empleado = null;
-                }
-                tda.UpdateUsuario(u);
-                tda.Close();
-                this.Close();
             }
             else
             {

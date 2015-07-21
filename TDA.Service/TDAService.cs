@@ -81,9 +81,9 @@ namespace TDA.Service
         {
             return _dataBaseTool.BuscarUsuariosID(ID);
         }
-        public List<Usuarios> BuscarUsuarioID(long ID)
+        public Usuarios BuscarUsuarioAlias(string Alias)
         {
-            return _dataBaseTool.BuscarUsuarioAlias(ID);
+            return _dataBaseTool.BuscarUsuarioAlias(Alias);
         }
 
         #endregion

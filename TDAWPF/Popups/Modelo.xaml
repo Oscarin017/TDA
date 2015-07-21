@@ -13,8 +13,6 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="50" />
@@ -26,8 +24,8 @@
                 <ComboBoxItem IsSelected="True" Content="Selecciona Marca (Obligatorio)"/>
             </Controles:ComboBoxI.Items>
         </Controles:ComboBoxI>       
-        <Controles:TextBoxI x:Name="txtNombre" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Escribe Nombre (Obligatorio)" Grid.Column="1" Grid.Row="5"/>
-        <Grid Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="3">
+        <Controles:TextBoxI x:Name="txtNombre" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Escribe Nombre (Obligatorio)" Grid.Column="1" Grid.Row="3"/>
+        <Grid Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="Auto" />

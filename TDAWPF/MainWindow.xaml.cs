@@ -20,9 +20,12 @@ namespace TDAWPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        internal long iID = 0;
+
+        public MainWindow(long ID)
         {
             InitializeComponent();
+            iID = ID;
         }
 
         private void menuClick(object sender, RoutedEventArgs e)

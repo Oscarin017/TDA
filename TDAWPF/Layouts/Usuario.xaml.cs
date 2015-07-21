@@ -66,7 +66,7 @@ namespace TDAWPF.Layouts
         private void dg_Loaded(object sender, RoutedEventArgs e)
         {
             Llenado.cargarCBRol(cbTipo);
-            cargarGrid(new Usuarios());
+            realizarBusqueda(new Usuarios());
         }
 
         private void btnSearch_Click(object sender, RoutedEventArgs e)
@@ -96,13 +96,13 @@ namespace TDAWPF.Layouts
             MessageBoxResult result = MessageBox.Show("Estas seguro que quieres eliminar el proveedor " + u.Alias + ".", "Eliminar", MessageBoxButton.OKCancel, MessageBoxImage.Question);
             if (result == MessageBoxResult.OK)
             {
-                //TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
-                //Resultado r = tda.DeleteUsuario(u);
-                //if (r.ErrorDB)
-                //{
-                //    MessageBox.Show("No se pudo eliminar el producto " + u.Alias + ".");
-                //}
-                //realizarBusqueda(new Usuarios());
+                TDAService.TDAServiceClient tda = new TDAService.TDAServiceClient();
+                Resultado r = tda.DeleteUsuario(u);
+                if (r.ErrorDB)
+                {
+                    MessageBox.Show("No se pudo eliminar el producto " + u.Alias + ".");
+                }
+                realizarBusqueda(new Usuarios());
             }
         }   
     }

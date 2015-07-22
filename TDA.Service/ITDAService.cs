@@ -26,6 +26,8 @@ namespace TDA.Service
         #region Tabla Pagina
         [OperationContract]
         List<Paginas> SelectPagina();
+        [OperationContract]
+        Paginas BuscarPaginaID(long? ID);
         #endregion
 
         #region Tabla RolPagina

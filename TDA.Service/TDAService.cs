@@ -30,6 +30,10 @@ namespace TDA.Service
         {
             return _dataBaseTool.SelectPagina();
         }
+        public List<Paginas> BuscarPaginaID(long? ID)
+        {
+            return _dataBaseTool.BuscarPaginaID(ID);
+        }
         #endregion
 
         #region Tabla Rol Pagina

@@ -37,6 +37,7 @@ namespace TDA.DataLayer
         #endregion
 
         #region Tabla Pagina
+        //Select Pagina Rol
         public List<Paginas> SelectPagina()
         {
             var paginas = (from a in _context.Pagina
@@ -45,6 +46,17 @@ namespace TDA.DataLayer
                              ID = a.ID,
                              Nombre = a.Nombre,
                          }).ToList();
+            return paginas;
+        }
+        public Paginas BuscarPaginaID(long? ID)
+        {
+            var paginas = (from a in _context.Pagina
+                           where a.ID == ID
+                           select new Paginas
+                           {
+                               ID = a.ID,
+                               Nombre = a.Nombre,
+                           }).FirstOrDefault();
             return paginas;
         }
         #endregion
